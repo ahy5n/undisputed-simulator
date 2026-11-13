@@ -1,0 +1,10 @@
+[
+ {"id":"dazn","name":"DAZN","market":"GLOBAL","budget":60000000,"prefers":["big-names","prospects"]},
+ {"id":"sky-sports","name":"Sky Sports","market":"GB","budget":25000000,"prefers":["british","heavyweights"]},
+ {"id":"tnt-sports","name":"TNT Sports","market":"GB","budget":20000000,"prefers":["british","big-names"]},
+ {"id":"espn","name":"ESPN","market":"US","budget":30000000,"prefers":["prospects","big-names"]},
+ {"id":"amazon-prime","name":"Amazon Prime Video","market":"US","budget":35000000,"prefers":["big-names"]},
+ {"id":"netflix","name":"Netflix","market":"GLOBAL","budget":40000000,"prefers":["big-names","heavyweights"]},
+ {"id":"channel-5","name":"Channel 5","market":"GB","budget":4000000,"prefers":["british","prospects"]},
+ {"id":"ppv","name":"Generic PPV","market":"GLOBAL","budget":0,"prefers":["big-names"]}
+]

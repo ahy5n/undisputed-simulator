@@ -1,0 +1,13 @@
+Sergio Mendoza|MX|1995|?|WBA|Independent|boxer|70|10
+Masamichi Yabuki|JP|1997|?|IBF|Independent|boxer|72|10
+Anthony Olascuaga|MX|1996|?|WBO|Independent|boxer|72|10
+Galal Yafai|GB|1993|?|-|Matchroom|boxer-puncher|76|40
+Rene Santiago|PR|1996|?|WBO|Independent|boxer|74|15
+Oscar Collazo|PR|1997|?|WBA|Independent|boxer|78|30
+Ryusei Matsumoto|JP|1998|?|WBO|Independent|boxer|72|10
+Thanongsak Simsri|TH|1996|?|IBF|Independent|boxer|70|10
+Shokichi Iwata|JP|1996|?|WBC|Independent|boxer|72|10
+Kosei Tanaka|JP|1999|?|-|Independent|boxer|82|20
+Jason Moloney|AU|1991|?|-|Independent|boxer|72|15
+Pedro Taduran|PH|1998|?|IBF|Independent|boxer|70|10
+Abraham Perez|MX|1996|?|-|Independent|boxer|68|10

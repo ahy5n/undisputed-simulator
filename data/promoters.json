@@ -1,0 +1,16 @@
+[
+ {"id":"matchroom","name":"Matchroom","country":"GB","real":true,"personality":"big-event","budget":40000000,"broadcaster":"dazn"},
+ {"id":"top-rank","name":"Top Rank","country":"US","real":true,"personality":"prospect-builder","budget":35000000,"broadcaster":"espn"},
+ {"id":"queensberry","name":"Queensberry","country":"GB","real":true,"personality":"aggressive","budget":30000000,"broadcaster":"tnt-sports"},
+ {"id":"pbc","name":"Premier Boxing Champions","country":"US","real":true,"personality":"cautious","budget":30000000,"broadcaster":"amazon-prime"},
+ {"id":"golden-boy","name":"Golden Boy","country":"US","real":true,"personality":"big-event","budget":25000000,"broadcaster":"dazn"},
+ {"id":"boxxer","name":"Boxxer","country":"GB","real":true,"personality":"prospect-builder","budget":15000000,"broadcaster":"sky-sports"},
+ {"id":"wasserman","name":"Wasserman","country":"US","real":true,"personality":"cautious","budget":12000000,"broadcaster":"dazn"},
+ {"id":"iron-gate","name":"Iron Gate Promotions","country":"GB","real":false,"personality":"prospect-builder","budget":1500000,"broadcaster":"channel-5"},
+ {"id":"harbour-city","name":"Harbour City Boxing","country":"AU","real":false,"personality":"cautious","budget":1200000,"broadcaster":null},
+ {"id":"southside","name":"Southside Fight Co.","country":"US","real":false,"personality":"aggressive","budget":1800000,"broadcaster":"espn"},
+ {"id":"azteca-cards","name":"Azteca Cards","country":"MX","real":false,"personality":"prospect-builder","budget":1600000,"broadcaster":null},
+ {"id":"sakura-ring","name":"Sakura Ring","country":"JP","real":false,"personality":"cautious","budget":1400000,"broadcaster":null},
+ {"id":"celtic-hall","name":"Celtic Hall Boxing","country":"IE","real":false,"personality":"big-event","budget":1000000,"broadcaster":"tnt-sports"},
+ {"id":"independent","name":"Independent","country":"--","real":false,"personality":"cautious","budget":0,"broadcaster":null}
+]

@@ -1,0 +1,205 @@
+"use client";
+import { useMemo, useRef, useState } from "react";
+import { useGame } from "@/lib/game/store";
+import { exportSave, importSave } from "@/lib/save/db";
+import { gameYear } from "@/lib/sim/calendar";
+import { ageAt, flag, overall, recordString, stars } from "@/lib/sim/fighter";
+import { DIVISIONS, DIVISION_LABEL, DIVISION_LIMIT, WORLD_BODIES, type Division, type Fighter } from "@/lib/sim/types";
+import { Badge, Btn, Card, FighterRow, H, money } from "./ui";
+
+export const signingFee = (f: Fighter) => {
+  const o = overall(f.ratings);
+  return Math.round((f.pro ? Math.pow(Math.max(0, o - 40), 2) * 400 : 20_000 + f.potential * 25_000) / 1000) * 1000;
+};
+const Soon = ({ phase, what }: { phase: number; what: string }) => (
+  <Card className="text-sm text-muted">{what} arrives in build phase {phase}.</Card>
+);
+
+export function HomeScreen({ go }: { go: (t: string) => void }) {
+  const { game } = useGame();
+  if (!game) return null;
+  const c = game.company;
+  return (
+    <div className="space-y-4">
+      <H sub="Decisions needed come first">Inbox</H>
+      {game.inbox.length === 0 && <Card className="text-sm text-muted">Nothing needs you this week.</Card>}
+      {game.inbox.map((m) => (
+        <Card key={m.id}><div className="font-semibold">{m.title}</div><p className="mt-1 text-sm text-muted">{m.body}</p></Card>
+      ))}
+      <div className="grid grid-cols-2 gap-3">
+        <Card><div className="text-xs text-muted">Cash</div><div className="display num text-3xl font-bold">{money(c.cash)}</div></Card>
+        <Card>
+          <div className="text-xs text-muted">Board confidence</div>
+          <div className="display num text-3xl font-bold">{c.confidence}</div>
+          <div className="mt-1 h-1.5 rounded bg-surface2"><div className="h-full rounded bg-accent" style={{ width: `${c.confidence}%` }} /></div>
+        </Card>
+      </div>
+      <Card>
+        <div className="text-sm font-semibold">This week</div>
+        <p className="mt-1 text-sm text-muted">No fights or shows scheduled.</p>
+        {c.stable.length === 0 && <Btn className="mt-3 w-full" onClick={() => go("market")}>Sign your first fighter</Btn>}
+      </Card>
+    </div>
+  );
+}
+
+export function StableScreen() {
+  const { game, update } = useGame();
+  if (!game) return null;
+  const year = gameYear(game.startDate, game.week);
+  const mine = game.company.stable.map((id) => game.world.fighters[id]).filter(Boolean);
+  const release = (f: Fighter) => update((g) => ({
+    ...g,
+    company: { ...g.company, stable: g.company.stable.filter((i) => i !== f.id) },
+    world: { ...g.world, fighters: { ...g.world.fighters, [f.id]: { ...f, promoter: "independent" } } },
+  }));
+  return (
+    <div>
+      <H sub={`${mine.length} fighter${mine.length === 1 ? "" : "s"}`}>Stable</H>
+      {mine.length === 0 ? <Card className="text-sm text-muted">No fighters yet. Sign some in the Market.</Card> : (
+        <Card className="py-1">
+          {mine.map((f) => (
+            <FighterRow key={f.id} f={f} right={<div><div>{ageAt(f, year)}y</div><button onClick={() => release(f)} className="min-h-11 text-xs text-bad">Release</button></div>} />
+          ))}
+        </Card>
+      )}
+    </div>
+  );
+}
+
+export const FightsScreen = () => (<div><H>Fights</H><Soon phase={6} what="Matchmaking, offers and mandatories" /></div>);
+export const ShowsScreen = () => (<div><H>Shows</H><Soon phase={7} what="The show builder and money projection" /></div>);
+export const FeedScreen = () => (<div><H>Feed</H><Soon phase={11} what="The social feed, news and press conferences" /></div>);
+
+export function MarketScreen() {
+  const { game, update } = useGame();
+  const [mode, setMode] = useState<"pro" | "prospect">("pro");
+  const [div, setDiv] = useState<Division | "all">("all");
+  const [q, setQ] = useState("");
+  const [limit, setLimit] = useState(40);
+  const list = useMemo(() => {
+    if (!game) return [];
+    const ql = q.trim().toLowerCase();
+    return Object.values(game.world.fighters)
+      .filter((f) => f.promoter === "independent" && !f.retired && (mode === "pro" ? f.pro : !f.pro))
+      .filter((f) => div === "all" || f.division === div)
+      .filter((f) => !ql || f.name.toLowerCase().includes(ql))
+      .sort((a, b) => overall(b.ratings) - overall(a.ratings));
+  }, [game, mode, div, q]);
+  if (!game) return null;
+  const year = gameYear(game.startDate, game.week);
+  const sign = (f: Fighter) => {
+    const fee = signingFee(f);
+    update((g) => g.company.cash < fee ? g : ({
+      ...g,
+      company: { ...g.company, cash: g.company.cash - fee, stable: [...g.company.stable, f.id] },
+      world: { ...g.world, fighters: { ...g.world.fighters, [f.id]: { ...f, promoter: "player", pro: true } } },
+    }));
+  };
+  return (
+    <div>
+      <H sub="Free agents and prospects. Full contract negotiation arrives in phase 5; for now a flat signing fee.">Market</H>
+      <div className="mb-3 flex gap-2">
+        {(["pro", "prospect"] as const).map((m) => (
+          <Btn key={m} variant={mode === m ? "primary" : "ghost"} onClick={() => { setMode(m); setLimit(40); }} className="flex-1">{m === "pro" ? "Free agents" : "Prospects"}</Btn>
+        ))}
+      </div>
+      <div className="mb-3 flex gap-2">
+        <input value={q} onChange={(e) => setQ(e.target.value)} placeholder="Search name" className="min-h-11 min-w-0 flex-1 rounded-lg border border-line bg-surface px-3" />
+        <select value={div} onChange={(e) => setDiv(e.target.value as Division | "all")} className="min-h-11 rounded-lg border border-line bg-surface px-2">
+          <option value="all">All divisions</option>
+          {DIVISIONS.map((d) => <option key={d} value={d}>{DIVISION_LABEL[d]}</option>)}
+        </select>
+      </div>
+      <Card className="py-1">
+        {list.slice(0, limit).map((f) => {
+          const fee = signingFee(f);
+          const st = stars(f, year);
+          return (
+            <FighterRow key={f.id} f={f} right={
+              <div>
+                <div className="text-xs text-muted">{DIVISION_LABEL[f.division]} · {ageAt(f, year)}y{st ? ` · ${"★".repeat(st)}` : ""}</div>
+                <Btn className="mt-1 !min-h-11" disabled={game.company.cash < fee} onClick={() => sign(f)}>Sign {money(fee)}</Btn>
+              </div>} />
+          );
+        })}
+        {list.length === 0 && <p className="p-3 text-sm text-muted">No one matches.</p>}
+      </Card>
+      {list.length > limit && <Btn variant="ghost" className="mt-3 w-full" onClick={() => setLimit(limit + 40)}>Show more ({list.length - limit})</Btn>}
+    </div>
+  );
+}
+
+export function WorldScreen() {
+  const { game } = useGame();
+  const [div, setDiv] = useState<Division>("heavyweight");
+  if (!game) return null;
+  const F = game.world.fighters;
+  const top = Object.values(F).filter((f) => f.division === div && f.pro && !f.retired)
+    .sort((a, b) => overall(b.ratings) - overall(a.ratings)).slice(0, 15);
+  return (
+    <div>
+      <H sub="Per-body top-15 rankings arrive in phase 2; for now this lists the best fighters by rating.">World</H>
+      <div className="mb-3 flex gap-2 overflow-x-auto pb-1">
+        {DIVISIONS.map((d) => (
+          <button key={d} onClick={() => setDiv(d)} className={`min-h-11 shrink-0 rounded-full px-4 text-sm font-semibold ${d === div ? "bg-accent text-accentfg" : "border border-line bg-surface"}`}>{DIVISION_LABEL[d]}</button>
+        ))}
+      </div>
+      <Card className="mb-3">
+        <div className="mb-2 text-sm font-semibold">{DIVISION_LABEL[div]} champions <span className="font-normal text-muted">({DIVISION_LIMIT[div]})</span></div>
+        {WORLD_BODIES.map((b) => {
+          const id = game.world.belts[div][b]; const f = id ? F[id] : null;
+          return (
+            <div key={b} className="flex min-h-11 items-center justify-between border-b border-line text-sm last:border-0">
+              <Badge>{b}</Badge><span className="font-semibold">{f ? `${flag(f.nationality)} ${f.name}` : <span className="text-muted">Vacant</span>}</span>
+            </div>
+          );
+        })}
+      </Card>
+      <Card className="py-1">
+        {top.map((f, i) => <FighterRow key={f.id} f={f} right={<span className="text-muted">#{i + 1}</span>} />)}
+      </Card>
+    </div>
+  );
+}
+
+export function MoreScreen({ go }: { go: (t: string) => void }) {
+  const { game, closeGame, update, refreshSaves, open } = useGame();
+  const ref = useRef<HTMLInputElement>(null);
+  const [msg, setMsg] = useState("");
+  if (!game) return null;
+  const links: [string, string][] = [["market", "Market"], ["world", "World"], ["feed", "Feed"]];
+  return (
+    <div className="space-y-4">
+      <H>More</H>
+      <div className="grid grid-cols-3 gap-2 md:hidden">
+        {links.map(([id, l]) => <Btn key={id} variant="ghost" onClick={() => go(id)}>{l}</Btn>)}
+      </div>
+      <Card className="space-y-3">
+        <div className="text-sm font-semibold">Settings</div>
+        <label className="flex min-h-11 items-center justify-between text-sm">Hide round scorecards in live fights
+          <input type="checkbox" className="h-5 w-5" checked={game.settings.hideScorecards} onChange={(e) => update((g) => ({ ...g, settings: { ...g.settings, hideScorecards: e.target.checked } }))} />
+        </label>
+        <label className="flex min-h-11 items-center justify-between text-sm">Theme
+          <select className="min-h-11 rounded-lg border border-line bg-bg px-2" defaultValue="auto" onChange={(e) => {
+            const v = e.target.value; if (v === "auto") document.documentElement.removeAttribute("data-theme"); else document.documentElement.setAttribute("data-theme", v);
+          }}><option value="auto">System</option><option value="light">Light</option><option value="dark">Dark</option></select>
+        </label>
+      </Card>
+      <Card className="space-y-2">
+        <div className="text-sm font-semibold">Save</div>
+        <p className="text-xs text-muted">Autosaves in this browser. Export a JSON backup now and then.</p>
+        <Btn variant="ghost" className="w-full" onClick={() => exportSave(game)}>Export save</Btn>
+        <input ref={ref} type="file" accept="application/json" hidden onChange={async (e) => {
+          const f = e.target.files?.[0]; if (!f) return;
+          try { const g = await importSave(f); await refreshSaves(); await open(g.id); setMsg("Imported."); } catch (er) { setMsg(er instanceof Error ? er.message : "Import failed"); }
+        }} />
+        <Btn variant="ghost" className="w-full" onClick={() => ref.current?.click()}>Import save</Btn>
+        <Btn variant="ghost" className="w-full" onClick={closeGame}>Switch / new save</Btn>
+        {msg && <p className="text-sm text-muted">{msg}</p>}
+      </Card>
+      <p className="text-center text-xs text-muted">Finances, broadcaster deals, board, Hall of Fame and records land in later phases.</p>
+    </div>
+  );
+}
+export { recordString };

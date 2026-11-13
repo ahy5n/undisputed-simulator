@@ -1,0 +1,67 @@
+# name|nat|born|rec W-L-D-KO|titles|promoter|style|ovr|pop   (cruiserweights, bridgerweights included; division = heavyweight)
+Oleksandr Usyk|UA|1987|24-0-0-15|-|Independent|boxer|94|95
+Daniel Dubois|GB|1997|23-3-0-22|WBO|Queensberry|puncher|86|80
+Agit Kabayel|DE|1992|27-0-0-18|WBC|Independent|boxer-puncher|85|55
+Filip Hrgovic|HR|1992|20-1-0-14|IBF|Matchroom|puncher|85|60
+Murat Gassiev|RU|1993|30-2-0-23|WBA|Independent|puncher|83|50
+Anthony Joshua|GB|1989|29-4-0-26|-|Matchroom|puncher|86|98
+Tyson Fury|GB|1988|35-2-1-24|-|Queensberry|boxer|90|99
+Deontay Wilder|US|1985|44-5-1-43|-|Independent|puncher|82|85
+Joseph Parker|NZ|1992|36-3-0-24|-|Matchroom|boxer-puncher|82|70
+Zhilei Zhang|CN|1983|27-3-1-21|-|Independent|puncher|78|60
+Martin Bakole|CD|1993|20-2-0-15|-|Independent|puncher|79|45
+Jared Anderson|US|2000|18-1-0-16|-|Top Rank|puncher|80|65
+Moses Itauma|GB|2005|13-0-0-11|-|Boxxer|puncher|82|85
+Efe Ajagba|NG|1994|21-3-0-15|-|Independent|puncher|74|40
+Frank Sanchez|CU|1992|25-1-0-17|-|Top Rank|boxer|77|40
+Jermaine Franklin|US|1994|23-3-0-16|-|Independent|boxer|74|40
+Dillian Whyte|GB|1988|31-4-0-21|-|Independent|puncher|78|75
+Derek Chisora|GB|1983|36-14-0-23|-|Independent|brawler|68|78
+Joe Joyce|GB|1985|16-3-0-15|-|Queensberry|puncher|74|65
+Fabio Wardley|GB|1994|19-1-1-18|-|Queensberry|puncher|80|78
+Jarrell Miller|US|1988|27-1-2-23|-|Independent|brawler|75|55
+Andy Ruiz Jr.|MX|1989|36-3-0-23|-|Independent|boxer-puncher|75|65
+Luis Ortiz|CU|1979|36-3-0-29|-|Independent|puncher|70|45
+Otto Wallin|SE|1991|28-3-0-16|-|Independent|boxer|74|35
+Tony Yoka|FR|1992|13-0-0-11|-|Independent|boxer|72|40
+Mahmoud Charr|DE|1985|34-5-0-21|-|Independent|puncher|66|25
+Kubrat Pulev|BG|1981|31-4-0-14|-|Independent|boxer|68|30
+Johnny Fisher|GB|1998|13-1-0-12|-|Boxxer|brawler|68|60
+Lawrence Okolie|GB|1992|21-1-0-15|-|Matchroom|boxer|78|65
+Richard Torrez Jr.|US|1999|14-0-0-14|-|Top Rank|puncher|75|45
+Jack Massey|GB|1999|15-0-0-8|-|Independent|boxer|66|25
+Solomon Dacres|GB|1996|10-0-0-9|-|Independent|puncher|64|20
+Ebenezer Tetteh|GH|1997|20-1-0-14|-|Independent|puncher|68|20
+Guido Vianello|IT|1993|13-2-0-11|-|Independent|puncher|66|20
+Mark De Mori|AU|1990|20-1-0-17|-|Independent|puncher|65|20
+Demsey McKean|AU|1992|22-0-0-18|-|Independent|puncher|66|20
+Faiga Opelu|AU|1997|7-0-0-5|-|Independent|boxer|58|15
+Lucas Browne|AU|1979|30-3-0-26|-|Independent|puncher|58|20
+Christian Hammer|RO|1987|28-6-0-17|-|Independent|boxer|66|20
+Michael Hunter|US|1988|23-3-1-15|-|Independent|boxer|68|25
+Ryad Merhy|FR|1993|34-3-0-25|WBC|Independent|puncher|80|40
+Michal Cieslak|PL|1989|26-3-0-20|WBC|Independent|brawler|78|40
+Jai Opetaia|AU|1995|27-1-0-21|IBF|Matchroom|boxer-puncher|88|65
+David Benavidez|US|1996|31-0-0-25|WBA,WBO|Independent|swarmer|91|85
+Gilberto Ramirez|MX|1991|47-1-0-30|-|Independent|boxer|82|55
+Badou Jack|SE|1983|30-4-3-17|-|Independent|boxer-puncher|76|50
+Noel Mikaelian|AM|1993|28-2-0-21|-|Independent|boxer-puncher|74|30
+Jordan Thompson|GB|1995|13-1-0-8|-|Independent|boxer|66|20
+Chris Billam-Smith|GB|1990|20-1-0-12|-|Matchroom|boxer|80|55
+Mairis Briedis|LV|1985|29-3-0-20|-|Independent|boxer-puncher|82|50
+Kevin Lerena|ZA|1991|32-3-0-14|-|Independent|boxer|72|25
+Ilunga Makabu|CD|1987|30-4-0-26|-|Independent|puncher|72|30
+Jonathan Guidry|US|1994|12-0-0-9|-|Independent|boxer|60|15
+Viddal Riley|GB|1996|15-0-0-10|-|Independent|boxer|70|40
+Ellis Zorro|GB|1999|12-0-0-9|-|Independent|boxer|64|20
+Richard Riakporhe|GB|1989|18-1-0-14|-|Independent|puncher|76|45
+Dave Allen|GB|1992|22-8-0-17|-|Independent|brawler|60|40
+Daniel Lapin|RU|1995|12-0-0-10|-|Independent|puncher|62|15
+Austin Williams|US|1997|18-0-0-13|-|Independent|boxer-puncher|68|25
+Jonathan Rice|US|1995|14-1-0-9|-|Independent|boxer|64|15
+Jason Jackson|GB|1995|8-0-0-6|-|Boxxer|boxer|56|10
+Stephen Shaw|GB|2000|6-0-0-5|-|Independent|boxer|54|10
+Alen Babic|HR|1989|16-0-0-15|-|Independent|puncher|68|20
+Kevin Johnson|US|1979|34-14-1-17|-|Independent|boxer|58|15
+Carlos Takam|CM|1980|42-9-1-30|-|Independent|brawler|62|20
+Jerry Forrest|US|1988|30-4-1-21|-|Independent|puncher|62|15

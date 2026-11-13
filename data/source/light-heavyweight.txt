@@ -1,0 +1,39 @@
+Dmitry Bivol|RU|1990|24-0-0-12|WBA,IBF,WBO|Independent|boxer|93|75
+Artur Beterbiev|RU|1985|21-1-0-20|-|Top Rank|puncher|90|75
+Callum Smith|GB|1990|31-2-0-22|-|Matchroom|boxer-puncher|84|65
+Willy Hutchinson|GB|1999|20-2-0-14|WBC|Independent|boxer-puncher|78|45
+Canelo Alvarez|MX|1990|63-3-2-39|-|Independent|counter-puncher|93|99
+Jaime Munguia|MX|1996|44-2-0-35|WBA|Independent|puncher|84|70
+Osleys Iglesias|CU|1994|13-0-0-9|IBF|Independent|boxer|81|30
+Lester Martinez|US|1996|20-0-0-16|-|Independent|puncher|79|35
+Zach Parker|GB|1995|25-2-0-18|-|Independent|boxer|75|35
+Edgar Berlanga|PR|1997|23-2-0-18|-|Independent|puncher|78|65
+Christian Mbilli|FR|1995|29-0-0-24|-|Independent|puncher|82|40
+Diego Pacheco|MX|2001|23-1-0-18|-|Independent|puncher|80|45
+Caleb Plant|US|1992|23-3-0-14|-|Independent|boxer|78|60
+Demetrius Andrade|US|1988|32-1-0-19|-|Independent|boxer|82|50
+David Morrell|CU|1997|12-2-0-10|-|Independent|puncher|77|40
+Joshua Buatsi|GB|1993|20-2-0-14|-|Queensberry|puncher|82|65
+Anthony Yarde|GB|1991|27-4-0-25|-|Queensberry|puncher|78|55
+Lyndon Arthur|GB|1992|22-3-0-17|-|Independent|puncher|72|35
+Craig Richards|GB|1992|18-3-1-8|-|Independent|boxer|72|30
+Daniel Jacobs|US|1987|38-4-0-30|-|Independent|boxer-puncher|72|50
+Michael Eifert|DE|1995|17-0-0-11|-|Independent|boxer|66|15
+Chris Eubank Jr.|GB|1989|35-3-0-25|-|Wasserman|boxer-puncher|80|85
+Conor Benn|GB|1996|23-1-0-14|-|Matchroom|brawler|74|90
+Liam Smith|GB|1988|35-4-1-21|-|Independent|brawler|74|60
+Steven Nelson|US|1996|20-0-0-15|-|Top Rank|puncher|75|30
+Vladimir Shishkin|RU|1992|13-1-0-8|-|Independent|boxer|72|15
+Serge Michel|CD|1995|13-0-0-9|-|Independent|puncher|70|15
+Troy Williamson|US|1994|20-1-0-13|-|Independent|puncher|72|20
+Hamzah Sheeraz|GB|1999|23-1-0-17|-|Queensberry|boxer-puncher|82|70
+Zhanibek Alimkhanuly|KZ|1993|16-0-0-11|-|Top Rank|boxer-puncher|80|35
+Oleksandr Gvozdyk|UA|1987|20-2-0-16|-|Independent|boxer|76|35
+Radivoje Kalajdzic|RS|1991|28-1-0-20|-|Independent|puncher|76|30
+Callum Johnson|GB|1989|22-3-0-15|-|Independent|puncher|68|30
+Jean Pascal|CA|1982|37-7-1-21|-|Independent|puncher|66|30
+Rohan Murdock|AU|1994|26-3-0-17|-|Independent|puncher|70|20
+Jack Culcay|DE|1985|31-5-0-14|-|Independent|boxer|68|20
+Nikita Ababiy|US|1994|14-1-0-9|-|Independent|boxer|66|15
+Dylan Biggs|IE|1998|10-0-0-6|-|Independent|boxer|60|15
+Padraig McCrory|IE|1993|18-0-0-12|-|Independent|boxer|66|25

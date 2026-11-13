@@ -1,0 +1,16 @@
+{
+  "asOf": "2026-11-13",
+  "note": "World-title holders per Wikipedia lists (edited early Nov 2026), mapped to the classic eight divisions. Only titles held in the real division of the same name are kept; belts in absorbed divisions (cruiser, super middle, etc.) are dropped. null = vacant.",
+  "world": {
+    "heavyweight":       { "WBC": "agit-kabayel", "WBA": "murat-gassiev", "IBF": "filip-hrgovic", "WBO": "daniel-dubois" },
+    "light-heavyweight": { "WBC": "willy-hutchinson", "WBA": "dmitry-bivol", "IBF": "dmitry-bivol", "WBO": "dmitry-bivol" },
+    "middleweight":      { "WBC": "carlos-adames", "WBA": "erislandy-lara", "IBF": "aaron-mckenna", "WBO": null },
+    "welterweight":      { "WBC": "ryan-garcia", "WBA": "teofimo-lopez", "IBF": "liam-paro", "WBO": "devin-haney" },
+    "lightweight":       { "WBC": "william-zepeda", "WBA": "floyd-schofield", "IBF": null, "WBO": "abdullah-mason" },
+    "featherweight":     { "WBC": "bruce-carrington", "WBA": null, "IBF": "angelo-leo", "WBO": "rafael-espinoza" },
+    "bantamweight":      { "WBC": "takuma-inoue", "WBA": "jesse-rodriguez", "IBF": "jose-salas", "WBO": "christian-medina" },
+    "flyweight":         { "WBC": null, "WBA": "sergio-mendoza", "IBF": "masamichi-yabuki", "WBO": "anthony-olascuaga" }
+  },
+  "unsure": ["WBC flyweight (vacant?)", "WBA featherweight", "IBF lightweight", "WBO middleweight", "All lower-division holders: extracted from partly truncated pages"],
+  "regional": ["EBU", "NABF", "USBA", "OPBF", "WBC International", "WBO Intercontinental", "IBF International", "WBA Continental", "British", "Commonwealth", "WBC Silver", "WBA Interim"]
+}

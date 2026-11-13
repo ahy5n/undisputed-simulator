@@ -1,0 +1,5956 @@
+[
+ {
+  "id": "naoya-inoue",
+  "name": "Naoya Inoue",
+  "nationality": "JP",
+  "born": "1993",
+  "division": "bantamweight",
+  "record": {
+   "w": 30,
+   "l": 0,
+   "d": 0,
+   "ko": 27
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "puncher",
+  "ratings": {
+   "power": 100,
+   "chin": 97,
+   "speed": 95,
+   "defence": 95,
+   "skill": 96,
+   "stamina": 89
+  },
+  "popularity": 90,
+  "real": true
+ },
+ {
+  "id": "jesse-rodriguez",
+  "name": "Jesse Rodriguez",
+  "nationality": "US",
+  "born": "2000",
+  "division": "bantamweight",
+  "record": {
+   "w": 20,
+   "l": 0,
+   "d": 0,
+   "ko": 13
+  },
+  "titles": [
+   "WBA"
+  ],
+  "promoter": "Independent",
+  "style": "boxer-puncher",
+  "ratings": {
+   "power": 91,
+   "skill": 93,
+   "speed": 89,
+   "defence": 94,
+   "chin": 88,
+   "stamina": 91
+  },
+  "popularity": 55,
+  "real": true
+ },
+ {
+  "id": "junto-nakatani",
+  "name": "Junto Nakatani",
+  "nationality": "JP",
+  "born": "1998",
+  "division": "bantamweight",
+  "record": {
+   "w": 31,
+   "l": 0,
+   "d": 0,
+   "ko": 24
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "boxer-puncher",
+  "ratings": {
+   "power": 98,
+   "skill": 87,
+   "speed": 89,
+   "defence": 86,
+   "chin": 86,
+   "stamina": 88
+  },
+  "popularity": 45,
+  "real": true
+ },
+ {
+  "id": "takuma-inoue",
+  "name": "Takuma Inoue",
+  "nationality": "JP",
+  "born": "1995",
+  "division": "bantamweight",
+  "record": {
+   "w": 20,
+   "l": 2,
+   "d": 0,
+   "ko": 5
+  },
+  "titles": [
+   "WBC"
+  ],
+  "promoter": "Independent",
+  "style": "boxer",
+  "ratings": {
+   "speed": 78,
+   "skill": 84,
+   "defence": 85,
+   "power": 69,
+   "chin": 82,
+   "stamina": 75
+  },
+  "popularity": 30,
+  "real": true
+ },
+ {
+  "id": "jose-salas",
+  "name": "Jose Salas",
+  "nationality": "US",
+  "born": "1995",
+  "division": "bantamweight",
+  "record": {
+   "w": 19,
+   "l": 2,
+   "d": 0,
+   "ko": 10
+  },
+  "titles": [
+   "IBF"
+  ],
+  "promoter": "Independent",
+  "style": "boxer",
+  "ratings": {
+   "speed": 80,
+   "skill": 84,
+   "defence": 82,
+   "power": 72,
+   "chin": 73,
+   "stamina": 73
+  },
+  "popularity": 15,
+  "real": true,
+  "recordEstimated": true
+ },
+ {
+  "id": "christian-medina",
+  "name": "Christian Medina",
+  "nationality": "MX",
+  "born": "1999",
+  "division": "bantamweight",
+  "record": {
+   "w": 18,
+   "l": 2,
+   "d": 0,
+   "ko": 10
+  },
+  "titles": [
+   "WBO"
+  ],
+  "promoter": "Independent",
+  "style": "boxer",
+  "ratings": {
+   "speed": 77,
+   "skill": 79,
+   "defence": 76,
+   "power": 66,
+   "chin": 70,
+   "stamina": 75
+  },
+  "popularity": 10,
+  "real": true,
+  "recordEstimated": true
+ },
+ {
+  "id": "riku-masuda",
+  "name": "Riku Masuda",
+  "nationality": "JP",
+  "born": "1999",
+  "division": "bantamweight",
+  "record": {
+   "w": 18,
+   "l": 2,
+   "d": 0,
+   "ko": 10
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "boxer",
+  "ratings": {
+   "speed": 79,
+   "skill": 81,
+   "defence": 75,
+   "power": 63,
+   "chin": 71,
+   "stamina": 68
+  },
+  "popularity": 10,
+  "real": true,
+  "recordEstimated": true
+ },
+ {
+  "id": "andrew-moloney",
+  "name": "Andrew Moloney",
+  "nationality": "AU",
+  "born": "1991",
+  "division": "bantamweight",
+  "record": {
+   "w": 19,
+   "l": 2,
+   "d": 0,
+   "ko": 10
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "boxer",
+  "ratings": {
+   "speed": 75,
+   "skill": 84,
+   "defence": 75,
+   "power": 69,
+   "chin": 75,
+   "stamina": 77
+  },
+  "popularity": 20,
+  "real": true,
+  "recordEstimated": true
+ },
+ {
+  "id": "kenshiro-teraji",
+  "name": "Kenshiro Teraji",
+  "nationality": "JP",
+  "born": "1991",
+  "division": "bantamweight",
+  "record": {
+   "w": 23,
+   "l": 2,
+   "d": 0,
+   "ko": 13
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "boxer",
+  "ratings": {
+   "speed": 82,
+   "skill": 87,
+   "defence": 85,
+   "power": 78,
+   "chin": 82,
+   "stamina": 81
+  },
+  "popularity": 35,
+  "real": true,
+  "recordEstimated": true
+ },
+ {
+  "id": "ricardo-malajika",
+  "name": "Ricardo Malajika",
+  "nationality": "VE",
+  "born": "1996",
+  "division": "bantamweight",
+  "record": {
+   "w": 18,
+   "l": 2,
+   "d": 0,
+   "ko": 10
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "boxer",
+  "ratings": {
+   "speed": 75,
+   "skill": 81,
+   "defence": 73,
+   "power": 70,
+   "chin": 75,
+   "stamina": 73
+  },
+  "popularity": 10,
+  "real": true,
+  "recordEstimated": true
+ },
+ {
+  "id": "david-jimenez",
+  "name": "David Jimenez",
+  "nationality": "CR",
+  "born": "1996",
+  "division": "bantamweight",
+  "record": {
+   "w": 19,
+   "l": 2,
+   "d": 0,
+   "ko": 10
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "boxer",
+  "ratings": {
+   "speed": 79,
+   "skill": 76,
+   "defence": 77,
+   "power": 65,
+   "chin": 74,
+   "stamina": 70
+  },
+  "popularity": 10,
+  "real": true,
+  "recordEstimated": true
+ },
+ {
+  "id": "sam-goodman",
+  "name": "Sam Goodman",
+  "nationality": "AU",
+  "born": "1997",
+  "division": "bantamweight",
+  "record": {
+   "w": 19,
+   "l": 2,
+   "d": 0,
+   "ko": 10
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "boxer",
+  "ratings": {
+   "speed": 77,
+   "skill": 82,
+   "defence": 78,
+   "power": 67,
+   "chin": 71,
+   "stamina": 78
+  },
+  "popularity": 20,
+  "real": true,
+  "recordEstimated": true
+ },
+ {
+  "id": "ryan-garner",
+  "name": "Ryan Garner",
+  "nationality": "US",
+  "born": "1997",
+  "division": "bantamweight",
+  "record": {
+   "w": 17,
+   "l": 2,
+   "d": 0,
+   "ko": 9
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "boxer",
+  "ratings": {
+   "speed": 77,
+   "skill": 74,
+   "defence": 77,
+   "power": 68,
+   "chin": 70,
+   "stamina": 74
+  },
+  "popularity": 10,
+  "real": true,
+  "recordEstimated": true
+ },
+ {
+  "id": "bruce-carrington",
+  "name": "Bruce Carrington",
+  "nationality": "US",
+  "born": "1997",
+  "division": "featherweight",
+  "record": {
+   "w": 13,
+   "l": 0,
+   "d": 0,
+   "ko": 8
+  },
+  "titles": [
+   "WBC"
+  ],
+  "promoter": "Top Rank",
+  "style": "boxer",
+  "ratings": {
+   "speed": 81,
+   "skill": 84,
+   "defence": 88,
+   "power": 72,
+   "chin": 83,
+   "stamina": 81
+  },
+  "popularity": 35,
+  "real": true
+ },
+ {
+  "id": "angelo-leo",
+  "name": "Angelo Leo",
+  "nationality": "US",
+  "born": "1994",
+  "division": "featherweight",
+  "record": {
+   "w": 26,
+   "l": 2,
+   "d": 0,
+   "ko": 12
+  },
+  "titles": [
+   "IBF"
+  ],
+  "promoter": "Independent",
+  "style": "boxer",
+  "ratings": {
+   "speed": 80,
+   "skill": 85,
+   "defence": 84,
+   "power": 69,
+   "chin": 77,
+   "stamina": 82
+  },
+  "popularity": 25,
+  "real": true
+ },
+ {
+  "id": "rafael-espinoza",
+  "name": "Rafael Espinoza",
+  "nationality": "MX",
+  "born": "1993",
+  "division": "featherweight",
+  "record": {
+   "w": 27,
+   "l": 1,
+   "d": 0,
+   "ko": 22
+  },
+  "titles": [
+   "WBO"
+  ],
+  "promoter": "Independent",
+  "style": "puncher",
+  "ratings": {
+   "power": 93,
+   "chin": 79,
+   "speed": 78,
+   "defence": 77,
+   "skill": 81,
+   "stamina": 74
+  },
+  "popularity": 30,
+  "real": true
+ },
+ {
+  "id": "o-shaquie-foster",
+  "name": "O'Shaquie Foster",
+  "nationality": "US",
+  "born": "1993",
+  "division": "featherweight",
+  "record": {
+   "w": 23,
+   "l": 3,
+   "d": 0,
+   "ko": 12
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "boxer",
+  "ratings": {
+   "speed": 87,
+   "skill": 92,
+   "defence": 86,
+   "power": 79,
+   "chin": 84,
+   "stamina": 83
+  },
+  "popularity": 35,
+  "real": true
+ },
+ {
+  "id": "anthony-cacace",
+  "name": "Anthony Cacace",
+  "nationality": "GB",
+  "born": "1989",
+  "division": "featherweight",
+  "record": {
+   "w": 23,
+   "l": 1,
+   "d": 0,
+   "ko": 9
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "boxer",
+  "ratings": {
+   "speed": 85,
+   "skill": 86,
+   "defence": 85,
+   "power": 70,
+   "chin": 82,
+   "stamina": 77
+  },
+  "popularity": 45,
+  "real": true
+ },
+ {
+  "id": "nick-ball",
+  "name": "Nick Ball",
+  "nationality": "GB",
+  "born": "1997",
+  "division": "featherweight",
+  "record": {
+   "w": 21,
+   "l": 0,
+   "d": 1,
+   "ko": 11
+  },
+  "titles": [],
+  "promoter": "Matchroom",
+  "style": "swarmer",
+  "ratings": {
+   "stamina": 89,
+   "speed": 79,
+   "defence": 71,
+   "power": 81,
+   "chin": 79,
+   "skill": 75
+  },
+  "popularity": 60,
+  "real": true
+ },
+ {
+  "id": "brandon-figueroa",
+  "name": "Brandon Figueroa",
+  "nationality": "US",
+  "born": "1996",
+  "division": "featherweight",
+  "record": {
+   "w": 26,
+   "l": 2,
+   "d": 1,
+   "ko": 19
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "brawler",
+  "ratings": {
+   "power": 85,
+   "chin": 85,
+   "defence": 73,
+   "skill": 73,
+   "stamina": 80,
+   "speed": 80
+  },
+  "popularity": 40,
+  "real": true
+ },
+ {
+  "id": "mauricio-lara",
+  "name": "Mauricio Lara",
+  "nationality": "MX",
+  "born": "1994",
+  "division": "featherweight",
+  "record": {
+   "w": 27,
+   "l": 3,
+   "d": 0,
+   "ko": 19
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "puncher",
+  "ratings": {
+   "power": 86,
+   "chin": 74,
+   "speed": 73,
+   "defence": 75,
+   "skill": 72,
+   "stamina": 75
+  },
+  "popularity": 35,
+  "real": true
+ },
+ {
+  "id": "leigh-wood",
+  "name": "Leigh Wood",
+  "nationality": "GB",
+  "born": "1988",
+  "division": "featherweight",
+  "record": {
+   "w": 28,
+   "l": 4,
+   "d": 0,
+   "ko": 17
+  },
+  "titles": [],
+  "promoter": "Matchroom",
+  "style": "brawler",
+  "ratings": {
+   "power": 84,
+   "chin": 76,
+   "defence": 68,
+   "skill": 68,
+   "stamina": 73,
+   "speed": 75
+  },
+  "popularity": 50,
+  "real": true
+ },
+ {
+  "id": "josh-warrington",
+  "name": "Josh Warrington",
+  "nationality": "GB",
+  "born": "1990",
+  "division": "featherweight",
+  "record": {
+   "w": 31,
+   "l": 4,
+   "d": 1,
+   "ko": 9
+  },
+  "titles": [],
+  "promoter": "Matchroom",
+  "style": "swarmer",
+  "ratings": {
+   "stamina": 80,
+   "speed": 79,
+   "defence": 68,
+   "power": 73,
+   "chin": 75,
+   "skill": 71
+  },
+  "popularity": 65,
+  "real": true
+ },
+ {
+  "id": "raymond-ford",
+  "name": "Raymond Ford",
+  "nationality": "US",
+  "born": "1998",
+  "division": "featherweight",
+  "record": {
+   "w": 17,
+   "l": 0,
+   "d": 1,
+   "ko": 9
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "boxer",
+  "ratings": {
+   "speed": 79,
+   "skill": 85,
+   "defence": 83,
+   "power": 73,
+   "chin": 78,
+   "stamina": 80
+  },
+  "popularity": 30,
+  "real": true
+ },
+ {
+  "id": "stephen-fulton",
+  "name": "Stephen Fulton",
+  "nationality": "US",
+  "born": "1994",
+  "division": "featherweight",
+  "record": {
+   "w": 22,
+   "l": 2,
+   "d": 0,
+   "ko": 8
+  },
+  "titles": [],
+  "promoter": "PBC",
+  "style": "boxer",
+  "ratings": {
+   "speed": 85,
+   "skill": 87,
+   "defence": 82,
+   "power": 74,
+   "chin": 85,
+   "stamina": 82
+  },
+  "popularity": 40,
+  "real": true
+ },
+ {
+  "id": "robson-conceicao",
+  "name": "Robson Conceicao",
+  "nationality": "BR",
+  "born": "1988",
+  "division": "featherweight",
+  "record": {
+   "w": 20,
+   "l": 2,
+   "d": 0,
+   "ko": 8
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "boxer",
+  "ratings": {
+   "speed": 75,
+   "skill": 80,
+   "defence": 77,
+   "power": 62,
+   "chin": 72,
+   "stamina": 77
+  },
+  "popularity": 30,
+  "real": true
+ },
+ {
+  "id": "michael-conlan",
+  "name": "Michael Conlan",
+  "nationality": "IE",
+  "born": "1991",
+  "division": "featherweight",
+  "record": {
+   "w": 20,
+   "l": 3,
+   "d": 0,
+   "ko": 9
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "boxer",
+  "ratings": {
+   "speed": 78,
+   "skill": 83,
+   "defence": 80,
+   "power": 66,
+   "chin": 71,
+   "stamina": 71
+  },
+  "popularity": 60,
+  "real": true
+ },
+ {
+  "id": "sergio-mendoza",
+  "name": "Sergio Mendoza",
+  "nationality": "MX",
+  "born": "1995",
+  "division": "flyweight",
+  "record": {
+   "w": 17,
+   "l": 2,
+   "d": 0,
+   "ko": 9
+  },
+  "titles": [
+   "WBA"
+  ],
+  "promoter": "Independent",
+  "style": "boxer",
+  "ratings": {
+   "speed": 73,
+   "skill": 79,
+   "defence": 74,
+   "power": 67,
+   "chin": 66,
+   "stamina": 69
+  },
+  "popularity": 10,
+  "real": true,
+  "recordEstimated": true
+ },
+ {
+  "id": "masamichi-yabuki",
+  "name": "Masamichi Yabuki",
+  "nationality": "JP",
+  "born": "1997",
+  "division": "flyweight",
+  "record": {
+   "w": 18,
+   "l": 2,
+   "d": 0,
+   "ko": 10
+  },
+  "titles": [
+   "IBF"
+  ],
+  "promoter": "Independent",
+  "style": "boxer",
+  "ratings": {
+   "speed": 72,
+   "skill": 75,
+   "defence": 80,
+   "power": 65,
+   "chin": 76,
+   "stamina": 76
+  },
+  "popularity": 10,
+  "real": true,
+  "recordEstimated": true
+ },
+ {
+  "id": "anthony-olascuaga",
+  "name": "Anthony Olascuaga",
+  "nationality": "MX",
+  "born": "1996",
+  "division": "flyweight",
+  "record": {
+   "w": 18,
+   "l": 2,
+   "d": 0,
+   "ko": 10
+  },
+  "titles": [
+   "WBO"
+  ],
+  "promoter": "Independent",
+  "style": "boxer",
+  "ratings": {
+   "speed": 78,
+   "skill": 82,
+   "defence": 78,
+   "power": 69,
+   "chin": 70,
+   "stamina": 73
+  },
+  "popularity": 10,
+  "real": true,
+  "recordEstimated": true
+ },
+ {
+  "id": "galal-yafai",
+  "name": "Galal Yafai",
+  "nationality": "GB",
+  "born": "1993",
+  "division": "flyweight",
+  "record": {
+   "w": 20,
+   "l": 2,
+   "d": 0,
+   "ko": 11
+  },
+  "titles": [],
+  "promoter": "Matchroom",
+  "style": "boxer-puncher",
+  "ratings": {
+   "power": 75,
+   "skill": 75,
+   "speed": 72,
+   "defence": 74,
+   "chin": 73,
+   "stamina": 75
+  },
+  "popularity": 40,
+  "real": true,
+  "recordEstimated": true
+ },
+ {
+  "id": "rene-santiago",
+  "name": "Rene Santiago",
+  "nationality": "PR",
+  "born": "1996",
+  "division": "flyweight",
+  "record": {
+   "w": 19,
+   "l": 2,
+   "d": 0,
+   "ko": 10
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "boxer",
+  "ratings": {
+   "speed": 74,
+   "skill": 80,
+   "defence": 76,
+   "power": 69,
+   "chin": 78,
+   "stamina": 72
+  },
+  "popularity": 15,
+  "real": true,
+  "recordEstimated": true
+ },
+ {
+  "id": "oscar-collazo",
+  "name": "Oscar Collazo",
+  "nationality": "PR",
+  "born": "1997",
+  "division": "flyweight",
+  "record": {
+   "w": 21,
+   "l": 2,
+   "d": 0,
+   "ko": 12
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "boxer",
+  "ratings": {
+   "speed": 85,
+   "skill": 81,
+   "defence": 84,
+   "power": 76,
+   "chin": 74,
+   "stamina": 81
+  },
+  "popularity": 30,
+  "real": true,
+  "recordEstimated": true
+ },
+ {
+  "id": "ryusei-matsumoto",
+  "name": "Ryusei Matsumoto",
+  "nationality": "JP",
+  "born": "1998",
+  "division": "flyweight",
+  "record": {
+   "w": 18,
+   "l": 2,
+   "d": 0,
+   "ko": 10
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "boxer",
+  "ratings": {
+   "speed": 75,
+   "skill": 80,
+   "defence": 79,
+   "power": 66,
+   "chin": 68,
+   "stamina": 76
+  },
+  "popularity": 10,
+  "real": true,
+  "recordEstimated": true
+ },
+ {
+  "id": "thanongsak-simsri",
+  "name": "Thanongsak Simsri",
+  "nationality": "TH",
+  "born": "1996",
+  "division": "flyweight",
+  "record": {
+   "w": 17,
+   "l": 2,
+   "d": 0,
+   "ko": 9
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "boxer",
+  "ratings": {
+   "speed": 72,
+   "skill": 73,
+   "defence": 78,
+   "power": 67,
+   "chin": 73,
+   "stamina": 69
+  },
+  "popularity": 10,
+  "real": true,
+  "recordEstimated": true
+ },
+ {
+  "id": "shokichi-iwata",
+  "name": "Shokichi Iwata",
+  "nationality": "JP",
+  "born": "1996",
+  "division": "flyweight",
+  "record": {
+   "w": 18,
+   "l": 2,
+   "d": 0,
+   "ko": 10
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "boxer",
+  "ratings": {
+   "speed": 72,
+   "skill": 77,
+   "defence": 75,
+   "power": 68,
+   "chin": 74,
+   "stamina": 69
+  },
+  "popularity": 10,
+  "real": true,
+  "recordEstimated": true
+ },
+ {
+  "id": "kosei-tanaka",
+  "name": "Kosei Tanaka",
+  "nationality": "JP",
+  "born": "1999",
+  "division": "flyweight",
+  "record": {
+   "w": 23,
+   "l": 2,
+   "d": 0,
+   "ko": 13
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "boxer",
+  "ratings": {
+   "speed": 82,
+   "skill": 88,
+   "defence": 83,
+   "power": 80,
+   "chin": 86,
+   "stamina": 81
+  },
+  "popularity": 20,
+  "real": true,
+  "recordEstimated": true
+ },
+ {
+  "id": "jason-moloney",
+  "name": "Jason Moloney",
+  "nationality": "AU",
+  "born": "1991",
+  "division": "flyweight",
+  "record": {
+   "w": 18,
+   "l": 2,
+   "d": 0,
+   "ko": 10
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "boxer",
+  "ratings": {
+   "speed": 77,
+   "skill": 76,
+   "defence": 77,
+   "power": 64,
+   "chin": 75,
+   "stamina": 75
+  },
+  "popularity": 15,
+  "real": true,
+  "recordEstimated": true
+ },
+ {
+  "id": "pedro-taduran",
+  "name": "Pedro Taduran",
+  "nationality": "PH",
+  "born": "1998",
+  "division": "flyweight",
+  "record": {
+   "w": 17,
+   "l": 2,
+   "d": 0,
+   "ko": 9
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "boxer",
+  "ratings": {
+   "speed": 73,
+   "skill": 79,
+   "defence": 75,
+   "power": 62,
+   "chin": 68,
+   "stamina": 71
+  },
+  "popularity": 10,
+  "real": true,
+  "recordEstimated": true
+ },
+ {
+  "id": "abraham-perez",
+  "name": "Abraham Perez",
+  "nationality": "MX",
+  "born": "1996",
+  "division": "flyweight",
+  "record": {
+   "w": 16,
+   "l": 2,
+   "d": 0,
+   "ko": 9
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "boxer",
+  "ratings": {
+   "speed": 75,
+   "skill": 71,
+   "defence": 71,
+   "power": 64,
+   "chin": 67,
+   "stamina": 65
+  },
+  "popularity": 10,
+  "real": true,
+  "recordEstimated": true
+ },
+ {
+  "id": "oleksandr-usyk",
+  "name": "Oleksandr Usyk",
+  "nationality": "UA",
+  "born": "1987",
+  "division": "heavyweight",
+  "record": {
+   "w": 24,
+   "l": 0,
+   "d": 0,
+   "ko": 15
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "boxer",
+  "ratings": {
+   "speed": 100,
+   "skill": 97,
+   "defence": 100,
+   "power": 93,
+   "chin": 93,
+   "stamina": 90
+  },
+  "popularity": 95,
+  "real": true
+ },
+ {
+  "id": "daniel-dubois",
+  "name": "Daniel Dubois",
+  "nationality": "GB",
+  "born": "1997",
+  "division": "heavyweight",
+  "record": {
+   "w": 23,
+   "l": 3,
+   "d": 0,
+   "ko": 22
+  },
+  "titles": [
+   "WBO"
+  ],
+  "promoter": "Queensberry",
+  "style": "puncher",
+  "ratings": {
+   "power": 98,
+   "chin": 91,
+   "speed": 86,
+   "defence": 81,
+   "skill": 83,
+   "stamina": 79
+  },
+  "popularity": 80,
+  "real": true
+ },
+ {
+  "id": "agit-kabayel",
+  "name": "Agit Kabayel",
+  "nationality": "DE",
+  "born": "1992",
+  "division": "heavyweight",
+  "record": {
+   "w": 27,
+   "l": 0,
+   "d": 0,
+   "ko": 18
+  },
+  "titles": [
+   "WBC"
+  ],
+  "promoter": "Independent",
+  "style": "boxer-puncher",
+  "ratings": {
+   "power": 87,
+   "skill": 87,
+   "speed": 89,
+   "defence": 89,
+   "chin": 85,
+   "stamina": 84
+  },
+  "popularity": 55,
+  "real": true
+ },
+ {
+  "id": "filip-hrgovic",
+  "name": "Filip Hrgovic",
+  "nationality": "HR",
+  "born": "1992",
+  "division": "heavyweight",
+  "record": {
+   "w": 20,
+   "l": 1,
+   "d": 0,
+   "ko": 14
+  },
+  "titles": [
+   "IBF"
+  ],
+  "promoter": "Matchroom",
+  "style": "puncher",
+  "ratings": {
+   "power": 96,
+   "chin": 91,
+   "speed": 81,
+   "defence": 85,
+   "skill": 83,
+   "stamina": 78
+  },
+  "popularity": 60,
+  "real": true
+ },
+ {
+  "id": "murat-gassiev",
+  "name": "Murat Gassiev",
+  "nationality": "RU",
+  "born": "1993",
+  "division": "heavyweight",
+  "record": {
+   "w": 30,
+   "l": 2,
+   "d": 0,
+   "ko": 23
+  },
+  "titles": [
+   "WBA"
+  ],
+  "promoter": "Independent",
+  "style": "puncher",
+  "ratings": {
+   "power": 99,
+   "chin": 86,
+   "speed": 78,
+   "defence": 75,
+   "skill": 80,
+   "stamina": 78
+  },
+  "popularity": 50,
+  "real": true
+ },
+ {
+  "id": "anthony-joshua",
+  "name": "Anthony Joshua",
+  "nationality": "GB",
+  "born": "1989",
+  "division": "heavyweight",
+  "record": {
+   "w": 29,
+   "l": 4,
+   "d": 0,
+   "ko": 26
+  },
+  "titles": [],
+  "promoter": "Matchroom",
+  "style": "puncher",
+  "ratings": {
+   "power": 97,
+   "chin": 92,
+   "speed": 87,
+   "defence": 85,
+   "skill": 88,
+   "stamina": 85
+  },
+  "popularity": 98,
+  "real": true
+ },
+ {
+  "id": "tyson-fury",
+  "name": "Tyson Fury",
+  "nationality": "GB",
+  "born": "1988",
+  "division": "heavyweight",
+  "record": {
+   "w": 35,
+   "l": 2,
+   "d": 1,
+   "ko": 24
+  },
+  "titles": [],
+  "promoter": "Queensberry",
+  "style": "boxer",
+  "ratings": {
+   "speed": 95,
+   "skill": 96,
+   "defence": 97,
+   "power": 88,
+   "chin": 89,
+   "stamina": 88
+  },
+  "popularity": 99,
+  "real": true
+ },
+ {
+  "id": "deontay-wilder",
+  "name": "Deontay Wilder",
+  "nationality": "US",
+  "born": "1985",
+  "division": "heavyweight",
+  "record": {
+   "w": 44,
+   "l": 5,
+   "d": 1,
+   "ko": 43
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "puncher",
+  "ratings": {
+   "power": 100,
+   "chin": 83,
+   "speed": 78,
+   "defence": 80,
+   "skill": 78,
+   "stamina": 75
+  },
+  "popularity": 85,
+  "real": true
+ },
+ {
+  "id": "joseph-parker",
+  "name": "Joseph Parker",
+  "nationality": "NZ",
+  "born": "1992",
+  "division": "heavyweight",
+  "record": {
+   "w": 36,
+   "l": 3,
+   "d": 0,
+   "ko": 24
+  },
+  "titles": [],
+  "promoter": "Matchroom",
+  "style": "boxer-puncher",
+  "ratings": {
+   "power": 87,
+   "skill": 87,
+   "speed": 78,
+   "defence": 83,
+   "chin": 86,
+   "stamina": 85
+  },
+  "popularity": 70,
+  "real": true
+ },
+ {
+  "id": "zhilei-zhang",
+  "name": "Zhilei Zhang",
+  "nationality": "CN",
+  "born": "1983",
+  "division": "heavyweight",
+  "record": {
+   "w": 27,
+   "l": 3,
+   "d": 1,
+   "ko": 21
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "puncher",
+  "ratings": {
+   "power": 93,
+   "chin": 83,
+   "speed": 72,
+   "defence": 72,
+   "skill": 78,
+   "stamina": 73
+  },
+  "popularity": 60,
+  "real": true
+ },
+ {
+  "id": "martin-bakole",
+  "name": "Martin Bakole",
+  "nationality": "CD",
+  "born": "1993",
+  "division": "heavyweight",
+  "record": {
+   "w": 20,
+   "l": 2,
+   "d": 0,
+   "ko": 15
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "puncher",
+  "ratings": {
+   "power": 95,
+   "chin": 82,
+   "speed": 78,
+   "defence": 77,
+   "skill": 73,
+   "stamina": 72
+  },
+  "popularity": 45,
+  "real": true
+ },
+ {
+  "id": "jared-anderson",
+  "name": "Jared Anderson",
+  "nationality": "US",
+  "born": "2000",
+  "division": "heavyweight",
+  "record": {
+   "w": 18,
+   "l": 1,
+   "d": 0,
+   "ko": 16
+  },
+  "titles": [],
+  "promoter": "Top Rank",
+  "style": "puncher",
+  "ratings": {
+   "power": 97,
+   "chin": 79,
+   "speed": 78,
+   "defence": 78,
+   "skill": 74,
+   "stamina": 73
+  },
+  "popularity": 65,
+  "real": true
+ },
+ {
+  "id": "moses-itauma",
+  "name": "Moses Itauma",
+  "nationality": "GB",
+  "born": "2005",
+  "division": "heavyweight",
+  "record": {
+   "w": 13,
+   "l": 0,
+   "d": 0,
+   "ko": 11
+  },
+  "titles": [],
+  "promoter": "Boxxer",
+  "style": "puncher",
+  "ratings": {
+   "power": 93,
+   "chin": 86,
+   "speed": 81,
+   "defence": 78,
+   "skill": 80,
+   "stamina": 82
+  },
+  "popularity": 85,
+  "real": true
+ },
+ {
+  "id": "efe-ajagba",
+  "name": "Efe Ajagba",
+  "nationality": "NG",
+  "born": "1994",
+  "division": "heavyweight",
+  "record": {
+   "w": 21,
+   "l": 3,
+   "d": 0,
+   "ko": 15
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "puncher",
+  "ratings": {
+   "power": 81,
+   "chin": 78,
+   "speed": 68,
+   "defence": 68,
+   "skill": 68,
+   "stamina": 74
+  },
+  "popularity": 40,
+  "real": true
+ },
+ {
+  "id": "frank-sanchez",
+  "name": "Frank Sanchez",
+  "nationality": "CU",
+  "born": "1992",
+  "division": "heavyweight",
+  "record": {
+   "w": 25,
+   "l": 1,
+   "d": 0,
+   "ko": 17
+  },
+  "titles": [],
+  "promoter": "Top Rank",
+  "style": "boxer",
+  "ratings": {
+   "speed": 77,
+   "skill": 84,
+   "defence": 83,
+   "power": 77,
+   "chin": 77,
+   "stamina": 76
+  },
+  "popularity": 40,
+  "real": true
+ },
+ {
+  "id": "jermaine-franklin",
+  "name": "Jermaine Franklin",
+  "nationality": "US",
+  "born": "1994",
+  "division": "heavyweight",
+  "record": {
+   "w": 23,
+   "l": 3,
+   "d": 0,
+   "ko": 16
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "boxer",
+  "ratings": {
+   "speed": 78,
+   "skill": 79,
+   "defence": 76,
+   "power": 72,
+   "chin": 78,
+   "stamina": 77
+  },
+  "popularity": 40,
+  "real": true
+ },
+ {
+  "id": "dillian-whyte",
+  "name": "Dillian Whyte",
+  "nationality": "GB",
+  "born": "1988",
+  "division": "heavyweight",
+  "record": {
+   "w": 31,
+   "l": 4,
+   "d": 0,
+   "ko": 21
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "puncher",
+  "ratings": {
+   "power": 92,
+   "chin": 77,
+   "speed": 73,
+   "defence": 73,
+   "skill": 74,
+   "stamina": 76
+  },
+  "popularity": 75,
+  "real": true
+ },
+ {
+  "id": "derek-chisora",
+  "name": "Derek Chisora",
+  "nationality": "GB",
+  "born": "1983",
+  "division": "heavyweight",
+  "record": {
+   "w": 36,
+   "l": 14,
+   "d": 0,
+   "ko": 23
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "brawler",
+  "ratings": {
+   "power": 76,
+   "chin": 69,
+   "defence": 56,
+   "skill": 66,
+   "stamina": 67,
+   "speed": 69
+  },
+  "popularity": 78,
+  "real": true
+ },
+ {
+  "id": "joe-joyce",
+  "name": "Joe Joyce",
+  "nationality": "GB",
+  "born": "1985",
+  "division": "heavyweight",
+  "record": {
+   "w": 16,
+   "l": 3,
+   "d": 0,
+   "ko": 15
+  },
+  "titles": [],
+  "promoter": "Queensberry",
+  "style": "puncher",
+  "ratings": {
+   "power": 92,
+   "chin": 76,
+   "speed": 73,
+   "defence": 71,
+   "skill": 76,
+   "stamina": 73
+  },
+  "popularity": 65,
+  "real": true
+ },
+ {
+  "id": "fabio-wardley",
+  "name": "Fabio Wardley",
+  "nationality": "GB",
+  "born": "1994",
+  "division": "heavyweight",
+  "record": {
+   "w": 19,
+   "l": 1,
+   "d": 1,
+   "ko": 18
+  },
+  "titles": [],
+  "promoter": "Queensberry",
+  "style": "puncher",
+  "ratings": {
+   "power": 100,
+   "chin": 78,
+   "speed": 80,
+   "defence": 80,
+   "skill": 82,
+   "stamina": 75
+  },
+  "popularity": 78,
+  "real": true
+ },
+ {
+  "id": "jarrell-miller",
+  "name": "Jarrell Miller",
+  "nationality": "US",
+  "born": "1988",
+  "division": "heavyweight",
+  "record": {
+   "w": 27,
+   "l": 1,
+   "d": 2,
+   "ko": 23
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "brawler",
+  "ratings": {
+   "power": 88,
+   "chin": 82,
+   "defence": 67,
+   "skill": 65,
+   "stamina": 81,
+   "speed": 72
+  },
+  "popularity": 55,
+  "real": true
+ },
+ {
+  "id": "andy-ruiz-jr",
+  "name": "Andy Ruiz Jr.",
+  "nationality": "MX",
+  "born": "1989",
+  "division": "heavyweight",
+  "record": {
+   "w": 36,
+   "l": 3,
+   "d": 0,
+   "ko": 23
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "boxer-puncher",
+  "ratings": {
+   "power": 83,
+   "skill": 76,
+   "speed": 74,
+   "defence": 74,
+   "chin": 79,
+   "stamina": 74
+  },
+  "popularity": 65,
+  "real": true
+ },
+ {
+  "id": "luis-ortiz",
+  "name": "Luis Ortiz",
+  "nationality": "CU",
+  "born": "1979",
+  "division": "heavyweight",
+  "record": {
+   "w": 36,
+   "l": 3,
+   "d": 0,
+   "ko": 29
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "puncher",
+  "ratings": {
+   "power": 85,
+   "chin": 76,
+   "speed": 72,
+   "defence": 66,
+   "skill": 72,
+   "stamina": 69
+  },
+  "popularity": 45,
+  "real": true
+ },
+ {
+  "id": "otto-wallin",
+  "name": "Otto Wallin",
+  "nationality": "SE",
+  "born": "1991",
+  "division": "heavyweight",
+  "record": {
+   "w": 28,
+   "l": 3,
+   "d": 0,
+   "ko": 16
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "boxer",
+  "ratings": {
+   "speed": 75,
+   "skill": 82,
+   "defence": 81,
+   "power": 66,
+   "chin": 75,
+   "stamina": 75
+  },
+  "popularity": 35,
+  "real": true
+ },
+ {
+  "id": "tony-yoka",
+  "name": "Tony Yoka",
+  "nationality": "FR",
+  "born": "1992",
+  "division": "heavyweight",
+  "record": {
+   "w": 13,
+   "l": 0,
+   "d": 0,
+   "ko": 11
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "boxer",
+  "ratings": {
+   "speed": 79,
+   "skill": 74,
+   "defence": 79,
+   "power": 76,
+   "chin": 68,
+   "stamina": 70
+  },
+  "popularity": 40,
+  "real": true
+ },
+ {
+  "id": "mahmoud-charr",
+  "name": "Mahmoud Charr",
+  "nationality": "DE",
+  "born": "1985",
+  "division": "heavyweight",
+  "record": {
+   "w": 34,
+   "l": 5,
+   "d": 0,
+   "ko": 21
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "puncher",
+  "ratings": {
+   "power": 75,
+   "chin": 66,
+   "speed": 61,
+   "defence": 60,
+   "skill": 67,
+   "stamina": 64
+  },
+  "popularity": 25,
+  "real": true
+ },
+ {
+  "id": "kubrat-pulev",
+  "name": "Kubrat Pulev",
+  "nationality": "BG",
+  "born": "1981",
+  "division": "heavyweight",
+  "record": {
+   "w": 31,
+   "l": 4,
+   "d": 0,
+   "ko": 14
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "boxer",
+  "ratings": {
+   "speed": 69,
+   "skill": 70,
+   "defence": 70,
+   "power": 58,
+   "chin": 65,
+   "stamina": 69
+  },
+  "popularity": 30,
+  "real": true
+ },
+ {
+  "id": "johnny-fisher",
+  "name": "Johnny Fisher",
+  "nationality": "GB",
+  "born": "1998",
+  "division": "heavyweight",
+  "record": {
+   "w": 13,
+   "l": 1,
+   "d": 0,
+   "ko": 12
+  },
+  "titles": [],
+  "promoter": "Boxxer",
+  "style": "brawler",
+  "ratings": {
+   "power": 82,
+   "chin": 76,
+   "defence": 64,
+   "skill": 61,
+   "stamina": 71,
+   "speed": 66
+  },
+  "popularity": 60,
+  "real": true
+ },
+ {
+  "id": "lawrence-okolie",
+  "name": "Lawrence Okolie",
+  "nationality": "GB",
+  "born": "1992",
+  "division": "heavyweight",
+  "record": {
+   "w": 21,
+   "l": 1,
+   "d": 0,
+   "ko": 15
+  },
+  "titles": [],
+  "promoter": "Matchroom",
+  "style": "boxer",
+  "ratings": {
+   "speed": 83,
+   "skill": 86,
+   "defence": 79,
+   "power": 76,
+   "chin": 77,
+   "stamina": 79
+  },
+  "popularity": 65,
+  "real": true
+ },
+ {
+  "id": "richard-torrez-jr",
+  "name": "Richard Torrez Jr.",
+  "nationality": "US",
+  "born": "1999",
+  "division": "heavyweight",
+  "record": {
+   "w": 14,
+   "l": 0,
+   "d": 0,
+   "ko": 14
+  },
+  "titles": [],
+  "promoter": "Top Rank",
+  "style": "puncher",
+  "ratings": {
+   "power": 95,
+   "chin": 81,
+   "speed": 72,
+   "defence": 70,
+   "skill": 75,
+   "stamina": 74
+  },
+  "popularity": 45,
+  "real": true
+ },
+ {
+  "id": "jack-massey",
+  "name": "Jack Massey",
+  "nationality": "GB",
+  "born": "1999",
+  "division": "heavyweight",
+  "record": {
+   "w": 15,
+   "l": 0,
+   "d": 0,
+   "ko": 8
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "boxer",
+  "ratings": {
+   "speed": 73,
+   "skill": 71,
+   "defence": 71,
+   "power": 58,
+   "chin": 69,
+   "stamina": 68
+  },
+  "popularity": 25,
+  "real": true
+ },
+ {
+  "id": "solomon-dacres",
+  "name": "Solomon Dacres",
+  "nationality": "GB",
+  "born": "1996",
+  "division": "heavyweight",
+  "record": {
+   "w": 10,
+   "l": 0,
+   "d": 0,
+   "ko": 9
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "puncher",
+  "ratings": {
+   "power": 82,
+   "chin": 68,
+   "speed": 60,
+   "defence": 60,
+   "skill": 63,
+   "stamina": 60
+  },
+  "popularity": 20,
+  "real": true
+ },
+ {
+  "id": "ebenezer-tetteh",
+  "name": "Ebenezer Tetteh",
+  "nationality": "GH",
+  "born": "1997",
+  "division": "heavyweight",
+  "record": {
+   "w": 20,
+   "l": 1,
+   "d": 0,
+   "ko": 14
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "puncher",
+  "ratings": {
+   "power": 81,
+   "chin": 72,
+   "speed": 64,
+   "defence": 62,
+   "skill": 67,
+   "stamina": 63
+  },
+  "popularity": 20,
+  "real": true
+ },
+ {
+  "id": "guido-vianello",
+  "name": "Guido Vianello",
+  "nationality": "IT",
+  "born": "1993",
+  "division": "heavyweight",
+  "record": {
+   "w": 13,
+   "l": 2,
+   "d": 0,
+   "ko": 11
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "puncher",
+  "ratings": {
+   "power": 81,
+   "chin": 66,
+   "speed": 62,
+   "defence": 64,
+   "skill": 65,
+   "stamina": 60
+  },
+  "popularity": 20,
+  "real": true
+ },
+ {
+  "id": "mark-de-mori",
+  "name": "Mark De Mori",
+  "nationality": "AU",
+  "born": "1990",
+  "division": "heavyweight",
+  "record": {
+   "w": 20,
+   "l": 1,
+   "d": 0,
+   "ko": 17
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "puncher",
+  "ratings": {
+   "power": 76,
+   "chin": 63,
+   "speed": 61,
+   "defence": 64,
+   "skill": 64,
+   "stamina": 60
+  },
+  "popularity": 20,
+  "real": true
+ },
+ {
+  "id": "demsey-mckean",
+  "name": "Demsey McKean",
+  "nationality": "AU",
+  "born": "1992",
+  "division": "heavyweight",
+  "record": {
+   "w": 22,
+   "l": 0,
+   "d": 0,
+   "ko": 18
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "puncher",
+  "ratings": {
+   "power": 80,
+   "chin": 70,
+   "speed": 66,
+   "defence": 62,
+   "skill": 62,
+   "stamina": 64
+  },
+  "popularity": 20,
+  "real": true
+ },
+ {
+  "id": "faiga-opelu",
+  "name": "Faiga Opelu",
+  "nationality": "AU",
+  "born": "1997",
+  "division": "heavyweight",
+  "record": {
+   "w": 7,
+   "l": 0,
+   "d": 0,
+   "ko": 5
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "boxer",
+  "ratings": {
+   "speed": 66,
+   "skill": 68,
+   "defence": 65,
+   "power": 59,
+   "chin": 59,
+   "stamina": 54
+  },
+  "popularity": 15,
+  "real": true
+ },
+ {
+  "id": "lucas-browne",
+  "name": "Lucas Browne",
+  "nationality": "AU",
+  "born": "1979",
+  "division": "heavyweight",
+  "record": {
+   "w": 30,
+   "l": 3,
+   "d": 0,
+   "ko": 26
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "puncher",
+  "ratings": {
+   "power": 70,
+   "chin": 61,
+   "speed": 53,
+   "defence": 55,
+   "skill": 57,
+   "stamina": 51
+  },
+  "popularity": 20,
+  "real": true
+ },
+ {
+  "id": "christian-hammer",
+  "name": "Christian Hammer",
+  "nationality": "RO",
+  "born": "1987",
+  "division": "heavyweight",
+  "record": {
+   "w": 28,
+   "l": 6,
+   "d": 0,
+   "ko": 17
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "boxer",
+  "ratings": {
+   "speed": 66,
+   "skill": 74,
+   "defence": 69,
+   "power": 60,
+   "chin": 70,
+   "stamina": 63
+  },
+  "popularity": 20,
+  "real": true
+ },
+ {
+  "id": "michael-hunter",
+  "name": "Michael Hunter",
+  "nationality": "US",
+  "born": "1988",
+  "division": "heavyweight",
+  "record": {
+   "w": 23,
+   "l": 3,
+   "d": 1,
+   "ko": 15
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "boxer",
+  "ratings": {
+   "speed": 74,
+   "skill": 78,
+   "defence": 68,
+   "power": 61,
+   "chin": 67,
+   "stamina": 68
+  },
+  "popularity": 25,
+  "real": true
+ },
+ {
+  "id": "ryad-merhy",
+  "name": "Ryad Merhy",
+  "nationality": "FR",
+  "born": "1993",
+  "division": "heavyweight",
+  "record": {
+   "w": 34,
+   "l": 3,
+   "d": 0,
+   "ko": 25
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "puncher",
+  "ratings": {
+   "power": 90,
+   "chin": 82,
+   "speed": 81,
+   "defence": 73,
+   "skill": 80,
+   "stamina": 72
+  },
+  "popularity": 40,
+  "real": true
+ },
+ {
+  "id": "michal-cieslak",
+  "name": "Michal Cieslak",
+  "nationality": "PL",
+  "born": "1989",
+  "division": "heavyweight",
+  "record": {
+   "w": 26,
+   "l": 3,
+   "d": 0,
+   "ko": 20
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "brawler",
+  "ratings": {
+   "power": 84,
+   "chin": 84,
+   "defence": 66,
+   "skill": 70,
+   "stamina": 80,
+   "speed": 75
+  },
+  "popularity": 40,
+  "real": true
+ },
+ {
+  "id": "jai-opetaia",
+  "name": "Jai Opetaia",
+  "nationality": "AU",
+  "born": "1995",
+  "division": "heavyweight",
+  "record": {
+   "w": 27,
+   "l": 1,
+   "d": 0,
+   "ko": 21
+  },
+  "titles": [],
+  "promoter": "Matchroom",
+  "style": "boxer-puncher",
+  "ratings": {
+   "power": 93,
+   "skill": 88,
+   "speed": 91,
+   "defence": 86,
+   "chin": 85,
+   "stamina": 90
+  },
+  "popularity": 65,
+  "real": true
+ },
+ {
+  "id": "david-benavidez",
+  "name": "David Benavidez",
+  "nationality": "US",
+  "born": "1996",
+  "division": "heavyweight",
+  "record": {
+   "w": 31,
+   "l": 0,
+   "d": 0,
+   "ko": 25
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "swarmer",
+  "ratings": {
+   "stamina": 97,
+   "speed": 92,
+   "defence": 84,
+   "power": 93,
+   "chin": 94,
+   "skill": 87
+  },
+  "popularity": 85,
+  "real": true
+ },
+ {
+  "id": "gilberto-ramirez",
+  "name": "Gilberto Ramirez",
+  "nationality": "MX",
+  "born": "1991",
+  "division": "heavyweight",
+  "record": {
+   "w": 47,
+   "l": 1,
+   "d": 0,
+   "ko": 30
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "boxer",
+  "ratings": {
+   "speed": 83,
+   "skill": 90,
+   "defence": 87,
+   "power": 77,
+   "chin": 81,
+   "stamina": 78
+  },
+  "popularity": 55,
+  "real": true
+ },
+ {
+  "id": "badou-jack",
+  "name": "Badou Jack",
+  "nationality": "SE",
+  "born": "1983",
+  "division": "heavyweight",
+  "record": {
+   "w": 30,
+   "l": 4,
+   "d": 3,
+   "ko": 17
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "boxer-puncher",
+  "ratings": {
+   "power": 76,
+   "skill": 75,
+   "speed": 77,
+   "defence": 77,
+   "chin": 75,
+   "stamina": 76
+  },
+  "popularity": 50,
+  "real": true
+ },
+ {
+  "id": "noel-mikaelian",
+  "name": "Noel Mikaelian",
+  "nationality": "AM",
+  "born": "1993",
+  "division": "heavyweight",
+  "record": {
+   "w": 28,
+   "l": 2,
+   "d": 0,
+   "ko": 21
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "boxer-puncher",
+  "ratings": {
+   "power": 81,
+   "skill": 72,
+   "speed": 73,
+   "defence": 77,
+   "chin": 72,
+   "stamina": 75
+  },
+  "popularity": 30,
+  "real": true
+ },
+ {
+  "id": "jordan-thompson",
+  "name": "Jordan Thompson",
+  "nationality": "GB",
+  "born": "1995",
+  "division": "heavyweight",
+  "record": {
+   "w": 13,
+   "l": 1,
+   "d": 0,
+   "ko": 8
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "boxer",
+  "ratings": {
+   "speed": 71,
+   "skill": 74,
+   "defence": 69,
+   "power": 60,
+   "chin": 66,
+   "stamina": 64
+  },
+  "popularity": 20,
+  "real": true
+ },
+ {
+  "id": "chris-billam-smith",
+  "name": "Chris Billam-Smith",
+  "nationality": "GB",
+  "born": "1990",
+  "division": "heavyweight",
+  "record": {
+   "w": 20,
+   "l": 1,
+   "d": 0,
+   "ko": 12
+  },
+  "titles": [],
+  "promoter": "Matchroom",
+  "style": "boxer",
+  "ratings": {
+   "speed": 85,
+   "skill": 90,
+   "defence": 84,
+   "power": 75,
+   "chin": 76,
+   "stamina": 84
+  },
+  "popularity": 55,
+  "real": true
+ },
+ {
+  "id": "mairis-briedis",
+  "name": "Mairis Briedis",
+  "nationality": "LV",
+  "born": "1985",
+  "division": "heavyweight",
+  "record": {
+   "w": 29,
+   "l": 3,
+   "d": 0,
+   "ko": 20
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "boxer-puncher",
+  "ratings": {
+   "power": 90,
+   "skill": 88,
+   "speed": 83,
+   "defence": 78,
+   "chin": 86,
+   "stamina": 80
+  },
+  "popularity": 50,
+  "real": true
+ },
+ {
+  "id": "kevin-lerena",
+  "name": "Kevin Lerena",
+  "nationality": "ZA",
+  "born": "1991",
+  "division": "heavyweight",
+  "record": {
+   "w": 32,
+   "l": 3,
+   "d": 0,
+   "ko": 14
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "boxer",
+  "ratings": {
+   "speed": 75,
+   "skill": 76,
+   "defence": 80,
+   "power": 65,
+   "chin": 72,
+   "stamina": 76
+  },
+  "popularity": 25,
+  "real": true
+ },
+ {
+  "id": "ilunga-makabu",
+  "name": "Ilunga Makabu",
+  "nationality": "CD",
+  "born": "1987",
+  "division": "heavyweight",
+  "record": {
+   "w": 30,
+   "l": 4,
+   "d": 0,
+   "ko": 26
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "puncher",
+  "ratings": {
+   "power": 84,
+   "chin": 71,
+   "speed": 71,
+   "defence": 67,
+   "skill": 71,
+   "stamina": 71
+  },
+  "popularity": 30,
+  "real": true
+ },
+ {
+  "id": "jonathan-guidry",
+  "name": "Jonathan Guidry",
+  "nationality": "US",
+  "born": "1994",
+  "division": "heavyweight",
+  "record": {
+   "w": 12,
+   "l": 0,
+   "d": 0,
+   "ko": 9
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "boxer",
+  "ratings": {
+   "speed": 61,
+   "skill": 62,
+   "defence": 67,
+   "power": 60,
+   "chin": 59,
+   "stamina": 57
+  },
+  "popularity": 15,
+  "real": true
+ },
+ {
+  "id": "viddal-riley",
+  "name": "Viddal Riley",
+  "nationality": "GB",
+  "born": "1996",
+  "division": "heavyweight",
+  "record": {
+   "w": 15,
+   "l": 0,
+   "d": 0,
+   "ko": 10
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "boxer",
+  "ratings": {
+   "speed": 70,
+   "skill": 72,
+   "defence": 70,
+   "power": 68,
+   "chin": 70,
+   "stamina": 70
+  },
+  "popularity": 40,
+  "real": true
+ },
+ {
+  "id": "ellis-zorro",
+  "name": "Ellis Zorro",
+  "nationality": "GB",
+  "born": "1999",
+  "division": "heavyweight",
+  "record": {
+   "w": 12,
+   "l": 0,
+   "d": 0,
+   "ko": 9
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "boxer",
+  "ratings": {
+   "speed": 64,
+   "skill": 67,
+   "defence": 72,
+   "power": 58,
+   "chin": 63,
+   "stamina": 60
+  },
+  "popularity": 20,
+  "real": true
+ },
+ {
+  "id": "richard-riakporhe",
+  "name": "Richard Riakporhe",
+  "nationality": "GB",
+  "born": "1989",
+  "division": "heavyweight",
+  "record": {
+   "w": 18,
+   "l": 1,
+   "d": 0,
+   "ko": 14
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "puncher",
+  "ratings": {
+   "power": 88,
+   "chin": 82,
+   "speed": 77,
+   "defence": 73,
+   "skill": 78,
+   "stamina": 75
+  },
+  "popularity": 45,
+  "real": true
+ },
+ {
+  "id": "dave-allen",
+  "name": "Dave Allen",
+  "nationality": "GB",
+  "born": "1992",
+  "division": "heavyweight",
+  "record": {
+   "w": 22,
+   "l": 8,
+   "d": 0,
+   "ko": 17
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "brawler",
+  "ratings": {
+   "power": 69,
+   "chin": 68,
+   "defence": 55,
+   "skill": 54,
+   "stamina": 58,
+   "speed": 61
+  },
+  "popularity": 40,
+  "real": true
+ },
+ {
+  "id": "daniel-lapin",
+  "name": "Daniel Lapin",
+  "nationality": "RU",
+  "born": "1995",
+  "division": "heavyweight",
+  "record": {
+   "w": 12,
+   "l": 0,
+   "d": 0,
+   "ko": 10
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "puncher",
+  "ratings": {
+   "power": 75,
+   "chin": 63,
+   "speed": 61,
+   "defence": 58,
+   "skill": 63,
+   "stamina": 61
+  },
+  "popularity": 15,
+  "real": true
+ },
+ {
+  "id": "austin-williams",
+  "name": "Austin Williams",
+  "nationality": "US",
+  "born": "1997",
+  "division": "heavyweight",
+  "record": {
+   "w": 18,
+   "l": 0,
+   "d": 0,
+   "ko": 13
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "boxer-puncher",
+  "ratings": {
+   "power": 73,
+   "skill": 67,
+   "speed": 71,
+   "defence": 68,
+   "chin": 70,
+   "stamina": 72
+  },
+  "popularity": 25,
+  "real": true
+ },
+ {
+  "id": "jonathan-rice",
+  "name": "Jonathan Rice",
+  "nationality": "US",
+  "born": "1995",
+  "division": "heavyweight",
+  "record": {
+   "w": 14,
+   "l": 1,
+   "d": 0,
+   "ko": 9
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "boxer",
+  "ratings": {
+   "speed": 67,
+   "skill": 70,
+   "defence": 69,
+   "power": 60,
+   "chin": 64,
+   "stamina": 67
+  },
+  "popularity": 15,
+  "real": true
+ },
+ {
+  "id": "jason-jackson",
+  "name": "Jason Jackson",
+  "nationality": "GB",
+  "born": "1995",
+  "division": "heavyweight",
+  "record": {
+   "w": 8,
+   "l": 0,
+   "d": 0,
+   "ko": 6
+  },
+  "titles": [],
+  "promoter": "Boxxer",
+  "style": "boxer",
+  "ratings": {
+   "speed": 58,
+   "skill": 66,
+   "defence": 63,
+   "power": 56,
+   "chin": 52,
+   "stamina": 57
+  },
+  "popularity": 10,
+  "real": true
+ },
+ {
+  "id": "stephen-shaw",
+  "name": "Stephen Shaw",
+  "nationality": "GB",
+  "born": "2000",
+  "division": "heavyweight",
+  "record": {
+   "w": 6,
+   "l": 0,
+   "d": 0,
+   "ko": 5
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "boxer",
+  "ratings": {
+   "speed": 59,
+   "skill": 64,
+   "defence": 54,
+   "power": 50,
+   "chin": 52,
+   "stamina": 57
+  },
+  "popularity": 10,
+  "real": true
+ },
+ {
+  "id": "alen-babic",
+  "name": "Alen Babic",
+  "nationality": "HR",
+  "born": "1989",
+  "division": "heavyweight",
+  "record": {
+   "w": 16,
+   "l": 0,
+   "d": 0,
+   "ko": 15
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "puncher",
+  "ratings": {
+   "power": 86,
+   "chin": 70,
+   "speed": 62,
+   "defence": 62,
+   "skill": 69,
+   "stamina": 66
+  },
+  "popularity": 20,
+  "real": true
+ },
+ {
+  "id": "kevin-johnson",
+  "name": "Kevin Johnson",
+  "nationality": "US",
+  "born": "1979",
+  "division": "heavyweight",
+  "record": {
+   "w": 34,
+   "l": 14,
+   "d": 1,
+   "ko": 17
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "boxer",
+  "ratings": {
+   "speed": 59,
+   "skill": 60,
+   "defence": 59,
+   "power": 49,
+   "chin": 59,
+   "stamina": 61
+  },
+  "popularity": 15,
+  "real": true
+ },
+ {
+  "id": "carlos-takam",
+  "name": "Carlos Takam",
+  "nationality": "CM",
+  "born": "1980",
+  "division": "heavyweight",
+  "record": {
+   "w": 42,
+   "l": 9,
+   "d": 1,
+   "ko": 30
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "brawler",
+  "ratings": {
+   "power": 70,
+   "chin": 68,
+   "defence": 55,
+   "skill": 57,
+   "stamina": 68,
+   "speed": 61
+  },
+  "popularity": 20,
+  "real": true
+ },
+ {
+  "id": "jerry-forrest",
+  "name": "Jerry Forrest",
+  "nationality": "US",
+  "born": "1988",
+  "division": "heavyweight",
+  "record": {
+   "w": 30,
+   "l": 4,
+   "d": 1,
+   "ko": 21
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "puncher",
+  "ratings": {
+   "power": 77,
+   "chin": 64,
+   "speed": 62,
+   "defence": 59,
+   "skill": 63,
+   "stamina": 59
+  },
+  "popularity": 15,
+  "real": true
+ },
+ {
+  "id": "dmitry-bivol",
+  "name": "Dmitry Bivol",
+  "nationality": "RU",
+  "born": "1990",
+  "division": "light-heavyweight",
+  "record": {
+   "w": 24,
+   "l": 0,
+   "d": 0,
+   "ko": 12
+  },
+  "titles": [
+   "WBA",
+   "IBF",
+   "WBO"
+  ],
+  "promoter": "Independent",
+  "style": "boxer",
+  "ratings": {
+   "speed": 96,
+   "skill": 100,
+   "defence": 100,
+   "power": 88,
+   "chin": 89,
+   "stamina": 92
+  },
+  "popularity": 75,
+  "real": true
+ },
+ {
+  "id": "artur-beterbiev",
+  "name": "Artur Beterbiev",
+  "nationality": "RU",
+  "born": "1985",
+  "division": "light-heavyweight",
+  "record": {
+   "w": 21,
+   "l": 1,
+   "d": 0,
+   "ko": 20
+  },
+  "titles": [],
+  "promoter": "Top Rank",
+  "style": "puncher",
+  "ratings": {
+   "power": 100,
+   "chin": 90,
+   "speed": 84,
+   "defence": 89,
+   "skill": 85,
+   "stamina": 82
+  },
+  "popularity": 75,
+  "real": true
+ },
+ {
+  "id": "callum-smith",
+  "name": "Callum Smith",
+  "nationality": "GB",
+  "born": "1990",
+  "division": "light-heavyweight",
+  "record": {
+   "w": 31,
+   "l": 2,
+   "d": 0,
+   "ko": 22
+  },
+  "titles": [],
+  "promoter": "Matchroom",
+  "style": "boxer-puncher",
+  "ratings": {
+   "power": 88,
+   "skill": 88,
+   "speed": 81,
+   "defence": 84,
+   "chin": 85,
+   "stamina": 82
+  },
+  "popularity": 65,
+  "real": true
+ },
+ {
+  "id": "willy-hutchinson",
+  "name": "Willy Hutchinson",
+  "nationality": "GB",
+  "born": "1999",
+  "division": "light-heavyweight",
+  "record": {
+   "w": 20,
+   "l": 2,
+   "d": 0,
+   "ko": 14
+  },
+  "titles": [
+   "WBC"
+  ],
+  "promoter": "Independent",
+  "style": "boxer-puncher",
+  "ratings": {
+   "power": 84,
+   "skill": 81,
+   "speed": 77,
+   "defence": 74,
+   "chin": 82,
+   "stamina": 74
+  },
+  "popularity": 45,
+  "real": true
+ },
+ {
+  "id": "canelo-alvarez",
+  "name": "Canelo Alvarez",
+  "nationality": "MX",
+  "born": "1990",
+  "division": "light-heavyweight",
+  "record": {
+   "w": 63,
+   "l": 3,
+   "d": 2,
+   "ko": 39
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "counter-puncher",
+  "ratings": {
+   "defence": 95,
+   "skill": 95,
+   "speed": 94,
+   "power": 92,
+   "stamina": 90,
+   "chin": 95
+  },
+  "popularity": 99,
+  "real": true
+ },
+ {
+  "id": "jaime-munguia",
+  "name": "Jaime Munguia",
+  "nationality": "MX",
+  "born": "1996",
+  "division": "light-heavyweight",
+  "record": {
+   "w": 44,
+   "l": 2,
+   "d": 0,
+   "ko": 35
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "puncher",
+  "ratings": {
+   "power": 100,
+   "chin": 88,
+   "speed": 80,
+   "defence": 83,
+   "skill": 86,
+   "stamina": 81
+  },
+  "popularity": 70,
+  "real": true
+ },
+ {
+  "id": "osleys-iglesias",
+  "name": "Osleys Iglesias",
+  "nationality": "CU",
+  "born": "1994",
+  "division": "light-heavyweight",
+  "record": {
+   "w": 13,
+   "l": 0,
+   "d": 0,
+   "ko": 9
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "boxer",
+  "ratings": {
+   "speed": 87,
+   "skill": 89,
+   "defence": 84,
+   "power": 82,
+   "chin": 85,
+   "stamina": 77
+  },
+  "popularity": 30,
+  "real": true
+ },
+ {
+  "id": "lester-martinez",
+  "name": "Lester Martinez",
+  "nationality": "US",
+  "born": "1996",
+  "division": "light-heavyweight",
+  "record": {
+   "w": 20,
+   "l": 0,
+   "d": 0,
+   "ko": 16
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "puncher",
+  "ratings": {
+   "power": 95,
+   "chin": 80,
+   "speed": 77,
+   "defence": 76,
+   "skill": 81,
+   "stamina": 71
+  },
+  "popularity": 35,
+  "real": true
+ },
+ {
+  "id": "zach-parker",
+  "name": "Zach Parker",
+  "nationality": "GB",
+  "born": "1995",
+  "division": "light-heavyweight",
+  "record": {
+   "w": 25,
+   "l": 2,
+   "d": 0,
+   "ko": 18
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "boxer",
+  "ratings": {
+   "speed": 76,
+   "skill": 85,
+   "defence": 79,
+   "power": 70,
+   "chin": 77,
+   "stamina": 74
+  },
+  "popularity": 35,
+  "real": true
+ },
+ {
+  "id": "edgar-berlanga",
+  "name": "Edgar Berlanga",
+  "nationality": "PR",
+  "born": "1997",
+  "division": "light-heavyweight",
+  "record": {
+   "w": 23,
+   "l": 2,
+   "d": 0,
+   "ko": 18
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "puncher",
+  "ratings": {
+   "power": 87,
+   "chin": 76,
+   "speed": 78,
+   "defence": 70,
+   "skill": 75,
+   "stamina": 72
+  },
+  "popularity": 65,
+  "real": true
+ },
+ {
+  "id": "christian-mbilli",
+  "name": "Christian Mbilli",
+  "nationality": "FR",
+  "born": "1995",
+  "division": "light-heavyweight",
+  "record": {
+   "w": 29,
+   "l": 0,
+   "d": 0,
+   "ko": 24
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "puncher",
+  "ratings": {
+   "power": 98,
+   "chin": 82,
+   "speed": 83,
+   "defence": 74,
+   "skill": 83,
+   "stamina": 81
+  },
+  "popularity": 40,
+  "real": true
+ },
+ {
+  "id": "diego-pacheco",
+  "name": "Diego Pacheco",
+  "nationality": "MX",
+  "born": "2001",
+  "division": "light-heavyweight",
+  "record": {
+   "w": 23,
+   "l": 1,
+   "d": 0,
+   "ko": 18
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "puncher",
+  "ratings": {
+   "power": 90,
+   "chin": 85,
+   "speed": 74,
+   "defence": 76,
+   "skill": 82,
+   "stamina": 79
+  },
+  "popularity": 45,
+  "real": true
+ },
+ {
+  "id": "caleb-plant",
+  "name": "Caleb Plant",
+  "nationality": "US",
+  "born": "1992",
+  "division": "light-heavyweight",
+  "record": {
+   "w": 23,
+   "l": 3,
+   "d": 0,
+   "ko": 14
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "boxer",
+  "ratings": {
+   "speed": 80,
+   "skill": 86,
+   "defence": 83,
+   "power": 73,
+   "chin": 74,
+   "stamina": 77
+  },
+  "popularity": 60,
+  "real": true
+ },
+ {
+  "id": "demetrius-andrade",
+  "name": "Demetrius Andrade",
+  "nationality": "US",
+  "born": "1988",
+  "division": "light-heavyweight",
+  "record": {
+   "w": 32,
+   "l": 1,
+   "d": 0,
+   "ko": 19
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "boxer",
+  "ratings": {
+   "speed": 83,
+   "skill": 92,
+   "defence": 84,
+   "power": 81,
+   "chin": 84,
+   "stamina": 80
+  },
+  "popularity": 50,
+  "real": true
+ },
+ {
+  "id": "david-morrell",
+  "name": "David Morrell",
+  "nationality": "CU",
+  "born": "1997",
+  "division": "light-heavyweight",
+  "record": {
+   "w": 12,
+   "l": 2,
+   "d": 0,
+   "ko": 10
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "puncher",
+  "ratings": {
+   "power": 92,
+   "chin": 81,
+   "speed": 73,
+   "defence": 77,
+   "skill": 76,
+   "stamina": 75
+  },
+  "popularity": 40,
+  "real": true
+ },
+ {
+  "id": "joshua-buatsi",
+  "name": "Joshua Buatsi",
+  "nationality": "GB",
+  "born": "1993",
+  "division": "light-heavyweight",
+  "record": {
+   "w": 20,
+   "l": 2,
+   "d": 0,
+   "ko": 14
+  },
+  "titles": [],
+  "promoter": "Queensberry",
+  "style": "puncher",
+  "ratings": {
+   "power": 94,
+   "chin": 82,
+   "speed": 76,
+   "defence": 82,
+   "skill": 76,
+   "stamina": 77
+  },
+  "popularity": 65,
+  "real": true
+ },
+ {
+  "id": "anthony-yarde",
+  "name": "Anthony Yarde",
+  "nationality": "GB",
+  "born": "1991",
+  "division": "light-heavyweight",
+  "record": {
+   "w": 27,
+   "l": 4,
+   "d": 0,
+   "ko": 25
+  },
+  "titles": [],
+  "promoter": "Queensberry",
+  "style": "puncher",
+  "ratings": {
+   "power": 94,
+   "chin": 81,
+   "speed": 75,
+   "defence": 73,
+   "skill": 73,
+   "stamina": 78
+  },
+  "popularity": 55,
+  "real": true
+ },
+ {
+  "id": "lyndon-arthur",
+  "name": "Lyndon Arthur",
+  "nationality": "GB",
+  "born": "1992",
+  "division": "light-heavyweight",
+  "record": {
+   "w": 22,
+   "l": 3,
+   "d": 0,
+   "ko": 17
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "puncher",
+  "ratings": {
+   "power": 80,
+   "chin": 72,
+   "speed": 70,
+   "defence": 67,
+   "skill": 73,
+   "stamina": 66
+  },
+  "popularity": 35,
+  "real": true
+ },
+ {
+  "id": "craig-richards",
+  "name": "Craig Richards",
+  "nationality": "GB",
+  "born": "1992",
+  "division": "light-heavyweight",
+  "record": {
+   "w": 18,
+   "l": 3,
+   "d": 1,
+   "ko": 8
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "boxer",
+  "ratings": {
+   "speed": 80,
+   "skill": 76,
+   "defence": 73,
+   "power": 68,
+   "chin": 76,
+   "stamina": 70
+  },
+  "popularity": 30,
+  "real": true
+ },
+ {
+  "id": "daniel-jacobs",
+  "name": "Daniel Jacobs",
+  "nationality": "US",
+  "born": "1987",
+  "division": "light-heavyweight",
+  "record": {
+   "w": 38,
+   "l": 4,
+   "d": 0,
+   "ko": 30
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "boxer-puncher",
+  "ratings": {
+   "power": 78,
+   "skill": 77,
+   "speed": 71,
+   "defence": 68,
+   "chin": 75,
+   "stamina": 72
+  },
+  "popularity": 50,
+  "real": true
+ },
+ {
+  "id": "michael-eifert",
+  "name": "Michael Eifert",
+  "nationality": "DE",
+  "born": "1995",
+  "division": "light-heavyweight",
+  "record": {
+   "w": 17,
+   "l": 0,
+   "d": 0,
+   "ko": 11
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "boxer",
+  "ratings": {
+   "speed": 69,
+   "skill": 75,
+   "defence": 68,
+   "power": 66,
+   "chin": 67,
+   "stamina": 70
+  },
+  "popularity": 15,
+  "real": true
+ },
+ {
+  "id": "chris-eubank-jr",
+  "name": "Chris Eubank Jr.",
+  "nationality": "GB",
+  "born": "1989",
+  "division": "light-heavyweight",
+  "record": {
+   "w": 35,
+   "l": 3,
+   "d": 0,
+   "ko": 25
+  },
+  "titles": [],
+  "promoter": "Wasserman",
+  "style": "boxer-puncher",
+  "ratings": {
+   "power": 83,
+   "skill": 81,
+   "speed": 76,
+   "defence": 81,
+   "chin": 77,
+   "stamina": 83
+  },
+  "popularity": 85,
+  "real": true
+ },
+ {
+  "id": "conor-benn",
+  "name": "Conor Benn",
+  "nationality": "GB",
+  "born": "1996",
+  "division": "light-heavyweight",
+  "record": {
+   "w": 23,
+   "l": 1,
+   "d": 0,
+   "ko": 14
+  },
+  "titles": [],
+  "promoter": "Matchroom",
+  "style": "brawler",
+  "ratings": {
+   "power": 83,
+   "chin": 78,
+   "defence": 66,
+   "skill": 67,
+   "stamina": 76,
+   "speed": 71
+  },
+  "popularity": 90,
+  "real": true
+ },
+ {
+  "id": "liam-smith",
+  "name": "Liam Smith",
+  "nationality": "GB",
+  "born": "1988",
+  "division": "light-heavyweight",
+  "record": {
+   "w": 35,
+   "l": 4,
+   "d": 1,
+   "ko": 21
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "brawler",
+  "ratings": {
+   "power": 84,
+   "chin": 81,
+   "defence": 69,
+   "skill": 72,
+   "stamina": 77,
+   "speed": 76
+  },
+  "popularity": 60,
+  "real": true
+ },
+ {
+  "id": "steven-nelson",
+  "name": "Steven Nelson",
+  "nationality": "US",
+  "born": "1996",
+  "division": "light-heavyweight",
+  "record": {
+   "w": 20,
+   "l": 0,
+   "d": 0,
+   "ko": 15
+  },
+  "titles": [],
+  "promoter": "Top Rank",
+  "style": "puncher",
+  "ratings": {
+   "power": 85,
+   "chin": 74,
+   "speed": 74,
+   "defence": 73,
+   "skill": 72,
+   "stamina": 73
+  },
+  "popularity": 30,
+  "real": true
+ },
+ {
+  "id": "vladimir-shishkin",
+  "name": "Vladimir Shishkin",
+  "nationality": "RU",
+  "born": "1992",
+  "division": "light-heavyweight",
+  "record": {
+   "w": 13,
+   "l": 1,
+   "d": 0,
+   "ko": 8
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "boxer",
+  "ratings": {
+   "speed": 72,
+   "skill": 76,
+   "defence": 78,
+   "power": 66,
+   "chin": 69,
+   "stamina": 76
+  },
+  "popularity": 15,
+  "real": true
+ },
+ {
+  "id": "serge-michel",
+  "name": "Serge Michel",
+  "nationality": "CD",
+  "born": "1995",
+  "division": "light-heavyweight",
+  "record": {
+   "w": 13,
+   "l": 0,
+   "d": 0,
+   "ko": 9
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "puncher",
+  "ratings": {
+   "power": 84,
+   "chin": 68,
+   "speed": 66,
+   "defence": 62,
+   "skill": 69,
+   "stamina": 70
+  },
+  "popularity": 15,
+  "real": true
+ },
+ {
+  "id": "troy-williamson",
+  "name": "Troy Williamson",
+  "nationality": "US",
+  "born": "1994",
+  "division": "light-heavyweight",
+  "record": {
+   "w": 20,
+   "l": 1,
+   "d": 0,
+   "ko": 13
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "puncher",
+  "ratings": {
+   "power": 79,
+   "chin": 76,
+   "speed": 68,
+   "defence": 68,
+   "skill": 72,
+   "stamina": 72
+  },
+  "popularity": 20,
+  "real": true
+ },
+ {
+  "id": "hamzah-sheeraz",
+  "name": "Hamzah Sheeraz",
+  "nationality": "GB",
+  "born": "1999",
+  "division": "light-heavyweight",
+  "record": {
+   "w": 23,
+   "l": 1,
+   "d": 0,
+   "ko": 17
+  },
+  "titles": [],
+  "promoter": "Queensberry",
+  "style": "boxer-puncher",
+  "ratings": {
+   "power": 89,
+   "skill": 88,
+   "speed": 80,
+   "defence": 81,
+   "chin": 80,
+   "stamina": 80
+  },
+  "popularity": 70,
+  "real": true
+ },
+ {
+  "id": "zhanibek-alimkhanuly",
+  "name": "Zhanibek Alimkhanuly",
+  "nationality": "KZ",
+  "born": "1993",
+  "division": "light-heavyweight",
+  "record": {
+   "w": 16,
+   "l": 0,
+   "d": 0,
+   "ko": 11
+  },
+  "titles": [],
+  "promoter": "Top Rank",
+  "style": "boxer-puncher",
+  "ratings": {
+   "power": 84,
+   "skill": 80,
+   "speed": 81,
+   "defence": 77,
+   "chin": 78,
+   "stamina": 81
+  },
+  "popularity": 35,
+  "real": true
+ },
+ {
+  "id": "oleksandr-gvozdyk",
+  "name": "Oleksandr Gvozdyk",
+  "nationality": "UA",
+  "born": "1987",
+  "division": "light-heavyweight",
+  "record": {
+   "w": 20,
+   "l": 2,
+   "d": 0,
+   "ko": 16
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "boxer",
+  "ratings": {
+   "speed": 82,
+   "skill": 79,
+   "defence": 76,
+   "power": 72,
+   "chin": 76,
+   "stamina": 76
+  },
+  "popularity": 35,
+  "real": true
+ },
+ {
+  "id": "radivoje-kalajdzic",
+  "name": "Radivoje Kalajdzic",
+  "nationality": "RS",
+  "born": "1991",
+  "division": "light-heavyweight",
+  "record": {
+   "w": 28,
+   "l": 1,
+   "d": 0,
+   "ko": 20
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "puncher",
+  "ratings": {
+   "power": 84,
+   "chin": 74,
+   "speed": 76,
+   "defence": 70,
+   "skill": 71,
+   "stamina": 76
+  },
+  "popularity": 30,
+  "real": true
+ },
+ {
+  "id": "callum-johnson",
+  "name": "Callum Johnson",
+  "nationality": "GB",
+  "born": "1989",
+  "division": "light-heavyweight",
+  "record": {
+   "w": 22,
+   "l": 3,
+   "d": 0,
+   "ko": 15
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "puncher",
+  "ratings": {
+   "power": 76,
+   "chin": 69,
+   "speed": 68,
+   "defence": 67,
+   "skill": 68,
+   "stamina": 62
+  },
+  "popularity": 30,
+  "real": true
+ },
+ {
+  "id": "jean-pascal",
+  "name": "Jean Pascal",
+  "nationality": "CA",
+  "born": "1982",
+  "division": "light-heavyweight",
+  "record": {
+   "w": 37,
+   "l": 7,
+   "d": 1,
+   "ko": 21
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "puncher",
+  "ratings": {
+   "power": 72,
+   "chin": 66,
+   "speed": 64,
+   "defence": 64,
+   "skill": 62,
+   "stamina": 59
+  },
+  "popularity": 30,
+  "real": true
+ },
+ {
+  "id": "rohan-murdock",
+  "name": "Rohan Murdock",
+  "nationality": "AU",
+  "born": "1994",
+  "division": "light-heavyweight",
+  "record": {
+   "w": 26,
+   "l": 3,
+   "d": 0,
+   "ko": 17
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "puncher",
+  "ratings": {
+   "power": 77,
+   "chin": 74,
+   "speed": 67,
+   "defence": 62,
+   "skill": 67,
+   "stamina": 65
+  },
+  "popularity": 20,
+  "real": true
+ },
+ {
+  "id": "jack-culcay",
+  "name": "Jack Culcay",
+  "nationality": "DE",
+  "born": "1985",
+  "division": "light-heavyweight",
+  "record": {
+   "w": 31,
+   "l": 5,
+   "d": 0,
+   "ko": 14
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "boxer",
+  "ratings": {
+   "speed": 70,
+   "skill": 72,
+   "defence": 68,
+   "power": 58,
+   "chin": 66,
+   "stamina": 66
+  },
+  "popularity": 20,
+  "real": true
+ },
+ {
+  "id": "nikita-ababiy",
+  "name": "Nikita Ababiy",
+  "nationality": "US",
+  "born": "1994",
+  "division": "light-heavyweight",
+  "record": {
+   "w": 14,
+   "l": 1,
+   "d": 0,
+   "ko": 9
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "boxer",
+  "ratings": {
+   "speed": 70,
+   "skill": 72,
+   "defence": 74,
+   "power": 58,
+   "chin": 66,
+   "stamina": 64
+  },
+  "popularity": 15,
+  "real": true
+ },
+ {
+  "id": "dylan-biggs",
+  "name": "Dylan Biggs",
+  "nationality": "IE",
+  "born": "1998",
+  "division": "light-heavyweight",
+  "record": {
+   "w": 10,
+   "l": 0,
+   "d": 0,
+   "ko": 6
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "boxer",
+  "ratings": {
+   "speed": 64,
+   "skill": 67,
+   "defence": 61,
+   "power": 53,
+   "chin": 57,
+   "stamina": 58
+  },
+  "popularity": 15,
+  "real": true
+ },
+ {
+  "id": "padraig-mccrory",
+  "name": "Padraig McCrory",
+  "nationality": "IE",
+  "born": "1993",
+  "division": "light-heavyweight",
+  "record": {
+   "w": 18,
+   "l": 0,
+   "d": 0,
+   "ko": 12
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "boxer",
+  "ratings": {
+   "speed": 74,
+   "skill": 76,
+   "defence": 70,
+   "power": 61,
+   "chin": 69,
+   "stamina": 66
+  },
+  "popularity": 25,
+  "real": true
+ },
+ {
+  "id": "abdullah-mason",
+  "name": "Abdullah Mason",
+  "nationality": "US",
+  "born": "2004",
+  "division": "lightweight",
+  "record": {
+   "w": 18,
+   "l": 0,
+   "d": 0,
+   "ko": 15
+  },
+  "titles": [
+   "WBO"
+  ],
+  "promoter": "Top Rank",
+  "style": "puncher",
+  "ratings": {
+   "power": 94,
+   "chin": 82,
+   "speed": 76,
+   "defence": 82,
+   "skill": 82,
+   "stamina": 81
+  },
+  "popularity": 45,
+  "real": true
+ },
+ {
+  "id": "william-zepeda",
+  "name": "William Zepeda",
+  "nationality": "MX",
+  "born": "1996",
+  "division": "lightweight",
+  "record": {
+   "w": 34,
+   "l": 1,
+   "d": 0,
+   "ko": 28
+  },
+  "titles": [
+   "WBC"
+  ],
+  "promoter": "Independent",
+  "style": "swarmer",
+  "ratings": {
+   "stamina": 88,
+   "speed": 87,
+   "defence": 82,
+   "power": 93,
+   "chin": 86,
+   "skill": 84
+  },
+  "popularity": 55,
+  "real": true
+ },
+ {
+  "id": "floyd-schofield",
+  "name": "Floyd Schofield",
+  "nationality": "US",
+  "born": "2002",
+  "division": "lightweight",
+  "record": {
+   "w": 18,
+   "l": 1,
+   "d": 0,
+   "ko": 12
+  },
+  "titles": [
+   "WBA"
+  ],
+  "promoter": "Independent",
+  "style": "boxer",
+  "ratings": {
+   "speed": 79,
+   "skill": 86,
+   "defence": 79,
+   "power": 68,
+   "chin": 72,
+   "stamina": 79
+  },
+  "popularity": 40,
+  "real": true
+ },
+ {
+  "id": "gervonta-davis",
+  "name": "Gervonta Davis",
+  "nationality": "US",
+  "born": "1994",
+  "division": "lightweight",
+  "record": {
+   "w": 30,
+   "l": 0,
+   "d": 1,
+   "ko": 28
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "counter-puncher",
+  "ratings": {
+   "defence": 94,
+   "skill": 93,
+   "speed": 99,
+   "power": 98,
+   "stamina": 84,
+   "chin": 88
+  },
+  "popularity": 92,
+  "real": true
+ },
+ {
+  "id": "vasiliy-lomachenko",
+  "name": "Vasiliy Lomachenko",
+  "nationality": "UA",
+  "born": "1988",
+  "division": "lightweight",
+  "record": {
+   "w": 18,
+   "l": 3,
+   "d": 0,
+   "ko": 12
+  },
+  "titles": [],
+  "promoter": "Top Rank",
+  "style": "boxer",
+  "ratings": {
+   "speed": 93,
+   "skill": 92,
+   "defence": 88,
+   "power": 80,
+   "chin": 86,
+   "stamina": 87
+  },
+  "popularity": 70,
+  "real": true
+ },
+ {
+  "id": "keyshawn-davis",
+  "name": "Keyshawn Davis",
+  "nationality": "US",
+  "born": "1999",
+  "division": "lightweight",
+  "record": {
+   "w": 13,
+   "l": 0,
+   "d": 0,
+   "ko": 9
+  },
+  "titles": [],
+  "promoter": "Top Rank",
+  "style": "boxer-puncher",
+  "ratings": {
+   "power": 88,
+   "skill": 85,
+   "speed": 79,
+   "defence": 82,
+   "chin": 84,
+   "stamina": 86
+  },
+  "popularity": 50,
+  "real": true
+ },
+ {
+  "id": "emanuel-navarrete",
+  "name": "Emanuel Navarrete",
+  "nationality": "MX",
+  "born": "1995",
+  "division": "lightweight",
+  "record": {
+   "w": 40,
+   "l": 2,
+   "d": 1,
+   "ko": 32
+  },
+  "titles": [],
+  "promoter": "Top Rank",
+  "style": "swarmer",
+  "ratings": {
+   "stamina": 90,
+   "speed": 85,
+   "defence": 79,
+   "power": 90,
+   "chin": 84,
+   "skill": 83
+  },
+  "popularity": 55,
+  "real": true
+ },
+ {
+  "id": "oscar-valdez",
+  "name": "Oscar Valdez",
+  "nationality": "MX",
+  "born": "1990",
+  "division": "lightweight",
+  "record": {
+   "w": 32,
+   "l": 3,
+   "d": 0,
+   "ko": 24
+  },
+  "titles": [],
+  "promoter": "Top Rank",
+  "style": "boxer-puncher",
+  "ratings": {
+   "power": 91,
+   "skill": 80,
+   "speed": 79,
+   "defence": 84,
+   "chin": 84,
+   "stamina": 81
+  },
+  "popularity": 60,
+  "real": true
+ },
+ {
+  "id": "isaac-cruz",
+  "name": "Isaac Cruz",
+  "nationality": "MX",
+  "born": "1998",
+  "division": "lightweight",
+  "record": {
+   "w": 26,
+   "l": 3,
+   "d": 1,
+   "ko": 18
+  },
+  "titles": [],
+  "promoter": "PBC",
+  "style": "swarmer",
+  "ratings": {
+   "stamina": 86,
+   "speed": 86,
+   "defence": 77,
+   "power": 83,
+   "chin": 81,
+   "skill": 81
+  },
+  "popularity": 50,
+  "real": true
+ },
+ {
+  "id": "jose-ramirez",
+  "name": "Jose Ramirez",
+  "nationality": "US",
+  "born": "1992",
+  "division": "lightweight",
+  "record": {
+   "w": 29,
+   "l": 3,
+   "d": 0,
+   "ko": 18
+  },
+  "titles": [],
+  "promoter": "Top Rank",
+  "style": "swarmer",
+  "ratings": {
+   "stamina": 84,
+   "speed": 86,
+   "defence": 78,
+   "power": 81,
+   "chin": 83,
+   "skill": 81
+  },
+  "popularity": 50,
+  "real": true
+ },
+ {
+  "id": "richardson-hitchins",
+  "name": "Richardson Hitchins",
+  "nationality": "US",
+  "born": "1997",
+  "division": "lightweight",
+  "record": {
+   "w": 19,
+   "l": 0,
+   "d": 0,
+   "ko": 8
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "boxer",
+  "ratings": {
+   "speed": 84,
+   "skill": 85,
+   "defence": 84,
+   "power": 71,
+   "chin": 79,
+   "stamina": 84
+  },
+  "popularity": 50,
+  "real": true
+ },
+ {
+  "id": "arnold-barboza-jr",
+  "name": "Arnold Barboza Jr.",
+  "nationality": "US",
+  "born": "1991",
+  "division": "lightweight",
+  "record": {
+   "w": 32,
+   "l": 0,
+   "d": 0,
+   "ko": 11
+  },
+  "titles": [],
+  "promoter": "Top Rank",
+  "style": "boxer",
+  "ratings": {
+   "speed": 86,
+   "skill": 86,
+   "defence": 82,
+   "power": 71,
+   "chin": 81,
+   "stamina": 76
+  },
+  "popularity": 30,
+  "real": true
+ },
+ {
+  "id": "frank-martin",
+  "name": "Frank Martin",
+  "nationality": "US",
+  "born": "1994",
+  "division": "lightweight",
+  "record": {
+   "w": 19,
+   "l": 1,
+   "d": 0,
+   "ko": 13
+  },
+  "titles": [],
+  "promoter": "PBC",
+  "style": "boxer",
+  "ratings": {
+   "speed": 82,
+   "skill": 80,
+   "defence": 85,
+   "power": 72,
+   "chin": 75,
+   "stamina": 74
+  },
+  "popularity": 30,
+  "real": true
+ },
+ {
+  "id": "andy-cruz",
+  "name": "Andy Cruz",
+  "nationality": "CU",
+  "born": "1996",
+  "division": "lightweight",
+  "record": {
+   "w": 7,
+   "l": 0,
+   "d": 0,
+   "ko": 3
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "boxer",
+  "ratings": {
+   "speed": 82,
+   "skill": 87,
+   "defence": 79,
+   "power": 66,
+   "chin": 81,
+   "stamina": 80
+  },
+  "popularity": 45,
+  "real": true
+ },
+ {
+  "id": "george-kambosos-jr",
+  "name": "George Kambosos Jr.",
+  "nationality": "AU",
+  "born": "1993",
+  "division": "lightweight",
+  "record": {
+   "w": 22,
+   "l": 3,
+   "d": 0,
+   "ko": 10
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "boxer",
+  "ratings": {
+   "speed": 82,
+   "skill": 78,
+   "defence": 77,
+   "power": 69,
+   "chin": 75,
+   "stamina": 71
+  },
+  "popularity": 55,
+  "real": true
+ },
+ {
+  "id": "jorge-linares",
+  "name": "Jorge Linares",
+  "nationality": "VE",
+  "born": "1985",
+  "division": "lightweight",
+  "record": {
+   "w": 47,
+   "l": 7,
+   "d": 0,
+   "ko": 29
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "boxer",
+  "ratings": {
+   "speed": 69,
+   "skill": 76,
+   "defence": 66,
+   "power": 57,
+   "chin": 67,
+   "stamina": 62
+  },
+  "popularity": 40,
+  "real": true
+ },
+ {
+  "id": "maxi-hughes",
+  "name": "Maxi Hughes",
+  "nationality": "GB",
+  "born": "1991",
+  "division": "lightweight",
+  "record": {
+   "w": 27,
+   "l": 6,
+   "d": 2,
+   "ko": 5
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "boxer",
+  "ratings": {
+   "speed": 76,
+   "skill": 78,
+   "defence": 68,
+   "power": 52,
+   "chin": 69,
+   "stamina": 71
+  },
+  "popularity": 30,
+  "real": true
+ },
+ {
+  "id": "hector-garcia",
+  "name": "Hector Garcia",
+  "nationality": "DO",
+  "born": "1991",
+  "division": "lightweight",
+  "record": {
+   "w": 18,
+   "l": 2,
+   "d": 0,
+   "ko": 10
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "boxer",
+  "ratings": {
+   "speed": 78,
+   "skill": 80,
+   "defence": 70,
+   "power": 63,
+   "chin": 74,
+   "stamina": 72
+  },
+  "popularity": 20,
+  "real": true
+ },
+ {
+  "id": "gustavo-lemos",
+  "name": "Gustavo Lemos",
+  "nationality": "AR",
+  "born": "1993",
+  "division": "lightweight",
+  "record": {
+   "w": 27,
+   "l": 2,
+   "d": 1,
+   "ko": 11
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "boxer",
+  "ratings": {
+   "speed": 75,
+   "skill": 74,
+   "defence": 80,
+   "power": 65,
+   "chin": 73,
+   "stamina": 76
+  },
+  "popularity": 20,
+  "real": true
+ },
+ {
+  "id": "jadier-herrera",
+  "name": "Jadier Herrera",
+  "nationality": "CO",
+  "born": "2000",
+  "division": "lightweight",
+  "record": {
+   "w": 19,
+   "l": 2,
+   "d": 0,
+   "ko": 10
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "boxer",
+  "ratings": {
+   "speed": 75,
+   "skill": 80,
+   "defence": 78,
+   "power": 69,
+   "chin": 77,
+   "stamina": 72
+  },
+  "popularity": 10,
+  "real": true,
+  "recordEstimated": true
+ },
+ {
+  "id": "erislandy-lara",
+  "name": "Erislandy Lara",
+  "nationality": "CU",
+  "born": "1983",
+  "division": "middleweight",
+  "record": {
+   "w": 30,
+   "l": 3,
+   "d": 3,
+   "ko": 19
+  },
+  "titles": [
+   "WBA"
+  ],
+  "promoter": "Independent",
+  "style": "counter-puncher",
+  "ratings": {
+   "defence": 88,
+   "skill": 89,
+   "speed": 84,
+   "power": 78,
+   "stamina": 75,
+   "chin": 79
+  },
+  "popularity": 50,
+  "real": true
+ },
+ {
+  "id": "carlos-adames",
+  "name": "Carlos Adames",
+  "nationality": "DO",
+  "born": "1995",
+  "division": "middleweight",
+  "record": {
+   "w": 24,
+   "l": 1,
+   "d": 1,
+   "ko": 18
+  },
+  "titles": [
+   "WBC"
+  ],
+  "promoter": "Independent",
+  "style": "puncher",
+  "ratings": {
+   "power": 91,
+   "chin": 88,
+   "speed": 78,
+   "defence": 81,
+   "skill": 77,
+   "stamina": 82
+  },
+  "popularity": 45,
+  "real": true
+ },
+ {
+  "id": "aaron-mckenna",
+  "name": "Aaron McKenna",
+  "nationality": "IE",
+  "born": "1998",
+  "division": "middleweight",
+  "record": {
+   "w": 20,
+   "l": 0,
+   "d": 0,
+   "ko": 11
+  },
+  "titles": [
+   "IBF"
+  ],
+  "promoter": "Independent",
+  "style": "boxer",
+  "ratings": {
+   "speed": 79,
+   "skill": 86,
+   "defence": 84,
+   "power": 70,
+   "chin": 72,
+   "stamina": 74
+  },
+  "popularity": 45,
+  "real": true
+ },
+ {
+  "id": "jesus-ramos",
+  "name": "Jesus Ramos",
+  "nationality": "US",
+  "born": "2001",
+  "division": "middleweight",
+  "record": {
+   "w": 24,
+   "l": 1,
+   "d": 0,
+   "ko": 18
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "puncher",
+  "ratings": {
+   "power": 92,
+   "chin": 84,
+   "speed": 75,
+   "defence": 73,
+   "skill": 73,
+   "stamina": 78
+  },
+  "popularity": 40,
+  "real": true
+ },
+ {
+  "id": "jaron-ennis",
+  "name": "Jaron Ennis",
+  "nationality": "US",
+  "born": "1997",
+  "division": "middleweight",
+  "record": {
+   "w": 34,
+   "l": 0,
+   "d": 0,
+   "ko": 30
+  },
+  "titles": [],
+  "promoter": "PBC",
+  "style": "boxer-puncher",
+  "ratings": {
+   "power": 100,
+   "skill": 98,
+   "speed": 94,
+   "defence": 94,
+   "chin": 88,
+   "stamina": 88
+  },
+  "popularity": 85,
+  "real": true
+ },
+ {
+  "id": "sebastian-fundora",
+  "name": "Sebastian Fundora",
+  "nationality": "US",
+  "born": "1998",
+  "division": "middleweight",
+  "record": {
+   "w": 23,
+   "l": 1,
+   "d": 1,
+   "ko": 15
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "boxer-puncher",
+  "ratings": {
+   "power": 90,
+   "skill": 90,
+   "speed": 89,
+   "defence": 88,
+   "chin": 84,
+   "stamina": 83
+  },
+  "popularity": 75,
+  "real": true
+ },
+ {
+  "id": "josh-kelly",
+  "name": "Josh Kelly",
+  "nationality": "GB",
+  "born": "1994",
+  "division": "middleweight",
+  "record": {
+   "w": 16,
+   "l": 0,
+   "d": 0,
+   "ko": 9
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "boxer",
+  "ratings": {
+   "speed": 77,
+   "skill": 86,
+   "defence": 83,
+   "power": 73,
+   "chin": 73,
+   "stamina": 74
+  },
+  "popularity": 45,
+  "real": true
+ },
+ {
+  "id": "vergil-ortiz-jr",
+  "name": "Vergil Ortiz Jr.",
+  "nationality": "US",
+  "born": "1998",
+  "division": "middleweight",
+  "record": {
+   "w": 23,
+   "l": 0,
+   "d": 0,
+   "ko": 23
+  },
+  "titles": [],
+  "promoter": "Golden Boy",
+  "style": "puncher",
+  "ratings": {
+   "power": 100,
+   "chin": 89,
+   "speed": 85,
+   "defence": 85,
+   "skill": 86,
+   "stamina": 78
+  },
+  "popularity": 70,
+  "real": true
+ },
+ {
+  "id": "bakhram-murtazaliev",
+  "name": "Bakhram Murtazaliev",
+  "nationality": "RU",
+  "born": "1993",
+  "division": "middleweight",
+  "record": {
+   "w": 23,
+   "l": 0,
+   "d": 0,
+   "ko": 17
+  },
+  "titles": [],
+  "promoter": "Top Rank",
+  "style": "puncher",
+  "ratings": {
+   "power": 96,
+   "chin": 86,
+   "speed": 85,
+   "defence": 79,
+   "skill": 79,
+   "stamina": 77
+  },
+  "popularity": 30,
+  "real": true
+ },
+ {
+  "id": "tim-tszyu",
+  "name": "Tim Tszyu",
+  "nationality": "AU",
+  "born": "1995",
+  "division": "middleweight",
+  "record": {
+   "w": 24,
+   "l": 2,
+   "d": 0,
+   "ko": 17
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "brawler",
+  "ratings": {
+   "power": 86,
+   "chin": 86,
+   "defence": 70,
+   "skill": 77,
+   "stamina": 82,
+   "speed": 77
+  },
+  "popularity": 75,
+  "real": true
+ },
+ {
+  "id": "brian-norman-jr",
+  "name": "Brian Norman Jr.",
+  "nationality": "US",
+  "born": "2000",
+  "division": "middleweight",
+  "record": {
+   "w": 28,
+   "l": 1,
+   "d": 0,
+   "ko": 22
+  },
+  "titles": [],
+  "promoter": "Top Rank",
+  "style": "puncher",
+  "ratings": {
+   "power": 96,
+   "chin": 86,
+   "speed": 78,
+   "defence": 82,
+   "skill": 78,
+   "stamina": 79
+  },
+  "popularity": 50,
+  "real": true
+ },
+ {
+  "id": "terence-crawford",
+  "name": "Terence Crawford",
+  "nationality": "US",
+  "born": "1987",
+  "division": "middleweight",
+  "record": {
+   "w": 42,
+   "l": 0,
+   "d": 0,
+   "ko": 31
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "counter-puncher",
+  "ratings": {
+   "defence": 100,
+   "skill": 99,
+   "speed": 97,
+   "power": 96,
+   "stamina": 88,
+   "chin": 99
+  },
+  "popularity": 95,
+  "real": true
+ },
+ {
+  "id": "israil-madrimov",
+  "name": "Israil Madrimov",
+  "nationality": "UZ",
+  "born": "1995",
+  "division": "middleweight",
+  "record": {
+   "w": 10,
+   "l": 1,
+   "d": 1,
+   "ko": 7
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "boxer",
+  "ratings": {
+   "speed": 90,
+   "skill": 84,
+   "defence": 86,
+   "power": 76,
+   "chin": 80,
+   "stamina": 82
+  },
+  "popularity": 35,
+  "real": true
+ },
+ {
+  "id": "xander-zayas",
+  "name": "Xander Zayas",
+  "nationality": "PR",
+  "born": "2002",
+  "division": "middleweight",
+  "record": {
+   "w": 21,
+   "l": 1,
+   "d": 0,
+   "ko": 14
+  },
+  "titles": [],
+  "promoter": "Top Rank",
+  "style": "boxer-puncher",
+  "ratings": {
+   "power": 78,
+   "skill": 81,
+   "speed": 72,
+   "defence": 72,
+   "chin": 78,
+   "stamina": 75
+  },
+  "popularity": 40,
+  "real": true
+ },
+ {
+  "id": "charles-conwell",
+  "name": "Charles Conwell",
+  "nationality": "US",
+  "born": "1997",
+  "division": "middleweight",
+  "record": {
+   "w": 23,
+   "l": 1,
+   "d": 0,
+   "ko": 16
+  },
+  "titles": [],
+  "promoter": "Top Rank",
+  "style": "boxer",
+  "ratings": {
+   "speed": 79,
+   "skill": 84,
+   "defence": 83,
+   "power": 71,
+   "chin": 74,
+   "stamina": 75
+  },
+  "popularity": 30,
+  "real": true
+ },
+ {
+  "id": "serhii-bohachuk",
+  "name": "Serhii Bohachuk",
+  "nationality": "UA",
+  "born": "1994",
+  "division": "middleweight",
+  "record": {
+   "w": 27,
+   "l": 1,
+   "d": 0,
+   "ko": 24
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "puncher",
+  "ratings": {
+   "power": 93,
+   "chin": 86,
+   "speed": 74,
+   "defence": 72,
+   "skill": 76,
+   "stamina": 78
+  },
+  "popularity": 40,
+  "real": true
+ },
+ {
+  "id": "dalton-smith",
+  "name": "Dalton Smith",
+  "nationality": "GB",
+  "born": "1998",
+  "division": "middleweight",
+  "record": {
+   "w": 19,
+   "l": 0,
+   "d": 0,
+   "ko": 13
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "boxer-puncher",
+  "ratings": {
+   "power": 86,
+   "skill": 78,
+   "speed": 84,
+   "defence": 83,
+   "chin": 76,
+   "stamina": 82
+  },
+  "popularity": 55,
+  "real": true
+ },
+ {
+  "id": "sergiy-derevyanchenko",
+  "name": "Sergiy Derevyanchenko",
+  "nationality": "UA",
+  "born": "1985",
+  "division": "middleweight",
+  "record": {
+   "w": 15,
+   "l": 4,
+   "d": 0,
+   "ko": 11
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "puncher",
+  "ratings": {
+   "power": 83,
+   "chin": 76,
+   "speed": 73,
+   "defence": 64,
+   "skill": 67,
+   "stamina": 64
+  },
+  "popularity": 30,
+  "real": true
+ },
+ {
+  "id": "gabriel-rosado",
+  "name": "Gabriel Rosado",
+  "nationality": "US",
+  "born": "1986",
+  "division": "middleweight",
+  "record": {
+   "w": 27,
+   "l": 17,
+   "d": 1,
+   "ko": 15
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "brawler",
+  "ratings": {
+   "power": 66,
+   "chin": 69,
+   "defence": 50,
+   "skill": 56,
+   "stamina": 66,
+   "speed": 60
+  },
+  "popularity": 35,
+  "real": true
+ },
+ {
+  "id": "janibek-alimkhanuly",
+  "name": "Janibek Alimkhanuly",
+  "nationality": "KZ",
+  "born": "1993",
+  "division": "middleweight",
+  "record": {
+   "w": 17,
+   "l": 0,
+   "d": 0,
+   "ko": 12
+  },
+  "titles": [],
+  "promoter": "Top Rank",
+  "style": "boxer-puncher",
+  "ratings": {
+   "power": 84,
+   "skill": 88,
+   "speed": 81,
+   "defence": 81,
+   "chin": 78,
+   "stamina": 85
+  },
+  "popularity": 35,
+  "real": true
+ },
+ {
+  "id": "jermall-charlo",
+  "name": "Jermall Charlo",
+  "nationality": "US",
+  "born": "1990",
+  "division": "middleweight",
+  "record": {
+   "w": 36,
+   "l": 1,
+   "d": 1,
+   "ko": 22
+  },
+  "titles": [],
+  "promoter": "PBC",
+  "style": "puncher",
+  "ratings": {
+   "power": 96,
+   "chin": 88,
+   "speed": 81,
+   "defence": 82,
+   "skill": 77,
+   "stamina": 76
+  },
+  "popularity": 65,
+  "real": true
+ },
+ {
+  "id": "jermell-charlo",
+  "name": "Jermell Charlo",
+  "nationality": "US",
+  "born": "1990",
+  "division": "middleweight",
+  "record": {
+   "w": 36,
+   "l": 2,
+   "d": 1,
+   "ko": 19
+  },
+  "titles": [],
+  "promoter": "PBC",
+  "style": "counter-puncher",
+  "ratings": {
+   "defence": 92,
+   "skill": 83,
+   "speed": 86,
+   "power": 77,
+   "stamina": 76,
+   "chin": 81
+  },
+  "popularity": 65,
+  "real": true
+ },
+ {
+  "id": "michael-zerafa",
+  "name": "Michael Zerafa",
+  "nationality": "AU",
+  "born": "1992",
+  "division": "middleweight",
+  "record": {
+   "w": 32,
+   "l": 5,
+   "d": 0,
+   "ko": 19
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "boxer",
+  "ratings": {
+   "speed": 69,
+   "skill": 71,
+   "defence": 76,
+   "power": 60,
+   "chin": 71,
+   "stamina": 71
+  },
+  "popularity": 30,
+  "real": true
+ },
+ {
+  "id": "denzel-bentley",
+  "name": "Denzel Bentley",
+  "nationality": "GB",
+  "born": "1995",
+  "division": "middleweight",
+  "record": {
+   "w": 18,
+   "l": 3,
+   "d": 0,
+   "ko": 15
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "puncher",
+  "ratings": {
+   "power": 86,
+   "chin": 75,
+   "speed": 74,
+   "defence": 67,
+   "skill": 66,
+   "stamina": 66
+  },
+  "popularity": 35,
+  "real": true
+ },
+ {
+  "id": "felix-cash",
+  "name": "Felix Cash",
+  "nationality": "GB",
+  "born": "1996",
+  "division": "middleweight",
+  "record": {
+   "w": 19,
+   "l": 2,
+   "d": 0,
+   "ko": 9
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "boxer",
+  "ratings": {
+   "speed": 72,
+   "skill": 72,
+   "defence": 74,
+   "power": 59,
+   "chin": 74,
+   "stamina": 73
+  },
+  "popularity": 25,
+  "real": true
+ },
+ {
+  "id": "chris-kongo",
+  "name": "Chris Kongo",
+  "nationality": "GB",
+  "born": "1996",
+  "division": "middleweight",
+  "record": {
+   "w": 17,
+   "l": 1,
+   "d": 0,
+   "ko": 8
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "boxer",
+  "ratings": {
+   "speed": 68,
+   "skill": 70,
+   "defence": 70,
+   "power": 54,
+   "chin": 63,
+   "stamina": 64
+  },
+  "popularity": 20,
+  "real": true
+ },
+ {
+  "id": "callum-walsh",
+  "name": "Callum Walsh",
+  "nationality": "IE",
+  "born": "2001",
+  "division": "middleweight",
+  "record": {
+   "w": 14,
+   "l": 0,
+   "d": 0,
+   "ko": 11
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "boxer-puncher",
+  "ratings": {
+   "power": 87,
+   "skill": 81,
+   "speed": 74,
+   "defence": 74,
+   "chin": 76,
+   "stamina": 75
+  },
+  "popularity": 70,
+  "real": true
+ },
+ {
+  "id": "ismael-davis",
+  "name": "Ismael Davis",
+  "nationality": "US",
+  "born": "1997",
+  "division": "middleweight",
+  "record": {
+   "w": 18,
+   "l": 1,
+   "d": 0,
+   "ko": 12
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "boxer",
+  "ratings": {
+   "speed": 70,
+   "skill": 77,
+   "defence": 78,
+   "power": 68,
+   "chin": 66,
+   "stamina": 70
+  },
+  "popularity": 20,
+  "real": true
+ },
+ {
+  "id": "elijah-garcia",
+  "name": "Elijah Garcia",
+  "nationality": "US",
+  "born": "2003",
+  "division": "middleweight",
+  "record": {
+   "w": 20,
+   "l": 1,
+   "d": 0,
+   "ko": 15
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "puncher",
+  "ratings": {
+   "power": 87,
+   "chin": 72,
+   "speed": 68,
+   "defence": 71,
+   "skill": 71,
+   "stamina": 66
+  },
+  "popularity": 30,
+  "real": true
+ },
+ {
+  "id": "esquiva-falcao",
+  "name": "Esquiva Falcao",
+  "nationality": "BR",
+  "born": "1989",
+  "division": "middleweight",
+  "record": {
+   "w": 30,
+   "l": 2,
+   "d": 0,
+   "ko": 21
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "puncher",
+  "ratings": {
+   "power": 87,
+   "chin": 78,
+   "speed": 72,
+   "defence": 68,
+   "skill": 69,
+   "stamina": 66
+  },
+  "popularity": 30,
+  "real": true
+ },
+ {
+  "id": "mauro-forte",
+  "name": "Mauro Forte",
+  "nationality": "IT",
+  "born": "1995",
+  "division": "middleweight",
+  "record": {
+   "w": 14,
+   "l": 0,
+   "d": 0,
+   "ko": 4
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "boxer",
+  "ratings": {
+   "speed": 60,
+   "skill": 65,
+   "defence": 63,
+   "power": 46,
+   "chin": 62,
+   "stamina": 61
+  },
+  "popularity": 10,
+  "real": true
+ },
+ {
+  "id": "troy-isley",
+  "name": "Troy Isley",
+  "nationality": "US",
+  "born": "1998",
+  "division": "middleweight",
+  "record": {
+   "w": 16,
+   "l": 2,
+   "d": 0,
+   "ko": 9
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "boxer",
+  "ratings": {
+   "speed": 74,
+   "skill": 76,
+   "defence": 72,
+   "power": 59,
+   "chin": 69,
+   "stamina": 64
+  },
+  "popularity": 20,
+  "real": true
+ },
+ {
+  "id": "rolando-romero",
+  "name": "Rolando Romero",
+  "nationality": "US",
+  "born": "1995",
+  "division": "middleweight",
+  "record": {
+   "w": 17,
+   "l": 2,
+   "d": 0,
+   "ko": 14
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "puncher",
+  "ratings": {
+   "power": 86,
+   "chin": 76,
+   "speed": 71,
+   "defence": 66,
+   "skill": 70,
+   "stamina": 70
+  },
+  "popularity": 50,
+  "real": true
+ },
+ {
+  "id": "armando-resendiz",
+  "name": "Armando Resendiz",
+  "nationality": "MX",
+  "born": "1994",
+  "division": "middleweight",
+  "record": {
+   "w": 15,
+   "l": 1,
+   "d": 0,
+   "ko": 11
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "boxer",
+  "ratings": {
+   "speed": 75,
+   "skill": 72,
+   "defence": 76,
+   "power": 65,
+   "chin": 72,
+   "stamina": 67
+  },
+  "popularity": 20,
+  "real": true
+ },
+ {
+  "id": "gary-antonio-russell",
+  "name": "Gary Antonio Russell",
+  "nationality": "US",
+  "born": "1995",
+  "division": "middleweight",
+  "record": {
+   "w": 19,
+   "l": 2,
+   "d": 0,
+   "ko": 10
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "boxer",
+  "ratings": {
+   "speed": 79,
+   "skill": 84,
+   "defence": 76,
+   "power": 72,
+   "chin": 71,
+   "stamina": 73
+  },
+  "popularity": 15,
+  "real": true,
+  "recordEstimated": true
+ },
+ {
+  "id": "devin-haney",
+  "name": "Devin Haney",
+  "nationality": "US",
+  "born": "1998",
+  "division": "welterweight",
+  "record": {
+   "w": 33,
+   "l": 1,
+   "d": 0,
+   "ko": 15
+  },
+  "titles": [
+   "WBO"
+  ],
+  "promoter": "Independent",
+  "style": "boxer",
+  "ratings": {
+   "speed": 86,
+   "skill": 93,
+   "defence": 89,
+   "power": 78,
+   "chin": 89,
+   "stamina": 86
+  },
+  "popularity": 70,
+  "real": true
+ },
+ {
+  "id": "teofimo-lopez",
+  "name": "Teofimo Lopez",
+  "nationality": "US",
+  "born": "1997",
+  "division": "welterweight",
+  "record": {
+   "w": 22,
+   "l": 1,
+   "d": 0,
+   "ko": 13
+  },
+  "titles": [
+   "WBA"
+  ],
+  "promoter": "Top Rank",
+  "style": "puncher",
+  "ratings": {
+   "power": 91,
+   "chin": 86,
+   "speed": 83,
+   "defence": 80,
+   "skill": 83,
+   "stamina": 79
+  },
+  "popularity": 75,
+  "real": true
+ },
+ {
+  "id": "ryan-garcia",
+  "name": "Ryan Garcia",
+  "nationality": "US",
+  "born": "1998",
+  "division": "welterweight",
+  "record": {
+   "w": 25,
+   "l": 2,
+   "d": 0,
+   "ko": 20
+  },
+  "titles": [
+   "WBC"
+  ],
+  "promoter": "Golden Boy",
+  "style": "puncher",
+  "ratings": {
+   "power": 98,
+   "chin": 85,
+   "speed": 83,
+   "defence": 84,
+   "skill": 83,
+   "stamina": 76
+  },
+  "popularity": 95,
+  "real": true
+ },
+ {
+  "id": "liam-paro",
+  "name": "Liam Paro",
+  "nationality": "AU",
+  "born": "1995",
+  "division": "welterweight",
+  "record": {
+   "w": 25,
+   "l": 2,
+   "d": 0,
+   "ko": 17
+  },
+  "titles": [
+   "IBF"
+  ],
+  "promoter": "Independent",
+  "style": "boxer",
+  "ratings": {
+   "speed": 83,
+   "skill": 84,
+   "defence": 82,
+   "power": 77,
+   "chin": 80,
+   "stamina": 79
+  },
+  "popularity": 35,
+  "real": true
+ },
+ {
+  "id": "jack-catterall",
+  "name": "Jack Catterall",
+  "nationality": "GB",
+  "born": "1993",
+  "division": "welterweight",
+  "record": {
+   "w": 31,
+   "l": 1,
+   "d": 0,
+   "ko": 13
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "boxer",
+  "ratings": {
+   "speed": 88,
+   "skill": 84,
+   "defence": 82,
+   "power": 73,
+   "chin": 81,
+   "stamina": 79
+  },
+  "popularity": 55,
+  "real": true
+ },
+ {
+  "id": "shakur-stevenson",
+  "name": "Shakur Stevenson",
+  "nationality": "US",
+  "born": "1997",
+  "division": "welterweight",
+  "record": {
+   "w": 24,
+   "l": 0,
+   "d": 0,
+   "ko": 11
+  },
+  "titles": [],
+  "promoter": "Top Rank",
+  "style": "counter-puncher",
+  "ratings": {
+   "defence": 93,
+   "skill": 100,
+   "speed": 97,
+   "power": 90,
+   "stamina": 88,
+   "chin": 92
+  },
+  "popularity": 80,
+  "real": true
+ },
+ {
+  "id": "gary-antuanne-russell",
+  "name": "Gary Antuanne Russell",
+  "nationality": "US",
+  "born": "1996",
+  "division": "welterweight",
+  "record": {
+   "w": 19,
+   "l": 1,
+   "d": 0,
+   "ko": 17
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "puncher",
+  "ratings": {
+   "power": 99,
+   "chin": 82,
+   "speed": 82,
+   "defence": 77,
+   "skill": 82,
+   "stamina": 74
+  },
+  "popularity": 35,
+  "real": true
+ },
+ {
+  "id": "errol-spence-jr",
+  "name": "Errol Spence Jr.",
+  "nationality": "US",
+  "born": "1990",
+  "division": "welterweight",
+  "record": {
+   "w": 29,
+   "l": 1,
+   "d": 0,
+   "ko": 22
+  },
+  "titles": [],
+  "promoter": "PBC",
+  "style": "boxer-puncher",
+  "ratings": {
+   "power": 96,
+   "skill": 89,
+   "speed": 91,
+   "defence": 88,
+   "chin": 84,
+   "stamina": 91
+  },
+  "popularity": 85,
+  "real": true
+ },
+ {
+  "id": "keith-thurman",
+  "name": "Keith Thurman",
+  "nationality": "US",
+  "born": "1988",
+  "division": "welterweight",
+  "record": {
+   "w": 30,
+   "l": 1,
+   "d": 0,
+   "ko": 23
+  },
+  "titles": [],
+  "promoter": "PBC",
+  "style": "puncher",
+  "ratings": {
+   "power": 86,
+   "chin": 81,
+   "speed": 80,
+   "defence": 73,
+   "skill": 79,
+   "stamina": 75
+  },
+  "popularity": 60,
+  "real": true
+ },
+ {
+  "id": "mario-barrios",
+  "name": "Mario Barrios",
+  "nationality": "US",
+  "born": "1995",
+  "division": "welterweight",
+  "record": {
+   "w": 29,
+   "l": 2,
+   "d": 1,
+   "ko": 18
+  },
+  "titles": [],
+  "promoter": "PBC",
+  "style": "boxer",
+  "ratings": {
+   "speed": 83,
+   "skill": 90,
+   "defence": 86,
+   "power": 71,
+   "chin": 78,
+   "stamina": 84
+  },
+  "popularity": 40,
+  "real": true
+ },
+ {
+  "id": "eimantas-stanionis",
+  "name": "Eimantas Stanionis",
+  "nationality": "LT",
+  "born": "1994",
+  "division": "welterweight",
+  "record": {
+   "w": 15,
+   "l": 1,
+   "d": 0,
+   "ko": 10
+  },
+  "titles": [],
+  "promoter": "PBC",
+  "style": "puncher",
+  "ratings": {
+   "power": 89,
+   "chin": 87,
+   "speed": 80,
+   "defence": 82,
+   "skill": 78,
+   "stamina": 82
+  },
+  "popularity": 30,
+  "real": true
+ },
+ {
+  "id": "lewis-crocker",
+  "name": "Lewis Crocker",
+  "nationality": "GB",
+  "born": "1996",
+  "division": "welterweight",
+  "record": {
+   "w": 20,
+   "l": 0,
+   "d": 0,
+   "ko": 10
+  },
+  "titles": [],
+  "promoter": "Boxxer",
+  "style": "boxer",
+  "ratings": {
+   "speed": 81,
+   "skill": 80,
+   "defence": 81,
+   "power": 73,
+   "chin": 82,
+   "stamina": 75
+  },
+  "popularity": 40,
+  "real": true
+ },
+ {
+  "id": "kell-brook",
+  "name": "Kell Brook",
+  "nationality": "GB",
+  "born": "1986",
+  "division": "welterweight",
+  "record": {
+   "w": 40,
+   "l": 4,
+   "d": 0,
+   "ko": 28
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "boxer-puncher",
+  "ratings": {
+   "power": 79,
+   "skill": 71,
+   "speed": 74,
+   "defence": 68,
+   "chin": 73,
+   "stamina": 73
+  },
+  "popularity": 55,
+  "real": true
+ },
+ {
+  "id": "josh-taylor",
+  "name": "Josh Taylor",
+  "nationality": "GB",
+  "born": "1990",
+  "division": "welterweight",
+  "record": {
+   "w": 20,
+   "l": 2,
+   "d": 0,
+   "ko": 13
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "boxer",
+  "ratings": {
+   "speed": 84,
+   "skill": 85,
+   "defence": 84,
+   "power": 72,
+   "chin": 78,
+   "stamina": 81
+  },
+  "popularity": 65,
+  "real": true
+ },
+ {
+  "id": "regis-prograis",
+  "name": "Regis Prograis",
+  "nationality": "US",
+  "born": "1989",
+  "division": "welterweight",
+  "record": {
+   "w": 29,
+   "l": 3,
+   "d": 0,
+   "ko": 24
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "puncher",
+  "ratings": {
+   "power": 94,
+   "chin": 82,
+   "speed": 78,
+   "defence": 71,
+   "skill": 79,
+   "stamina": 72
+  },
+  "popularity": 50,
+  "real": true
+ },
+ {
+  "id": "chris-colbert",
+  "name": "Chris Colbert",
+  "nationality": "US",
+  "born": "1996",
+  "division": "welterweight",
+  "record": {
+   "w": 19,
+   "l": 1,
+   "d": 0,
+   "ko": 8
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "boxer",
+  "ratings": {
+   "speed": 75,
+   "skill": 84,
+   "defence": 78,
+   "power": 68,
+   "chin": 77,
+   "stamina": 78
+  },
+  "popularity": 30,
+  "real": true
+ },
+ {
+  "id": "sandor-martin",
+  "name": "Sandor Martin",
+  "nationality": "ES",
+  "born": "1993",
+  "division": "welterweight",
+  "record": {
+   "w": 43,
+   "l": 3,
+   "d": 0,
+   "ko": 14
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "counter-puncher",
+  "ratings": {
+   "defence": 78,
+   "skill": 75,
+   "speed": 78,
+   "power": 65,
+   "stamina": 71,
+   "chin": 68
+  },
+  "popularity": 25,
+  "real": true
+ },
+ {
+  "id": "sam-noakes",
+  "name": "Sam Noakes",
+  "nationality": "GB",
+  "born": "1995",
+  "division": "welterweight",
+  "record": {
+   "w": 15,
+   "l": 1,
+   "d": 0,
+   "ko": 7
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "boxer",
+  "ratings": {
+   "speed": 76,
+   "skill": 71,
+   "defence": 74,
+   "power": 61,
+   "chin": 68,
+   "stamina": 65
+  },
+  "popularity": 15,
+  "real": true
+ },
+ {
+  "id": "ekow-essuman",
+  "name": "Ekow Essuman",
+  "nationality": "GB",
+  "born": "1993",
+  "division": "welterweight",
+  "record": {
+   "w": 20,
+   "l": 3,
+   "d": 0,
+   "ko": 8
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "boxer",
+  "ratings": {
+   "speed": 79,
+   "skill": 75,
+   "defence": 79,
+   "power": 65,
+   "chin": 72,
+   "stamina": 70
+  },
+  "popularity": 20,
+  "real": true
+ },
+ {
+  "id": "paddy-donovan",
+  "name": "Paddy Donovan",
+  "nationality": "IE",
+  "born": "1998",
+  "division": "welterweight",
+  "record": {
+   "w": 15,
+   "l": 1,
+   "d": 0,
+   "ko": 10
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "boxer-puncher",
+  "ratings": {
+   "power": 78,
+   "skill": 75,
+   "speed": 73,
+   "defence": 73,
+   "chin": 75,
+   "stamina": 74
+  },
+  "popularity": 35,
+  "real": true
+ },
+ {
+  "id": "yordenis-ugas",
+  "name": "Yordenis Ugas",
+  "nationality": "CU",
+  "born": "1986",
+  "division": "welterweight",
+  "record": {
+   "w": 28,
+   "l": 5,
+   "d": 0,
+   "ko": 12
+  },
+  "titles": [],
+  "promoter": "PBC",
+  "style": "boxer",
+  "ratings": {
+   "speed": 81,
+   "skill": 83,
+   "defence": 75,
+   "power": 63,
+   "chin": 70,
+   "stamina": 74
+  },
+  "popularity": 35,
+  "real": true
+ },
+ {
+  "id": "giovani-santillan",
+  "name": "Giovani Santillan",
+  "nationality": "US",
+  "born": "1992",
+  "division": "welterweight",
+  "record": {
+   "w": 34,
+   "l": 1,
+   "d": 0,
+   "ko": 20
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "boxer",
+  "ratings": {
+   "speed": 78,
+   "skill": 77,
+   "defence": 79,
+   "power": 68,
+   "chin": 73,
+   "stamina": 78
+  },
+  "popularity": 20,
+  "real": true
+ },
+ {
+  "id": "alexis-rocha",
+  "name": "Alexis Rocha",
+  "nationality": "US",
+  "born": "1997",
+  "division": "welterweight",
+  "record": {
+   "w": 24,
+   "l": 2,
+   "d": 0,
+   "ko": 17
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "boxer-puncher",
+  "ratings": {
+   "power": 78,
+   "skill": 81,
+   "speed": 77,
+   "defence": 75,
+   "chin": 73,
+   "stamina": 74
+  },
+  "popularity": 30,
+  "real": true
+ },
+ {
+  "id": "cody-crowley",
+  "name": "Cody Crowley",
+  "nationality": "CA",
+  "born": "1995",
+  "division": "welterweight",
+  "record": {
+   "w": 22,
+   "l": 1,
+   "d": 0,
+   "ko": 9
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "boxer",
+  "ratings": {
+   "speed": 73,
+   "skill": 78,
+   "defence": 76,
+   "power": 61,
+   "chin": 72,
+   "stamina": 75
+  },
+  "popularity": 20,
+  "real": true
+ },
+ {
+  "id": "oscar-duarte",
+  "name": "Oscar Duarte",
+  "nationality": "MX",
+  "born": "1996",
+  "division": "welterweight",
+  "record": {
+   "w": 25,
+   "l": 2,
+   "d": 0,
+   "ko": 21
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "puncher",
+  "ratings": {
+   "power": 90,
+   "chin": 74,
+   "speed": 67,
+   "defence": 68,
+   "skill": 70,
+   "stamina": 65
+  },
+  "popularity": 20,
+  "real": true
+ },
+ {
+  "id": "denys-berinchyk",
+  "name": "Denys Berinchyk",
+  "nationality": "UA",
+  "born": "1988",
+  "division": "welterweight",
+  "record": {
+   "w": 19,
+   "l": 0,
+   "d": 0,
+   "ko": 9
+  },
+  "titles": [],
+  "promoter": "Independent",
+  "style": "boxer",
+  "ratings": {
+   "speed": 82,
+   "skill": 83,
+   "defence": 81,
+   "power": 71,
+   "chin": 79,
+   "stamina": 75
+  },
+  "popularity": 30,
+  "real": true
+ }
+]
