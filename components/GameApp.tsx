@@ -5,7 +5,8 @@ import { dateForWeek, fmtDate } from "@/lib/sim/calendar";
 import NewGame from "./NewGame";
 import { ProfileProvider } from "./profile";
 import { Btn, money } from "./ui";
-import { FightsScreen, FeedScreen, HomeScreen, MarketScreen, MoreScreen, ShowsScreen, StableScreen, WorldScreen } from "./screens";
+import { FightsScreen } from "./fights";
+import { FeedScreen, HomeScreen, MarketScreen, MoreScreen, ShowsScreen, StableScreen, WorldScreen } from "./screens";
 
 const TABS = [
   { id: "home", label: "Home", icon: "⌂", phone: true },

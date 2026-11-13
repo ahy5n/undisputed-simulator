@@ -212,7 +212,7 @@ export function aiTactic(self: Corner, opp: Corner, state: FightState, side: "a"
   }
 }
 
-export interface RoundInput { tactic: Tactic; shouts?: Shout[] }
+export interface RoundInput { tactic: Tactic; shouts?: Shout[]; fireUp?: boolean; calm?: boolean }
 
 /** Play one round. Mutates and returns state. */
 export function playRound(state: FightState, inA: RoundInput, inB: RoundInput, rng: Rng): RoundSummary {
@@ -224,7 +224,10 @@ export function playRound(state: FightState, inA: RoundInput, inB: RoundInput, r
       events.push({ type: "shout", side, round, shout: s, followed: on });
       return { shout: s, on };
     });
-    return mergeMod(input.tactic, sh);
+    const m = mergeMod(input.tactic, sh);
+    if (input.fireUp) { m.out *= 1.06; m.def *= 0.96; m.ko *= 1.05; }
+    if (input.calm) { m.stam *= 0.85; m.def *= 1.04; m.out *= 0.97; }
+    return m;
   };
   const ma = mk(state.a, inA, "a"), mb = mk(state.b, inB, "b");
   const pa = state.cfg.planBonusA ?? 0, pb = state.cfg.planBonusB ?? 0;
@@ -294,7 +297,7 @@ export function playRound(state: FightState, inA: RoundInput, inB: RoundInput, r
   const kdB = events.filter((e) => e.type === "knockdown" && e.side === "a").length;
   const scoreA = rs(ea, kdA), scoreB = rs(eb, kdB);
   const cards: [number, number][] = [];
-  state.judges.forEach((j, i) => {
+  state.judges.forEach((j) => {
     let d = scoreA - scoreB + rng.normal(0, 1.6 * j.noise);
     if (j.bias === "home" && state.cfg.homeSide) d += (state.cfg.homeSide === "a" ? 1 : -1) * j.strength * 5;
     if (j.bias === "aggression") d += (ea.thrown - eb.thrown) * 0.12 * j.strength * 2;
@@ -391,4 +394,20 @@ export function describeResult(a: Fighter, b: Fighter, r: FightResult): string {
   const w = r.winner === "a" ? a : b;
   if (r.method === "KO" || r.method === "TKO") return `${w.name} wins by ${r.method} in round ${r.round}`;
   return `${w.name} wins by ${r.method === "UD" ? "unanimous" : r.method === "SD" ? "split" : "majority"} decision`;
+}
+
+/** Cutman between rounds: reduces cut and swelling by one level and eases accumulated damage a little. */
+export function cutman(state: FightState, side: "a" | "b"): void {
+  const c = state[side];
+  c.cut = Math.max(0, c.cut - 1);
+  c.swelling = Math.max(0, c.swelling - 1);
+  c.damage = Math.max(0, c.damage - 3);
+}
+
+/** Corner throws in the towel: the other fighter wins by TKO. */
+export function throwTowel(state: FightState, side: "a" | "b"): void {
+  if (state.over) return;
+  const stop: FightEvent = { type: "stoppage", side, round: state.round, reason: "corner" };
+  state.roundsLog[state.roundsLog.length - 1]?.events.push(stop);
+  finish(state, side === "a" ? "b" : "a", "TKO", stop);
 }

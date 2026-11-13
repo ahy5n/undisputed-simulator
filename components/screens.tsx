@@ -68,7 +68,6 @@ export function StableScreen() {
   );
 }
 
-export const FightsScreen = () => (<div><H>Fights</H><Soon phase={6} what="Matchmaking, offers and mandatories" /></div>);
 export const ShowsScreen = () => (<div><H>Shows</H><Soon phase={7} what="The show builder and money projection" /></div>);
 export const FeedScreen = () => (<div><H>Feed</H><Soon phase={11} what="The social feed, news and press conferences" /></div>);
 
