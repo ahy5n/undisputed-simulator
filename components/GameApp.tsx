@@ -8,7 +8,8 @@ import { ProfileProvider } from "./profile";
 import { Btn, money } from "./ui";
 import { FightsScreen } from "./fights";
 import { MarketScreen } from "./market";
-import { FeedScreen, HomeScreen, MoreScreen, ShowsScreen, StableScreen, WorldScreen } from "./screens";
+import { ShowsScreen } from "./shows";
+import { FeedScreen, HomeScreen, MoreScreen, StableScreen, WorldScreen } from "./screens";
 
 const TABS = [
   { id: "home", label: "Home", icon: "⌂", phone: true },

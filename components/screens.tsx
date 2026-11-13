@@ -33,8 +33,15 @@ export function HomeScreen({ go }: { go: (t: string) => void }) {
         </Card>
       </div>
       <Card>
-        <div className="text-sm font-semibold">This week</div>
-        <p className="mt-1 text-sm text-muted">No fights or shows scheduled.</p>
+        <div className="text-sm font-semibold">Calendar</div>
+        {(() => {
+          const F = game.world.fighters;
+          const ev = [
+            ...game.fights.filter((f) => !f.done && [f.a, f.b].some((id) => F[id].promoter === "player")).map((f) => ({ w: f.week, t: `${F[f.a].name} vs ${F[f.b].name}${f.titles.length ? ` (${f.titles.join("/")})` : ""}` })),
+            ...game.shows.filter((x) => !x.statement).map((x) => ({ w: x.week, t: `Your show: ${x.fights.length} fight${x.fights.length > 1 ? "s" : ""}` })),
+          ].sort((a, b) => a.w - b.w).slice(0, 6);
+          return ev.length ? ev.map((e, i) => <div key={i} className="flex justify-between gap-2 border-b border-line py-2 text-sm last:border-0"><span className="min-w-0 truncate">{e.t}</span><span className="num shrink-0 text-muted">{e.w - game.week <= 0 ? "this week" : `in ${e.w - game.week}w`}</span></div>) : <p className="mt-1 text-sm text-muted">No fights or shows scheduled.</p>;
+        })()}
         {c.stable.length === 0 && <Btn className="mt-3 w-full" onClick={() => go("market")}>Sign your first fighter</Btn>}
       </Card>
     </div>
@@ -62,7 +69,6 @@ export function StableScreen() {
   );
 }
 
-export const ShowsScreen = () => (<div><H>Shows</H><Soon phase={7} what="The show builder and money projection" /></div>);
 export const FeedScreen = () => (<div><H>Feed</H><Soon phase={11} what="The social feed, news and press conferences" /></div>);
 
 export function WorldScreen() {

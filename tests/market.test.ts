@@ -43,7 +43,7 @@ describe("offers", () => {
       last = r;
     }
     expect(offerValue(base)).toBeGreaterThan(0);
-    expect(askPurse(f, year(g))).toBeGreaterThan(8000);
+    expect(askPurse(f, year(g))).toBeGreaterThanOrEqual(1000);
   });
   it("a star turns down a nobody promoter with a clear reason", () => {
     const star = Object.values(g.world.fighters).find((x) => x.promoter === "independent" && x.pro && overall(x.ratings) >= 85)!;

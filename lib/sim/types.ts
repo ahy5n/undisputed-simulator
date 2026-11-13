@@ -32,6 +32,7 @@ export interface ScheduledFight extends FightTerms {
   /** "player" if you promote it, otherwise the AI promoter id */
   promoter: string;
   origin: "player" | "ai" | "mandatory" | "vacant" | "bid" | "rematch";
+  showId?: string;
 }
 export interface IncomingOffer { id: string; issued: number; expires: number; fromPromoter: string; mine: string; opp: string; fightWeek: number; terms: FightTerms }
 export interface Order {
@@ -40,6 +41,14 @@ export interface Order {
 }
 export interface PurseBid { id: string; order: Order; minBid: number; bids: { promoterId: string; amount: number }[]; closeWeek: number }
 export interface FightRecord { week: number; a: string; b: string; aName: string; bName: string; winner: "a" | "b" | null; method: string; round: number; titles: WorldBody[]; division: Division }
+
+export interface StatementLine { label: string; amount: number }
+export interface Statement { lines: StatementLine[]; revenue: number; costs: number; profit: number; attendance: number; capacity: number; ppvBuys: number }
+export interface Show {
+  id: string; week: number; venue: string; fights: string[];
+  price: "low" | "standard" | "premium"; dist: "sale" | "ppv"; auto?: boolean;
+  statement?: Statement;
+}
 
 export interface Fighter {
   id: string;
@@ -103,6 +112,7 @@ export interface GameSave {
   company: Company;
   history: FightRecord[];
   fights: ScheduledFight[];
+  shows: Show[];
   incoming: IncomingOffer[];
   orders: Order[];
   purseBids: PurseBid[];

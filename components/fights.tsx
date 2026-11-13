@@ -83,7 +83,7 @@ function OfferBuilder({ mine, opp, presetTitles, close }: { mine: Fighter; opp: 
       </div>
       <div className="mt-3 rounded-lg bg-surface2 p-3 text-sm">
         <div className="flex justify-between"><span className="text-muted">Total purses you pay</span><span className="num font-semibold">{money(terms.purseA + terms.purseB)}</span></div>
-        <p className="mt-1 text-xs text-muted">Gate, TV and sponsorship arrive with the show builder (phase 7). Until then a promoted fight returns a flat 35% over purses.</p>
+        <p className="mt-1 text-xs text-muted">Fights you make are promoted by you: put them on a show in the Shows tab. Gate, TV and sponsorship are projected there; the promoter keeps what is left after purses and costs.</p>
       </div>
       {result && (
         <div className={`mt-3 rounded-lg border p-3 text-sm ${result.kind === "accept" ? "border-good" : "border-line"}`}>

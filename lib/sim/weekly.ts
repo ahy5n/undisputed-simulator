@@ -8,6 +8,7 @@ import {
 import { computeRankings, type Rankings } from "./rankings";
 import { Rng } from "./rng";
 import { generateFighter } from "./worldgen";
+import { autoShows, settleIfComplete } from "./shows";
 import {
   DIVISIONS, WORLD_BODIES, type Division, type Fighter, type FightTerms, type GameSave, type Order, type ScheduledFight, type WorldBody,
 } from "./types";
@@ -56,13 +57,14 @@ export function applyResult(g: GameSave, fight: ScheduledFight, r: FightResult, 
     fights: g.fights.map((f) => f.id === fight.id ? { ...f, done: true } : f),
     history: [...g.history, { week: g.week, a: A.id, b: B.id, aName: A.name, bName: B.name, winner: r.winner, method: r.method, round: r.round, titles: fight.titles, division: div }].slice(-30000),
   };
-  // placeholder economics until the shows model arrives in phase 7: promoters keep 35% over purses; managers earn their cut
+  // On your own shows the promoter keeps whatever is left after purses and costs (settled with the show).
+  // On someone else's card you earn your cut of your fighter's purse.
   let cash = next.company.cash;
   let rep = next.company.reputation;
-  if (fight.promoter === "player") cash += Math.round((fight.purseA + fight.purseB) * 0.35);
-  else for (const [f, side] of sides) if (f.promoter === "player" && f.contract) cash += Math.round((side === "a" ? fight.purseA : fight.purseB) * f.contract.cut);
+  if (fight.promoter !== "player") for (const [f, side] of sides) if (f.promoter === "player" && f.contract) cash += Math.round((side === "a" ? fight.purseA : fight.purseB) * f.contract.cut);
   for (const [f, side] of sides) if (f.promoter === "player") rep = clamp(rep + (r.winner === side ? 1 + (fight.titles.length ? 4 : 0) : r.winner === null ? 0 : -0.3), 0, 100);
   next = { ...next, company: { ...next.company, cash, reputation: rep } };
+  next = settleIfComplete(next, fight.showId, rng);
   if (involvesPlayer(g, fight)) {
     const w = r.winner ? (r.winner === "a" ? A : B) : null;
     next = inboxPush(next, w ? `${w.name} wins` : "Draw", `${A.name} vs ${B.name}: ${w ? `${w.name} by ${r.method}${stoppage ? ` in round ${r.round}` : ""}` : "draw"}${fight.titles.length ? ` (${fight.titles.join("/")})` : ""}.`);
@@ -348,6 +350,7 @@ export function worldWeek(g: GameSave): GameSave {
     for (const f of hurt) fighters[f.id] = { ...f, injuredWeeks: f.injuredWeeks - 1 };
     cur = { ...cur, world: { ...cur.world, fighters } };
   }
+  cur = autoShows(cur);
   // fights due: AI fights resolve now; the player's wait for the player (auto-sim if a week overdue)
   for (const f of cur.fights.filter((x) => !x.done && x.week <= g.week)) {
     if (involvesPlayer(cur, f) && f.week === g.week) continue;

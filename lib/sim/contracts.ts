@@ -6,11 +6,13 @@ import type { Fighter, GameSave, Offer, Promoter } from "./types";
 export function askPurse(f: Fighter, year: number): number {
   const o = overall(f.ratings);
   const age = year - f.born;
-  let v = Math.max(8000, Math.pow(Math.max(0, o - 45), 2) * 220) + f.popularity * f.popularity * 60;
-  if (!f.pro) v = 15000 + f.potential * 12000;
+  // A fighter is paid for what he draws, plus a star premium at the very top and a small skill floor.
+  const drawUnits = Math.pow(f.popularity, 2.6) * 0.1;
+  let v = Math.max(3000, 12 * drawUnits + Math.pow(f.popularity / 100, 5) * 800_000 + Math.pow(Math.max(0, o - 45), 2) * 3);
+  if (!f.pro) v = 5000 + f.potential * 4000;
   else if (age < 25) v *= 0.7 + 0.15 * f.potential;
   if (age > 35) v *= 0.8;
-  return Math.round(v / 1000) * 1000;
+  return Math.round(v / 1000) * 1000 || 1000;
 }
 export const askBonus = (f: Fighter, year: number) => Math.round((askPurse(f, year) * 1.5) / 1000) * 1000;
 const ambition = (f: Fighter) => 0.94 + (hashSeed(f.id) % 13) / 100; // 0.94-1.06

@@ -32,7 +32,7 @@ export function newGame(input: NewGameInput): GameSave {
       colours: { primary: input.primary, secondary: input.secondary },
       cash: input.startingCash, stable: [], confidence: 50, reputation: 30,
     },
-    history: [], fights: [], incoming: [], orders: [], purseBids: [], lastMandatory: initLastMandatory(seed),
+    history: [], fights: [], shows: [], incoming: [], orders: [], purseBids: [], lastMandatory: initLastMandatory(seed),
     negotiations: [],
     inbox: [{ id: "welcome", week: 0, title: "Welcome to the game", body: `You have £${input.startingCash.toLocaleString("en-GB")} and no fighters. Open the Market tab to sign your first boxers.`, needsDecision: false }],
     settings: { ...DEFAULT_SETTINGS, startingCash: input.startingCash },
