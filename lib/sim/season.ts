@@ -56,6 +56,10 @@ export function rollSeason(world: World, rng: Rng, year: number): { world: World
       const p = age >= 40 ? 1 : age >= 35 ? (age - 34) * 0.14 + (overall(f.ratings) < 60 ? 0.15 : 0) : age >= 32 && overall(f.ratings) < 50 ? 0.2 : 0;
       if (rng.chance(p)) { f = { ...f, retired: true }; retired.push(f.id); }
     }
+    // AI contracts expire on schedule, sending the fighter to free agency (stars become signable)
+    if (f.contract && f.promoter !== "player" && f.contract.expiresYear !== undefined && f.contract.expiresYear <= year && !f.retired) {
+      f = { ...f, promoter: "independent", contract: undefined };
+    }
     fighters[f.id] = f;
   }
   // vacate belts of retirees

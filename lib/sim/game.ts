@@ -4,6 +4,7 @@ import type { GameSave, Settings } from "./types";
 import { Rng } from "./rng";
 import { gameYear } from "./calendar";
 import { rollSeason } from "./season";
+import { processNegotiations } from "./market";
 
 export const DEFAULT_SETTINGS: Settings = { startingCash: 3_000_000, hideScorecards: false };
 export const START_DATE = "2026-11-14"; // a Saturday
@@ -21,9 +22,10 @@ export function newGame(input: NewGameInput): GameSave {
     company: {
       name: input.companyName.trim() || "Untitled Promotions", country: input.country,
       colours: { primary: input.primary, secondary: input.secondary },
-      cash: input.startingCash, stable: [], confidence: 50,
+      cash: input.startingCash, stable: [], confidence: 50, reputation: 30,
     },
     history: [],
+    negotiations: [],
     inbox: [{ id: "welcome", week: 0, title: "Welcome to the game", body: `You have £${input.startingCash.toLocaleString("en-GB")} and no fighters. Open the Market tab to sign your first boxers.`, needsDecision: false }],
     settings: { ...DEFAULT_SETTINGS, startingCash: input.startingCash },
   };
@@ -34,7 +36,7 @@ export function advanceWeek(g: GameSave): GameSave {
   const week = g.week + 1;
   const before = gameYear(g.startDate, g.week);
   const after = gameYear(g.startDate, week);
-  let next: GameSave = { ...g, week };
+  let next: GameSave = processNegotiations({ ...g, week });
   if (after !== before) {
     const rng = new Rng(g.rngState);
     const { world, report } = rollSeason(g.world, rng, after);

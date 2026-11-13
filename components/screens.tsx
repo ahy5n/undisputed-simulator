@@ -3,15 +3,12 @@ import { useMemo, useRef, useState } from "react";
 import { useGame } from "@/lib/game/store";
 import { exportSave, importSave } from "@/lib/save/db";
 import { gameYear } from "@/lib/sim/calendar";
-import { ageAt, overall, recordString, stars } from "@/lib/sim/fighter";
+import { ageAt, recordString } from "@/lib/sim/fighter";
 import { computeRankings } from "@/lib/sim/rankings";
 import { DIVISIONS, DIVISION_LABEL, DIVISION_LIMIT, WORLD_BODIES, type Division, type Fighter, type WorldBody } from "@/lib/sim/types";
 import { Badge, Btn, Card, FighterRow, H, money } from "./ui";
+import { StableActions } from "./market";
 
-export const signingFee = (f: Fighter) => {
-  const o = overall(f.ratings);
-  return Math.round((f.pro ? Math.pow(Math.max(0, o - 40), 2) * 400 : 20_000 + f.potential * 25_000) / 1000) * 1000;
-};
 const Soon = ({ phase, what }: { phase: number; what: string }) => (
   <Card className="text-sm text-muted">{what} arrives in build phase {phase}.</Card>
 );
@@ -45,90 +42,28 @@ export function HomeScreen({ go }: { go: (t: string) => void }) {
 }
 
 export function StableScreen() {
-  const { game, update } = useGame();
+  const { game } = useGame();
+  const [sel, setSel] = useState<Fighter | null>(null);
   if (!game) return null;
   const year = gameYear(game.startDate, game.week);
   const mine = game.company.stable.map((id) => game.world.fighters[id]).filter(Boolean);
-  const release = (f: Fighter) => update((g) => ({
-    ...g,
-    company: { ...g.company, stable: g.company.stable.filter((i) => i !== f.id) },
-    world: { ...g.world, fighters: { ...g.world.fighters, [f.id]: { ...f, promoter: "independent" } } },
-  }));
   return (
     <div>
       <H sub={`${mine.length} fighter${mine.length === 1 ? "" : "s"}`}>Stable</H>
       {mine.length === 0 ? <Card className="text-sm text-muted">No fighters yet. Sign some in the Market.</Card> : (
         <Card className="py-1">
           {mine.map((f) => (
-            <FighterRow key={f.id} f={f} right={<div><div>{ageAt(f, year)}y</div><button onClick={() => release(f)} className="min-h-11 text-xs text-bad">Release</button></div>} />
+            <FighterRow key={f.id} f={f} right={<div><div>{ageAt(f, year)}y</div><button onClick={() => setSel(f)} className="min-h-11 text-xs font-semibold text-accent">Manage</button></div>} />
           ))}
         </Card>
       )}
+      {sel && <StableActions f={sel} close={() => setSel(null)} />}
     </div>
   );
 }
 
 export const ShowsScreen = () => (<div><H>Shows</H><Soon phase={7} what="The show builder and money projection" /></div>);
 export const FeedScreen = () => (<div><H>Feed</H><Soon phase={11} what="The social feed, news and press conferences" /></div>);
-
-export function MarketScreen() {
-  const { game, update } = useGame();
-  const [mode, setMode] = useState<"pro" | "prospect">("pro");
-  const [div, setDiv] = useState<Division | "all">("all");
-  const [q, setQ] = useState("");
-  const [limit, setLimit] = useState(40);
-  const list = useMemo(() => {
-    if (!game) return [];
-    const ql = q.trim().toLowerCase();
-    return Object.values(game.world.fighters)
-      .filter((f) => f.promoter === "independent" && !f.retired && (mode === "pro" ? f.pro : !f.pro))
-      .filter((f) => div === "all" || f.division === div)
-      .filter((f) => !ql || f.name.toLowerCase().includes(ql))
-      .sort((a, b) => overall(b.ratings) - overall(a.ratings));
-  }, [game, mode, div, q]);
-  if (!game) return null;
-  const year = gameYear(game.startDate, game.week);
-  const sign = (f: Fighter) => {
-    const fee = signingFee(f);
-    update((g) => g.company.cash < fee ? g : ({
-      ...g,
-      company: { ...g.company, cash: g.company.cash - fee, stable: [...g.company.stable, f.id] },
-      world: { ...g.world, fighters: { ...g.world.fighters, [f.id]: { ...f, promoter: "player", pro: true } } },
-    }));
-  };
-  return (
-    <div>
-      <H sub="Free agents and prospects. Full contract negotiation arrives in phase 5; for now a flat signing fee.">Market</H>
-      <div className="mb-3 flex gap-2">
-        {(["pro", "prospect"] as const).map((m) => (
-          <Btn key={m} variant={mode === m ? "primary" : "ghost"} onClick={() => { setMode(m); setLimit(40); }} className="flex-1">{m === "pro" ? "Free agents" : "Prospects"}</Btn>
-        ))}
-      </div>
-      <div className="mb-3 flex gap-2">
-        <input value={q} onChange={(e) => setQ(e.target.value)} placeholder="Search name" className="min-h-11 min-w-0 flex-1 rounded-lg border border-line bg-surface px-3" />
-        <select value={div} onChange={(e) => setDiv(e.target.value as Division | "all")} className="min-h-11 rounded-lg border border-line bg-surface px-2">
-          <option value="all">All divisions</option>
-          {DIVISIONS.map((d) => <option key={d} value={d}>{DIVISION_LABEL[d]}</option>)}
-        </select>
-      </div>
-      <Card className="py-1">
-        {list.slice(0, limit).map((f) => {
-          const fee = signingFee(f);
-          const st = stars(f, year);
-          return (
-            <FighterRow key={f.id} f={f} right={
-              <div>
-                <div className="text-xs text-muted">{DIVISION_LABEL[f.division]} · {ageAt(f, year)}y{st ? ` · ${"★".repeat(st)}` : ""}</div>
-                <Btn className="mt-1 !min-h-11" disabled={game.company.cash < fee} onClick={() => sign(f)}>Sign {money(fee)}</Btn>
-              </div>} />
-          );
-        })}
-        {list.length === 0 && <p className="p-3 text-sm text-muted">No one matches.</p>}
-      </Card>
-      {list.length > limit && <Btn variant="ghost" className="mt-3 w-full" onClick={() => setLimit(limit + 40)}>Show more ({list.length - limit})</Btn>}
-    </div>
-  );
-}
 
 export function WorldScreen() {
   const { game } = useGame();

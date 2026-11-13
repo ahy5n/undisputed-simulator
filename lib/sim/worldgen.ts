@@ -129,6 +129,11 @@ export function createWorld(seed: number): { world: World; rngState: number } {
     const f = generateFighter(rng, div, used, smallPromoters, { year: START_YEAR, prospect: true, idPrefix: "pro", n: i });
     fighters[f.id] = f;
   }
+  for (const f of Object.values(fighters)) {
+    if (f.promoter !== "independent") {
+      f.contract = { promoter: f.promoter, fightsLeft: rng.int(1, 6), purse: 0, cut: 0.2, expiresYear: START_YEAR + 1 + rng.int(0, 3) };
+    }
+  }
   const beltMap = {} as World["belts"];
   for (const div of DIVISIONS) {
     beltMap[div] = {} as Record<WorldBody, string | null>;

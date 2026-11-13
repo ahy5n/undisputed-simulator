@@ -37,7 +37,7 @@ export function GameProvider({ children }: { children: ReactNode }) {
       try {
         await refreshSaves();
         const id = localStorage.getItem(LAST);
-        if (id) { const g = await loadGame(id); if (g) setGame(g); }
+        if (id) { const g = await loadGame(id); if (g) setGame({ ...g, negotiations: g.negotiations ?? [], company: { ...g.company, reputation: g.company.reputation ?? 30 } }); }
       } catch { /* storage unavailable: start screen still works */ }
       setReady(true);
     })();
@@ -75,7 +75,8 @@ export function GameProvider({ children }: { children: ReactNode }) {
     setGame(g); await refreshSaves();
   }, [refreshSaves]);
   const open = useCallback(async (id: string) => {
-    const g = await loadGame(id);
+    const g0 = await loadGame(id);
+    const g = g0 && { ...g0, negotiations: g0.negotiations ?? [], company: { ...g0.company, reputation: g0.company.reputation ?? 30 } };
     if (g) { try { localStorage.setItem(LAST, id); } catch {} setGame(g); }
   }, []);
   const nextWeek = useCallback(() => setGame((g) => (g ? advanceWeek(g) : g)), []);

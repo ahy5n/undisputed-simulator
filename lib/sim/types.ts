@@ -19,6 +19,13 @@ export type Style = "boxer" | "puncher" | "swarmer" | "counter-puncher" | "boxer
 export interface Ratings { power: number; speed: number; defence: number; chin: number; stamina: number; skill: number }
 export interface Record3 { w: number; l: number; d: number; ko: number }
 
+export interface Contract { promoter: string; fightsLeft: number; purse: number; cut: number; expiresYear?: number }
+export interface Offer { bonus: number; fights: number; purse: number; cut: number }
+export interface Negotiation {
+  id: string; fighterId: string; round: number; offer: Offer;
+  rivals: { promoterId: string; offer: Offer }[]; log: string[]; startedWeek: number;
+}
+
 export interface Fighter {
   id: string;
   name: string;
@@ -42,6 +49,7 @@ export interface Fighter {
   injuredWeeks: number;
   recordEstimated?: boolean;
   retired?: boolean;
+  contract?: Contract;
   /** career knockout losses; speeds up chin decline */
   koLosses?: number;
 }
@@ -55,7 +63,7 @@ export interface Broadcaster { id: string; name: string; market: string; budget:
 
 export interface Company {
   name: string; country: string; colours: { primary: string; secondary: string };
-  cash: number; stable: string[]; confidence: number;
+  cash: number; stable: string[]; confidence: number; reputation: number;
 }
 export interface Settings { startingCash: number; hideScorecards: boolean }
 
@@ -79,6 +87,7 @@ export interface GameSave {
   world: World;
   company: Company;
   history: unknown[];
+  negotiations: Negotiation[];
   inbox: { id: string; week: number; title: string; body: string; needsDecision?: boolean }[];
   settings: Settings;
 }
