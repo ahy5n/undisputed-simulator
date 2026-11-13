@@ -42,6 +42,8 @@ export interface Fighter {
   injuredWeeks: number;
   recordEstimated?: boolean;
   retired?: boolean;
+  /** career knockout losses; speeds up chin decline */
+  koLosses?: number;
 }
 
 export interface Promoter {

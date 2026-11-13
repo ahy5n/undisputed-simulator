@@ -1,6 +1,9 @@
 import { createWorld, START_YEAR } from "./worldgen";
 import { SAVE_VERSION } from "@/lib/save/db";
 import type { GameSave, Settings } from "./types";
+import { Rng } from "./rng";
+import { gameYear } from "./calendar";
+import { rollSeason } from "./season";
 
 export const DEFAULT_SETTINGS: Settings = { startingCash: 3_000_000, hideScorecards: false };
 export const START_DATE = "2026-11-14"; // a Saturday
@@ -28,5 +31,22 @@ export function newGame(input: NewGameInput): GameSave {
 export { START_YEAR };
 
 export function advanceWeek(g: GameSave): GameSave {
-  return { ...g, week: g.week + 1 };
+  const week = g.week + 1;
+  const before = gameYear(g.startDate, g.week);
+  const after = gameYear(g.startDate, week);
+  let next: GameSave = { ...g, week };
+  if (after !== before) {
+    const rng = new Rng(g.rngState);
+    const { world, report } = rollSeason(g.world, rng, after);
+    const mine = g.company.stable.filter((id) => world.fighters[id].retired);
+    next = {
+      ...next, world, rngState: rng.state,
+      company: { ...g.company, stable: g.company.stable.filter((id) => !world.fighters[id].retired) },
+      inbox: [
+        { id: `season-${after}`, week, title: `Season ${after} begins`, body: `Everyone is a year older. ${report.retired.length} pros retired, ${report.intake} new amateurs arrived.${mine.length ? ` Your fighters retiring: ${mine.map((i) => world.fighters[i].name).join(", ")}.` : ""}` },
+        ...g.inbox,
+      ].slice(0, 50),
+    };
+  }
+  return next;
 }

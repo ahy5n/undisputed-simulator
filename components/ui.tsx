@@ -1,6 +1,7 @@
 "use client";
 import type { ButtonHTMLAttributes, ReactNode } from "react";
 import { flag, overall, recordString } from "@/lib/sim/fighter";
+import { useProfile } from "./profile";
 import type { Fighter } from "@/lib/sim/types";
 
 export function Card({ children, className = "" }: { children: ReactNode; className?: string }) {
@@ -26,9 +27,11 @@ export const money = (n: number) => (n < 0 ? "-" : "") + "£" + Math.abs(Math.ro
 
 export function FighterRow({ f, right, onClick }: { f: Fighter; right?: ReactNode; onClick?: () => void }) {
   const ovr = overall(f.ratings);
-  const Tag = onClick ? "button" : "div";
+  const show = useProfile();
+  const open = onClick ?? (() => show(f.id));
   return (
-    <Tag onClick={onClick} className="flex min-h-14 w-full items-center gap-3 border-b border-line py-2 text-left last:border-0">
+    <div role="button" tabIndex={0} onClick={open} onKeyDown={(e) => { if (e.key === "Enter") open(); }}
+      className="flex min-h-14 w-full cursor-pointer items-center gap-3 border-b border-line py-2 text-left last:border-0">
       <div className="display w-10 shrink-0 text-center text-2xl font-bold num">{ovr}</div>
       <div className="min-w-0 flex-1">
         <div className="flex items-center gap-1.5">
@@ -39,7 +42,7 @@ export function FighterRow({ f, right, onClick }: { f: Fighter; right?: ReactNod
           {flag(f.nationality)} {recordString(f)} ({f.record.ko} KO) · {f.style}
         </div>
       </div>
-      {right && <div className="shrink-0 text-right text-sm num">{right}</div>}
-    </Tag>
+      {right && <div className="shrink-0 text-right text-sm num" onClick={(e) => e.stopPropagation()}>{right}</div>}
+    </div>
   );
 }

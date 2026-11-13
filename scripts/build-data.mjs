@@ -16,6 +16,7 @@ const STYLE = {
   "boxer-puncher": { power: 3, skill: 2, speed: 0, defence: 0, chin: 0, stamina: 0 },
   brawler: { power: 5, chin: 5, defence: -8, skill: -6, stamina: 2, speed: -2 },
 };
+const PROMOTER_ID = JSON.parse(fs.readFileSync("data/promoters.json", "utf8")).reduce((m, p) => { m[p.name] = p.id; m[p.id] = p.id; return m; }, { PBC: "pbc" });
 const clamp = (n) => Math.max(1, Math.min(100, Math.round(n)));
 const hash = (s) => { let h = 2166136261; for (const c of s) { h ^= c.charCodeAt(0); h = Math.imul(h, 16777619); } return h >>> 0; };
 const jitter = (s, k) => ((hash(s + k) % 9) - 4); // -4..+4, deterministic
@@ -53,7 +54,7 @@ for (const file of fs.readdirSync(SRC).filter((f) => f.endsWith(".txt"))) {
     }
     fighters.push({
       id, name, nationality: nat, born, division, record,
-      titles: heldBy[id] ?? [], promoter, style, ratings,
+      titles: heldBy[id] ?? [], promoter: PROMOTER_ID[promoter] ?? (() => { throw new Error("unknown promoter " + promoter + " for " + name); })(), style, ratings,
       popularity: Number(pop), real: true, ...(recordEstimated ? { recordEstimated: true } : {}),
     });
   }

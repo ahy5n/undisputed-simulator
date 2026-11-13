@@ -3,8 +3,9 @@ import { useMemo, useRef, useState } from "react";
 import { useGame } from "@/lib/game/store";
 import { exportSave, importSave } from "@/lib/save/db";
 import { gameYear } from "@/lib/sim/calendar";
-import { ageAt, flag, overall, recordString, stars } from "@/lib/sim/fighter";
-import { DIVISIONS, DIVISION_LABEL, DIVISION_LIMIT, WORLD_BODIES, type Division, type Fighter } from "@/lib/sim/types";
+import { ageAt, overall, recordString, stars } from "@/lib/sim/fighter";
+import { computeRankings } from "@/lib/sim/rankings";
+import { DIVISIONS, DIVISION_LABEL, DIVISION_LIMIT, WORLD_BODIES, type Division, type Fighter, type WorldBody } from "@/lib/sim/types";
 import { Badge, Btn, Card, FighterRow, H, money } from "./ui";
 
 export const signingFee = (f: Fighter) => {
@@ -133,31 +134,31 @@ export function MarketScreen() {
 export function WorldScreen() {
   const { game } = useGame();
   const [div, setDiv] = useState<Division>("heavyweight");
-  if (!game) return null;
+  const [body, setBody] = useState<WorldBody>("WBC");
+  const rankings = useMemo(() => (game ? computeRankings(game.world) : null), [game?.world]); // eslint-disable-line react-hooks/exhaustive-deps
+  if (!game || !rankings) return null;
   const F = game.world.fighters;
-  const top = Object.values(F).filter((f) => f.division === div && f.pro && !f.retired)
-    .sort((a, b) => overall(b.ratings) - overall(a.ratings)).slice(0, 15);
+  const champId = game.world.belts[div][body];
+  const champ = champId ? F[champId] : null;
+  const list = rankings[div][body].map((id) => F[id]);
   return (
     <div>
-      <H sub="Per-body top-15 rankings arrive in phase 2; for now this lists the best fighters by rating.">World</H>
-      <div className="mb-3 flex gap-2 overflow-x-auto pb-1">
+      <H sub="Top 15 per sanctioning body. The champion is shown separately.">World</H>
+      <div className="mb-2 flex gap-2 overflow-x-auto pb-1">
         {DIVISIONS.map((d) => (
           <button key={d} onClick={() => setDiv(d)} className={`min-h-11 shrink-0 rounded-full px-4 text-sm font-semibold ${d === div ? "bg-accent text-accentfg" : "border border-line bg-surface"}`}>{DIVISION_LABEL[d]}</button>
         ))}
       </div>
-      <Card className="mb-3">
-        <div className="mb-2 text-sm font-semibold">{DIVISION_LABEL[div]} champions <span className="font-normal text-muted">({DIVISION_LIMIT[div]})</span></div>
-        {WORLD_BODIES.map((b) => {
-          const id = game.world.belts[div][b]; const f = id ? F[id] : null;
-          return (
-            <div key={b} className="flex min-h-11 items-center justify-between border-b border-line text-sm last:border-0">
-              <Badge>{b}</Badge><span className="font-semibold">{f ? `${flag(f.nationality)} ${f.name}` : <span className="text-muted">Vacant</span>}</span>
-            </div>
-          );
-        })}
-      </Card>
-      <Card className="py-1">
-        {top.map((f, i) => <FighterRow key={f.id} f={f} right={<span className="text-muted">#{i + 1}</span>} />)}
+      <div className="mb-3 grid grid-cols-4 gap-2">
+        {WORLD_BODIES.map((b) => (
+          <button key={b} onClick={() => setBody(b)} className={`min-h-11 rounded-lg text-sm font-bold ${b === body ? "bg-fg text-bg" : "border border-line bg-surface"}`}>{b}</button>
+        ))}
+      </div>
+      <Card className="mb-3 py-1">
+        <div className="pt-2 text-xs font-semibold text-muted">{body} {DIVISION_LABEL[div]} champion ({DIVISION_LIMIT[div]})</div>
+        {champ ? <FighterRow f={champ} right={<Badge>C</Badge>} /> : <p className="py-3 text-sm text-muted">Vacant. A vacant title fight is needed.</p>}
+        <div className="border-t border-line pt-2 text-xs font-semibold text-muted">Rankings</div>
+        {list.map((f, i) => <FighterRow key={f.id} f={f} right={<span className="text-muted">#{i + 1}</span>} />)}
       </Card>
     </div>
   );

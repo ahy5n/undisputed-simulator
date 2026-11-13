@@ -3,6 +3,7 @@ import { useState } from "react";
 import { GameProvider, useGame } from "@/lib/game/store";
 import { dateForWeek, fmtDate } from "@/lib/sim/calendar";
 import NewGame from "./NewGame";
+import { ProfileProvider } from "./profile";
 import { Btn, money } from "./ui";
 import { FightsScreen, FeedScreen, HomeScreen, MarketScreen, MoreScreen, ShowsScreen, StableScreen, WorldScreen } from "./screens";
 
@@ -65,5 +66,5 @@ function Shell() {
 }
 
 export default function GameApp() {
-  return <GameProvider><Shell /></GameProvider>;
+  return <GameProvider><ProfileProvider><Shell /></ProfileProvider></GameProvider>;
 }

@@ -12,7 +12,7 @@
    "ko": 27
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "puncher",
   "ratings": {
    "power": 100,
@@ -40,7 +40,7 @@
   "titles": [
    "WBA"
   ],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "boxer-puncher",
   "ratings": {
    "power": 91,
@@ -66,7 +66,7 @@
    "ko": 24
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "boxer-puncher",
   "ratings": {
    "power": 98,
@@ -94,7 +94,7 @@
   "titles": [
    "WBC"
   ],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "boxer",
   "ratings": {
    "speed": 78,
@@ -122,7 +122,7 @@
   "titles": [
    "IBF"
   ],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "boxer",
   "ratings": {
    "speed": 80,
@@ -151,7 +151,7 @@
   "titles": [
    "WBO"
   ],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "boxer",
   "ratings": {
    "speed": 77,
@@ -178,7 +178,7 @@
    "ko": 10
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "boxer",
   "ratings": {
    "speed": 79,
@@ -205,7 +205,7 @@
    "ko": 10
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "boxer",
   "ratings": {
    "speed": 75,
@@ -232,7 +232,7 @@
    "ko": 13
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "boxer",
   "ratings": {
    "speed": 82,
@@ -259,7 +259,7 @@
    "ko": 10
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "boxer",
   "ratings": {
    "speed": 75,
@@ -286,7 +286,7 @@
    "ko": 10
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "boxer",
   "ratings": {
    "speed": 79,
@@ -313,7 +313,7 @@
    "ko": 10
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "boxer",
   "ratings": {
    "speed": 77,
@@ -340,7 +340,7 @@
    "ko": 9
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "boxer",
   "ratings": {
    "speed": 77,
@@ -369,7 +369,7 @@
   "titles": [
    "WBC"
   ],
-  "promoter": "Top Rank",
+  "promoter": "top-rank",
   "style": "boxer",
   "ratings": {
    "speed": 81,
@@ -397,7 +397,7 @@
   "titles": [
    "IBF"
   ],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "boxer",
   "ratings": {
    "speed": 80,
@@ -425,7 +425,7 @@
   "titles": [
    "WBO"
   ],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "puncher",
   "ratings": {
    "power": 93,
@@ -451,7 +451,7 @@
    "ko": 12
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "boxer",
   "ratings": {
    "speed": 87,
@@ -477,7 +477,7 @@
    "ko": 9
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "boxer",
   "ratings": {
    "speed": 85,
@@ -503,7 +503,7 @@
    "ko": 11
   },
   "titles": [],
-  "promoter": "Matchroom",
+  "promoter": "matchroom",
   "style": "swarmer",
   "ratings": {
    "stamina": 89,
@@ -529,7 +529,7 @@
    "ko": 19
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "brawler",
   "ratings": {
    "power": 85,
@@ -555,7 +555,7 @@
    "ko": 19
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "puncher",
   "ratings": {
    "power": 86,
@@ -581,7 +581,7 @@
    "ko": 17
   },
   "titles": [],
-  "promoter": "Matchroom",
+  "promoter": "matchroom",
   "style": "brawler",
   "ratings": {
    "power": 84,
@@ -607,7 +607,7 @@
    "ko": 9
   },
   "titles": [],
-  "promoter": "Matchroom",
+  "promoter": "matchroom",
   "style": "swarmer",
   "ratings": {
    "stamina": 80,
@@ -633,7 +633,7 @@
    "ko": 9
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "boxer",
   "ratings": {
    "speed": 79,
@@ -659,7 +659,7 @@
    "ko": 8
   },
   "titles": [],
-  "promoter": "PBC",
+  "promoter": "pbc",
   "style": "boxer",
   "ratings": {
    "speed": 85,
@@ -685,7 +685,7 @@
    "ko": 8
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "boxer",
   "ratings": {
    "speed": 75,
@@ -711,7 +711,7 @@
    "ko": 9
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "boxer",
   "ratings": {
    "speed": 78,
@@ -739,7 +739,7 @@
   "titles": [
    "WBA"
   ],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "boxer",
   "ratings": {
    "speed": 73,
@@ -768,7 +768,7 @@
   "titles": [
    "IBF"
   ],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "boxer",
   "ratings": {
    "speed": 72,
@@ -797,7 +797,7 @@
   "titles": [
    "WBO"
   ],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "boxer",
   "ratings": {
    "speed": 78,
@@ -824,7 +824,7 @@
    "ko": 11
   },
   "titles": [],
-  "promoter": "Matchroom",
+  "promoter": "matchroom",
   "style": "boxer-puncher",
   "ratings": {
    "power": 75,
@@ -851,7 +851,7 @@
    "ko": 10
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "boxer",
   "ratings": {
    "speed": 74,
@@ -878,7 +878,7 @@
    "ko": 12
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "boxer",
   "ratings": {
    "speed": 85,
@@ -905,7 +905,7 @@
    "ko": 10
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "boxer",
   "ratings": {
    "speed": 75,
@@ -932,7 +932,7 @@
    "ko": 9
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "boxer",
   "ratings": {
    "speed": 72,
@@ -959,7 +959,7 @@
    "ko": 10
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "boxer",
   "ratings": {
    "speed": 72,
@@ -986,7 +986,7 @@
    "ko": 13
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "boxer",
   "ratings": {
    "speed": 82,
@@ -1013,7 +1013,7 @@
    "ko": 10
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "boxer",
   "ratings": {
    "speed": 77,
@@ -1040,7 +1040,7 @@
    "ko": 9
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "boxer",
   "ratings": {
    "speed": 73,
@@ -1067,7 +1067,7 @@
    "ko": 9
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "boxer",
   "ratings": {
    "speed": 75,
@@ -1094,7 +1094,7 @@
    "ko": 15
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "boxer",
   "ratings": {
    "speed": 100,
@@ -1122,7 +1122,7 @@
   "titles": [
    "WBO"
   ],
-  "promoter": "Queensberry",
+  "promoter": "queensberry",
   "style": "puncher",
   "ratings": {
    "power": 98,
@@ -1150,7 +1150,7 @@
   "titles": [
    "WBC"
   ],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "boxer-puncher",
   "ratings": {
    "power": 87,
@@ -1178,7 +1178,7 @@
   "titles": [
    "IBF"
   ],
-  "promoter": "Matchroom",
+  "promoter": "matchroom",
   "style": "puncher",
   "ratings": {
    "power": 96,
@@ -1206,7 +1206,7 @@
   "titles": [
    "WBA"
   ],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "puncher",
   "ratings": {
    "power": 99,
@@ -1232,7 +1232,7 @@
    "ko": 26
   },
   "titles": [],
-  "promoter": "Matchroom",
+  "promoter": "matchroom",
   "style": "puncher",
   "ratings": {
    "power": 97,
@@ -1258,7 +1258,7 @@
    "ko": 24
   },
   "titles": [],
-  "promoter": "Queensberry",
+  "promoter": "queensberry",
   "style": "boxer",
   "ratings": {
    "speed": 95,
@@ -1284,7 +1284,7 @@
    "ko": 43
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "puncher",
   "ratings": {
    "power": 100,
@@ -1310,7 +1310,7 @@
    "ko": 24
   },
   "titles": [],
-  "promoter": "Matchroom",
+  "promoter": "matchroom",
   "style": "boxer-puncher",
   "ratings": {
    "power": 87,
@@ -1336,7 +1336,7 @@
    "ko": 21
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "puncher",
   "ratings": {
    "power": 93,
@@ -1362,7 +1362,7 @@
    "ko": 15
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "puncher",
   "ratings": {
    "power": 95,
@@ -1388,7 +1388,7 @@
    "ko": 16
   },
   "titles": [],
-  "promoter": "Top Rank",
+  "promoter": "top-rank",
   "style": "puncher",
   "ratings": {
    "power": 97,
@@ -1414,7 +1414,7 @@
    "ko": 11
   },
   "titles": [],
-  "promoter": "Boxxer",
+  "promoter": "boxxer",
   "style": "puncher",
   "ratings": {
    "power": 93,
@@ -1440,7 +1440,7 @@
    "ko": 15
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "puncher",
   "ratings": {
    "power": 81,
@@ -1466,7 +1466,7 @@
    "ko": 17
   },
   "titles": [],
-  "promoter": "Top Rank",
+  "promoter": "top-rank",
   "style": "boxer",
   "ratings": {
    "speed": 77,
@@ -1492,7 +1492,7 @@
    "ko": 16
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "boxer",
   "ratings": {
    "speed": 78,
@@ -1518,7 +1518,7 @@
    "ko": 21
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "puncher",
   "ratings": {
    "power": 92,
@@ -1544,7 +1544,7 @@
    "ko": 23
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "brawler",
   "ratings": {
    "power": 76,
@@ -1570,7 +1570,7 @@
    "ko": 15
   },
   "titles": [],
-  "promoter": "Queensberry",
+  "promoter": "queensberry",
   "style": "puncher",
   "ratings": {
    "power": 92,
@@ -1596,7 +1596,7 @@
    "ko": 18
   },
   "titles": [],
-  "promoter": "Queensberry",
+  "promoter": "queensberry",
   "style": "puncher",
   "ratings": {
    "power": 100,
@@ -1622,7 +1622,7 @@
    "ko": 23
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "brawler",
   "ratings": {
    "power": 88,
@@ -1648,7 +1648,7 @@
    "ko": 23
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "boxer-puncher",
   "ratings": {
    "power": 83,
@@ -1674,7 +1674,7 @@
    "ko": 29
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "puncher",
   "ratings": {
    "power": 85,
@@ -1700,7 +1700,7 @@
    "ko": 16
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "boxer",
   "ratings": {
    "speed": 75,
@@ -1726,7 +1726,7 @@
    "ko": 11
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "boxer",
   "ratings": {
    "speed": 79,
@@ -1752,7 +1752,7 @@
    "ko": 21
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "puncher",
   "ratings": {
    "power": 75,
@@ -1778,7 +1778,7 @@
    "ko": 14
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "boxer",
   "ratings": {
    "speed": 69,
@@ -1804,7 +1804,7 @@
    "ko": 12
   },
   "titles": [],
-  "promoter": "Boxxer",
+  "promoter": "boxxer",
   "style": "brawler",
   "ratings": {
    "power": 82,
@@ -1830,7 +1830,7 @@
    "ko": 15
   },
   "titles": [],
-  "promoter": "Matchroom",
+  "promoter": "matchroom",
   "style": "boxer",
   "ratings": {
    "speed": 83,
@@ -1856,7 +1856,7 @@
    "ko": 14
   },
   "titles": [],
-  "promoter": "Top Rank",
+  "promoter": "top-rank",
   "style": "puncher",
   "ratings": {
    "power": 95,
@@ -1882,7 +1882,7 @@
    "ko": 8
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "boxer",
   "ratings": {
    "speed": 73,
@@ -1908,7 +1908,7 @@
    "ko": 9
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "puncher",
   "ratings": {
    "power": 82,
@@ -1934,7 +1934,7 @@
    "ko": 14
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "puncher",
   "ratings": {
    "power": 81,
@@ -1960,7 +1960,7 @@
    "ko": 11
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "puncher",
   "ratings": {
    "power": 81,
@@ -1986,7 +1986,7 @@
    "ko": 17
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "puncher",
   "ratings": {
    "power": 76,
@@ -2012,7 +2012,7 @@
    "ko": 18
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "puncher",
   "ratings": {
    "power": 80,
@@ -2038,7 +2038,7 @@
    "ko": 5
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "boxer",
   "ratings": {
    "speed": 66,
@@ -2064,7 +2064,7 @@
    "ko": 26
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "puncher",
   "ratings": {
    "power": 70,
@@ -2090,7 +2090,7 @@
    "ko": 17
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "boxer",
   "ratings": {
    "speed": 66,
@@ -2116,7 +2116,7 @@
    "ko": 15
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "boxer",
   "ratings": {
    "speed": 74,
@@ -2142,7 +2142,7 @@
    "ko": 25
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "puncher",
   "ratings": {
    "power": 90,
@@ -2168,7 +2168,7 @@
    "ko": 20
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "brawler",
   "ratings": {
    "power": 84,
@@ -2194,7 +2194,7 @@
    "ko": 21
   },
   "titles": [],
-  "promoter": "Matchroom",
+  "promoter": "matchroom",
   "style": "boxer-puncher",
   "ratings": {
    "power": 93,
@@ -2220,7 +2220,7 @@
    "ko": 25
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "swarmer",
   "ratings": {
    "stamina": 97,
@@ -2246,7 +2246,7 @@
    "ko": 30
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "boxer",
   "ratings": {
    "speed": 83,
@@ -2272,7 +2272,7 @@
    "ko": 17
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "boxer-puncher",
   "ratings": {
    "power": 76,
@@ -2298,7 +2298,7 @@
    "ko": 21
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "boxer-puncher",
   "ratings": {
    "power": 81,
@@ -2324,7 +2324,7 @@
    "ko": 8
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "boxer",
   "ratings": {
    "speed": 71,
@@ -2350,7 +2350,7 @@
    "ko": 12
   },
   "titles": [],
-  "promoter": "Matchroom",
+  "promoter": "matchroom",
   "style": "boxer",
   "ratings": {
    "speed": 85,
@@ -2376,7 +2376,7 @@
    "ko": 20
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "boxer-puncher",
   "ratings": {
    "power": 90,
@@ -2402,7 +2402,7 @@
    "ko": 14
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "boxer",
   "ratings": {
    "speed": 75,
@@ -2428,7 +2428,7 @@
    "ko": 26
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "puncher",
   "ratings": {
    "power": 84,
@@ -2454,7 +2454,7 @@
    "ko": 9
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "boxer",
   "ratings": {
    "speed": 61,
@@ -2480,7 +2480,7 @@
    "ko": 10
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "boxer",
   "ratings": {
    "speed": 70,
@@ -2506,7 +2506,7 @@
    "ko": 9
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "boxer",
   "ratings": {
    "speed": 64,
@@ -2532,7 +2532,7 @@
    "ko": 14
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "puncher",
   "ratings": {
    "power": 88,
@@ -2558,7 +2558,7 @@
    "ko": 17
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "brawler",
   "ratings": {
    "power": 69,
@@ -2584,7 +2584,7 @@
    "ko": 10
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "puncher",
   "ratings": {
    "power": 75,
@@ -2610,7 +2610,7 @@
    "ko": 13
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "boxer-puncher",
   "ratings": {
    "power": 73,
@@ -2636,7 +2636,7 @@
    "ko": 9
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "boxer",
   "ratings": {
    "speed": 67,
@@ -2662,7 +2662,7 @@
    "ko": 6
   },
   "titles": [],
-  "promoter": "Boxxer",
+  "promoter": "boxxer",
   "style": "boxer",
   "ratings": {
    "speed": 58,
@@ -2688,7 +2688,7 @@
    "ko": 5
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "boxer",
   "ratings": {
    "speed": 59,
@@ -2714,7 +2714,7 @@
    "ko": 15
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "puncher",
   "ratings": {
    "power": 86,
@@ -2740,7 +2740,7 @@
    "ko": 17
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "boxer",
   "ratings": {
    "speed": 59,
@@ -2766,7 +2766,7 @@
    "ko": 30
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "brawler",
   "ratings": {
    "power": 70,
@@ -2792,7 +2792,7 @@
    "ko": 21
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "puncher",
   "ratings": {
    "power": 77,
@@ -2822,7 +2822,7 @@
    "IBF",
    "WBO"
   ],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "boxer",
   "ratings": {
    "speed": 96,
@@ -2848,7 +2848,7 @@
    "ko": 20
   },
   "titles": [],
-  "promoter": "Top Rank",
+  "promoter": "top-rank",
   "style": "puncher",
   "ratings": {
    "power": 100,
@@ -2874,7 +2874,7 @@
    "ko": 22
   },
   "titles": [],
-  "promoter": "Matchroom",
+  "promoter": "matchroom",
   "style": "boxer-puncher",
   "ratings": {
    "power": 88,
@@ -2902,7 +2902,7 @@
   "titles": [
    "WBC"
   ],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "boxer-puncher",
   "ratings": {
    "power": 84,
@@ -2928,7 +2928,7 @@
    "ko": 39
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "counter-puncher",
   "ratings": {
    "defence": 95,
@@ -2954,7 +2954,7 @@
    "ko": 35
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "puncher",
   "ratings": {
    "power": 100,
@@ -2980,7 +2980,7 @@
    "ko": 9
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "boxer",
   "ratings": {
    "speed": 87,
@@ -3006,7 +3006,7 @@
    "ko": 16
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "puncher",
   "ratings": {
    "power": 95,
@@ -3032,7 +3032,7 @@
    "ko": 18
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "boxer",
   "ratings": {
    "speed": 76,
@@ -3058,7 +3058,7 @@
    "ko": 18
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "puncher",
   "ratings": {
    "power": 87,
@@ -3084,7 +3084,7 @@
    "ko": 24
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "puncher",
   "ratings": {
    "power": 98,
@@ -3110,7 +3110,7 @@
    "ko": 18
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "puncher",
   "ratings": {
    "power": 90,
@@ -3136,7 +3136,7 @@
    "ko": 14
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "boxer",
   "ratings": {
    "speed": 80,
@@ -3162,7 +3162,7 @@
    "ko": 19
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "boxer",
   "ratings": {
    "speed": 83,
@@ -3188,7 +3188,7 @@
    "ko": 10
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "puncher",
   "ratings": {
    "power": 92,
@@ -3214,7 +3214,7 @@
    "ko": 14
   },
   "titles": [],
-  "promoter": "Queensberry",
+  "promoter": "queensberry",
   "style": "puncher",
   "ratings": {
    "power": 94,
@@ -3240,7 +3240,7 @@
    "ko": 25
   },
   "titles": [],
-  "promoter": "Queensberry",
+  "promoter": "queensberry",
   "style": "puncher",
   "ratings": {
    "power": 94,
@@ -3266,7 +3266,7 @@
    "ko": 17
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "puncher",
   "ratings": {
    "power": 80,
@@ -3292,7 +3292,7 @@
    "ko": 8
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "boxer",
   "ratings": {
    "speed": 80,
@@ -3318,7 +3318,7 @@
    "ko": 30
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "boxer-puncher",
   "ratings": {
    "power": 78,
@@ -3344,7 +3344,7 @@
    "ko": 11
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "boxer",
   "ratings": {
    "speed": 69,
@@ -3370,7 +3370,7 @@
    "ko": 25
   },
   "titles": [],
-  "promoter": "Wasserman",
+  "promoter": "wasserman",
   "style": "boxer-puncher",
   "ratings": {
    "power": 83,
@@ -3396,7 +3396,7 @@
    "ko": 14
   },
   "titles": [],
-  "promoter": "Matchroom",
+  "promoter": "matchroom",
   "style": "brawler",
   "ratings": {
    "power": 83,
@@ -3422,7 +3422,7 @@
    "ko": 21
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "brawler",
   "ratings": {
    "power": 84,
@@ -3448,7 +3448,7 @@
    "ko": 15
   },
   "titles": [],
-  "promoter": "Top Rank",
+  "promoter": "top-rank",
   "style": "puncher",
   "ratings": {
    "power": 85,
@@ -3474,7 +3474,7 @@
    "ko": 8
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "boxer",
   "ratings": {
    "speed": 72,
@@ -3500,7 +3500,7 @@
    "ko": 9
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "puncher",
   "ratings": {
    "power": 84,
@@ -3526,7 +3526,7 @@
    "ko": 13
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "puncher",
   "ratings": {
    "power": 79,
@@ -3552,7 +3552,7 @@
    "ko": 17
   },
   "titles": [],
-  "promoter": "Queensberry",
+  "promoter": "queensberry",
   "style": "boxer-puncher",
   "ratings": {
    "power": 89,
@@ -3578,7 +3578,7 @@
    "ko": 11
   },
   "titles": [],
-  "promoter": "Top Rank",
+  "promoter": "top-rank",
   "style": "boxer-puncher",
   "ratings": {
    "power": 84,
@@ -3604,7 +3604,7 @@
    "ko": 16
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "boxer",
   "ratings": {
    "speed": 82,
@@ -3630,7 +3630,7 @@
    "ko": 20
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "puncher",
   "ratings": {
    "power": 84,
@@ -3656,7 +3656,7 @@
    "ko": 15
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "puncher",
   "ratings": {
    "power": 76,
@@ -3682,7 +3682,7 @@
    "ko": 21
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "puncher",
   "ratings": {
    "power": 72,
@@ -3708,7 +3708,7 @@
    "ko": 17
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "puncher",
   "ratings": {
    "power": 77,
@@ -3734,7 +3734,7 @@
    "ko": 14
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "boxer",
   "ratings": {
    "speed": 70,
@@ -3760,7 +3760,7 @@
    "ko": 9
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "boxer",
   "ratings": {
    "speed": 70,
@@ -3786,7 +3786,7 @@
    "ko": 6
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "boxer",
   "ratings": {
    "speed": 64,
@@ -3812,7 +3812,7 @@
    "ko": 12
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "boxer",
   "ratings": {
    "speed": 74,
@@ -3840,7 +3840,7 @@
   "titles": [
    "WBO"
   ],
-  "promoter": "Top Rank",
+  "promoter": "top-rank",
   "style": "puncher",
   "ratings": {
    "power": 94,
@@ -3868,7 +3868,7 @@
   "titles": [
    "WBC"
   ],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "swarmer",
   "ratings": {
    "stamina": 88,
@@ -3896,7 +3896,7 @@
   "titles": [
    "WBA"
   ],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "boxer",
   "ratings": {
    "speed": 79,
@@ -3922,7 +3922,7 @@
    "ko": 28
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "counter-puncher",
   "ratings": {
    "defence": 94,
@@ -3948,7 +3948,7 @@
    "ko": 12
   },
   "titles": [],
-  "promoter": "Top Rank",
+  "promoter": "top-rank",
   "style": "boxer",
   "ratings": {
    "speed": 93,
@@ -3974,7 +3974,7 @@
    "ko": 9
   },
   "titles": [],
-  "promoter": "Top Rank",
+  "promoter": "top-rank",
   "style": "boxer-puncher",
   "ratings": {
    "power": 88,
@@ -4000,7 +4000,7 @@
    "ko": 32
   },
   "titles": [],
-  "promoter": "Top Rank",
+  "promoter": "top-rank",
   "style": "swarmer",
   "ratings": {
    "stamina": 90,
@@ -4026,7 +4026,7 @@
    "ko": 24
   },
   "titles": [],
-  "promoter": "Top Rank",
+  "promoter": "top-rank",
   "style": "boxer-puncher",
   "ratings": {
    "power": 91,
@@ -4052,7 +4052,7 @@
    "ko": 18
   },
   "titles": [],
-  "promoter": "PBC",
+  "promoter": "pbc",
   "style": "swarmer",
   "ratings": {
    "stamina": 86,
@@ -4078,7 +4078,7 @@
    "ko": 18
   },
   "titles": [],
-  "promoter": "Top Rank",
+  "promoter": "top-rank",
   "style": "swarmer",
   "ratings": {
    "stamina": 84,
@@ -4104,7 +4104,7 @@
    "ko": 8
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "boxer",
   "ratings": {
    "speed": 84,
@@ -4130,7 +4130,7 @@
    "ko": 11
   },
   "titles": [],
-  "promoter": "Top Rank",
+  "promoter": "top-rank",
   "style": "boxer",
   "ratings": {
    "speed": 86,
@@ -4156,7 +4156,7 @@
    "ko": 13
   },
   "titles": [],
-  "promoter": "PBC",
+  "promoter": "pbc",
   "style": "boxer",
   "ratings": {
    "speed": 82,
@@ -4182,7 +4182,7 @@
    "ko": 3
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "boxer",
   "ratings": {
    "speed": 82,
@@ -4208,7 +4208,7 @@
    "ko": 10
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "boxer",
   "ratings": {
    "speed": 82,
@@ -4234,7 +4234,7 @@
    "ko": 29
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "boxer",
   "ratings": {
    "speed": 69,
@@ -4260,7 +4260,7 @@
    "ko": 5
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "boxer",
   "ratings": {
    "speed": 76,
@@ -4286,7 +4286,7 @@
    "ko": 10
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "boxer",
   "ratings": {
    "speed": 78,
@@ -4312,7 +4312,7 @@
    "ko": 11
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "boxer",
   "ratings": {
    "speed": 75,
@@ -4338,7 +4338,7 @@
    "ko": 10
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "boxer",
   "ratings": {
    "speed": 75,
@@ -4367,7 +4367,7 @@
   "titles": [
    "WBA"
   ],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "counter-puncher",
   "ratings": {
    "defence": 88,
@@ -4395,7 +4395,7 @@
   "titles": [
    "WBC"
   ],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "puncher",
   "ratings": {
    "power": 91,
@@ -4423,7 +4423,7 @@
   "titles": [
    "IBF"
   ],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "boxer",
   "ratings": {
    "speed": 79,
@@ -4449,7 +4449,7 @@
    "ko": 18
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "puncher",
   "ratings": {
    "power": 92,
@@ -4475,7 +4475,7 @@
    "ko": 30
   },
   "titles": [],
-  "promoter": "PBC",
+  "promoter": "pbc",
   "style": "boxer-puncher",
   "ratings": {
    "power": 100,
@@ -4501,7 +4501,7 @@
    "ko": 15
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "boxer-puncher",
   "ratings": {
    "power": 90,
@@ -4527,7 +4527,7 @@
    "ko": 9
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "boxer",
   "ratings": {
    "speed": 77,
@@ -4553,7 +4553,7 @@
    "ko": 23
   },
   "titles": [],
-  "promoter": "Golden Boy",
+  "promoter": "golden-boy",
   "style": "puncher",
   "ratings": {
    "power": 100,
@@ -4579,7 +4579,7 @@
    "ko": 17
   },
   "titles": [],
-  "promoter": "Top Rank",
+  "promoter": "top-rank",
   "style": "puncher",
   "ratings": {
    "power": 96,
@@ -4605,7 +4605,7 @@
    "ko": 17
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "brawler",
   "ratings": {
    "power": 86,
@@ -4631,7 +4631,7 @@
    "ko": 22
   },
   "titles": [],
-  "promoter": "Top Rank",
+  "promoter": "top-rank",
   "style": "puncher",
   "ratings": {
    "power": 96,
@@ -4657,7 +4657,7 @@
    "ko": 31
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "counter-puncher",
   "ratings": {
    "defence": 100,
@@ -4683,7 +4683,7 @@
    "ko": 7
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "boxer",
   "ratings": {
    "speed": 90,
@@ -4709,7 +4709,7 @@
    "ko": 14
   },
   "titles": [],
-  "promoter": "Top Rank",
+  "promoter": "top-rank",
   "style": "boxer-puncher",
   "ratings": {
    "power": 78,
@@ -4735,7 +4735,7 @@
    "ko": 16
   },
   "titles": [],
-  "promoter": "Top Rank",
+  "promoter": "top-rank",
   "style": "boxer",
   "ratings": {
    "speed": 79,
@@ -4761,7 +4761,7 @@
    "ko": 24
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "puncher",
   "ratings": {
    "power": 93,
@@ -4787,7 +4787,7 @@
    "ko": 13
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "boxer-puncher",
   "ratings": {
    "power": 86,
@@ -4813,7 +4813,7 @@
    "ko": 11
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "puncher",
   "ratings": {
    "power": 83,
@@ -4839,7 +4839,7 @@
    "ko": 15
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "brawler",
   "ratings": {
    "power": 66,
@@ -4865,7 +4865,7 @@
    "ko": 12
   },
   "titles": [],
-  "promoter": "Top Rank",
+  "promoter": "top-rank",
   "style": "boxer-puncher",
   "ratings": {
    "power": 84,
@@ -4891,7 +4891,7 @@
    "ko": 22
   },
   "titles": [],
-  "promoter": "PBC",
+  "promoter": "pbc",
   "style": "puncher",
   "ratings": {
    "power": 96,
@@ -4917,7 +4917,7 @@
    "ko": 19
   },
   "titles": [],
-  "promoter": "PBC",
+  "promoter": "pbc",
   "style": "counter-puncher",
   "ratings": {
    "defence": 92,
@@ -4943,7 +4943,7 @@
    "ko": 19
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "boxer",
   "ratings": {
    "speed": 69,
@@ -4969,7 +4969,7 @@
    "ko": 15
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "puncher",
   "ratings": {
    "power": 86,
@@ -4995,7 +4995,7 @@
    "ko": 9
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "boxer",
   "ratings": {
    "speed": 72,
@@ -5021,7 +5021,7 @@
    "ko": 8
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "boxer",
   "ratings": {
    "speed": 68,
@@ -5047,7 +5047,7 @@
    "ko": 11
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "boxer-puncher",
   "ratings": {
    "power": 87,
@@ -5073,7 +5073,7 @@
    "ko": 12
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "boxer",
   "ratings": {
    "speed": 70,
@@ -5099,7 +5099,7 @@
    "ko": 15
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "puncher",
   "ratings": {
    "power": 87,
@@ -5125,7 +5125,7 @@
    "ko": 21
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "puncher",
   "ratings": {
    "power": 87,
@@ -5151,7 +5151,7 @@
    "ko": 4
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "boxer",
   "ratings": {
    "speed": 60,
@@ -5177,7 +5177,7 @@
    "ko": 9
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "boxer",
   "ratings": {
    "speed": 74,
@@ -5203,7 +5203,7 @@
    "ko": 14
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "puncher",
   "ratings": {
    "power": 86,
@@ -5229,7 +5229,7 @@
    "ko": 11
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "boxer",
   "ratings": {
    "speed": 75,
@@ -5255,7 +5255,7 @@
    "ko": 10
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "boxer",
   "ratings": {
    "speed": 79,
@@ -5284,7 +5284,7 @@
   "titles": [
    "WBO"
   ],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "boxer",
   "ratings": {
    "speed": 86,
@@ -5312,7 +5312,7 @@
   "titles": [
    "WBA"
   ],
-  "promoter": "Top Rank",
+  "promoter": "top-rank",
   "style": "puncher",
   "ratings": {
    "power": 91,
@@ -5340,7 +5340,7 @@
   "titles": [
    "WBC"
   ],
-  "promoter": "Golden Boy",
+  "promoter": "golden-boy",
   "style": "puncher",
   "ratings": {
    "power": 98,
@@ -5368,7 +5368,7 @@
   "titles": [
    "IBF"
   ],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "boxer",
   "ratings": {
    "speed": 83,
@@ -5394,7 +5394,7 @@
    "ko": 13
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "boxer",
   "ratings": {
    "speed": 88,
@@ -5420,7 +5420,7 @@
    "ko": 11
   },
   "titles": [],
-  "promoter": "Top Rank",
+  "promoter": "top-rank",
   "style": "counter-puncher",
   "ratings": {
    "defence": 93,
@@ -5446,7 +5446,7 @@
    "ko": 17
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "puncher",
   "ratings": {
    "power": 99,
@@ -5472,7 +5472,7 @@
    "ko": 22
   },
   "titles": [],
-  "promoter": "PBC",
+  "promoter": "pbc",
   "style": "boxer-puncher",
   "ratings": {
    "power": 96,
@@ -5498,7 +5498,7 @@
    "ko": 23
   },
   "titles": [],
-  "promoter": "PBC",
+  "promoter": "pbc",
   "style": "puncher",
   "ratings": {
    "power": 86,
@@ -5524,7 +5524,7 @@
    "ko": 18
   },
   "titles": [],
-  "promoter": "PBC",
+  "promoter": "pbc",
   "style": "boxer",
   "ratings": {
    "speed": 83,
@@ -5550,7 +5550,7 @@
    "ko": 10
   },
   "titles": [],
-  "promoter": "PBC",
+  "promoter": "pbc",
   "style": "puncher",
   "ratings": {
    "power": 89,
@@ -5576,7 +5576,7 @@
    "ko": 10
   },
   "titles": [],
-  "promoter": "Boxxer",
+  "promoter": "boxxer",
   "style": "boxer",
   "ratings": {
    "speed": 81,
@@ -5602,7 +5602,7 @@
    "ko": 28
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "boxer-puncher",
   "ratings": {
    "power": 79,
@@ -5628,7 +5628,7 @@
    "ko": 13
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "boxer",
   "ratings": {
    "speed": 84,
@@ -5654,7 +5654,7 @@
    "ko": 24
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "puncher",
   "ratings": {
    "power": 94,
@@ -5680,7 +5680,7 @@
    "ko": 8
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "boxer",
   "ratings": {
    "speed": 75,
@@ -5706,7 +5706,7 @@
    "ko": 14
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "counter-puncher",
   "ratings": {
    "defence": 78,
@@ -5732,7 +5732,7 @@
    "ko": 7
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "boxer",
   "ratings": {
    "speed": 76,
@@ -5758,7 +5758,7 @@
    "ko": 8
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "boxer",
   "ratings": {
    "speed": 79,
@@ -5784,7 +5784,7 @@
    "ko": 10
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "boxer-puncher",
   "ratings": {
    "power": 78,
@@ -5810,7 +5810,7 @@
    "ko": 12
   },
   "titles": [],
-  "promoter": "PBC",
+  "promoter": "pbc",
   "style": "boxer",
   "ratings": {
    "speed": 81,
@@ -5836,7 +5836,7 @@
    "ko": 20
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "boxer",
   "ratings": {
    "speed": 78,
@@ -5862,7 +5862,7 @@
    "ko": 17
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "boxer-puncher",
   "ratings": {
    "power": 78,
@@ -5888,7 +5888,7 @@
    "ko": 9
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "boxer",
   "ratings": {
    "speed": 73,
@@ -5914,7 +5914,7 @@
    "ko": 21
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "puncher",
   "ratings": {
    "power": 90,
@@ -5940,7 +5940,7 @@
    "ko": 9
   },
   "titles": [],
-  "promoter": "Independent",
+  "promoter": "independent",
   "style": "boxer",
   "ratings": {
    "speed": 82,
