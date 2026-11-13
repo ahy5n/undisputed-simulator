@@ -411,3 +411,16 @@ export function throwTowel(state: FightState, side: "a" | "b"): void {
   state.roundsLog[state.roundsLog.length - 1]?.events.push(stop);
   finish(state, side === "a" ? "b" : "a", "TKO", stop);
 }
+
+/** Mirror a result so that sides a and b are exchanged (used when the player's fighter is the b side). */
+export function swapResult(r: FightResult): FightResult {
+  const flip = (x: "a" | "b" | null) => (x === null ? null : x === "a" ? "b" : "a");
+  const swapStop = (e?: FightEvent) => (e && "side" in e ? ({ ...e, side: flip(e.side) } as FightEvent) : e);
+  return {
+    ...r, winner: flip(r.winner),
+    scorecards: r.scorecards.map((c) => ({ a: c.b, b: c.a })),
+    stats: { a: r.stats.b, b: r.stats.a }, knockdowns: { a: r.knockdowns.b, b: r.knockdowns.a },
+    rounds: r.rounds.map((x) => ({ ...x, a: x.b, b: x.a, cards: x.cards.map(([p, q]) => [q, p] as [number, number]) })),
+    stoppage: swapStop(r.stoppage),
+  };
+}

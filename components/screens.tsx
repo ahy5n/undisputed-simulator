@@ -69,7 +69,8 @@ export function WorldScreen() {
   const { game } = useGame();
   const [div, setDiv] = useState<Division>("heavyweight");
   const [body, setBody] = useState<WorldBody>("WBC");
-  const rankings = useMemo(() => (game ? computeRankings(game.world) : null), [game?.world]); // eslint-disable-line react-hooks/exhaustive-deps
+  const world = game?.world;
+  const rankings = useMemo(() => (world ? computeRankings(world) : null), [world]);
   if (!game || !rankings) return null;
   const F = game.world.fighters;
   const champId = game.world.belts[div][body];

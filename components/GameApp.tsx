@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import { pendingPlayerFights } from "@/lib/sim/game";
 import { GameProvider, useGame } from "@/lib/game/store";
 import { dateForWeek, fmtDate } from "@/lib/sim/calendar";
 import NewGame from "./NewGame";
@@ -22,7 +23,7 @@ const TABS = [
 type Tab = (typeof TABS)[number]["id"];
 
 function Shell() {
-  const { game, ready, nextWeek } = useGame();
+  const { game, ready, nextWeek, simToFight } = useGame();
   const [tab, setTab] = useState<Tab>("market");
 
   if (!ready) return <div className="grid min-h-dvh place-items-center text-muted">Loading…</div>;
@@ -50,8 +51,14 @@ function Shell() {
             <div className="num text-sm font-bold">{date}</div>
             <div className="num text-xs text-muted">{money(game.company.cash)}</div>
           </div>
-          <Btn variant="ghost" disabled title="No fights booked yet">Sim to fight</Btn>
-          <Btn onClick={nextWeek}>Next week</Btn>
+          {pendingPlayerFights(game).length ? (
+            <Btn onClick={() => setTab("fights")}>Fight night</Btn>
+          ) : (
+            <>
+              <Btn variant="ghost" onClick={simToFight}>Sim to fight</Btn>
+              <Btn onClick={nextWeek}>Next week</Btn>
+            </>
+          )}
         </header>
         <main className="mx-auto w-full max-w-3xl flex-1 px-4 pb-28 pt-4 md:pb-8">{screens[tab]}</main>
         <nav className="pb-safe fixed inset-x-0 bottom-0 z-20 flex border-t border-line bg-surface md:hidden" aria-label="Main">

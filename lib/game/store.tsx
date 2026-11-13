@@ -1,7 +1,7 @@
 "use client";
 import { createContext, useCallback, useContext, useEffect, useRef, useState, type ReactNode } from "react";
 import { listGames, loadGame, saveGame } from "@/lib/save/db";
-import { advanceWeek } from "@/lib/sim/game";
+import { advanceWeek, pendingPlayerFights, simToNextFight } from "@/lib/sim/game";
 import type { GameSave } from "@/lib/sim/types";
 
 interface Ctx {
@@ -12,6 +12,7 @@ interface Ctx {
   start: (g: GameSave) => Promise<void>;
   open: (id: string) => Promise<void>;
   nextWeek: () => void;
+  simToFight: () => void;
   refreshSaves: () => Promise<void>;
   closeGame: () => void;
 }
@@ -21,6 +22,12 @@ export const useGame = () => {
   if (!c) throw new Error("useGame outside provider");
   return c;
 };
+const migrate = (g: GameSave): GameSave => ({
+  ...g,
+  negotiations: g.negotiations ?? [], fights: g.fights ?? [], incoming: g.incoming ?? [], orders: g.orders ?? [],
+  purseBids: g.purseBids ?? [], lastMandatory: g.lastMandatory ?? {}, history: g.history ?? [],
+  company: { ...g.company, reputation: g.company.reputation ?? 30 },
+});
 const LAST = "um:last-save";
 
 export function GameProvider({ children }: { children: ReactNode }) {
@@ -37,7 +44,7 @@ export function GameProvider({ children }: { children: ReactNode }) {
       try {
         await refreshSaves();
         const id = localStorage.getItem(LAST);
-        if (id) { const g = await loadGame(id); if (g) setGame({ ...g, negotiations: g.negotiations ?? [], company: { ...g.company, reputation: g.company.reputation ?? 30 } }); }
+        if (id) { const g = await loadGame(id); if (g) setGame(migrate(g)); }
       } catch { /* storage unavailable: start screen still works */ }
       setReady(true);
     })();
@@ -76,11 +83,12 @@ export function GameProvider({ children }: { children: ReactNode }) {
   }, [refreshSaves]);
   const open = useCallback(async (id: string) => {
     const g0 = await loadGame(id);
-    const g = g0 && { ...g0, negotiations: g0.negotiations ?? [], company: { ...g0.company, reputation: g0.company.reputation ?? 30 } };
+    const g = g0 && migrate(g0);
     if (g) { try { localStorage.setItem(LAST, id); } catch {} setGame(g); }
   }, []);
-  const nextWeek = useCallback(() => setGame((g) => (g ? advanceWeek(g) : g)), []);
+  const nextWeek = useCallback(() => setGame((g) => (g && !pendingPlayerFights(g).length ? advanceWeek(g) : g)), []);
+  const simToFight = useCallback(() => setGame((g) => (g && !pendingPlayerFights(g).length ? simToNextFight(g).game : g)), []);
   const closeGame = useCallback(() => { try { localStorage.removeItem(LAST); } catch {} setGame(null); refreshSaves(); }, [refreshSaves]);
 
-  return <GameCtx.Provider value={{ game, ready, saves, update, start, open, nextWeek, refreshSaves, closeGame }}>{children}</GameCtx.Provider>;
+  return <GameCtx.Provider value={{ game, ready, saves, update, start, open, nextWeek, simToFight, refreshSaves, closeGame }}>{children}</GameCtx.Provider>;
 }

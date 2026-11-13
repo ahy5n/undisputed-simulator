@@ -26,6 +26,21 @@ export interface Negotiation {
   rivals: { promoterId: string; offer: Offer }[]; log: string[]; startedWeek: number;
 }
 
+export interface FightTerms { purseA: number; purseB: number; titles: WorldBody[]; rounds: number; rematch: boolean; rehydration: boolean }
+export interface ScheduledFight extends FightTerms {
+  id: string; week: number; a: string; b: string; done?: boolean;
+  /** "player" if you promote it, otherwise the AI promoter id */
+  promoter: string;
+  origin: "player" | "ai" | "mandatory" | "vacant" | "bid" | "rematch";
+}
+export interface IncomingOffer { id: string; issued: number; expires: number; fromPromoter: string; mine: string; opp: string; fightWeek: number; terms: FightTerms }
+export interface Order {
+  id: string; kind: "mandatory" | "vacant"; division: Division; body: WorldBody;
+  champion: string | null; challenger: string; other?: string; issued: number; deadline: number;
+}
+export interface PurseBid { id: string; order: Order; minBid: number; bids: { promoterId: string; amount: number }[]; closeWeek: number }
+export interface FightRecord { week: number; a: string; b: string; aName: string; bName: string; winner: "a" | "b" | null; method: string; round: number; titles: WorldBody[]; division: Division }
+
 export interface Fighter {
   id: string;
   name: string;
@@ -86,7 +101,13 @@ export interface GameSave {
   startDate: string; // ISO date of a Saturday
   world: World;
   company: Company;
-  history: unknown[];
+  history: FightRecord[];
+  fights: ScheduledFight[];
+  incoming: IncomingOffer[];
+  orders: Order[];
+  purseBids: PurseBid[];
+  /** `${division}:${body}` -> week the last mandatory/unification took place */
+  lastMandatory: Record<string, number>;
   negotiations: Negotiation[];
   inbox: { id: string; week: number; title: string; body: string; needsDecision?: boolean }[];
   settings: Settings;
