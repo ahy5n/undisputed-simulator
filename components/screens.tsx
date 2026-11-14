@@ -9,6 +9,7 @@ import { DIVISIONS, DIVISION_LABEL, DIVISION_LIMIT, WORLD_BODIES, type Division,
 import { Badge, Btn, Card, CountUp, Empty, FighterRow, H, Panel, Stat, money, moneyShort } from "./ui";
 import { FightPoster } from "./poster";
 import { feed } from "@/lib/sim/news";
+import { rankText } from "@/lib/sim/matchmaking";
 import { pendingPlayerFights } from "@/lib/sim/game";
 import { StableActions } from "./market";
 
@@ -37,6 +38,7 @@ export function HomeScreen({ go }: { go: (t: string) => void }) {
   if (idle.length && c.stable.length) alerts.push({ text: `${idle.length} of your fighters ${idle.length > 1 ? "have" : "has"} nothing booked`, to: "fights" });
   if (c.cash < 0) alerts.push({ text: "You are in the red. Eight weeks below zero and the board acts.", to: "more", hot: true });
   const stories = feed(game, 5);
+  const rk = computeRankings(game.world);
   return (
     <div className="space-y-4">
       <div>
@@ -47,13 +49,13 @@ export function HomeScreen({ go }: { go: (t: string) => void }) {
 
       {next ? (
         <FightPoster a={F[mineIds.has(next.a) ? next.a : next.b]} b={F[mineIds.has(next.a) ? next.b : next.a]} year={year}
+          ranks={[rankText(game, rk, F[mineIds.has(next.a) ? next.a : next.b]), rankText(game, rk, F[mineIds.has(next.a) ? next.b : next.a])]}
           kicker={next.titles.length ? `${next.titles.join(" · ")} world title` : `${next.rounds} rounds`}
           footer={pending.includes(next) ? "Tonight" : `In ${next.week - game.week} week${next.week - game.week === 1 ? "" : "s"}`}>
           <Btn variant="bell" className="mt-3 w-full" onClick={() => go("fights")}>{pending.includes(next) ? "Go to the ring" : "Camp and fight details"}</Btn>
         </FightPoster>
       ) : (
         <div className="ring overflow-hidden rounded-xl border border-line">
-          <div className="ropes" aria-hidden />
           <div className="p-5 text-center">
             <div className="poster text-2xl">{c.stable.length ? "The ring is empty" : "No fighters. No fights. No money."}</div>
             <p className="mx-auto mt-2 max-w-xs text-sm text-white/70">{c.stable.length ? "Every one of your fighters has a shortlist of five opponents waiting." : "Start in the market. Free agents sign quickly; big names start bidding wars."}</p>
@@ -159,7 +161,7 @@ export function WorldScreen() {
       <H sub="Top 15 per sanctioning body. The champion is shown separately.">World</H>
       <div className="mb-2 flex gap-2 overflow-x-auto pb-1">
         {DIVISIONS.map((d) => (
-          <button key={d} onClick={() => setDiv(d)} className={`min-h-11 shrink-0 rounded-full px-4 text-sm font-semibold ${d === div ? "bg-accent text-accentfg" : "border border-line bg-surface"}`}>{DIVISION_LABEL[d]}</button>
+          <button key={d} onClick={() => setDiv(d)} className={`min-h-11 shrink-0 rounded-md px-4 text-sm font-semibold ${d === div ? "bg-accent text-accentfg" : "border border-line bg-surface"}`}>{DIVISION_LABEL[d]}</button>
         ))}
       </div>
       <div className="mb-3 grid grid-cols-4 gap-2">

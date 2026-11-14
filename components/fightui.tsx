@@ -60,8 +60,7 @@ export function ResultView({ a, b, r, titles = [], newChamp, onRematch, onDone }
   return (
     <div className="space-y-3">
       <div className="ring overflow-hidden rounded-xl border border-line">
-        <div className="ropes" aria-hidden />
-        <div className="p-4 text-center" aria-live="polite">
+        <div className="px-5 py-4 text-center" aria-live="polite">
           <div className="text-[11px] font-bold uppercase tracking-[0.2em] text-white/60">{decision ? `After ${r.scheduled} rounds, we go to the scorecards` : `The time: round ${r.round} of ${r.scheduled}`}</div>
           <div className="mt-3 grid grid-cols-[1fr_auto_1fr] items-center gap-2">
             <div className={`transition-opacity duration-500 ${done && r.winner === "b" ? "opacity-35" : ""}`}><Avatar f={a} size={52} corner="red" /><div className="display mt-1 truncate text-lg font-bold">{lastName(a.name)}</div></div>
@@ -112,9 +111,9 @@ export function ResultView({ a, b, r, titles = [], newChamp, onRematch, onDone }
   );
 }
 
-interface Props { a: Fighter; b: Fighter; rounds: number; extra?: Partial<FightConfig>; titles?: string[]; champIds?: string[]; hideCards: boolean; onFinish: (r: FightResult) => void; onExit: () => void }
+interface Props { a: Fighter; b: Fighter; rounds: number; extra?: Partial<FightConfig>; titles?: string[]; champIds?: string[]; ranks?: [string, string]; hideCards: boolean; onFinish: (r: FightResult) => void; onExit: () => void }
 
-export function LiveFight({ a, b, rounds, extra, titles, champIds, hideCards, onFinish, onExit }: Props) {
+export function LiveFight({ a, b, rounds, extra, titles, champIds, ranks, hideCards, onFinish, onExit }: Props) {
   const [rng] = useState(() => new Rng((Date.now() ^ 0x9e3779b9) >>> 0));
   const [crng] = useState(() => new Rng((Date.now() ^ 0x1234567) >>> 0));
   const [engine] = useState(() => initFight(a, b, { ...extra, rounds }, rng));
@@ -177,7 +176,7 @@ export function LiveFight({ a, b, rounds, extra, titles, champIds, hideCards, on
   if (intro) {
     return (
       <div className="space-y-3">
-        <FightPoster a={a} b={b} tape kicker={titles?.length ? `For the ${titles.join(" · ")} world title` : `${rounds} rounds`} footer="Tale of the tape">
+        <FightPoster a={a} b={b} tape ranks={ranks} kicker={titles?.length ? `For the ${titles.join(" · ")} world title` : `${rounds} rounds`} footer="Tale of the tape">
           <Btn variant="bell" className="mt-4 w-full !min-h-14 !text-xl" onClick={() => setIntro(false)}>Walk to the ring</Btn>
         </FightPoster>
         <Btn variant="ghost" className="w-full" onClick={onExit}>Back</Btn>
@@ -188,8 +187,7 @@ export function LiveFight({ a, b, rounds, extra, titles, champIds, hideCards, on
   return (
     <div className="flex flex-col gap-3">
       <div className="ring overflow-hidden rounded-xl border border-line">
-        <div className="ropes" aria-hidden />
-        <div className="px-3 py-3">
+        <div className="px-4 py-3">
           <div className="grid grid-cols-[1fr_auto_1fr] items-center gap-2">
             <div className="flex min-w-0 items-center gap-2"><Avatar f={a} size={36} corner="red" /><div className="min-w-0"><div className="display truncate text-lg font-bold leading-tight">{lastName(a.name)}</div><div className="num text-[11px] text-white/60">{recordString(a)} · {overall(a.ratings)}</div></div></div>
             <div className="text-center"><div className="label !text-white/50">Round</div><div className="poster num text-3xl">{Math.max(1, rd)}<span className="text-base text-white/40">/{rounds}</span></div></div>

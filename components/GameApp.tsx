@@ -75,7 +75,7 @@ function Shell() {
         </nav>
       </aside>
       <div className="flex min-h-dvh min-w-0 flex-col">
-        <header className="sticky top-0 z-20 flex items-center gap-2 border-b border-line bg-bg/90 px-3 py-2 backdrop-blur">
+        <header className="sticky top-0 z-20 flex items-center gap-2 border-b border-line bg-bg px-3 py-2">
           <div className="min-w-0 flex-1">
             <div className="poster text-lg">{date}</div>
             <div className={`num text-xs font-semibold ${c.cash < 0 ? "text-bad" : "text-muted"}`}><CountUp value={c.cash} /></div>

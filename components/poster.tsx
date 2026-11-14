@@ -6,7 +6,7 @@ import { Avatar, Badge } from "./ui";
 const ROWS: [keyof Ratings, string][] = [["power", "Power"], ["speed", "Speed"], ["defence", "Defence"], ["chin", "Chin"], ["stamina", "Stamina"], ["skill", "Skill"]];
 const koPct = (f: Fighter) => (f.record.w ? Math.round((100 * f.record.ko) / f.record.w) : 0);
 
-function Corner({ f, side }: { f: Fighter; side: "red" | "blue" }) {
+function Corner({ f, side, rank }: { f: Fighter; side: "red" | "blue"; rank?: string }) {
   const right = side === "blue";
   const parts = f.name.split(" ");
   return (
@@ -15,13 +15,14 @@ function Corner({ f, side }: { f: Fighter; side: "red" | "blue" }) {
       <div className="mt-2 truncate text-xs font-semibold opacity-80">{parts.slice(0, -1).join(" ") || " "}</div>
       <div className="poster truncate text-[1.7rem]">{parts.slice(-1)[0]}</div>
       <div className="num mt-1 text-xs opacity-80">{flag(f.nationality)} {recordString(f)} · {f.record.ko} KO</div>
-      <div className={`mt-1 flex flex-wrap gap-1 ${right ? "justify-end" : ""}`}>{f.titles.map((t) => <Badge key={t}>{t}</Badge>)}</div>
+      {rank && <div className="mt-1 text-[11px] font-semibold text-white/90">{rank}</div>}
+      {!rank && <div className={`mt-1 flex flex-wrap gap-1 ${right ? "justify-end" : ""}`}>{f.titles.map((t) => <Badge key={t}>{t}</Badge>)}</div>}
     </div>
   );
 }
 
 /** Fight poster: both corners under the lights, optional tale of the tape. */
-export function FightPoster({ a, b, kicker, footer, tape, year, children }: { a: Fighter; b: Fighter; kicker?: string; footer?: string; tape?: boolean; year?: number; children?: React.ReactNode }) {
+export function FightPoster({ a, b, kicker, footer, tape, year, ranks, children }: { a: Fighter; b: Fighter; kicker?: string; footer?: string; tape?: boolean; year?: number; ranks?: [string, string]; children?: React.ReactNode }) {
   const line = (label: string, x: string | number, y: string | number, hi?: "a" | "b" | null) => (
     <div key={label} className="grid grid-cols-[1fr_auto_1fr] items-center gap-2 border-t border-white/10 py-1.5 text-sm">
       <span className={`num font-semibold ${hi === "a" ? "text-white" : "opacity-70"}`}>{x}</span>
@@ -32,13 +33,12 @@ export function FightPoster({ a, b, kicker, footer, tape, year, children }: { a:
   const cmp = (x: number, y: number) => (x === y ? null : x > y ? "a" : "b");
   return (
     <div className="ring overflow-hidden rounded-xl border border-line">
-      <div className="ropes" aria-hidden />
-      <div className="p-4">
+      <div className="px-5 py-4">
         {kicker && <div className="mb-3 text-center text-[11px] font-bold uppercase tracking-[0.2em] text-white/70">{kicker}</div>}
         <div className="grid grid-cols-[1fr_auto_1fr] items-center gap-2">
-          <Corner f={a} side="red" />
+          <Corner f={a} side="red" rank={ranks?.[0]} />
           <div className="poster px-1 text-2xl text-white/40">VS</div>
-          <Corner f={b} side="blue" />
+          <Corner f={b} side="blue" rank={ranks?.[1]} />
         </div>
         {tape && (
           <div className="mt-4">

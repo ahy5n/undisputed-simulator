@@ -47,7 +47,7 @@ export default function NewGame() {
   }
   return (
     <main className="mx-auto max-w-md px-4 py-8">
-      <div className="ring -mx-4 -mt-8 overflow-hidden px-4 pb-6 pt-10">
+      <div className="ring -mx-4 -mt-8 overflow-hidden px-6 pb-6 pt-10">
         <div className="label !text-white/60">Manager · Promoter · Matchmaker</div>
         <h1 className="poster mt-2 text-6xl">Undisputed<br /><span className="text-red">Manager</span></h1>
         <p className="mt-3 max-w-xs text-sm text-white/75">Sign fighters. Make fights. Sell out stadiums. Unify the belts before the money runs out.</p>

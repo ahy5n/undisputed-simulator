@@ -41,6 +41,10 @@
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-display: var(--font-barlow), "Arial Narrow", sans-serif;
   --font-poster: var(--font-anton), Impact, "Arial Narrow", sans-serif;
+  --radius-md: 2px;
+  --radius-lg: 3px;
+  --radius-xl: 4px;
+  --radius-2xl: 6px;
   --animate-rise: rise 0.3s ease-out both;
   --animate-stamp: stamp 0.45s cubic-bezier(0.2, 1.4, 0.4, 1) both;
   --animate-flash: flash 0.7s ease-out;
@@ -63,34 +67,29 @@ button, input, select { font: inherit; }
 button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible, [role="button"]:focus-visible { outline: 2px solid var(--fg); outline-offset: 2px; }
 .pb-safe { padding-bottom: env(safe-area-inset-bottom); }
 
-/* Belt plate: the only place gold appears */
+/* Belt plate: the only place gold appears. Flat, like enamel. */
 .belt {
   display: inline-flex; align-items: center; padding: 2px 7px; font-size: 10px; font-weight: 800; line-height: 1.15; letter-spacing: 0.08em;
-  color: #1c1503; background: linear-gradient(160deg, #f5d77a, #c9952a 55%, #f0cf6b);
+  color: #1c1503; background: var(--gold);
   clip-path: polygon(6px 0, calc(100% - 6px) 0, 100% 50%, calc(100% - 6px) 100%, 6px 100%, 0 50%);
 }
 /* The bell: the one button that moves time */
 .bell { background: var(--red); color: #fff; box-shadow: 0 3px 0 #7d0d13; }
-.bell:hover { filter: brightness(1.08); }
+.bell:hover { background: #f0323b; }
 .bell:active { transform: translateY(2px); box-shadow: 0 1px 0 #7d0d13; }
 
-/* Ring canvas lit from above, red corner left, blue corner right */
-.ring {
-  background:
-    radial-gradient(ellipse 60% 50% at 50% -5%, rgba(255, 250, 235, 0.2), transparent 70%),
-    linear-gradient(100deg, rgba(229, 38, 47, 0.28), transparent 38%, transparent 62%, rgba(47, 107, 255, 0.28)),
-    #10131a;
-  color: #f3f0e9;
-}
-/* Three ropes: a divider that only this game has */
-.ropes { height: 11px; background: linear-gradient(180deg, var(--red) 0 2px, transparent 2px 4.5px, var(--fg) 4.5px 6.5px, transparent 6.5px 9px, var(--blue) 9px 11px); opacity: 0.85; }
-/* Corner tape on cards: red on the left edge, blue on the right */
+/* Ring card: flat canvas, a red corner block on the left edge and a blue one on the right */
+.ring { background: #10131a; color: #f3f0e9; box-shadow: inset 6px 0 0 var(--red), inset -6px 0 0 var(--blue); }
+/* Three ropes, drawn with solid lines */
+.ropes { position: relative; height: 10px; border-top: 2px solid var(--red); border-bottom: 2px solid var(--blue); opacity: 0.9; }
+.ropes::after { content: ""; position: absolute; left: 0; right: 0; top: 2px; height: 2px; background: var(--fg); }
+/* Corner tape on cards */
 .tape-red { box-shadow: inset 4px 0 0 var(--red); }
 .tape-blue { box-shadow: inset -4px 0 0 var(--blue); }
 /* Newsprint for the fight report */
 .newsprint { background: #ece7da; color: #17181c; }
 .newsprint .rule { border-color: #17181c; }
-.halftone { background-image: radial-gradient(rgba(23, 24, 28, 0.16) 1px, transparent 1.4px); background-size: 6px 6px; }
+.lead { border-top: 1px solid #17181c; border-bottom: 1px solid #17181c; background: #e2dccb; }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }

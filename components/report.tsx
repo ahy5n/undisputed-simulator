@@ -24,7 +24,7 @@ export function FightReport({ goFights }: { goFights: () => void }) {
         </div>
         <div className="px-4 py-3">
           {lead ? (
-            <div className="halftone -mx-4 px-4 py-3">
+            <div className="lead -mx-4 px-4 py-3">
               <div className="text-[11px] font-bold uppercase tracking-[0.16em] text-red">{KICKER[lead.kind]}</div>
               <h2 className="poster mt-1 text-[2rem] leading-[1.02]">{lead.headline}</h2>
               <p className="mt-1.5 text-sm">{lead.detail}</p>

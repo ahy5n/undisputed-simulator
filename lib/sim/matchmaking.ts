@@ -185,3 +185,15 @@ export function scheduleFight(g: GameSave, a: string, b: string, week: number, t
 export function inboxPush(g: GameSave, title: string, body: string, needsDecision = false): GameSave {
   return { ...g, inbox: [{ id: `m-${g.week}-${g.inbox.length}-${title.length}-${body.length}`, week: g.week, title, body, needsDecision }, ...g.inbox].slice(0, 60) };
 }
+
+/** Every body's view of a fighter, best first. rank 0 = champion. */
+export function ranksOf(g: GameSave, r: Rankings, f: Fighter): RankInfo[] {
+  const out: RankInfo[] = [];
+  for (const body of WORLD_BODIES) { const k = rankIn(g, r, f, body); if (k !== null) out.push({ body, rank: k }); }
+  return out.sort((a, b) => a.rank - b.rank);
+}
+/** "WBC champion · IBF #4 · WBO #9" or "Unranked". */
+export function rankText(g: GameSave, r: Rankings, f: Fighter): string {
+  const xs = ranksOf(g, r, f);
+  return xs.length ? xs.map((x) => (x.rank === 0 ? `${x.body} champion` : `${x.body} #${x.rank}`)).join(" · ") : "Unranked";
+}

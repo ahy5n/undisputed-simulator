@@ -5,7 +5,7 @@ import { gameYear } from "@/lib/sim/calendar";
 import { overall, recordString, flag } from "@/lib/sim/fighter";
 import { simulateFight, swapResult, type FightResult } from "@/lib/sim/fight";
 import {
-  CAMP_DEFAULT, CAMP_MIN, candidates, defaultTerms, evaluateFightOffer, rankIn, scheduleFight, shortlist, winChance, type Candidate, type FightDecision,
+  CAMP_DEFAULT, CAMP_MIN, candidates, defaultTerms, evaluateFightOffer, rankIn, rankText, scheduleFight, shortlist, winChance, type Candidate, type FightDecision,
 } from "@/lib/sim/matchmaking";
 import { computeRankings, type Rankings } from "@/lib/sim/rankings";
 import { Rng } from "@/lib/sim/rng";
@@ -64,6 +64,10 @@ function OfferBuilder({ mine, opp, presetTitles, close }: { mine: Fighter; opp: 
     <Sheet close={close} label="Make an offer">
       <div className="display text-2xl font-bold leading-tight">{mine.name} <span className="text-muted">vs</span> {opp.name}</div>
       <p className="mt-1 text-sm text-muted">{flag(opp.nationality)} {recordString(opp)} · {opp.style} · you are {Math.round(wc * 100)}% to win</p>
+      <div className="mt-3 grid grid-cols-2 gap-2 text-xs">
+        <div className="tape-red bg-surface2 py-2 pl-3 pr-2"><div className="label">{mine.name}</div><div className="mt-0.5 font-semibold">{rankText(game, rankings, mine)}</div></div>
+        <div className="tape-blue bg-surface2 py-2 pl-2 pr-3 text-right"><div className="label">{opp.name}</div><div className="mt-0.5 font-semibold">{rankText(game, rankings, opp)}</div></div>
+      </div>
       <div className="mt-4 space-y-3">
         <Stepper label="Weeks until fight" value={weeks} set={setWeeks} step={1} min={CAMP_MIN} max={40} fmt={(v) => `${v} wks`} />
         <Stepper label="Your purse" value={terms.purseA} set={(v) => setTerms({ ...terms, purseA: v })} step={Math.max(1000, Math.round(terms.purseA * 0.05 / 1000) * 1000)} min={1000} max={50_000_000} fmt={money} />
@@ -104,7 +108,7 @@ function OfferBuilder({ mine, opp, presetTitles, close }: { mine: Fighter; opp: 
 
 /* -------------------------------------------------------------- shortlist */
 
-function Pick({ c, onOffer }: { c: Candidate; onOffer: () => void }) {
+function Pick({ c, onOffer, rank, myRank }: { c: Candidate; onOffer: () => void; rank: string; myRank: string }) {
   const f = c.fighter;
   return (
     <Card>
@@ -118,6 +122,8 @@ function Pick({ c, onOffer }: { c: Candidate; onOffer: () => void }) {
         </div>
         <OvrBadge value={overall(f.ratings)} />
       </div>
+      <div className="mt-2 text-xs"><span className="label">His ranking</span> <span className="font-semibold">{rank}</span></div>
+      <div className="text-xs"><span className="label">Yours</span> <span className="font-semibold">{myRank}</span></div>
       <p className="poster mt-3 text-lg text-red">{c.why}</p>
       <div className="mt-2 grid grid-cols-3 gap-2 text-center text-xs">
         <div className="rounded-lg bg-surface2 p-2"><div className="text-muted">Win chance</div><div className="num text-base font-bold">{Math.round(c.winChance * 100)}%</div></div>
@@ -143,7 +149,7 @@ function ShortlistTab({ rankings, offer }: { rankings: Rankings; offer: (m: Figh
         {mine.map((x) => <option key={x.id} value={x.id}>{x.name} ({overall(x.ratings)})</option>)}
       </select>
       {f.injuredWeeks > 0 && <Card className="text-sm text-bad">{f.name} is injured for {f.injuredWeeks} more week{f.injuredWeeks > 1 ? "s" : ""}.</Card>}
-      {list.map((c) => <Pick key={c.fighter.id} c={c} onOffer={() => offer(f, c.fighter, c.titles)} />)}
+      {list.map((c) => <Pick key={c.fighter.id} c={c} rank={rankText(game!, rankings, c.fighter)} myRank={rankText(game!, rankings, f)} onOffer={() => offer(f, c.fighter, c.titles)} />)}
     </div>
   );
 }
@@ -171,7 +177,7 @@ function SearchTab({ rankings, offer }: { rankings: Rankings; offer: (m: Fighter
       </div>
       <Card className="py-1">
         {list.map((c) => (
-          <FighterRow key={c.fighter.id} f={c.fighter} right={<div><div className="text-xs text-muted">{Math.round(c.winChance * 100)}% · {DIVISION_LABEL[c.fighter.division]}</div><Btn className="mt-1" onClick={() => offer(f, c.fighter, c.titles)}>Offer</Btn></div>} />
+          <FighterRow key={c.fighter.id} f={c.fighter} right={<div><div className="text-xs font-semibold">{rankText(game!, rankings, c.fighter)}</div><div className="text-xs text-muted">{Math.round(c.winChance * 100)}% to win · {DIVISION_LABEL[c.fighter.division]}</div><Btn className="mt-1" onClick={() => offer(f, c.fighter, c.titles)}>Offer</Btn></div>} />
         ))}
         {list.length === 0 && <p className="p-3 text-sm text-muted">No one available for that date.</p>}
       </Card>
@@ -269,7 +275,7 @@ function CampCard({ fightId, fighterId }: { fightId: string; fighterId: string }
 
 /* --------------------------------------------------------------- schedule */
 
-function ScheduleTab({ goLive, quick }: { goLive: (fightId: string) => void; quick: (fightId: string) => void }) {
+function ScheduleTab({ goLive, quick, rankings }: { goLive: (fightId: string) => void; quick: (fightId: string) => void; rankings: Rankings }) {
   const { game, update } = useGame();
   if (!game) return null;
   const F = game.world.fighters;
@@ -283,6 +289,7 @@ function ScheduleTab({ goLive, quick }: { goLive: (fightId: string) => void; qui
       {game.incoming.map((o) => (
         <Card key={o.id} className="border-accent">
           <div className="text-sm font-semibold">Fight offer: {F[o.mine].name} vs {F[o.opp].name}</div>
+          <p className="text-xs font-semibold">{F[o.opp].name}: {rankText(game, rankings, F[o.opp])} · you are {Math.round(winChance(F[o.mine], F[o.opp]) * 100)}% to win</p>
           <p className="text-xs text-muted">From {game.world.promoters.find((p) => p.id === o.fromPromoter)?.name} · in {o.fightWeek - game.week} weeks · your purse <span className="num">{money(o.terms.purseA)}</span>{o.terms.titles.length ? ` · ${o.terms.titles.join("/")} title` : ""} · expires in {o.expires - game.week}w</p>
           <div className="mt-2 flex gap-2"><Btn className="flex-1" onClick={() => update((g) => acceptIncoming(g, o.id))}>Accept</Btn><Btn variant="ghost" className="flex-1" onClick={() => update((g) => declineIncoming(g, o.id))}>Decline</Btn></div>
         </Card>
@@ -301,7 +308,7 @@ function ScheduleTab({ goLive, quick }: { goLive: (fightId: string) => void; qui
       <div className="text-sm font-semibold">Your fights</div>
       {mineFights.length === 0 && <Card className="text-sm text-muted">Nothing booked. Make an offer from your shortlist.</Card>}
       {mineFights.map((f) => (
-        <Card key={f.id}><div className="text-sm font-semibold">{line(f)}</div><div className="text-xs text-muted">In {f.week - game.week} weeks · purses {money(f.purseA)} / {money(f.purseB)}{f.titles.length ? ` · ${f.titles.join("/")}` : ""}{f.rematch ? " · rematch clause" : ""}</div>{[f.a, f.b].filter((id) => isMine(game, id)).map((id) => <CampCard key={id} fightId={f.id} fighterId={id} />)}</Card>
+        <Card key={f.id}><div className="text-sm font-semibold">{line(f)}</div><div className="text-xs text-muted">{rankText(game, rankings, F[f.a])} <span className="opacity-60">vs</span> {rankText(game, rankings, F[f.b])}</div><div className="text-xs text-muted">In {f.week - game.week} weeks · purses {money(f.purseA)} / {money(f.purseB)}{f.titles.length ? ` · ${f.titles.join("/")}` : ""}{f.rematch ? " · rematch clause" : ""}</div>{[f.a, f.b].filter((id) => isMine(game, id)).map((id) => <CampCard key={id} fightId={f.id} fighterId={id} />)}</Card>
       ))}
       <div className="text-sm font-semibold">Around the world</div>
       <Card className="py-1">
@@ -370,7 +377,7 @@ export function FightsScreen() {
       const cfg = fightConfigFor(game, fight);
       const extra = swap ? { conditionA: cfg.conditionB, conditionB: cfg.conditionA, planBonusA: cfg.planBonusB, planBonusB: cfg.planBonusA } : cfg;
       const champIds = fight.titles.map((t) => game.world.belts[F[fight.a].division][t]).filter((x): x is string => !!x);
-      return <LiveFight a={left} b={right} rounds={fight.rounds} extra={extra} titles={fight.titles} champIds={champIds} hideCards={game.settings.hideScorecards}
+      return <LiveFight a={left} b={right} ranks={[rankText(game, rankings, left), rankText(game, rankings, right)]} rounds={fight.rounds} extra={extra} titles={fight.titles} champIds={champIds} hideCards={game.settings.hideScorecards}
         onFinish={(res) => {
           const real = swap ? swapResult(res) : res;
           update((g) => { const rng = new Rng(g.rngState); const n = applyResult(g, fight, real, rng); return { ...n, rngState: rng.state }; });
@@ -397,12 +404,12 @@ export function FightsScreen() {
     <div>
       <H sub="Shortlists refresh every week. Offers can be accepted, countered or refused.">Fights</H>
       <div className="mb-3 flex gap-2 overflow-x-auto pb-1">
-        {TABS.map(([id, l]) => <button key={id} onClick={() => setTab(id)} className={`min-h-11 shrink-0 rounded-full px-4 text-sm font-semibold ${showTab === id ? "bg-accent text-accentfg" : "border border-line bg-surface"}`}>{l}</button>)}
+        {TABS.map(([id, l]) => <button key={id} onClick={() => setTab(id)} className={`min-h-11 shrink-0 rounded-md px-4 text-sm font-semibold ${showTab === id ? "bg-accent text-accentfg" : "border border-line bg-surface"}`}>{l}</button>)}
       </div>
       {showTab === "shortlist" && <ShortlistTab rankings={rankings} offer={(m, o, t) => setOfferFor({ mine: m, opp: o, titles: t })} />}
       {showTab === "search" && <SearchTab rankings={rankings} offer={(m, o, t) => setOfferFor({ mine: m, opp: o, titles: t })} />}
       {showTab === "orders" && <OrdersTab offer={(m, o, t) => setOfferFor({ mine: m, opp: o, titles: t })} />}
-      {showTab === "schedule" && <ScheduleTab goLive={setLive} quick={quick} />}
+      {showTab === "schedule" && <ScheduleTab goLive={setLive} quick={quick} rankings={rankings} />}
       {showTab === "exhibition" && <Exhibition />}
       {offerFor && <OfferBuilder mine={offerFor.mine} opp={offerFor.opp} presetTitles={offerFor.titles} close={() => setOfferFor(null)} />}
     </div>

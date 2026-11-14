@@ -92,9 +92,9 @@ export function Avatar({ f, size = 48, corner }: { f: Pick<Fighter, "name" | "na
   const trim = (hue + 40 + (hashSeed(f.name) % 3) * 60) % 360;
   const initials = f.name.split(/\s+/).filter((p) => !/^(jr\.?|sr\.?)$/i.test(p)).map((p) => p[0]).slice(0, 2).join("").toUpperCase();
   return (
-    <span className="relative inline-flex shrink-0 items-center justify-center overflow-hidden rounded-lg" aria-hidden
-      style={{ width: size, height: size, background: `linear-gradient(155deg, hsl(${hue} 62% 40%) 0 58%, hsl(${trim} 70% 55%) 58% 66%, hsl(${hue} 55% 24%) 66%)` }}>
-      <span className="poster text-white" style={{ fontSize: size * 0.44, textShadow: "0 1px 0 rgba(0,0,0,.45)" }}>{initials}</span>
+    <span className="relative inline-flex shrink-0 items-center justify-center overflow-hidden" aria-hidden style={{ width: size, height: size, background: `hsl(${hue} 58% 34%)` }}>
+      <span className="absolute inset-x-0 bottom-0" style={{ height: Math.max(3, size * 0.12), background: `hsl(${trim} 70% 55%)` }} />
+      <span className="poster relative text-white" style={{ fontSize: size * 0.44 }}>{initials}</span>
     </span>
   );
 }
@@ -159,7 +159,7 @@ export function Modal({ onClose, title, children }: { onClose: () => void; title
   }, [onClose]);
   return (
     <div className="fixed inset-0 z-50 flex items-end justify-center bg-black/75 md:items-center md:p-4" onClick={onClose} role="dialog" aria-modal="true">
-      <div className="animate-rise max-h-[92dvh] w-full max-w-lg overflow-y-auto rounded-t-2xl border border-line bg-surface shadow-2xl md:rounded-2xl" onClick={(e) => e.stopPropagation()}>
+      <div className="animate-rise max-h-[92dvh] w-full max-w-lg overflow-y-auto rounded-t-2xl border border-line bg-surface md:rounded-2xl" onClick={(e) => e.stopPropagation()}>
         {title && <div className="sticky top-0 z-10 flex min-h-12 items-center justify-between border-b border-line bg-surface px-4"><h3 className="poster text-xl">{title}</h3><button onClick={onClose} className="h-11 w-11 text-muted" aria-label="Close">✕</button></div>}
         <div className="p-4 pb-8">{children}</div>
       </div>
