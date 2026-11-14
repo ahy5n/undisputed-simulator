@@ -50,6 +50,15 @@ export interface Show {
   statement?: Statement;
 }
 
+export type CampFocus = keyof Ratings | "gameplan";
+export interface Camp {
+  id: string; fightId: string; fighterId: string; focus: CampFocus; intensity: "light" | "normal" | "hard"; sparring: 0 | 1 | 2;
+  start: number; condition: number; weeksDone: number;
+  /** fractional progress toward the next whole rating point, plus whole points already granted this camp */
+  progress: number; gained: number; spent: number;
+  injured?: boolean;
+}
+
 export interface Fighter {
   id: string;
   name: string;
@@ -113,6 +122,7 @@ export interface GameSave {
   history: FightRecord[];
   fights: ScheduledFight[];
   shows: Show[];
+  camps: Camp[];
   incoming: IncomingOffer[];
   orders: Order[];
   purseBids: PurseBid[];

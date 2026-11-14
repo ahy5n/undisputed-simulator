@@ -3,7 +3,7 @@ import { useEffect, useReducer, useRef, useState } from "react";
 import { commentate } from "@/lib/sim/commentary";
 import {
   TACTICS, aiTactic, cutman, describeResult, initFight, playRound, throwTowel,
-  type FightResult, type PunchStats, type Shout, type Tactic,
+  type FightConfig, type FightResult, type PunchStats, type Shout, type Tactic,
 } from "@/lib/sim/fight";
 import { Rng } from "@/lib/sim/rng";
 import { flag, overall, recordString } from "@/lib/sim/fighter";
@@ -64,12 +64,12 @@ export function ResultView({ a, b, r, onRematch, onDone }: { a: Fighter; b: Figh
   );
 }
 
-interface Props { a: Fighter; b: Fighter; rounds: number; hideCards: boolean; onFinish: (r: FightResult) => void; onExit: () => void }
+interface Props { a: Fighter; b: Fighter; rounds: number; extra?: Partial<FightConfig>; hideCards: boolean; onFinish: (r: FightResult) => void; onExit: () => void }
 
-export function LiveFight({ a, b, rounds, hideCards, onFinish, onExit }: Props) {
+export function LiveFight({ a, b, rounds, extra, hideCards, onFinish, onExit }: Props) {
   const [rng] = useState(() => new Rng((Date.now() ^ 0x9e3779b9) >>> 0));
   const [crng] = useState(() => new Rng((Date.now() ^ 0x1234567) >>> 0));
-  const [engine] = useState(() => initFight(a, b, { rounds }, rng));
+  const [engine] = useState(() => initFight(a, b, { ...extra, rounds }, rng));
   const [, force] = useReducer((x: number) => x + 1, 0);
   const [log, setLog] = useState<{ round: number; text: string }[]>([]);
   const [queue, setQueue] = useState<{ round: number; text: string }[]>([]);

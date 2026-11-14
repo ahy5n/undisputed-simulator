@@ -9,6 +9,7 @@ import { computeRankings, type Rankings } from "./rankings";
 import { Rng } from "./rng";
 import { generateFighter } from "./worldgen";
 import { autoShows, settleIfComplete } from "./shows";
+import { campsWeek, fightConfigFor } from "./camps";
 import {
   DIVISIONS, WORLD_BODIES, type Division, type Fighter, type FightTerms, type GameSave, type Order, type ScheduledFight, type WorldBody,
 } from "./types";
@@ -85,7 +86,7 @@ export function quickSimFight(g: GameSave, fightId: string): GameSave {
   const fight = g.fights.find((f) => f.id === fightId && !f.done);
   if (!fight) return g;
   const rng = new Rng(g.rngState);
-  const r = simulateFight(g.world.fighters[fight.a], g.world.fighters[fight.b], { rounds: fight.rounds, conditionA: fight.rehydration ? 95 : 100, conditionB: fight.rehydration ? 95 : 100 }, rng);
+  const r = simulateFight(g.world.fighters[fight.a], g.world.fighters[fight.b], fightConfigFor(g, fight), rng);
   const next = applyResult(g, fight, r, rng);
   return { ...next, rngState: rng.state };
 }
@@ -362,6 +363,7 @@ export function worldWeek(g: GameSave): GameSave {
     cur = applyResult(cur, f, res, rng);
   }
   cur = { ...cur, fights: cur.fights.filter((f) => !f.done || f.week >= g.week - 12), incoming: cur.incoming.filter((o) => o.expires > g.week) };
+  cur = campsWeek(cur, rng);
   const r = computeRankings(cur.world);
   cur = processOrders(makeOrders(cur, r, rng), rng);
   cur = ensureOpponents(cur, r, rng);

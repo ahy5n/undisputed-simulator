@@ -13,6 +13,8 @@ import { pendingPlayerFights } from "@/lib/sim/game";
 import { acceptIncoming, applyResult, clearOrderFor, declineIncoming, minBidFor, orderParticipants, placeBid, quickSimFight, stepAside, stepAsideFee, vacateBelt } from "@/lib/sim/weekly";
 import { DIVISIONS, DIVISION_LABEL, WORLD_BODIES, type Division, type Fighter, type FightTerms, type GameSave, type Order, type WorldBody } from "@/lib/sim/types";
 import { LiveFight, ResultView } from "./fightui";
+import { CAMP_WEEKS, SPARRING_COST, campFor, fightConfigFor, isMine, updateCamp, weightCut } from "@/lib/sim/camps";
+import type { CampFocus } from "@/lib/sim/types";
 import { Badge, Btn, Card, FighterRow, H, money } from "./ui";
 
 type Tab = "shortlist" | "search" | "orders" | "schedule" | "exhibition";
@@ -234,6 +236,34 @@ function OrdersTab({ offer }: { offer: (m: Fighter, o: Fighter, t: WorldBody[]) 
   );
 }
 
+
+const FOCI: [CampFocus, string][] = [["power", "Power"], ["speed", "Speed"], ["defence", "Defence"], ["chin", "Chin"], ["stamina", "Stamina"], ["skill", "Skill"], ["gameplan", "Game plan for this opponent"]];
+
+function CampCard({ fightId, fighterId }: { fightId: string; fighterId: string }) {
+  const { game, update } = useGame();
+  const c = game ? campFor(game, fightId, fighterId) : undefined;
+  if (!game || !c) return null;
+  const f = game.world.fighters[fighterId];
+  const started = game.week >= c.start;
+  const cut = weightCut(c.condition);
+  const pick = (patch: Parameters<typeof updateCamp>[2]) => update((g) => updateCamp(g, c.id, patch));
+  return (
+    <div className="mt-2 rounded-lg bg-surface2 p-3 text-sm">
+      <div className="flex justify-between"><span className="font-semibold">{f.name}: camp</span><span className="num text-xs text-muted">{started ? `week ${Math.min(c.weeksDone, CAMP_WEEKS)}` : `starts in ${c.start - game.week}w`}</span></div>
+      <select value={c.focus} onChange={(e) => pick({ focus: e.target.value as CampFocus })} className="mt-2 min-h-11 w-full rounded-lg border border-line bg-bg px-2" aria-label="Camp focus">
+        {FOCI.map(([k, l]) => <option key={k} value={k}>{l}</option>)}
+      </select>
+      <div className="mt-2 grid grid-cols-3 gap-2">
+        {(["light", "normal", "hard"] as const).map((i) => <button key={i} onClick={() => pick({ intensity: i })} className={`min-h-11 rounded-lg text-xs font-semibold capitalize ${c.intensity === i ? "bg-fg text-bg" : "border border-line"}`}>{i}{i === "hard" ? " (injury risk)" : ""}</button>)}
+      </div>
+      <div className="mt-2 grid grid-cols-3 gap-2">
+        {([0, 1, 2] as const).map((s) => <button key={s} onClick={() => pick({ sparring: s })} className={`min-h-11 rounded-lg text-xs font-semibold ${c.sparring === s ? "bg-fg text-bg" : "border border-line"}`}>{s === 0 ? "No sparring" : `Sparring ${money(SPARRING_COST[s])}/wk`}</button>)}
+      </div>
+      <p className="mt-2 text-xs text-muted">Condition <span className="num font-semibold text-fg">{c.condition}%</span> · weight cut: <span className={cut === "tough" ? "font-semibold text-bad" : "font-semibold text-fg"}>{cut}</span> · gained <span className="num font-semibold text-fg">+{c.gained}</span>{c.focus === "gameplan" ? " (game plan gives a fight-night bonus, no permanent gain)" : ""} · spent <span className="num">{money(c.spent)}</span></p>
+    </div>
+  );
+}
+
 /* --------------------------------------------------------------- schedule */
 
 function ScheduleTab({ goLive }: { goLive: (fightId: string) => void }) {
@@ -258,6 +288,7 @@ function ScheduleTab({ goLive }: { goLive: (fightId: string) => void }) {
         <Card key={f.id} className="border-accent">
           <div className="display text-xl font-bold">Fight night</div>
           <div className="text-sm">{line(f)}{f.titles.length ? ` · ${f.titles.join("/")} title` : ""}</div>
+          {[f.a, f.b].filter((id) => isMine(game, id)).map((id) => <CampCard key={id} fightId={f.id} fighterId={id} />)}
           <div className="mt-2 flex gap-2">
             <Btn className="flex-1" onClick={() => goLive(f.id)}>Watch live</Btn>
             <Btn variant="ghost" className="flex-1" onClick={() => update((g) => quickSimFight(g, f.id))}>Quick sim</Btn>
@@ -267,7 +298,7 @@ function ScheduleTab({ goLive }: { goLive: (fightId: string) => void }) {
       <div className="text-sm font-semibold">Your fights</div>
       {mineFights.length === 0 && <Card className="text-sm text-muted">Nothing booked. Make an offer from your shortlist.</Card>}
       {mineFights.map((f) => (
-        <Card key={f.id}><div className="text-sm font-semibold">{line(f)}</div><div className="text-xs text-muted">In {f.week - game.week} weeks · purses {money(f.purseA)} / {money(f.purseB)}{f.titles.length ? ` · ${f.titles.join("/")}` : ""}{f.rematch ? " · rematch clause" : ""}</div></Card>
+        <Card key={f.id}><div className="text-sm font-semibold">{line(f)}</div><div className="text-xs text-muted">In {f.week - game.week} weeks · purses {money(f.purseA)} / {money(f.purseB)}{f.titles.length ? ` · ${f.titles.join("/")}` : ""}{f.rematch ? " · rematch clause" : ""}</div>{[f.a, f.b].filter((id) => isMine(game, id)).map((id) => <CampCard key={id} fightId={f.id} fighterId={id} />)}</Card>
       ))}
       <div className="text-sm font-semibold">Around the world</div>
       <Card className="py-1">
@@ -333,7 +364,9 @@ export function FightsScreen() {
     if (fight) {
       const swap = F[fight.a].promoter !== "player"; // your fighter always takes the left corner
       const left = F[swap ? fight.b : fight.a], right = F[swap ? fight.a : fight.b];
-      return <LiveFight a={left} b={right} rounds={fight.rounds} hideCards={game.settings.hideScorecards}
+      const cfg = fightConfigFor(game, fight);
+      const extra = swap ? { conditionA: cfg.conditionB, conditionB: cfg.conditionA, planBonusA: cfg.planBonusB, planBonusB: cfg.planBonusA } : cfg;
+      return <LiveFight a={left} b={right} rounds={fight.rounds} extra={extra} hideCards={game.settings.hideScorecards}
         onFinish={(res) => {
           const real = swap ? swapResult(res) : res;
           update((g) => { const rng = new Rng(g.rngState); const n = applyResult(g, fight, real, rng); return { ...n, rngState: rng.state }; });
