@@ -7,6 +7,8 @@ import { rollSeason } from "./season";
 import { processNegotiations } from "./market";
 import { aiMakeFights, worldWeek } from "./weekly";
 import { computeRankings } from "./rankings";
+import { boardSeason, boardWeek, openingBoard } from "./board";
+import { dealSeason } from "./broadcast";
 
 export const DEFAULT_SETTINGS: Settings = { startingCash: 3_000_000, hideScorecards: false };
 export const START_DATE = "2026-11-14"; // a Saturday
@@ -31,7 +33,7 @@ export function newGame(input: NewGameInput): GameSave {
     company: {
       name: input.companyName.trim() || "Untitled Promotions", country: input.country,
       colours: { primary: input.primary, secondary: input.secondary },
-      cash: input.startingCash, stable: [], confidence: 50, reputation: 30,
+      cash: input.startingCash, stable: [], confidence: 50, reputation: 30, trust: {}, board: openingBoard(input.startingCash, START_YEAR),
     },
     history: [], fights: [], shows: [], camps: [], incoming: [], orders: [], purseBids: [], lastMandatory: initLastMandatory(seed),
     negotiations: [],
@@ -48,6 +50,7 @@ export function newGame(input: NewGameInput): GameSave {
 export { START_YEAR };
 
 export function advanceWeek(g: GameSave): GameSave {
+  if (g.over) return g;
   const week = g.week + 1;
   const before = gameYear(g.startDate, g.week);
   const after = gameYear(g.startDate, week);
@@ -65,7 +68,8 @@ export function advanceWeek(g: GameSave): GameSave {
       ].slice(0, 60),
     };
   }
-  return worldWeek(processNegotiations(cur));
+  if (after !== before) cur = boardSeason(dealSeason(cur, after), after);
+  return boardWeek(worldWeek(processNegotiations(cur)));
 }
 
 /** Fights involving your fighters that fall due this week and need you to play or sim them. */
@@ -81,6 +85,7 @@ export function simToNextFight(g: GameSave): { game: GameSave; stoppedFor: "figh
   const base = decisionCount(g);
   for (let i = 0; i < 52; i++) {
     cur = advanceWeek(cur);
+    if (cur.over) return { game: cur, stoppedFor: "decision" };
     if (pendingPlayerFights(cur).length) return { game: cur, stoppedFor: "fight" };
     if (decisionCount(cur) > base) return { game: cur, stoppedFor: "decision" };
   }

@@ -1,6 +1,7 @@
 import { Rng } from "./rng";
 import { overall } from "./fighter";
 import { CAMP_MIN, inboxPush, newId } from "./matchmaking";
+import { dealShowDone } from "./broadcast";
 import type { Fighter, GameSave, ScheduledFight, Show, Statement, StatementLine } from "./types";
 
 export interface Venue { id: string; name: string; capacity: number; hire: number; avgTicket: number; needsStar?: number }
@@ -41,7 +42,15 @@ export function project(g: GameSave, venueId: string, fights: ScheduledFight[], 
   const gate = Math.round(attendance * v.avgTicket * PRICE_MULT[price]);
   const lines: StatementLine[] = [{ label: `Gate (${attendance.toLocaleString("en-GB")} of ${v.capacity.toLocaleString("en-GB")} seats)`, amount: gate }];
   let ppvBuys = 0;
-  if (dist === "ppv") {
+  const deal = g.company.deal;
+  const bName = deal ? g.world.broadcasters.find((b) => b.id === deal.broadcasterId)?.name ?? "Broadcaster" : "";
+  if ((dist === "deal" || dist === "deal-ppv") && deal) {
+    lines.push({ label: `${bName} fee (deal)`, amount: deal.feePerShow });
+    if (dist === "deal-ppv") {
+      ppvBuys = Math.round(total * 9 * noise(0.25));
+      lines.push({ label: `PPV on ${bName} (${ppvBuys.toLocaleString("en-GB")} buys at £20, your ${Math.round(deal.ppvShare * 100)}%)`, amount: Math.round(ppvBuys * 20 * deal.ppvShare) });
+    }
+  } else if (dist === "ppv" || dist === "deal-ppv") {
     ppvBuys = Math.round(total * 8 * noise(0.28));
     lines.push({ label: `PPV (${ppvBuys.toLocaleString("en-GB")} buys at £20, after platform cut)`, amount: Math.round(ppvBuys * 20 * 0.65) });
   } else {
@@ -92,7 +101,7 @@ export function autoShows(g: GameSave): GameSave {
     const same = promotedUnassigned(cur, f.week).slice(0, 8);
     const big = same.reduce((s, x) => s + draw(cur.world.fighters[x.a], cur.company.country) + draw(cur.world.fighters[x.b], cur.company.country), 0);
     const venue = VENUES.find((v) => v.capacity >= Math.min(big + 400, 90_000))?.id ?? "stadium-l";
-    cur = bookShow(cur, { week: f.week, venue, fights: same.map((x) => x.id), price: "standard", dist: "sale" });
+    cur = bookShow(cur, { week: f.week, venue, fights: same.map((x) => x.id), price: "standard", dist: cur.company.deal ? "deal" : "sale" });
     cur = { ...cur, shows: cur.shows.map((s) => (s.fights.includes(f.id) ? { ...s, auto: true } : s)) };
     cur = inboxPush(cur, "Show booked automatically", `A fight reached its date with no show, so a default show was booked at ${venueById(cur.shows[cur.shows.length - 1].venue).name}.`);
   }
@@ -108,7 +117,8 @@ export function settleIfComplete(g: GameSave, showId: string | undefined, rng: R
   if (!fs.length || fs.some((f) => !f.done)) return g;
   const p = project(g, s.venue, fs, s.price, s.dist, rng);
   const statement: Statement = { lines: p.lines, revenue: p.revenue, costs: p.costs, profit: p.profit, attendance: p.attendance, capacity: p.capacity, ppvBuys: p.ppvBuys };
-  const next: GameSave = { ...g, shows: g.shows.map((x) => (x.id === showId ? { ...x, statement } : x)), company: { ...g.company, cash: g.company.cash + p.profit } };
+  let next: GameSave = { ...g, shows: g.shows.map((x) => (x.id === showId ? { ...x, statement } : x)), company: { ...g.company, cash: g.company.cash + p.profit } };
+  if (s.dist === "deal" || s.dist === "deal-ppv") next = dealShowDone(next, p.attendance / p.capacity);
   return inboxPush(next, `Show settled: ${p.profit >= 0 ? "profit" : "loss"} £${Math.abs(p.profit).toLocaleString("en-GB")}`, `Attendance ${p.attendance.toLocaleString("en-GB")} of ${p.capacity.toLocaleString("en-GB")}. Revenue £${p.revenue.toLocaleString("en-GB")}, costs £${p.costs.toLocaleString("en-GB")}. See Shows for the statement.`);
 }
 export const earliestShowWeek = (g: GameSave) => g.week + CAMP_MIN;

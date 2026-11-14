@@ -2,6 +2,7 @@
 import { createContext, useCallback, useContext, useEffect, useRef, useState, type ReactNode } from "react";
 import { listGames, loadGame, saveGame } from "@/lib/save/db";
 import { advanceWeek, pendingPlayerFights, simToNextFight } from "@/lib/sim/game";
+import { openingBoard } from "@/lib/sim/board";
 import { weekReport, type WeekReport } from "@/lib/sim/news";
 import type { GameSave } from "@/lib/sim/types";
 
@@ -29,7 +30,7 @@ const migrate = (g: GameSave): GameSave => ({
   ...g,
   negotiations: g.negotiations ?? [], fights: g.fights ?? [], shows: g.shows ?? [], camps: g.camps ?? [], incoming: g.incoming ?? [], orders: g.orders ?? [],
   purseBids: g.purseBids ?? [], lastMandatory: g.lastMandatory ?? {}, history: g.history ?? [],
-  company: { ...g.company, reputation: g.company.reputation ?? 30 },
+  company: { ...g.company, reputation: g.company.reputation ?? 30, trust: g.company.trust ?? {}, board: g.company.board ?? { ...openingBoard(g.company.cash, 2026), historySeen: (g.history ?? []).length } },
 });
 const LAST = "um:last-save";
 
@@ -93,10 +94,10 @@ export function GameProvider({ children }: { children: ReactNode }) {
   // Time only moves from here, so the report is built from the state on screen (latest.current), not inside a state updater.
   const advance = useCallback((step: (g: GameSave) => GameSave) => {
     const g = latest.current;
-    if (!g || pendingPlayerFights(g).length) return;
+    if (!g || g.over || pendingPlayerFights(g).length) return;
     const next = step(g);
     const rep = weekReport(g, next);
-    setReport(rep.stories.length || rep.notes.length ? rep : null); // a silent week does not interrupt you
+    setReport(!next.over && (rep.stories.length || rep.notes.length) ? rep : null); // a silent week does not interrupt you; neither does the sack
     setGame(next);
   }, []);
   const nextWeek = useCallback(() => advance(advanceWeek), [advance]);

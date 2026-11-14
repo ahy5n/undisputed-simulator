@@ -2,6 +2,7 @@ import { askPurse } from "./contracts";
 import { gameYear } from "./calendar";
 import { matchup } from "./fight";
 import { overall } from "./fighter";
+import { crossFactor } from "./broadcast";
 import { RANK_SIZE, type Rankings } from "./rankings";
 import { DIVISIONS, WORLD_BODIES, type Division, type Fighter, type FightTerms, type GameSave, type ScheduledFight, type WorldBody } from "./types";
 
@@ -63,7 +64,7 @@ const isUnderdogPremium = (wc: number) => 1 + Math.max(0, 0.5 - wc) * 1.2;
 export function defaultTerms(g: GameSave, mine: Fighter, opp: Fighter, titles: WorldBody[] = []): FightTerms {
   const y = yearOf(g);
   const title = titles.length > 0;
-  const cross = opp.promoter !== "independent" && opp.promoter !== mine.promoter ? 1.1 : 1;
+  const cross = crossFactor(g, mine, opp);
   const champOpp = title && titles.some((b) => g.world.belts[opp.division][b] === opp.id);
   const wcOpp = 1 - winChance(mine, opp);
   const theirs = askPurse(opp, y) * (champOpp ? 1.4 : title ? 1.2 : 1) * isUnderdogPremium(wcOpp) * cross;
@@ -160,7 +161,7 @@ export function evaluateFightOffer(g: GameSave, r: Rankings, mine: Fighter, opp:
   const wcOpp = 1 - winChance(mine, opp);
   const champOpp = terms.titles.some((b) => g.world.belts[opp.division][b] === opp.id);
   const title = terms.titles.length > 0;
-  const cross = opp.promoter !== "independent" && opp.promoter !== mine.promoter ? 1.1 : 1;
+  const cross = crossFactor(g, mine, opp);
   const ask = Math.round((askPurse(opp, y) * (champOpp ? 1.4 : title ? 1.2 : 1) * isUnderdogPremium(wcOpp) * cross) / 1000) * 1000;
   if (terms.purseB >= ask) return { kind: "accept", reason: "Terms agreed." };
   if (terms.purseB >= ask * 0.7) return { kind: "counter", reason: "He wants a bigger purse for this one.", terms: { ...terms, purseB: ask } };

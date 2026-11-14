@@ -6,6 +6,7 @@ import { dateForWeek, fmtDate } from "@/lib/sim/calendar";
 import NewGame from "./NewGame";
 import { ProfileProvider } from "./profile";
 import { FightReport } from "./report";
+import { GameOver } from "./business";
 import { Btn, CountUp } from "./ui";
 import { FightsScreen } from "./fights";
 import { MarketScreen } from "./market";
@@ -80,7 +81,7 @@ function Shell() {
             <div className="poster text-lg">{date}</div>
             <div className={`num text-xs font-semibold ${c.cash < 0 ? "text-bad" : "text-muted"}`}><CountUp value={c.cash} /></div>
           </div>
-          {fightNight ? (
+          {game.over ? <span className="label">Career over</span> : fightNight ? (
             <Btn variant="bell" className="animate-rise" onClick={() => go("fights")}>Fight night</Btn>
           ) : (
             <>
@@ -104,6 +105,7 @@ function Shell() {
         </nav>
       </div>
       <FightReport goFights={() => go("fights")} />
+      <GameOver />
     </div>
   );
 }

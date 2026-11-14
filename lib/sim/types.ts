@@ -46,7 +46,7 @@ export interface StatementLine { label: string; amount: number }
 export interface Statement { lines: StatementLine[]; revenue: number; costs: number; profit: number; attendance: number; capacity: number; ppvBuys: number }
 export interface Show {
   id: string; week: number; venue: string; fights: string[];
-  price: "low" | "standard" | "premium"; dist: "sale" | "ppv"; auto?: boolean;
+  price: "low" | "standard" | "premium"; dist: "sale" | "ppv" | "deal" | "deal-ppv"; auto?: boolean;
   statement?: Statement;
 }
 
@@ -94,9 +94,21 @@ export interface Promoter {
 }
 export interface Broadcaster { id: string; name: string; market: string; budget: number; prefers: string[] }
 
+export interface BroadcastDeal {
+  broadcasterId: string; showsPerYear: number; feePerShow: number; ppvShare: number; exclusive: boolean;
+  endsYear: number; showsDone: number;
+}
+export interface DealTerms { showsPerYear: number; feePerShow: number; ppvShare: number; exclusive: boolean; years: number }
+export interface Objective { id: string; kind: "stable" | "shows" | "title" | "profit" | "wins" | "arena"; text: string; target: number; dueYear: number; status: "open" | "done" | "failed" }
+export interface Board {
+  objectives: Objective[]; milestones: { id: string; week: number }[];
+  weeksInRed: number; wins: number; seasonWins: number; seasonShows: number; seasonStartCash: number; historySeen: number; showsSeen: string[];
+}
+
 export interface Company {
   name: string; country: string; colours: { primary: string; secondary: string };
   cash: number; stable: string[]; confidence: number; reputation: number;
+  deal?: BroadcastDeal; trust: Record<string, number>; board: Board;
 }
 export interface Settings { startingCash: number; hideScorecards: boolean }
 
@@ -131,4 +143,6 @@ export interface GameSave {
   negotiations: Negotiation[];
   inbox: { id: string; week: number; title: string; body: string; needsDecision?: boolean }[];
   settings: Settings;
+  /** set when the board fires you: the save is over but stays viewable */
+  over?: { week: number; reason: string };
 }

@@ -8,6 +8,7 @@ import { computeRankings } from "@/lib/sim/rankings";
 import { DIVISIONS, DIVISION_LABEL, DIVISION_LIMIT, WORLD_BODIES, type Division, type Fighter, type WorldBody } from "@/lib/sim/types";
 import { Badge, Btn, Card, CountUp, Empty, FighterRow, H, Panel, Stat, money, moneyShort } from "./ui";
 import { FightPoster } from "./poster";
+import { BoardPanel, BroadcastPanel, FinancePanel } from "./business";
 import { feed } from "@/lib/sim/news";
 import { rankText } from "@/lib/sim/matchmaking";
 import { pendingPlayerFights } from "@/lib/sim/game";
@@ -191,6 +192,9 @@ export function MoreScreen({ go }: { go: (t: string) => void }) {
       <div className="grid grid-cols-3 gap-2 md:hidden">
         {links.map(([id, l]) => <Btn key={id} variant="ghost" onClick={() => go(id)}>{l}</Btn>)}
       </div>
+      <BoardPanel />
+      <BroadcastPanel />
+      <FinancePanel />
       <Card className="space-y-3">
         <div className="text-sm font-semibold">Settings</div>
         <label className="flex min-h-11 items-center justify-between text-sm">Hide round scorecards in live fights
@@ -199,7 +203,7 @@ export function MoreScreen({ go }: { go: (t: string) => void }) {
         <label className="flex min-h-11 items-center justify-between text-sm">Theme
           <select className="min-h-11 rounded-lg border border-line bg-bg px-2" defaultValue="auto" onChange={(e) => {
             const v = e.target.value; if (v === "auto") document.documentElement.removeAttribute("data-theme"); else document.documentElement.setAttribute("data-theme", v);
-          }}><option value="auto">System</option><option value="light">Light</option><option value="dark">Dark</option></select>
+          }}><option value="auto">Dark</option><option value="light">Light</option></select>
         </label>
       </Card>
       <Card className="space-y-2">
@@ -214,7 +218,7 @@ export function MoreScreen({ go }: { go: (t: string) => void }) {
         <Btn variant="ghost" className="w-full" onClick={closeGame}>Switch / new save</Btn>
         {msg && <p className="text-sm text-muted">{msg}</p>}
       </Card>
-      <p className="text-center text-xs text-muted">Finances, broadcaster deals, board, Hall of Fame and records land in later phases.</p>
+      <p className="text-center text-xs text-muted">Hall of Fame and records land in a later phase.</p>
     </div>
   );
 }

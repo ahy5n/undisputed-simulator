@@ -26,13 +26,14 @@ function Builder({ close }: { close: () => void }) {
   const [week, setWeek] = useState(weeks[0] ?? 0);
   const [venue, setVenue] = useState("arena-s");
   const [price, setPrice] = useState<Show["price"]>("standard");
-  const [dist, setDist] = useState<Show["dist"]>("sale");
+  const [dist, setDist] = useState<Show["dist"]>(game?.company.deal ? "deal" : "sale");
   const [picked, setPicked] = useState<string[] | null>(null);
   if (!game) return null;
   const avail = promotedUnassigned(game, week);
   const chosen = (picked ?? avail.map((f) => f.id)).filter((id) => avail.some((f) => f.id === id)).slice(0, 8);
   const fs = avail.filter((f) => chosen.includes(f.id));
   const F = game.world.fighters;
+  const partner = game.world.broadcasters.find((x) => x.id === game.company.deal?.broadcasterId)?.name ?? "";
   const proj = fs.length ? project(game, venue, fs, price, dist) : null;
   return (
     <div className="fixed inset-0 z-40 flex items-end justify-center bg-black/50 md:items-center" onClick={close} role="dialog" aria-modal="true" aria-label="Show builder">
@@ -52,9 +53,12 @@ function Builder({ close }: { close: () => void }) {
               {(["low", "standard", "premium"] as const).map((p) => <button key={p} onClick={() => setPrice(p)} className={`min-h-11 rounded-lg text-sm font-semibold capitalize ${price === p ? "bg-fg text-bg" : "border border-line"}`}>{p} tickets</button>)}
             </div>
             <div className="grid grid-cols-2 gap-2">
-              <button onClick={() => setDist("sale")} className={`min-h-11 rounded-lg text-sm font-semibold ${dist === "sale" ? "bg-fg text-bg" : "border border-line"}`}>Sell to a broadcaster</button>
-              <button onClick={() => setDist("ppv")} className={`min-h-11 rounded-lg text-sm font-semibold ${dist === "ppv" ? "bg-fg text-bg" : "border border-line"}`}>PPV (riskier)</button>
+              {(game.company.deal
+                ? ([["deal", `${partner} show`], ["deal-ppv", `${partner} PPV`], ["sale", "One-off sale"], ["ppv", "Own PPV (riskier)"]] as const)
+                : ([["sale", "Sell to a broadcaster"], ["ppv", "PPV (riskier)"]] as const)
+              ).map(([id, l]) => <button key={id} onClick={() => setDist(id)} className={`min-h-11 px-1 text-sm font-semibold ${dist === id ? "bg-fg text-bg" : "border border-line"}`}>{l}</button>)}
             </div>
+            {game.company.deal && (dist === "sale" || dist === "ppv") && <p className="text-xs text-muted">This show will not count toward the {game.company.deal.showsPerYear} dates you owe {partner}.</p>}
             <div>
               <div className="mb-1 text-sm text-muted">Card ({chosen.length}/8)</div>
               {avail.map((f) => (
