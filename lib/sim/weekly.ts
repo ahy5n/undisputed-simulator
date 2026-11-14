@@ -3,7 +3,7 @@ import { gameYear } from "./calendar";
 import { simulateFight, type FightResult } from "./fight";
 import { overall } from "./fighter";
 import {
-  CAMP_DEFAULT, candidates, defaultTerms, inboxPush, isFree, newId, rankIn, scheduleFight, winChance,
+  CAMP_DEFAULT, activeByDivision, candidates, defaultTerms, inboxPush, isFree, newId, rankIn, scheduleFight, winChance,
 } from "./matchmaking";
 import { computeRankings, type Rankings } from "./rankings";
 import { Rng } from "./rng";
@@ -34,7 +34,8 @@ export function applyResult(g: GameSave, fight: ScheduledFight, r: FightResult, 
     else { f.record.l++; f.form.push("L"); if (stoppage) f.koLosses = (f.koLosses ?? 0) + 1; }
     f.form = f.form.slice(-5);
     const pop = won ? 2 + Math.round(r.excitement / 25) + (stoppage ? 3 : 0) + (fight.titles.length ? 4 : 0) : drew ? 1 : Math.round(r.excitement / 50) - 1;
-    f.popularity = clamp(f.popularity + pop, 1, 100);
+    // fame is harder to add the more of it you have
+    f.popularity = clamp(Math.round(f.popularity + (pop > 0 ? pop * Math.max(0.15, 1 - f.popularity / 105) : pop)), 1, 100);
     f.morale = clamp(f.morale + (won ? 8 : drew ? 0 : -8), 20, 100);
     const pInj = !won && stoppage ? 0.3 : 0.08;
     if (rng.chance(pInj)) f.injuredWeeks = rng.int(4, 14);
@@ -64,7 +65,7 @@ export function applyResult(g: GameSave, fight: ScheduledFight, r: FightResult, 
   let cash = next.company.cash;
   let rep = next.company.reputation;
   if (fight.promoter !== "player") for (const [f, side] of sides) if (f.promoter === "player" && f.contract) cash += Math.round((side === "a" ? fight.purseA : fight.purseB) * f.contract.cut);
-  for (const [f, side] of sides) if (f.promoter === "player") rep = clamp(rep + (r.winner === side ? 1 + (fight.titles.length ? 4 : 0) : r.winner === null ? 0 : -0.3), 0, 100);
+  for (const [f, side] of sides) if (f.promoter === "player") rep = clamp(rep + (r.winner === side ? 0.5 + (fight.titles.length ? 4 : 0) : r.winner === null ? 0 : -0.4), 0, 100);
   next = { ...next, company: { ...next.company, cash, reputation: rep } };
   next = rivalryAfter(next, fight, r);
   next = settleIfComplete(next, fight.showId, rng);
@@ -98,7 +99,7 @@ export function quickSimFight(g: GameSave, fightId: string): GameSave {
 export function realisticOpponents(g: GameSave, f: Fighter): number {
   const o = overall(f.ratings);
   let n = 0;
-  for (const x of Object.values(g.world.fighters)) if (x.id !== f.id && x.division === f.division && x.pro && !x.retired && Math.abs(overall(x.ratings) - o) <= 12) n++;
+  for (const x of activeByDivision(g).get(f.division)!) if (x.id !== f.id && Math.abs(overall(x.ratings) - o) <= 12) n++;
   return n;
 }
 export const rankedIds = (g: GameSave, r: Rankings): Set<string> => {
@@ -274,7 +275,7 @@ function closeBids(g: GameSave, rng: Rng): GameSave {
     const win = [...pb.bids].sort((a, b) => b.amount - a.amount)[0] ?? { promoterId: rng.pick(g.world.promoters.filter((p) => p.real)).id, amount: pb.minBid };
     const wk = firstFreeWeek(cur, x, y, g.week + CAMP_DEFAULT);
     if (wk === null) { cur = { ...cur, purseBids: cur.purseBids.map((b) => b.id === pb.id ? { ...b, closeWeek: g.week + 1 } : b) }; continue; }
-    const split = pb.order.kind === "vacant" ? 0.5 : 0.75;
+    const split = pb.order.kind === "vacant" ? 0.5 : g.settings.bidSplit ?? 0.75;
     const terms: FightTerms = { purseA: Math.round((win.amount * split) / 1000) * 1000, purseB: Math.round((win.amount * (1 - split)) / 1000) * 1000, titles: [pb.order.body], rounds: 12, rematch: false, rehydration: false };
     cur = { ...cur, purseBids: cur.purseBids.filter((b) => b.id !== pb.id), lastMandatory: { ...cur.lastMandatory, [key(pb.order.division, pb.order.body)]: g.week } };
     cur = scheduleFight(cur, x, y, wk, terms, win.promoterId, "bid");
@@ -366,8 +367,8 @@ export function worldWeek(g: GameSave): GameSave {
   }
   cur = { ...cur, fights: cur.fights.filter((f) => !f.done || f.week >= g.week - 12), incoming: cur.incoming.filter((o) => o.expires > g.week) };
   cur = campsWeek(cur, rng);
-  cur = dramaWeek(cur, rng);
   const r = computeRankings(cur.world);
+  cur = dramaWeek(cur, rng, r);
   cur = processOrders(makeOrders(cur, r, rng), rng);
   cur = ensureOpponents(cur, r, rng);
   cur = aiMakeFights(cur, r, rng);

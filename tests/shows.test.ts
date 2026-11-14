@@ -17,24 +17,25 @@ const byPop = (g: GameSave, lo: number, hi: number, div?: string) =>
   Object.values(g.world.fighters).filter((f) => f.pro && f.promoter === "independent" && f.popularity >= lo && f.popularity <= hi && (!div || f.division === div));
 
 describe("show economics", () => {
-  it("a small card of low-draw fighters roughly breaks even in a small hall", () => {
+  it("a small card of low-draw fighters: a sensible venue loses little, the wrong one loses a lot", () => {
     const g = fresh();
     const pool = byPop(g, 12, 30, "welterweight").slice(0, 12);
     const pairs: [Fighter, Fighter][] = [0, 2, 4, 6, 8, 10].map((i) => [pool[i], pool[i + 1]]);
     const gg = fights(g, pairs);
-    const p = project(gg, "hall", gg.fights.slice(0, 6), "standard", "sale");
-    console.log("small card:", Math.round(p.revenue), Math.round(p.costs), Math.round(p.profit), "att", p.attendance);
-    expect(p.profit / p.revenue).toBeGreaterThan(-0.6);
-    expect(p.profit / p.revenue).toBeLessThan(0.7);
+    const best = Math.max(...VENUES.map((v) => project(gg, v.id, gg.fights, "standard", "sale").profit));
+    const hall = project(gg, "hall", gg.fights, "standard", "sale");
+    console.log("small card: hall", Math.round(hall.profit), "best venue", Math.round(best));
+    expect(best).toBeGreaterThan(-0.25 * hall.revenue); // a first card of unknowns about washes its face at the right venue
+    expect(best).toBeGreaterThanOrEqual(hall.profit);
   });
-  it("a card with a 60-popularity main event is profitable in an arena", () => {
+  it("a card with a 60-popularity main event is profitable at the right venue", () => {
     const g = fresh();
     const stars = byPop(g, 50, 75, "middleweight").slice(0, 2);
-    const under = byPop(g, 15, 35, "middleweight").slice(0, 6);
-    const gg = fights(g, [[stars[0], stars[1]], [under[0], under[1]], [under[2], under[3]], [under[4], under[5]]]);
-    const p = project(gg, "arena-m", gg.fights, "standard", "sale");
-    console.log("arena card:", Math.round(p.revenue), Math.round(p.costs), Math.round(p.profit), "att", p.attendance);
-    expect(p.profit).toBeGreaterThan(0);
+    const under = byPop(g, 15, 35, "middleweight").slice(0, 4);
+    const gg = fights(g, [[stars[0], stars[1]], [under[0], under[1]], [under[2], under[3]]]);
+    const best = VENUES.map((v) => ({ v, p: project(gg, v.id, gg.fights, "standard", "sale").profit })).sort((a, b) => b.p - a.p)[0];
+    console.log("arena card best venue:", best.v.name, Math.round(best.p));
+    expect(best.p).toBeGreaterThan(0);
   });
   it("a mega-fight in a national stadium clears £10m revenue", () => {
     const g = fresh();

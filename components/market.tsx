@@ -2,7 +2,7 @@
 import { useMemo, useState } from "react";
 import { useGame } from "@/lib/game/store";
 import { gameYear } from "@/lib/sim/calendar";
-import { DEFAULT_OFFER, askPurse, contractSalePrice, offerCommitment, offerValue, releaseCost } from "@/lib/sim/contracts";
+import { DEFAULT_OFFER, askPurse, contractSalePrice, offerCommitment, offerValue, releaseCost, reputationNeeded } from "@/lib/sim/contracts";
 import { ageAt, overall, stars } from "@/lib/sim/fighter";
 import { finalAnswer, makeOffer, raiseBid, releaseFighter, renewContract, sellContract, type OfferOutcome } from "@/lib/sim/market";
 import { DIVISIONS, DIVISION_LABEL, type Division, type Fighter, type Offer } from "@/lib/sim/types";
@@ -123,6 +123,7 @@ export function MarketScreen() {
   const [div, setDiv] = useState<Division | "all">("all");
   const [q, setQ] = useState("");
   const [limit, setLimit] = useState(40);
+  const [reach, setReach] = useState(true);
   const [sel, setSel] = useState<Fighter | null>(null);
   const list = useMemo(() => {
     if (!game) return [];
@@ -132,8 +133,9 @@ export function MarketScreen() {
       .filter((f) => (tab === "free" ? f.promoter === "independent" && f.pro : tab === "prospect" ? f.promoter === "independent" && !f.pro : tab === "contract" ? f.promoter !== "independent" && f.pro : false))
       .filter((f) => div === "all" || f.division === div)
       .filter((f) => !ql || f.name.toLowerCase().includes(ql))
+      .filter((f) => !reach || tab === "contract" || reputationNeeded(f) <= game.company.reputation)
       .sort((a, b) => overall(b.ratings) - overall(a.ratings));
-  }, [game, tab, div, q]);
+  }, [game, tab, div, q, reach]);
   if (!game) return null;
   const year = gameYear(game.startDate, game.week);
   const TABS: [typeof tab, string][] = [["free", "Free agents"], ["prospect", "Prospects"], ["bids", `Bids${game.negotiations.length ? ` (${game.negotiations.length})` : ""}`], ["contract", "Under contract"]];
@@ -152,6 +154,12 @@ export function MarketScreen() {
               {DIVISIONS.map((d) => <option key={d} value={d}>{DIVISION_LABEL[d]}</option>)}
             </select>
           </div>
+          {tab !== "contract" && (
+            <label className="mb-3 flex min-h-11 items-center justify-between gap-3 text-sm">
+              <span>Only fighters who will sign with me <span className="text-muted">(your reputation {Math.round(game.company.reputation)})</span></span>
+              <input type="checkbox" className="h-5 w-5" checked={reach} onChange={(e) => { setReach(e.target.checked); setLimit(40); }} />
+            </label>
+          )}
           <Card className="py-1">
             {list.slice(0, limit).map((f) => {
               const st = stars(f, year);
@@ -160,13 +168,16 @@ export function MarketScreen() {
                 <FighterRow key={f.id} f={f} right={
                   <div>
                     <div className="text-xs text-muted">{DIVISION_LABEL[f.division]} · {ageAt(f, year)}y{st ? ` · ${"★".repeat(st)}` : ""}</div>
+                    {f.amateur?.medal && <div className="text-xs font-bold text-gold">Olympic {f.amateur.medal}</div>}
                     {tab === "contract"
                       ? <div className="text-xs text-muted">{owner?.name} to {f.contract?.expiresYear}</div>
-                      : <Btn className="mt-1" onClick={() => setSel(f)}>Offer · {money(askPurse(f, year))}</Btn>}
+                      : reputationNeeded(f) > game.company.reputation
+                        ? <div className="mt-1 text-xs font-semibold text-bad">Needs reputation {reputationNeeded(f)}</div>
+                        : <Btn className="mt-1" onClick={() => setSel(f)}>Offer · {money(askPurse(f, year))}</Btn>}
                   </div>} />
               );
             })}
-            {list.length === 0 && <p className="p-3 text-sm text-muted">No one matches.</p>}
+            {list.length === 0 && <p className="p-3 text-sm text-muted">{reach && tab !== "contract" ? "No one matches. Untick the box above to see the stars you cannot sign yet." : "No one matches."}</p>}
           </Card>
           {list.length > limit && <Btn variant="ghost" className="mt-3 w-full" onClick={() => setLimit(limit + 40)}>Show more ({list.length - limit})</Btn>}
         </>

@@ -6,6 +6,7 @@ import { defaultTerms, scheduleFight } from "@/lib/sim/matchmaking";
 import { renewContract } from "@/lib/sim/market";
 import { project } from "@/lib/sim/shows";
 import { quickSimFight } from "@/lib/sim/weekly";
+import { ensureCamps } from "@/lib/sim/camps";
 import type { FightResult } from "@/lib/sim/fight";
 import type { GameSave } from "@/lib/sim/types";
 
@@ -15,8 +16,10 @@ function big(week = 8) {
   let g = sign(BASE, "anthony-joshua");
   const a = g.world.fighters["anthony-joshua"], b = g.world.fighters["dillian-whyte"];
   g = scheduleFight(g, a.id, b.id, week, defaultTerms(g, a, b, []), "player", "player");
-  return g;
+  return noInjuries(g);
 }
+// a camp that never starts never rolls the injury dice, so the fight date holds
+function noInjuries(g: GameSave): GameSave { return { ...ensureCamps(g), camps: ensureCamps(g).camps.map((c) => ({ ...c, start: 9999 })) }; }
 
 describe("press conferences", () => {
   it("a big fight gets one two weeks out; small fights don't", () => {
@@ -69,7 +72,7 @@ describe("contracts running out", () => {
     // young fighters: the January rollover in this window can retire men in their late thirties
     let g = sign(BASE, "moses-itauma", 1);
     const a = g.world.fighters["moses-itauma"], b = g.world.fighters["johnny-fisher"];
-    g = scheduleFight(g, a.id, b.id, 7, defaultTerms(g, a, b, []), "player", "player");
+    g = noInjuries(scheduleFight(g, a.id, b.id, 7, defaultTerms(g, a, b, []), "player", "player"));
     for (let i = 0; i < 7; i++) g = advanceWeek(g);
     g = quickSimFight(g, g.fights.find((x) => x.a === a.id)!.id);
     expect(g.world.fighters[a.id].contract!.fightsLeft).toBe(0);
@@ -102,5 +105,41 @@ describe("retirement", () => {
       expect(g.world.fighters["dillian-whyte"].retired).toBeFalsy();
       expect(g.fights.some((f) => f.a === "anthony-joshua" && !f.done)).toBe(true);
     }
+  });
+});
+
+import { olympicsDue, runOlympics, records, hallWeek } from "@/lib/sim/legacy";
+import { Rng } from "@/lib/sim/rng";
+import { DIVISIONS } from "@/lib/sim/types";
+
+describe("Olympics, Hall of Fame and records", () => {
+  it("the Games are due in August of 2028 and run once", () => {
+    let g = BASE;
+    expect(olympicsDue(g)).toBeNull();
+    g = { ...g, startDate: "2028-08-05", week: 0 };
+    expect(olympicsDue(g)).toBe(2028);
+    const after = runOlympics(g, 2028, new Rng(1));
+    expect(olympicsDue(after)).toBeNull();
+    expect(after.hall.olympics[0].medals.length).toBe(DIVISIONS.length);
+  });
+  it("medallists get a medal, a popularity jump and a high ceiling", () => {
+    const g = runOlympics({ ...BASE, startDate: "2028-08-05" }, 2028, new Rng(2));
+    const golds = g.hall.olympics[0].medals.map((m) => Object.values(g.world.fighters).find((f) => f.name === m.gold && f.amateur?.medal)!);
+    for (const f of golds) { expect(f.amateur?.medal).toMatch(/Gold 2028/); expect(f.potential).toBeGreaterThanOrEqual(4); expect(f.popularity).toBeGreaterThanOrEqual(20); }
+    expect(g.inbox[0].title).toMatch(/Olympic boxing/);
+  });
+  it("records an undisputed champion exactly once", () => {
+    const belts = structuredClone(BASE.world.belts);
+    for (const b of ["WBC", "WBA", "IBF", "WBO"] as const) belts.heavyweight[b] = "oleksandr-usyk";
+    const g = hallWeek({ ...BASE, world: { ...BASE.world, belts } });
+    expect(g.hall.undisputed.length).toBe(1);
+    expect(hallWeek(g).hall.undisputed.length).toBe(1);
+  });
+  it("records compile from history without error", () => {
+    let g = BASE;
+    for (let i = 0; i < 20; i++) g = advanceWeek(g);
+    const r = records(g, (id) => id);
+    expect(r.mostKos.length).toBeGreaterThan(0);
+    expect(r.promoter.w + r.promoter.l + r.promoter.d).toBe(0);
   });
 });

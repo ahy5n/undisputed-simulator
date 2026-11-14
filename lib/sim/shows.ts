@@ -70,7 +70,7 @@ export function project(g: GameSave, venueId: string, fights: ScheduledFight[], 
   costs.push({ label: "Sanctioning fees", amount: -Math.round(titleFights * 25_000 + purses * 0.03) });
   const foreign = new Set<string>();
   for (const f of fights) for (const id of [f.a, f.b]) if (F[id].nationality !== g.company.country) foreign.add(id);
-  costs.push({ label: `Travel (${foreign.size} overseas fighter${foreign.size === 1 ? "" : "s"})`, amount: -foreign.size * 8_000 });
+  costs.push({ label: `Travel (${foreign.size} overseas fighter${foreign.size === 1 ? "" : "s"})`, amount: -foreign.size * (v.capacity >= 10_000 ? 8_000 : 2_500) });
   const cost = costs.reduce((s, l) => s + l.amount, 0);
   return { lines: [...lines, ...costs], revenue, costs: -cost, profit: revenue + cost, attendance, capacity: v.capacity, ppvBuys, demand };
 }

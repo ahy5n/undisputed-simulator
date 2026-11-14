@@ -19,6 +19,7 @@ interface Ctx {
   closeGame: () => void;
   report: WeekReport | null;
   dismissReport: () => void;
+  busy: boolean;
 }
 const GameCtx = createContext<Ctx | null>(null);
 export const useGame = () => {
@@ -28,7 +29,7 @@ export const useGame = () => {
 };
 const migrate = (g: GameSave): GameSave => ({
   ...g,
-  negotiations: g.negotiations ?? [], fights: g.fights ?? [], shows: g.shows ?? [], camps: g.camps ?? [], rivalries: g.rivalries ?? {}, incoming: g.incoming ?? [], orders: g.orders ?? [],
+  negotiations: g.negotiations ?? [], fights: g.fights ?? [], shows: g.shows ?? [], camps: g.camps ?? [], rivalries: g.rivalries ?? {}, hall: g.hall ?? { undisputed: [], inductees: [], olympics: [] }, settings: { ...g.settings, bidSplit: g.settings?.bidSplit ?? 0.75 }, incoming: g.incoming ?? [], orders: g.orders ?? [],
   purseBids: g.purseBids ?? [], lastMandatory: g.lastMandatory ?? {}, history: g.history ?? [],
   company: { ...g.company, reputation: g.company.reputation ?? 30, trust: g.company.trust ?? {}, board: g.company.board ?? { ...openingBoard(g.company.cash, 2026), historySeen: (g.history ?? []).length } },
 });
@@ -39,6 +40,8 @@ export function GameProvider({ children }: { children: ReactNode }) {
   const [ready, setReady] = useState(false);
   const [saves, setSaves] = useState<Ctx["saves"]>([]);
   const [report, setReport] = useState<WeekReport | null>(null);
+  const [busy, setBusy] = useState(false);
+  const busyRef = useRef(false);
   const latest = useRef<GameSave | null>(null);
   const dirty = useRef(false);
 
@@ -92,18 +95,24 @@ export function GameProvider({ children }: { children: ReactNode }) {
     if (g) { try { localStorage.setItem(LAST, id); } catch {} setGame(g); }
   }, []);
   // Time only moves from here, so the report is built from the state on screen (latest.current), not inside a state updater.
-  const advance = useCallback((step: (g: GameSave) => GameSave) => {
-    const g = latest.current;
-    if (!g || g.over || pendingPlayerFights(g).length) return;
-    const next = step(g);
+  const commit = (g: GameSave, next: GameSave) => {
     const rep = weekReport(g, next);
     setReport(!next.over && (rep.stories.length || rep.notes.length) ? rep : null); // a silent week does not interrupt you; neither does the sack
     setGame(next);
+  };
+  const advance = useCallback((step: (g: GameSave) => GameSave) => {
+    const g = latest.current;
+    if (!g || g.over || pendingPlayerFights(g).length || busyRef.current) return;
+    busyRef.current = true; setBusy(true);
+    // let "Simming…" paint before the weeks are played
+    setTimeout(() => {
+      try { commit(g, step(g)); } finally { busyRef.current = false; setBusy(false); }
+    }, 30);
   }, []);
   const nextWeek = useCallback(() => advance(advanceWeek), [advance]);
   const simToFight = useCallback(() => advance((g) => simToNextFight(g).game), [advance]);
   const dismissReport = useCallback(() => setReport(null), []);
   const closeGame = useCallback(() => { try { localStorage.removeItem(LAST); } catch {} setGame(null); refreshSaves(); }, [refreshSaves]);
 
-  return <GameCtx.Provider value={{ game, ready, saves, update, start, open, nextWeek, simToFight, refreshSaves, closeGame, report, dismissReport }}>{children}</GameCtx.Provider>;
+  return <GameCtx.Provider value={{ game, ready, saves, update, start, open, nextWeek, simToFight, refreshSaves, closeGame, report, dismissReport, busy }}>{children}</GameCtx.Provider>;
 }

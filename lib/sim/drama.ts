@@ -2,7 +2,8 @@ import { campFor } from "./camps";
 import { inboxPush } from "./matchmaking";
 import type { Rng } from "./rng";
 import type { FightResult } from "./fight";
-import type { GameSave, ScheduledFight } from "./types";
+import type { Rankings } from "./rankings";
+import { WORLD_BODIES, type GameSave, type ScheduledFight } from "./types";
 
 export const pairKey = (a: string, b: string) => (a < b ? `${a}|${b}` : `${b}|${a}`);
 export const heat = (g: GameSave, a: string, b: string) => g.rivalries[pairKey(a, b)] ?? 0;
@@ -56,7 +57,7 @@ export function rivalryAfter(g: GameSave, f: ScheduledFight, r: FightResult): Ga
 export const RENEW_WEEKS = 4;
 
 /** Weekly drama for your stable: press conferences, weigh-ins, contracts running out. */
-export function dramaWeek(g: GameSave, rng: Rng): GameSave {
+export function dramaWeek(g: GameSave, rng: Rng, ranks: Rankings): GameSave {
   let cur = g;
   const F = () => cur.world.fighters;
   for (const f of g.fights) {
@@ -81,6 +82,26 @@ export function dramaWeek(g: GameSave, rng: Rng): GameSave {
           };
           cur = inboxPush(cur, `${me.name} misses weight`, "A rushed camp caught up with him on the scales. He is drained and embarrassed going into the fight. Start camps earlier or train lighter.", true);
         }
+      }
+    }
+  }
+  // a top contender with nothing booked gets restless; rivals call out your names
+  for (const id of g.company.stable) {
+    const me = F()[id];
+    if (!me || me.retired || cur.fights.some((x) => !x.done && (x.a === id || x.b === id))) continue;
+    if (me.popularity >= 45 && rng.chance(0.03)) {
+      const foes = Object.values(F()).filter((o) => o.pro && !o.retired && o.division === me.division && o.promoter !== "player" && Math.abs(o.popularity - me.popularity) < 25 && o.popularity >= 35);
+      if (foes.length) {
+        const foe = rng.pick(foes);
+        cur = { ...cur, rivalries: { ...cur.rivalries, [pairKey(id, foe.id)]: heat(cur, id, foe.id) + 1 } };
+        cur = inboxPush(cur, `${foe.name} calls out ${me.name}`, `"He's ducking me. Sign the contract." The public wants it now: that fight would sell about 30% more. Find him under Fights, Search.`);
+      }
+    }
+    if (me.titles.length === 0 && me.morale > 30 && rng.chance(0.04)) {
+      const top5 = WORLD_BODIES.some((b) => { const i = ranks[me.division][b].indexOf(id); return i >= 0 && i < 5; });
+      if (top5) {
+        cur = { ...cur, world: { ...cur.world, fighters: { ...F(), [id]: { ...me, morale: clamp(me.morale - 5) } } } };
+        cur = inboxPush(cur, `${me.name} demands a title shot`, "He is ranked in the top five and tired of waiting. His morale is dropping. Unhappy fighters ask for more money at renewal.", true);
       }
     }
   }

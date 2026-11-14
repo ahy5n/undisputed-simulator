@@ -4,6 +4,11 @@ import { WORLD_BODIES, type Board, type GameSave, type Objective } from "./types
 
 const clamp = (n: number) => Math.max(0, Math.min(100, Math.round(n)));
 export const RED_WEEKS_LIMIT = 8;
+/** Weekly running costs: office, gym and staff, growing with the stable and with the size of the company. */
+export function overheads(g: GameSave): number {
+  const big = Math.min(60_000, Math.max(0, g.company.cash) * 0.0015);
+  return Math.round((4_000 + g.company.stable.length * 1_500 + big) / 100) * 100;
+}
 
 export const MILESTONES: { id: string; label: string }[] = [
   { id: "first-win", label: "First win as a promoter" },
@@ -64,20 +69,23 @@ export function boardWeek(g: GameSave): GameSave {
   for (const h of g.history.slice(b.historySeen)) {
     const side = g.world.fighters[h.a]?.promoter === "player" ? "a" : g.world.fighters[h.b]?.promoter === "player" ? "b" : null;
     if (!side || (!mine.has(h.a) && !mine.has(h.b))) continue;
-    if (h.winner === side) { b.wins++; b.seasonWins++; conf += h.titles.length ? 6 : 1; }
-    else if (h.winner) conf -= h.titles.length ? 2 : 1;
+    if (h.winner === side) { b.wins++; b.seasonWins++; conf += h.titles.length ? 5 : 0.5; }
+    else if (h.winner) conf -= h.titles.length ? 3 : 1.5;
   }
   b.historySeen = g.history.length;
   // shows settled since last look
   for (const s of g.shows) {
     if (!s.statement || b.showsSeen.includes(s.id)) continue;
     b = { ...b, showsSeen: [...b.showsSeen, s.id], seasonShows: b.seasonShows + 1 };
-    conf += s.statement.profit > 0 ? 2 : -3;
+    conf += s.statement.profit > 0 ? 1 : -3;
   }
+  // running costs, and a board that gets used to success: confidence above 60 fades unless you keep earning it
+  const cashNow = g.company.cash - overheads(g);
+  if (conf > 55) conf -= conf > 80 ? 1.5 : 1;
   // the red
-  b.weeksInRed = g.company.cash < 0 ? b.weeksInRed + 1 : 0;
+  b.weeksInRed = cashNow < 0 ? b.weeksInRed + 1 : 0;
   if (b.weeksInRed > 0) conf -= 3;
-  cur = { ...cur, company: { ...cur.company, board: b, confidence: clamp(conf) } };
+  cur = { ...cur, company: { ...cur.company, cash: cashNow, board: b, confidence: clamp(conf) } };
   if (b.weeksInRed === 1) cur = inboxPush(cur, "The board is watching the bank balance", `You are in the red. If cash stays below zero for ${RED_WEEKS_LIMIT} weeks, you will be removed.`, true);
   // milestones
   const have = new Set(b.milestones.map((m) => m.id));

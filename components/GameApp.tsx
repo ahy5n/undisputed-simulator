@@ -41,7 +41,7 @@ function Icon({ id }: { id: Tab }) {
 }
 
 function Shell() {
-  const { game, ready, nextWeek, simToFight } = useGame();
+  const { game, ready, nextWeek, simToFight, busy } = useGame();
   const [tab, setTab] = useState<Tab>("home");
 
   if (!ready) return <div className="grid min-h-dvh place-items-center"><div className="text-center"><div className="poster text-3xl">Lacing up…</div><div className="ropes mx-auto mt-3 w-24" /></div></div>;
@@ -85,8 +85,8 @@ function Shell() {
             <Btn variant="bell" className="animate-rise" onClick={() => go("fights")}>Fight night</Btn>
           ) : (
             <>
-              <Btn variant="ghost" onClick={simToFight}>Sim to fight</Btn>
-              <Btn variant="bell" onClick={nextWeek}>Next week</Btn>
+              <Btn variant="ghost" disabled={busy} onClick={simToFight}>{busy ? "Simming…" : "Sim to fight"}</Btn>
+              <Btn variant="bell" disabled={busy} onClick={nextWeek}>Next week</Btn>
             </>
           )}
         </header>

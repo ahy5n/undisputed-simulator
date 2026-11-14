@@ -7,6 +7,8 @@ import { overall } from "@/lib/sim/fighter";
 import type { GameSave } from "@/lib/sim/types";
 
 const fresh = () => newGame({ companyName: "Test", country: "GB", primary: "#000", secondary: "#fff", startingCash: 5_000_000 });
+// elite fighters only listen to established promoters
+const famous = () => { const g = fresh(); return { ...g, company: { ...g.company, reputation: 95 } }; };
 const year = (g: GameSave) => gameYear(g.startDate, g.week);
 
 describe("offers", () => {
@@ -45,7 +47,7 @@ describe("offers", () => {
     expect(offerValue(base)).toBeGreaterThan(0);
     expect(askPurse(f, year(g))).toBeGreaterThanOrEqual(1000);
   });
-  it("a star turns down a nobody promoter with a clear reason", () => {
+  it("a star turns down a nobody promoter, and the reason names the reputation he wants", () => {
     const star = Object.values(g.world.fighters).find((x) => x.promoter === "independent" && x.pro && overall(x.ratings) >= 85)!;
     const d = evaluateOffer(star, { bonus: 10000, fights: 3, purse: 20000, cut: 0.3 }, year(g), ctx);
     expect(d.kind).toBe("refuse");
@@ -81,7 +83,7 @@ describe("signing, releasing, selling", () => {
 
 describe("bidding wars", () => {
   it("a hot fighter starts a war that resolves within three weeks", () => {
-    const g = fresh();
+    const g = famous();
     const hot = Object.values(g.world.fighters).filter((x) => x.promoter === "independent" && x.pro && overall(x.ratings) >= 82).sort((a, b) => overall(b.ratings) - overall(a.ratings))[0];
     expect(hot).toBeDefined();
     const base = DEFAULT_OFFER(hot, year(g));
@@ -98,7 +100,7 @@ describe("bidding wars", () => {
     expect(msg!.body).toMatch(/Chose/);
   });
   it("raising and giving a final answer resolve immediately", () => {
-    const g = fresh();
+    const g = famous();
     const hot = Object.values(g.world.fighters).filter((x) => x.promoter === "independent" && x.pro && overall(x.ratings) >= 82)[0];
     const base = DEFAULT_OFFER(hot, year(g));
     const { game } = makeOffer(g, hot.id, base);

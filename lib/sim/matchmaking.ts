@@ -39,6 +39,18 @@ export function isFree(g: GameSave, id: string, week: number): boolean {
   return !(booked(g).get(id) ?? []).some((w) => Math.abs(w - week) < CAMP_MIN);
 }
 
+const divIdx = new WeakMap<Record<string, Fighter>, Map<Division, Fighter[]>>();
+/** Active pros per division, cached for as long as the fighters table is unchanged. */
+export function activeByDivision(g: GameSave): Map<Division, Fighter[]> {
+  let m = divIdx.get(g.world.fighters);
+  if (!m) {
+    m = new Map(DIVISIONS.map((d) => [d, [] as Fighter[]]));
+    for (const f of Object.values(g.world.fighters)) if (f.pro && !f.retired) m.get(f.division)!.push(f);
+    divIdx.set(g.world.fighters, m);
+  }
+  return m;
+}
+
 export interface RankInfo { body: WorldBody; rank: number } // rank 0 = champion
 export function rankIn(g: GameSave, r: Rankings, f: Fighter, body: WorldBody): number | null {
   if (g.world.belts[f.division][body] === f.id) return 0;
@@ -100,10 +112,12 @@ function describe(g: GameSave, r: Rankings, mine: Fighter, opp: Fighter, wc: num
 export function candidates(g: GameSave, r: Rankings, mine: Fighter, week: number, maxDivs = 0): Candidate[] {
   const mo = overall(mine.ratings);
   const out: Candidate[] = [];
-  for (const o of Object.values(g.world.fighters)) {
-    if (o.id === mine.id || !o.pro || o.retired || o.promoter === "player") continue;
-    const dd = Math.abs(divIndex(o.division) - divIndex(mine.division));
-    if (dd > maxDivs) continue;
+  const idx = activeByDivision(g), myDiv = divIndex(mine.division);
+  const pool: Fighter[] = [];
+  for (let k = Math.max(0, myDiv - maxDivs); k <= Math.min(DIVISIONS.length - 1, myDiv + maxDivs); k++) pool.push(...idx.get(DIVISIONS[k])!);
+  for (const o of pool) {
+    if (o.id === mine.id || o.promoter === "player") continue;
+    const dd = Math.abs(divIndex(o.division) - myDiv);
     if (!isFree(g, o.id, week)) continue;
     const gap = overall(o.ratings) - mo;
     if (dd === 0 && Math.abs(gap) > 20) continue;

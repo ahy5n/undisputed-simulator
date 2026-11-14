@@ -109,12 +109,18 @@ export interface Board {
   weeksInRed: number; wins: number; seasonWins: number; seasonShows: number; seasonStartCash: number; historySeen: number; showsSeen: string[];
 }
 
+export interface Hall {
+  undisputed: { id: string; name: string; division: Division; week: number }[];
+  inductees: { id: string; name: string; nationality: string; record: string; titleWins: number; year: number }[];
+  olympics: { year: number; city: string; medals: { division: Division; gold: string; silver: string; bronze: string }[] }[];
+}
+
 export interface Company {
   name: string; country: string; colours: { primary: string; secondary: string };
   cash: number; stable: string[]; confidence: number; reputation: number;
   deal?: BroadcastDeal; trust: Record<string, number>; board: Board;
 }
-export interface Settings { startingCash: number; hideScorecards: boolean }
+export interface Settings { startingCash: number; hideScorecards: boolean; /** champion's share of a mandatory purse bid */ bidSplit: number }
 
 export interface World {
   fighters: Record<string, Fighter>;
@@ -141,6 +147,7 @@ export interface GameSave {
   camps: Camp[];
   /** `${idA}|${idB}` (sorted) -> heat. Rivals sell more tickets. */
   rivalries: Record<string, number>;
+  hall: Hall;
   incoming: IncomingOffer[];
   orders: Order[];
   purseBids: PurseBid[];

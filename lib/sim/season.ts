@@ -36,19 +36,20 @@ export function progressFighter(f: Fighter, age: number, rng: Rng): Fighter {
 }
 
 /** Run the January rollover. Returns a new World; does not mutate the input. */
-export function rollSeason(world: World, rng: Rng, year: number, booked: ReadonlySet<string> = new Set()): { world: World; report: SeasonReport } {
+export function rollSeason(world: World, rng: Rng, year: number, booked: ReadonlySet<string> = new Set(), keep: ReadonlySet<string> = new Set()): { world: World; report: SeasonReport } {
   const fighters: Record<string, Fighter> = {};
   const retired: string[] = [];
   const turnedPro: string[] = [];
   const proCount: Partial<Record<Division, number>> = {};
   for (const f of Object.values(world.fighters)) if (f.pro && !f.retired) proCount[f.division] = (proCount[f.division] ?? 0) + 1;
   for (const f0 of Object.values(world.fighters)) {
-    if (f0.retired) { fighters[f0.id] = f0; continue; }
+    // men who retired a year or more ago leave the database; history keeps their names
+    if (f0.retired) { if (keep.has(f0.id)) fighters[f0.id] = f0; continue; }
     const age = year - f0.born;
     let f = progressFighter(f0, age, rng);
-    f = { ...f, popularity: Math.max(1, Math.round(f.popularity * 0.96)), injuredWeeks: 0 };
+    f = { ...f, popularity: Math.max(1, Math.round(f.popularity * 0.93)), injuredWeeks: 0 };
     if (!f.pro) {
-      if (age >= 19 && (proCount[f.division] ?? 0) < PROS_PER_DIVISION + 20 && rng.chance(0.55 + (age - 19) * 0.15)) {
+      if (f.amateur?.medal || (age >= 19 && (proCount[f.division] ?? 0) < PROS_PER_DIVISION + 20 && rng.chance(0.55 + (age - 19) * 0.15))) {
         f = { ...f, pro: true }; turnedPro.push(f.id); proCount[f.division] = (proCount[f.division] ?? 0) + 1;
       }
       else if (age >= 21) f = { ...f, retired: true };

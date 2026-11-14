@@ -9,8 +9,9 @@ import { aiMakeFights, worldWeek } from "./weekly";
 import { computeRankings } from "./rankings";
 import { boardSeason, boardWeek, openingBoard } from "./board";
 import { dealSeason } from "./broadcast";
+import { hallWeek, induct, olympicsDue, runOlympics } from "./legacy";
 
-export const DEFAULT_SETTINGS: Settings = { startingCash: 3_000_000, hideScorecards: false };
+export const DEFAULT_SETTINGS: Settings = { startingCash: 3_000_000, hideScorecards: false, bidSplit: 0.75 };
 export const START_DATE = "2026-11-14"; // a Saturday
 
 export interface NewGameInput { companyName: string; country: string; primary: string; secondary: string; startingCash: number }
@@ -35,7 +36,7 @@ export function newGame(input: NewGameInput): GameSave {
       colours: { primary: input.primary, secondary: input.secondary },
       cash: input.startingCash, stable: [], confidence: 50, reputation: 30, trust: {}, board: openingBoard(input.startingCash, START_YEAR),
     },
-    history: [], fights: [], shows: [], camps: [], rivalries: {}, incoming: [], orders: [], purseBids: [], lastMandatory: initLastMandatory(seed),
+    history: [], fights: [], shows: [], camps: [], rivalries: {}, hall: { undisputed: [], inductees: [], olympics: [] }, incoming: [], orders: [], purseBids: [], lastMandatory: initLastMandatory(seed),
     negotiations: [],
     inbox: [{ id: "welcome", week: 0, title: "Welcome to the game", body: `You have £${input.startingCash.toLocaleString("en-GB")} and no fighters. Open the Market tab to sign your first boxers.`, needsDecision: false }],
     settings: { ...DEFAULT_SETTINGS, startingCash: input.startingCash },
@@ -59,7 +60,11 @@ export function advanceWeek(g: GameSave): GameSave {
     const rng = new Rng(cur.rngState);
     const booked = new Set(cur.fights.filter((f) => !f.done).flatMap((f) => [f.a, f.b]));
     const { world, report } = rollSeason(cur.world, rng, after, booked);
+    // anything still pointing at a pruned fighter goes with him
+    const alive = (id: string | null | undefined) => !id || !!world.fighters[id];
+    cur = { ...cur, orders: cur.orders.filter((o) => alive(o.champion) && alive(o.challenger) && alive(o.other)), purseBids: cur.purseBids.filter((b) => alive(b.order.champion) && alive(b.order.challenger) && alive(b.order.other)), incoming: cur.incoming.filter((o) => alive(o.mine) && alive(o.opp)), negotiations: cur.negotiations.filter((n) => alive(n.fighterId)), fights: cur.fights.filter((f) => alive(f.a) && alive(f.b)) };
     const retiring = cur.company.stable.filter((id) => world.fighters[id].retired);
+    cur = induct({ ...cur, world }, report.retired, after);
     cur = {
       ...cur, world, rngState: rng.state,
       company: { ...cur.company, stable: cur.company.stable.filter((id) => !world.fighters[id].retired) },
@@ -70,7 +75,10 @@ export function advanceWeek(g: GameSave): GameSave {
     };
   }
   if (after !== before) cur = boardSeason(dealSeason(cur, after), after);
-  return boardWeek(worldWeek(processNegotiations(cur)));
+  cur = hallWeek(boardWeek(worldWeek(processNegotiations(cur))));
+  const games = olympicsDue(cur);
+  if (games) { const r2 = new Rng(cur.rngState); cur = { ...runOlympics(cur, games, r2), rngState: r2.state }; }
+  return cur;
 }
 
 /** Fights involving your fighters that fall due this week and need you to play or sim them. */

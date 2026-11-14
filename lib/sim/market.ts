@@ -2,7 +2,7 @@ import { computeRankings } from "./rankings";
 import { Rng } from "./rng";
 import { gameYear } from "./calendar";
 import {
-  contractSalePrice, ctxFor, evaluateOffer, isHot, releaseCost, resolveWar, rivalOffers, signFighter, offerValue, askPurse,
+  contractSalePrice, ctxFor, evaluateOffer, isHot, reputationNeeded, releaseCost, resolveWar, rivalOffers, signFighter, offerValue, askPurse,
   type Decision,
 } from "./contracts";
 import { DIVISIONS, WORLD_BODIES, type GameSave, type Negotiation, type Offer } from "./types";
@@ -26,6 +26,7 @@ export function makeOffer(g: GameSave, fighterId: string, offer: Offer): { game:
   if (g.negotiations.some((n) => n.fighterId === fighterId)) return { game: g, outcome: { kind: "refuse", message: "A negotiation is already open." } };
   if (offer.bonus > g.company.cash) return { game: g, outcome: { kind: "unaffordable", message: "You cannot afford that signing bonus." } };
   const ctx = ctxFor(g);
+  if (ctx.reputation < reputationNeeded(f)) { const d0 = evaluateOffer(f, offer, year, ctx); return { game: g, outcome: { kind: "refuse", decision: d0, message: d0.reason } }; }
   const hot = isHot(f, inTop10(g, fighterId), year);
   if (hot) {
     const rng = new Rng(g.rngState);
@@ -118,7 +119,7 @@ export function renewContract(g: GameSave, fighterId: string, offer: Offer): { g
   if (offer.bonus > g.company.cash) return { game: g, outcome: { kind: "unaffordable", message: "You cannot afford that signing bonus." } };
   const ctx = ctxFor(g);
   const loyal = { ...ctx, reputation: Math.min(100, ctx.reputation + (f.morale - 50) * 0.6) };
-  const d = evaluateOffer(f, offer, year, loyal);
+  const d = evaluateOffer(f, offer, year, loyal, true);
   if (d.kind === "accept") return { game: push(signFighter(g, fighterId, offer, year), `${f.name} re-signs`, d.reason), outcome: { kind: "accept", decision: d, message: d.reason } };
   return { game: g, outcome: { kind: d.kind, decision: d, message: f.morale < 40 && d.kind === "refuse" ? "He is unhappy here and wants out." : d.reason } };
 }

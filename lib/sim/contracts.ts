@@ -2,13 +2,21 @@ import { hashSeed, type Rng } from "./rng";
 import { overall } from "./fighter";
 import type { Fighter, GameSave, Offer, Promoter } from "./types";
 
+/** Pounds of purse per unit of drawing power. Tuned in the balancing pass so two purses take roughly half of a show's income. */
+export const PURSE_PER_DRAW = 18;
+/**
+ * Bigger names fill bigger, dearer venues, so each unit of their drawing power earns more and they know it.
+ * From about £30 a unit for a small-hall fighter to about £200 for a superstar, which is most of what he brings in.
+ */
+export const pursePerDraw = (popularity: number) => PURSE_PER_DRAW + 182 * Math.pow(popularity / 100, 2);
+
 /** What a fighter wants per fight as a guaranteed purse. */
 export function askPurse(f: Fighter, year: number): number {
   const o = overall(f.ratings);
   const age = year - f.born;
   // A fighter is paid for what he draws, plus a star premium at the very top and a small skill floor.
   const drawUnits = Math.pow(f.popularity, 2.6) * 0.1;
-  let v = Math.max(3000, 12 * drawUnits + Math.pow(f.popularity / 100, 5) * 800_000 + Math.pow(Math.max(0, o - 45), 2) * 3);
+  let v = Math.max(3000, pursePerDraw(f.popularity) * drawUnits + Math.pow(Math.max(0, o - 45), 2) * 1.5);
   if (!f.pro) v = 5000 + f.potential * 4000;
   else if (age < 25) v *= 0.7 + 0.15 * f.potential;
   if (age > 35) v *= 0.8;
@@ -36,7 +44,15 @@ export type Decision =
   | { kind: "counter"; reason: string; offer: Offer }
   | { kind: "refuse"; reason: string };
 
-export function evaluateOffer(f: Fighter, o: Offer, year: number, ctx: OfferContext): Decision {
+/** The reputation a promoter needs before this fighter will listen. Journeymen sign with anyone; elite fighters and champions do not. */
+export function reputationNeeded(f: Fighter): number {
+  const o = overall(f.ratings);
+  return Math.min(95, Math.max(0, (o - 72) * 5) + (f.titles.length ? 15 : 0));
+}
+
+export function evaluateOffer(f: Fighter, o: Offer, year: number, ctx: OfferContext, renewal = false): Decision {
+  const need = reputationNeeded(f);
+  if (!renewal && ctx.reputation < need) return { kind: "refuse", reason: `He wants an established promoter. Your reputation is ${Math.round(ctx.reputation)}; he would listen at about ${need}.` };
   const r = ratio(f, o, year, ctx);
   if (r >= 1) return { kind: "accept", reason: r > 1.25 ? "Happy to sign. This is more than he expected." : "Terms are fair. He signs." };
   if (r >= 0.78) {

@@ -9,6 +9,7 @@ import { DIVISIONS, DIVISION_LABEL, DIVISION_LIMIT, WORLD_BODIES, type Division,
 import { Badge, Btn, Card, CountUp, Empty, FighterRow, H, Panel, Stat, money, moneyShort } from "./ui";
 import { FightPoster } from "./poster";
 import { BoardPanel, BroadcastPanel, FinancePanel } from "./business";
+import { HallPanel, RecordsPanel } from "./legacy";
 import { feed } from "@/lib/sim/news";
 import { rankText } from "@/lib/sim/matchmaking";
 import { pendingPressers } from "@/lib/sim/drama";
@@ -195,12 +196,17 @@ export function MoreScreen({ go }: { go: (t: string) => void }) {
         {links.map(([id, l]) => <Btn key={id} variant="ghost" onClick={() => go(id)}>{l}</Btn>)}
       </div>
       <BoardPanel />
+      <HallPanel />
+      <RecordsPanel />
       <BroadcastPanel />
       <FinancePanel />
       <Card className="space-y-3">
         <div className="text-sm font-semibold">Settings</div>
         <label className="flex min-h-11 items-center justify-between text-sm">Hide round scorecards in live fights
           <input type="checkbox" className="h-5 w-5" checked={game.settings.hideScorecards} onChange={(e) => update((g) => ({ ...g, settings: { ...g.settings, hideScorecards: e.target.checked } }))} />
+        </label>
+        <label className="flex min-h-11 items-center justify-between gap-3 text-sm">Champion&apos;s share of a purse bid
+          <span className="flex items-center gap-2"><input type="range" min={60} max={90} step={5} value={Math.round(game.settings.bidSplit * 100)} onChange={(e) => update((g) => ({ ...g, settings: { ...g.settings, bidSplit: Number(e.target.value) / 100 } }))} /><span className="num w-20 text-right">{Math.round(game.settings.bidSplit * 100)}/{100 - Math.round(game.settings.bidSplit * 100)}</span></span>
         </label>
         <label className="flex min-h-11 items-center justify-between text-sm">Theme
           <select className="min-h-11 rounded-lg border border-line bg-bg px-2" defaultValue="auto" onChange={(e) => {
@@ -220,7 +226,7 @@ export function MoreScreen({ go }: { go: (t: string) => void }) {
         <Btn variant="ghost" className="w-full" onClick={closeGame}>Switch / new save</Btn>
         {msg && <p className="text-sm text-muted">{msg}</p>}
       </Card>
-      <p className="text-center text-xs text-muted">Hall of Fame and records land in a later phase.</p>
+      
     </div>
   );
 }
