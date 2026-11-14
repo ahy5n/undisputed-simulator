@@ -107,3 +107,15 @@ describe("bidding wars", () => {
     expect(done.negotiations.length).toBe(0);
   });
 });
+
+describe("signing a fighter who is already booked", () => {
+  it("tells you about the fight he brings with him", () => {
+    const g = newGame({ companyName: "Test", country: "GB", primary: "#000", secondary: "#fff", startingCash: 50_000_000 });
+    const booked = g.fights.map((f) => g.world.fighters[f.a]).find((f) => f.promoter === "independent" && overall(f.ratings) < 70 && f.record.l > 1);
+    expect(booked).toBeDefined();
+    const base = DEFAULT_OFFER(booked!, year(g));
+    const { game, outcome } = makeOffer(g, booked!.id, { ...base, purse: base.purse * 2, bonus: base.bonus * 2 });
+    if (outcome.kind === "accept") expect(game.inbox.some((m) => /already has a fight booked/.test(m.title))).toBe(true);
+    else expect(outcome.kind).toBe("war");
+  });
+});

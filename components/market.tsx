@@ -47,6 +47,12 @@ function OfferSheet({ f, close, onWar, renew }: { f: Fighter; close: () => void;
     <Sheet close={close} label={`Offer to ${f.name}`}>
       <h2 className="poster text-2xl">{renew ? "New contract for" : "Offer to"} {f.name}</h2>
       <p className="mt-1 text-sm text-muted">He is looking for about <span className="num font-semibold text-fg">{money(ask)}</span> a fight.</p>
+      {(() => {
+        const bk = game.fights.find((x) => !x.done && (x.a === f.id || x.b === f.id));
+        if (!bk || renew) return null;
+        const opp = game.world.fighters[bk.a === f.id ? bk.b : bk.a];
+        return <p className="tape-blue mt-2 bg-surface2 px-3 py-2 text-sm">Already booked: he fights <span className="font-semibold">{opp.name}</span> {bk.week - game.week <= 0 ? "this week" : `in ${bk.week - game.week} week${bk.week - game.week === 1 ? "" : "s"}`}. That fight comes with him.</p>;
+      })()}
       <div className="mt-4 space-y-3">
         <Stepper label="Signing bonus" value={offer.bonus} set={(v) => setOffer({ ...offer, bonus: v })} step={step} min={0} max={ask * 6} fmt={money} />
         <Stepper label="Purse per fight" value={offer.purse} set={(v) => setOffer({ ...offer, purse: v })} step={step} min={1000} max={ask * 4} fmt={money} />

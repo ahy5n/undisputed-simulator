@@ -25,7 +25,7 @@ export function storyFor(g: GameSave, h: FightRecord, i: number, before?: GameSa
   const div = DIVISION_LABEL[h.division].toLowerCase();
   const yours = A?.promoter === "player" || B?.promoter === "player";
   if (!h.winner) {
-    return { id, week: h.week, kind: yours ? "yours" : "result", headline: `${last(h.aName)} and ${last(h.bName)} fight to a draw`, detail: `Nothing to split ${h.aName} and ${h.bName} at ${div}.`, weight: (h.titles.length ? 60 : 10) + (yours ? 50 : 0) };
+    return { id, week: h.week, kind: yours ? "yours" : "result", headline: `${last(h.aName)} and ${last(h.bName)} fight to a draw`, detail: `Nothing to split ${h.aName} and ${h.bName} at ${div}.`, weight: (h.titles.length ? 60 : 2) + (yours ? 50 : 0) };
   }
   const wName = h.winner === "a" ? h.aName : h.bName, lName = h.winner === "a" ? h.bName : h.aName;
   const wId = h.winner === "a" ? h.a : h.b;

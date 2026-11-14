@@ -37,7 +37,7 @@ export function makeOffer(g: GameSave, fighterId: string, offer: Offer): { game:
     return { game: { ...g, rngState: rng.state, negotiations: [...g.negotiations, neg] }, outcome: { kind: "war", message: `${f.name} is in demand. A bidding war has started. It runs up to three weeks; raise your offer or give a final answer from the Bids tab.` } };
   }
   const d = evaluateOffer(f, offer, year, ctx);
-  if (d.kind === "accept") return { game: push(signFighter(g, fighterId, offer, year), `${f.name} signs`, d.reason), outcome: { kind: "accept", decision: d, message: d.reason } };
+  if (d.kind === "accept") return { game: noteBooked(push(signFighter(g, fighterId, offer, year), `${f.name} signs`, d.reason), fighterId), outcome: { kind: "accept", decision: d, message: d.reason } };
   return { game: g, outcome: { kind: d.kind, decision: d, message: d.reason } };
 }
 
@@ -52,7 +52,7 @@ function resolve(g: GameSave, n: Negotiation): GameSave {
   let next: GameSave = { ...g, negotiations: g.negotiations.filter((x) => x.id !== n.id) };
   if (res.winner === "player") {
     next = signFighter(next, n.fighterId, n.offer, year);
-    return push(next, `Won the bidding war for ${f.name}`, res.reason);
+    return noteBooked(push(next, `Won the bidding war for ${f.name}`, res.reason), f.id);
   }
   const rv = n.rivals.find((r) => r.promoterId === res.winner)!;
   next = { ...next, world: { ...next.world, fighters: { ...next.world.fighters, [f.id]: { ...f, promoter: res.winner, contract: { promoter: res.winner, fightsLeft: rv.offer.fights, purse: rv.offer.purse, cut: rv.offer.cut, expiresYear: year + 2 } } } } };
@@ -121,4 +121,13 @@ export function renewContract(g: GameSave, fighterId: string, offer: Offer): { g
   const d = evaluateOffer(f, offer, year, loyal);
   if (d.kind === "accept") return { game: push(signFighter(g, fighterId, offer, year), `${f.name} re-signs`, d.reason), outcome: { kind: "accept", decision: d, message: d.reason } };
   return { game: g, outcome: { kind: d.kind, decision: d, message: f.morale < 40 && d.kind === "refuse" ? "He is unhappy here and wants out." : d.reason } };
+}
+
+/** A free agent can arrive with a fight already made on the independent circuit. Say so at once. */
+function noteBooked(g: GameSave, fighterId: string): GameSave {
+  const f = g.fights.find((x) => !x.done && (x.a === fighterId || x.b === fighterId));
+  if (!f) return g;
+  const me = g.world.fighters[fighterId], opp = g.world.fighters[f.a === fighterId ? f.b : f.a];
+  const weeks = Math.max(0, f.week - g.week);
+  return { ...g, inbox: [{ id: `booked-${fighterId}-${g.week}`, week: g.week, title: `${me.name} already has a fight booked`, body: `He faces ${opp.name} ${weeks === 0 ? "this week" : `in ${weeks} week${weeks === 1 ? "" : "s"}`}. It was made before he signed, so someone else promotes it; you earn your cut of his purse. Set his camp under Fights.`, needsDecision: true }, ...g.inbox].slice(0, 60) };
 }
