@@ -127,9 +127,13 @@ export function shortlist(g: GameSave, r: Rankings, mine: Fighter, week = g.week
   }
   // always include one safer fight so the manager can choose to build a record
   const top = list.slice(0, 4);
-  const safe = list.slice(4).find((c) => c.winChance >= 0.65 && c.winChance <= 0.93) ?? list.slice(0, 4).find((c) => c.winChance >= 0.65);
-  const rest = list.filter((c) => !top.includes(c));
-  return (safe && !top.includes(safe) ? [...top, safe] : [...top, ...rest.slice(0, 1)]).slice(0, 5);
+  const safe = list.slice(4).find((c) => c.winChance >= 0.65 && c.winChance <= 0.93) ?? list.slice(0, 4).find((c) => c.winChance >= 0.65)
+    // low-rated fighters can run out of weaker men at their own weight: look one division either side
+    ?? candidates(g, r, mine, week, 1).find((c) => c.winChance >= 0.62 && c.winChance <= 0.93);
+  // compare by fighter, not by object: the wider search builds fresh candidates for the same men
+  const inTop = (c: Candidate) => top.some((x) => x.fighter.id === c.fighter.id);
+  const rest = list.filter((c) => !inTop(c));
+  return (safe && !inTop(safe) ? [...top, safe] : [...top, ...rest.slice(0, 1)]).slice(0, 5);
 }
 
 export type FightDecision =
