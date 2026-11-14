@@ -36,7 +36,7 @@ export function progressFighter(f: Fighter, age: number, rng: Rng): Fighter {
 }
 
 /** Run the January rollover. Returns a new World; does not mutate the input. */
-export function rollSeason(world: World, rng: Rng, year: number): { world: World; report: SeasonReport } {
+export function rollSeason(world: World, rng: Rng, year: number, booked: ReadonlySet<string> = new Set()): { world: World; report: SeasonReport } {
   const fighters: Record<string, Fighter> = {};
   const retired: string[] = [];
   const turnedPro: string[] = [];
@@ -54,7 +54,8 @@ export function rollSeason(world: World, rng: Rng, year: number): { world: World
       else if (age >= 21) f = { ...f, retired: true };
     } else {
       const p = age >= 40 ? 1 : age >= 35 ? (age - 34) * 0.14 + (overall(f.ratings) < 60 ? 0.15 : 0) : age >= 32 && overall(f.ratings) < 50 ? 0.2 : 0;
-      if (rng.chance(p)) { f = { ...f, retired: true }; retired.push(f.id); }
+      // nobody walks away with a fight signed: he retires after it, at the next rollover
+      if (rng.chance(p) && !booked.has(f.id)) { f = { ...f, retired: true }; retired.push(f.id); }
     }
     // AI contracts expire on schedule, sending the fighter to free agency (stars become signable)
     if (f.contract && f.promoter !== "player" && f.contract.expiresYear !== undefined && f.contract.expiresYear <= year && !f.retired) {

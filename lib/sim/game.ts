@@ -35,7 +35,7 @@ export function newGame(input: NewGameInput): GameSave {
       colours: { primary: input.primary, secondary: input.secondary },
       cash: input.startingCash, stable: [], confidence: 50, reputation: 30, trust: {}, board: openingBoard(input.startingCash, START_YEAR),
     },
-    history: [], fights: [], shows: [], camps: [], incoming: [], orders: [], purseBids: [], lastMandatory: initLastMandatory(seed),
+    history: [], fights: [], shows: [], camps: [], rivalries: {}, incoming: [], orders: [], purseBids: [], lastMandatory: initLastMandatory(seed),
     negotiations: [],
     inbox: [{ id: "welcome", week: 0, title: "Welcome to the game", body: `You have £${input.startingCash.toLocaleString("en-GB")} and no fighters. Open the Market tab to sign your first boxers.`, needsDecision: false }],
     settings: { ...DEFAULT_SETTINGS, startingCash: input.startingCash },
@@ -57,7 +57,8 @@ export function advanceWeek(g: GameSave): GameSave {
   let cur: GameSave = { ...g, week };
   if (after !== before) {
     const rng = new Rng(cur.rngState);
-    const { world, report } = rollSeason(cur.world, rng, after);
+    const booked = new Set(cur.fights.filter((f) => !f.done).flatMap((f) => [f.a, f.b]));
+    const { world, report } = rollSeason(cur.world, rng, after, booked);
     const retiring = cur.company.stable.filter((id) => world.fighters[id].retired);
     cur = {
       ...cur, world, rngState: rng.state,

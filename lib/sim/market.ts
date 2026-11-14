@@ -109,3 +109,16 @@ export function sellContract(g: GameSave, id: string): GameSave {
   return push(next, `${f.name} sold to ${buyer.name}`, `You received £${price.toLocaleString("en-GB")} for his contract.`);
 }
 export { askPurse, offerValue, releaseCost, contractSalePrice };
+
+/** New terms for a fighter already in your stable. Happy fighters ask for less; no rival bids. */
+export function renewContract(g: GameSave, fighterId: string, offer: Offer): { game: GameSave; outcome: OfferOutcome } {
+  const f = g.world.fighters[fighterId];
+  const year = yearOf(g);
+  if (!f || f.promoter !== "player") return { game: g, outcome: { kind: "refuse", message: "He is not in your stable." } };
+  if (offer.bonus > g.company.cash) return { game: g, outcome: { kind: "unaffordable", message: "You cannot afford that signing bonus." } };
+  const ctx = ctxFor(g);
+  const loyal = { ...ctx, reputation: Math.min(100, ctx.reputation + (f.morale - 50) * 0.6) };
+  const d = evaluateOffer(f, offer, year, loyal);
+  if (d.kind === "accept") return { game: push(signFighter(g, fighterId, offer, year), `${f.name} re-signs`, d.reason), outcome: { kind: "accept", decision: d, message: d.reason } };
+  return { game: g, outcome: { kind: d.kind, decision: d, message: f.morale < 40 && d.kind === "refuse" ? "He is unhappy here and wants out." : d.reason } };
+}

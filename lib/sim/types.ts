@@ -19,7 +19,7 @@ export type Style = "boxer" | "puncher" | "swarmer" | "counter-puncher" | "boxer
 export interface Ratings { power: number; speed: number; defence: number; chin: number; stamina: number; skill: number }
 export interface Record3 { w: number; l: number; d: number; ko: number }
 
-export interface Contract { promoter: string; fightsLeft: number; purse: number; cut: number; expiresYear?: number }
+export interface Contract { promoter: string; fightsLeft: number; purse: number; cut: number; expiresYear?: number; expiredWeek?: number }
 export interface Offer { bonus: number; fights: number; purse: number; cut: number }
 export interface Negotiation {
   id: string; fighterId: string; round: number; offer: Offer;
@@ -33,6 +33,10 @@ export interface ScheduledFight extends FightTerms {
   promoter: string;
   origin: "player" | "ai" | "mandatory" | "vacant" | "bid" | "rematch";
   showId?: string;
+  /** ticket and PPV multiplier from the press conference */
+  hype?: number;
+  presser?: "pending" | "done";
+  missedWeight?: string;
 }
 export interface IncomingOffer { id: string; issued: number; expires: number; fromPromoter: string; mine: string; opp: string; fightWeek: number; terms: FightTerms }
 export interface Order {
@@ -135,6 +139,8 @@ export interface GameSave {
   fights: ScheduledFight[];
   shows: Show[];
   camps: Camp[];
+  /** `${idA}|${idB}` (sorted) -> heat. Rivals sell more tickets. */
+  rivalries: Record<string, number>;
   incoming: IncomingOffer[];
   orders: Order[];
   purseBids: PurseBid[];

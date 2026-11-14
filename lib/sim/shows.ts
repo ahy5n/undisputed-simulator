@@ -21,10 +21,11 @@ const DEMAND_MULT = { low: 1.25, standard: 1, premium: 0.78 } as const;
 /** Ticket-selling power of one fighter. */
 export const draw = (f: Fighter, home: string) => Math.pow(f.popularity, 2.6) * 0.1 * (f.nationality === home ? 1.8 : 1);
 
-export function cardDraw(fs: ScheduledFight[], F: Record<string, Fighter>, home: string): { total: number; main: number } {
+export function cardDraw(fs: ScheduledFight[], F: Record<string, Fighter>, home: string, rivalries: Record<string, number> = {}): { total: number; main: number } {
   const rows = fs.map((x) => {
     const d = draw(F[x.a], home) + draw(F[x.b], home);
-    return d * (x.titles.length ? 1.5 : 1);
+    const grudge = rivalries[x.a < x.b ? `${x.a}|${x.b}` : `${x.b}|${x.a}`] ? 1.3 : 1;
+    return d * (x.titles.length ? 1.5 : 1) * (x.hype ?? 1) * grudge;
   }).sort((a, b) => b - a);
   const total = (rows[0] ?? 0) + rows.slice(1).reduce((s, v) => s + v * 0.25, 0);
   return { total, main: rows[0] ?? 0 };
@@ -35,7 +36,7 @@ export interface Projection extends Statement { demand: number }
 /** Expected numbers for a show. `rng` adds real-world noise for the post-show statement. */
 export function project(g: GameSave, venueId: string, fights: ScheduledFight[], price: Show["price"], dist: Show["dist"], rng?: Rng): Projection {
   const F = g.world.fighters, v = venueById(venueId);
-  const { total } = cardDraw(fights, F, g.company.country);
+  const { total } = cardDraw(fights, F, g.company.country, g.rivalries);
   const noise = (sd: number) => (rng ? Math.max(0.6, rng.normal(1, sd)) : 1);
   const demand = (400 + total * DEMAND_MULT[price]) * noise(0.08);
   const attendance = Math.round(Math.min(v.capacity, demand));

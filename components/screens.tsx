@@ -11,6 +11,7 @@ import { FightPoster } from "./poster";
 import { BoardPanel, BroadcastPanel, FinancePanel } from "./business";
 import { feed } from "@/lib/sim/news";
 import { rankText } from "@/lib/sim/matchmaking";
+import { pendingPressers } from "@/lib/sim/drama";
 import { pendingPlayerFights } from "@/lib/sim/game";
 import { StableActions } from "./market";
 
@@ -31,6 +32,7 @@ export function HomeScreen({ go }: { go: (t: string) => void }) {
   const champs = c.stable.map((id) => F[id]).filter((f) => f?.titles.length);
   const alerts: { text: string; to: string; hot?: boolean }[] = [];
   if (pending.length) alerts.push({ text: `Fight night: ${F[pending[0].a].name} vs ${F[pending[0].b].name}`, to: "fights", hot: true });
+  for (const f of pendingPressers(game)) alerts.push({ text: `Press conference: ${F[f.a].name} vs ${F[f.b].name}`, to: "fights", hot: true });
   for (const o of game.incoming) alerts.push({ text: `Fight offer for ${F[o.mine].name}: ${F[o.opp].name}`, to: "fights" });
   for (const o of myOrders) alerts.push({ text: `${o.body} has ordered ${o.kind === "vacant" ? "a vacant title fight" : "a mandatory"}: agree terms within ${Math.max(0, o.deadline - game.week)} weeks`, to: "fights", hot: true });
   if (game.purseBids.length) alerts.push({ text: `${game.purseBids.length} purse bid${game.purseBids.length > 1 ? "s" : ""} open`, to: "fights" });
@@ -114,7 +116,7 @@ export function StableScreen() {
       {mine.length === 0 ? <Card className="text-sm text-muted">No fighters yet. Sign some in the Market.</Card> : (
         <Card className="py-1">
           {mine.map((f) => (
-            <FighterRow key={f.id} f={f} right={<div><div>{ageAt(f, year)}y</div><button onClick={() => setSel(f)} className="min-h-11 text-xs font-semibold text-accent">Manage</button></div>} />
+            <FighterRow key={f.id} f={f} right={<div>{f.contract && f.contract.fightsLeft <= 0 ? <span className="text-xs font-bold text-bad">Contract up</span> : <span className="text-xs text-muted">{ageAt(f, year)}y · {f.contract?.fightsLeft ?? 0} left</span>}<button onClick={() => setSel(f)} className="block min-h-11 w-full text-right text-xs font-semibold text-accent">Manage</button></div>} />
           ))}
         </Card>
       )}

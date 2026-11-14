@@ -10,6 +10,7 @@ import { Rng } from "./rng";
 import { generateFighter } from "./worldgen";
 import { autoShows, settleIfComplete } from "./shows";
 import { campsWeek, fightConfigFor } from "./camps";
+import { dramaWeek, rivalryAfter } from "./drama";
 import {
   DIVISIONS, WORLD_BODIES, type Division, type Fighter, type FightTerms, type GameSave, type Order, type ScheduledFight, type WorldBody,
 } from "./types";
@@ -65,6 +66,7 @@ export function applyResult(g: GameSave, fight: ScheduledFight, r: FightResult, 
   if (fight.promoter !== "player") for (const [f, side] of sides) if (f.promoter === "player" && f.contract) cash += Math.round((side === "a" ? fight.purseA : fight.purseB) * f.contract.cut);
   for (const [f, side] of sides) if (f.promoter === "player") rep = clamp(rep + (r.winner === side ? 1 + (fight.titles.length ? 4 : 0) : r.winner === null ? 0 : -0.3), 0, 100);
   next = { ...next, company: { ...next.company, cash, reputation: rep } };
+  next = rivalryAfter(next, fight, r);
   next = settleIfComplete(next, fight.showId, rng);
   if (involvesPlayer(g, fight)) {
     const w = r.winner ? (r.winner === "a" ? A : B) : null;
@@ -364,6 +366,7 @@ export function worldWeek(g: GameSave): GameSave {
   }
   cur = { ...cur, fights: cur.fights.filter((f) => !f.done || f.week >= g.week - 12), incoming: cur.incoming.filter((o) => o.expires > g.week) };
   cur = campsWeek(cur, rng);
+  cur = dramaWeek(cur, rng);
   const r = computeRankings(cur.world);
   cur = processOrders(makeOrders(cur, r, rng), rng);
   cur = ensureOpponents(cur, r, rng);

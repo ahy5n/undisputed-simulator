@@ -28,7 +28,7 @@ export const useGame = () => {
 };
 const migrate = (g: GameSave): GameSave => ({
   ...g,
-  negotiations: g.negotiations ?? [], fights: g.fights ?? [], shows: g.shows ?? [], camps: g.camps ?? [], incoming: g.incoming ?? [], orders: g.orders ?? [],
+  negotiations: g.negotiations ?? [], fights: g.fights ?? [], shows: g.shows ?? [], camps: g.camps ?? [], rivalries: g.rivalries ?? {}, incoming: g.incoming ?? [], orders: g.orders ?? [],
   purseBids: g.purseBids ?? [], lastMandatory: g.lastMandatory ?? {}, history: g.history ?? [],
   company: { ...g.company, reputation: g.company.reputation ?? 30, trust: g.company.trust ?? {}, board: g.company.board ?? { ...openingBoard(g.company.cash, 2026), historySeen: (g.history ?? []).length } },
 });

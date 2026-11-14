@@ -15,6 +15,7 @@ import { DIVISIONS, DIVISION_LABEL, WORLD_BODIES, type Division, type Fighter, t
 import { LiveFight, ResultView } from "./fightui";
 import { CAMP_WEEKS, SPARRING_COST, campFor, fightConfigFor, isMine, updateCamp, weightCut } from "@/lib/sim/camps";
 import type { CampFocus } from "@/lib/sim/types";
+import { TONES, answerPresser, heat, pendingPressers } from "@/lib/sim/drama";
 import { Avatar, Badge, Btn, Card, FighterRow, H, OvrBadge, money } from "./ui";
 
 type Tab = "shortlist" | "search" | "orders" | "schedule" | "exhibition";
@@ -294,6 +295,22 @@ function ScheduleTab({ goLive, quick, rankings }: { goLive: (fightId: string) =>
           <div className="mt-2 flex gap-2"><Btn className="flex-1" onClick={() => update((g) => acceptIncoming(g, o.id))}>Accept</Btn><Btn variant="ghost" className="flex-1" onClick={() => update((g) => declineIncoming(g, o.id))}>Decline</Btn></div>
         </Card>
       ))}
+      {pendingPressers(game).map((f) => (
+        <div key={f.id} className="tape-red border border-line bg-surface p-4">
+          <div className="label !text-red">Press conference</div>
+          <div className="poster mt-1 text-xl">{line(f)}</div>
+          <p className="mt-1 text-sm text-muted">A reporter asks how you see the fight going. {heat(game, f.a, f.b) > 0 ? "There is already bad blood between these two." : ""}</p>
+          <div className="mt-3 space-y-2">
+            {TONES.map((t) => (
+              <button key={t.id} onClick={() => update((g) => answerPresser(g, f.id, t.id))} className="block min-h-11 w-full border border-line bg-surface2 px-3 py-2 text-left hover:border-fg/40">
+                <div className="text-sm font-semibold">{t.label}: “{t.line}”</div>
+                <div className="text-xs text-muted">{t.effect}</div>
+              </button>
+            ))}
+          </div>
+          <Btn variant="ghost" className="mt-2 w-full" onClick={() => update((g) => answerPresser(g, f.id, "skip"))}>Skip (neutral answer)</Btn>
+        </div>
+      ))}
       {pending.map((f) => (
         <Card key={f.id} className="border-accent">
           <div className="poster text-2xl text-red">Fight night</div>
@@ -308,7 +325,7 @@ function ScheduleTab({ goLive, quick, rankings }: { goLive: (fightId: string) =>
       <div className="text-sm font-semibold">Your fights</div>
       {mineFights.length === 0 && <Card className="text-sm text-muted">Nothing booked. Make an offer from your shortlist.</Card>}
       {mineFights.map((f) => (
-        <Card key={f.id}><div className="text-sm font-semibold">{line(f)}</div><div className="text-xs text-muted">{rankText(game, rankings, F[f.a])} <span className="opacity-60">vs</span> {rankText(game, rankings, F[f.b])}</div><div className="text-xs text-muted">In {f.week - game.week} weeks · purses {money(f.purseA)} / {money(f.purseB)}{f.titles.length ? ` · ${f.titles.join("/")}` : ""}{f.rematch ? " · rematch clause" : ""}</div>{[f.a, f.b].filter((id) => isMine(game, id)).map((id) => <CampCard key={id} fightId={f.id} fighterId={id} />)}</Card>
+        <Card key={f.id}><div className="text-sm font-semibold">{line(f)}</div><div className="text-xs text-muted">{rankText(game, rankings, F[f.a])} <span className="opacity-60">vs</span> {rankText(game, rankings, F[f.b])}</div><div className="text-xs text-muted">In {f.week - game.week} weeks · purses {money(f.purseA)} / {money(f.purseB)}{f.titles.length ? ` · ${f.titles.join("/")}` : ""}{f.rematch ? " · rematch clause" : ""}{heat(game, f.a, f.b) > 0 ? " · grudge match" : ""}{f.hype && f.hype > 1.05 ? ` · hype +${Math.round((f.hype - 1) * 100)}%` : ""}{f.missedWeight ? ` · ${F[f.missedWeight].name} missed weight` : ""}</div>{[f.a, f.b].filter((id) => isMine(game, id)).map((id) => <CampCard key={id} fightId={f.id} fighterId={id} />)}</Card>
       ))}
       <div className="text-sm font-semibold">Around the world</div>
       <Card className="py-1">
@@ -367,7 +384,7 @@ export function FightsScreen() {
   const F = game.world.fighters;
   const pending = pendingPlayerFights(game);
   const showTab: Tab = pending.length && tab !== "exhibition" && tab !== "schedule" ? "schedule" : tab;
-  const TABS: [Tab, string][] = [["shortlist", "Shortlist"], ["search", "Search"], ["orders", `Orders${game.orders.length + game.purseBids.length ? ` (${game.orders.length + game.purseBids.length})` : ""}`], ["schedule", `Schedule${game.incoming.length + pending.length ? ` (${game.incoming.length + pending.length})` : ""}`], ["exhibition", "Exhibition"]];
+  const TABS: [Tab, string][] = [["shortlist", "Shortlist"], ["search", "Search"], ["orders", `Orders${game.orders.length + game.purseBids.length ? ` (${game.orders.length + game.purseBids.length})` : ""}`], ["schedule", `Schedule${game.incoming.length + pending.length + pendingPressers(game).length ? ` (${game.incoming.length + pending.length + pendingPressers(game).length})` : ""}`], ["exhibition", "Exhibition"]];
 
   if (live) {
     const fight = game.fights.find((f) => f.id === live);

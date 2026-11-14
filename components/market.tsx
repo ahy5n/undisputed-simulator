@@ -4,7 +4,7 @@ import { useGame } from "@/lib/game/store";
 import { gameYear } from "@/lib/sim/calendar";
 import { DEFAULT_OFFER, askPurse, contractSalePrice, offerCommitment, offerValue, releaseCost } from "@/lib/sim/contracts";
 import { ageAt, overall, stars } from "@/lib/sim/fighter";
-import { finalAnswer, makeOffer, raiseBid, releaseFighter, sellContract, type OfferOutcome } from "@/lib/sim/market";
+import { finalAnswer, makeOffer, raiseBid, releaseFighter, renewContract, sellContract, type OfferOutcome } from "@/lib/sim/market";
 import { DIVISIONS, DIVISION_LABEL, type Division, type Fighter, type Offer } from "@/lib/sim/types";
 import { Btn, Card, FighterRow, H, money } from "./ui";
 
@@ -28,7 +28,7 @@ function Stepper({ label, value, set, step, min, max, fmt }: { label: string; va
   );
 }
 
-function OfferSheet({ f, close, onWar }: { f: Fighter; close: () => void; onWar: () => void }) {
+function OfferSheet({ f, close, onWar, renew }: { f: Fighter; close: () => void; onWar: () => void; renew?: boolean }) {
   const { game, update } = useGame();
   const year = game ? gameYear(game.startDate, game.week) : 2026;
   const ask = askPurse(f, year);
@@ -37,7 +37,7 @@ function OfferSheet({ f, close, onWar }: { f: Fighter; close: () => void; onWar:
   if (!game) return null;
   const step = Math.max(1000, Math.round(ask * 0.05 / 1000) * 1000);
   function submit(o: Offer) {
-    const r = makeOffer(game!, f.id, o);
+    const r = renew ? renewContract(game!, f.id, o) : makeOffer(game!, f.id, o);
     update(() => r.game);
     setOutcome(r.outcome);
     if (r.outcome.kind === "war") onWar();
@@ -45,7 +45,7 @@ function OfferSheet({ f, close, onWar }: { f: Fighter; close: () => void; onWar:
   const done = outcome?.kind === "accept";
   return (
     <Sheet close={close} label={`Offer to ${f.name}`}>
-      <h2 className="display text-3xl font-bold leading-none">Offer to {f.name}</h2>
+      <h2 className="poster text-2xl">{renew ? "New contract for" : "Offer to"} {f.name}</h2>
       <p className="mt-1 text-sm text-muted">He is looking for about <span className="num font-semibold text-fg">{money(ask)}</span> a fight.</p>
       <div className="mt-4 space-y-3">
         <Stepper label="Signing bonus" value={offer.bonus} set={(v) => setOffer({ ...offer, bonus: v })} step={step} min={0} max={ask * 6} fmt={money} />
@@ -172,14 +172,17 @@ export function MarketScreen() {
 
 export function StableActions({ f, close }: { f: Fighter; close: () => void }) {
   const { game, update } = useGame();
+  const [renewing, setRenewing] = useState(false);
   if (!game) return null;
   const year = gameYear(game.startDate, game.week);
   const cost = releaseCost(f), price = contractSalePrice(f, year);
+  if (renewing) return <OfferSheet f={f} renew close={close} onWar={() => {}} />;
   return (
     <Sheet close={close} label={`Manage ${f.name}`}>
       <h2 className="display text-3xl font-bold leading-none">{f.name}</h2>
       {f.contract ? <p className="mt-1 text-sm text-muted">{f.contract.fightsLeft} fights left at <span className="num">{money(f.contract.purse)}</span>, your cut {Math.round(f.contract.cut * 100)}%.</p> : null}
       <div className="mt-4 space-y-2">
+        <Btn className="w-full" onClick={() => setRenewing(true)}>{f.contract && f.contract.fightsLeft <= 0 ? "Offer a new contract" : "Extend his contract"}</Btn>
         <Btn variant="danger" className="w-full" onClick={() => { update((g) => releaseFighter(g, f.id)); close(); }}>Release (pay {money(cost)})</Btn>
         <Btn variant="ghost" className="w-full" onClick={() => { update((g) => sellContract(g, f.id)); close(); }}>Sell contract (receive {money(price)})</Btn>
         <Btn variant="ghost" className="w-full" onClick={close}>Cancel</Btn>
