@@ -5,7 +5,8 @@ import { Rng } from "./rng";
 import { gameYear } from "./calendar";
 import { rollSeason } from "./season";
 import { processNegotiations } from "./market";
-import { worldWeek } from "./weekly";
+import { aiMakeFights, worldWeek } from "./weekly";
+import { computeRankings } from "./rankings";
 
 export const DEFAULT_SETTINGS: Settings = { startingCash: 3_000_000, hideScorecards: false };
 export const START_DATE = "2026-11-14"; // a Saturday
@@ -22,7 +23,7 @@ function initLastMandatory(seed: number): Record<string, number> {
 export function newGame(input: NewGameInput): GameSave {
   const seed = (Date.now() ^ Math.floor(Math.random() * 0xffffffff)) >>> 0;
   const { world, rngState } = createWorld(seed);
-  return {
+  const g: GameSave = {
     version: SAVE_VERSION,
     id: `save-${seed.toString(36)}-${Date.now().toString(36)}`,
     createdAt: new Date().toISOString(),
@@ -37,6 +38,12 @@ export function newGame(input: NewGameInput): GameSave {
     inbox: [{ id: "welcome", week: 0, title: "Welcome to the game", body: `You have £${input.startingCash.toLocaleString("en-GB")} and no fighters. Open the Market tab to sign your first boxers.`, needsDecision: false }],
     settings: { ...DEFAULT_SETTINGS, startingCash: input.startingCash },
   };
+  // The boxing world is already in motion on day one: fill the first weeks of the calendar with fights.
+  const rng = new Rng(g.rngState);
+  const rankings = computeRankings(g.world);
+  let cur = g;
+  for (let w = -9; w <= -1; w++) cur = { ...aiMakeFights({ ...cur, week: w }, rankings, rng), week: 0 };
+  return { ...cur, rngState: rng.state };
 }
 export { START_YEAR };
 

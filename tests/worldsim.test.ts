@@ -79,3 +79,35 @@ describe("shortlists", () => {
     expect(fair / total).toBeGreaterThan(0.7);
   });
 });
+
+import { weekReport, feed } from "@/lib/sim/news";
+describe("a living world from day one", () => {
+  it("a new save already has fights on the calendar and the first weeks produce news", () => {
+    const g0 = fresh();
+    expect(g0.fights.length).toBeGreaterThan(40);
+    let g = g0, withNews = 0;
+    for (let i = 0; i < 6; i++) { const n = advanceWeek(g); if (weekReport(g, n).stories.length) withNews++; g = n; }
+    expect(withNews).toBeGreaterThanOrEqual(5);
+    const f = feed(g, 10);
+    expect(f.length).toBeGreaterThan(3);
+    expect(f.every((s) => s.headline.length > 5 && !/undefined/.test(s.headline + s.detail))).toBe(true);
+  });
+  it("title stories say 'and still' or 'and the new' correctly", () => {
+    let g = fresh();
+    let checked = 0;
+    for (let i = 0; i < 60 && checked < 3; i++) {
+      const n = advanceWeek(g);
+      for (const s of weekReport(g, n).stories.filter((x) => x.kind === "title")) {
+        const h = n.history.slice(g.history.length).find((x) => s.id.startsWith(`${x.week}-${x.a}-${x.b}`))!;
+        if (!h.winner) continue;
+        const wId = h.winner === "a" ? h.a : h.b;
+        const held = h.titles.some((b) => g.world.belts[h.division][b] === wId);
+        expect(/And still/.test(s.headline)).toBe(held);
+        expect(/And the new/.test(s.headline)).toBe(!held);
+        checked++;
+      }
+      g = n;
+    }
+    expect(checked).toBeGreaterThan(0);
+  });
+});

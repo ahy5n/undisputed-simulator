@@ -10,12 +10,12 @@ import {
 import { computeRankings, type Rankings } from "@/lib/sim/rankings";
 import { Rng } from "@/lib/sim/rng";
 import { pendingPlayerFights } from "@/lib/sim/game";
-import { acceptIncoming, applyResult, clearOrderFor, declineIncoming, minBidFor, orderParticipants, placeBid, quickSimFight, stepAside, stepAsideFee, vacateBelt } from "@/lib/sim/weekly";
+import { acceptIncoming, applyResult, clearOrderFor, declineIncoming, minBidFor, orderParticipants, placeBid, stepAside, stepAsideFee, vacateBelt } from "@/lib/sim/weekly";
 import { DIVISIONS, DIVISION_LABEL, WORLD_BODIES, type Division, type Fighter, type FightTerms, type GameSave, type Order, type WorldBody } from "@/lib/sim/types";
 import { LiveFight, ResultView } from "./fightui";
 import { CAMP_WEEKS, SPARRING_COST, campFor, fightConfigFor, isMine, updateCamp, weightCut } from "@/lib/sim/camps";
 import type { CampFocus } from "@/lib/sim/types";
-import { Badge, Btn, Card, FighterRow, H, money } from "./ui";
+import { Avatar, Badge, Btn, Card, FighterRow, H, OvrBadge, money } from "./ui";
 
 type Tab = "shortlist" | "search" | "orders" | "schedule" | "exhibition";
 
@@ -109,13 +109,16 @@ function Pick({ c, onOffer }: { c: Candidate; onOffer: () => void }) {
   return (
     <Card>
       <div className="flex items-start justify-between gap-2">
-        <div className="min-w-0">
-          <div className="flex flex-wrap items-center gap-1.5"><span className="display text-xl font-bold leading-tight">{f.name}</span>{f.titles.map((t) => <Badge key={t}>{t}</Badge>)}</div>
-          <div className="text-xs text-muted">{flag(f.nationality)} {recordString(f)} ({f.record.ko} KO) · {f.style}</div>
+        <div className="flex min-w-0 items-center gap-3">
+          <Avatar f={f} size={48} />
+          <div className="min-w-0">
+            <div className="flex flex-wrap items-center gap-1.5"><span className="display text-xl font-bold leading-tight">{f.name}</span>{f.titles.map((t) => <Badge key={t}>{t}</Badge>)}</div>
+            <div className="text-xs text-muted">{flag(f.nationality)} {recordString(f)} ({f.record.ko} KO) · {f.style}</div>
+          </div>
         </div>
-        <div className="display num text-3xl font-bold leading-none">{overall(f.ratings)}</div>
+        <OvrBadge value={overall(f.ratings)} />
       </div>
-      <p className="mt-2 text-sm font-semibold text-accent">{c.why}</p>
+      <p className="poster mt-3 text-lg text-red">{c.why}</p>
       <div className="mt-2 grid grid-cols-3 gap-2 text-center text-xs">
         <div className="rounded-lg bg-surface2 p-2"><div className="text-muted">Win chance</div><div className="num text-base font-bold">{Math.round(c.winChance * 100)}%</div></div>
         <div className="rounded-lg bg-surface2 p-2"><div className="text-muted">Style</div><div className="text-base font-bold">{c.styleEdge > 0.2 ? "Edge" : c.styleEdge < -0.2 ? "Danger" : "Even"}</div></div>
@@ -266,7 +269,7 @@ function CampCard({ fightId, fighterId }: { fightId: string; fighterId: string }
 
 /* --------------------------------------------------------------- schedule */
 
-function ScheduleTab({ goLive }: { goLive: (fightId: string) => void }) {
+function ScheduleTab({ goLive, quick }: { goLive: (fightId: string) => void; quick: (fightId: string) => void }) {
   const { game, update } = useGame();
   if (!game) return null;
   const F = game.world.fighters;
@@ -286,12 +289,12 @@ function ScheduleTab({ goLive }: { goLive: (fightId: string) => void }) {
       ))}
       {pending.map((f) => (
         <Card key={f.id} className="border-accent">
-          <div className="display text-xl font-bold">Fight night</div>
+          <div className="poster text-2xl text-red">Fight night</div>
           <div className="text-sm">{line(f)}{f.titles.length ? ` · ${f.titles.join("/")} title` : ""}</div>
           {[f.a, f.b].filter((id) => isMine(game, id)).map((id) => <CampCard key={id} fightId={f.id} fighterId={id} />)}
           <div className="mt-2 flex gap-2">
-            <Btn className="flex-1" onClick={() => goLive(f.id)}>Watch live</Btn>
-            <Btn variant="ghost" className="flex-1" onClick={() => update((g) => quickSimFight(g, f.id))}>Quick sim</Btn>
+            <Btn variant="bell" className="flex-1" onClick={() => goLive(f.id)}>Watch live</Btn>
+            <Btn variant="ghost" className="flex-1" onClick={() => quick(f.id)}>Quick sim</Btn>
           </div>
         </Card>
       ))}
@@ -350,7 +353,7 @@ export function FightsScreen() {
   const [tab, setTab] = useState<Tab>("shortlist");
   const [offerFor, setOfferFor] = useState<{ mine: Fighter; opp: Fighter; titles: WorldBody[] } | null>(null);
   const [live, setLive] = useState<string | null>(null);
-  const [lastResult, setLastResult] = useState<{ a: Fighter; b: Fighter; r: FightResult } | null>(null);
+  const [lastResult, setLastResult] = useState<{ a: Fighter; b: Fighter; r: FightResult; titles: string[]; newChamp: boolean } | null>(null);
   const world = game?.world;
   const rankings = useMemo(() => (world ? computeRankings(world) : null), [world]);
   if (!game || !rankings) return null;
@@ -366,16 +369,29 @@ export function FightsScreen() {
       const left = F[swap ? fight.b : fight.a], right = F[swap ? fight.a : fight.b];
       const cfg = fightConfigFor(game, fight);
       const extra = swap ? { conditionA: cfg.conditionB, conditionB: cfg.conditionA, planBonusA: cfg.planBonusB, planBonusB: cfg.planBonusA } : cfg;
-      return <LiveFight a={left} b={right} rounds={fight.rounds} extra={extra} hideCards={game.settings.hideScorecards}
+      const champIds = fight.titles.map((t) => game.world.belts[F[fight.a].division][t]).filter((x): x is string => !!x);
+      return <LiveFight a={left} b={right} rounds={fight.rounds} extra={extra} titles={fight.titles} champIds={champIds} hideCards={game.settings.hideScorecards}
         onFinish={(res) => {
           const real = swap ? swapResult(res) : res;
           update((g) => { const rng = new Rng(g.rngState); const n = applyResult(g, fight, real, rng); return { ...n, rngState: rng.state }; });
-          setLastResult({ a: F[fight.a], b: F[fight.b], r: real }); setLive(null);
+          setLive(null);
         }}
         onExit={() => setLive(null)} />;
     }
   }
-  if (lastResult) return <ResultView a={lastResult.a} b={lastResult.b} r={lastResult.r} onDone={() => setLastResult(null)} />;
+  
+
+  function quick(fightId: string) {
+    const fight = game!.fights.find((f) => f.id === fightId && !f.done);
+    if (!fight) return;
+    const rng = new Rng(game!.rngState);
+    const res = simulateFight(F[fight.a], F[fight.b], fightConfigFor(game!, fight), rng);
+    const champs = fight.titles.map((t) => game!.world.belts[F[fight.a].division][t]);
+    const winnerId = res.winner ? (res.winner === "a" ? fight.a : fight.b) : null;
+    setLastResult({ a: F[fight.a], b: F[fight.b], r: res, titles: fight.titles, newChamp: !!winnerId && !champs.includes(winnerId) });
+    update((g) => { const n = applyResult(g, fight, res, rng); return { ...n, rngState: rng.state }; });
+  }
+  if (lastResult) return <ResultView a={lastResult.a} b={lastResult.b} r={lastResult.r} titles={lastResult.titles} newChamp={lastResult.newChamp} onDone={() => setLastResult(null)} />;
 
   return (
     <div>
@@ -386,7 +402,7 @@ export function FightsScreen() {
       {showTab === "shortlist" && <ShortlistTab rankings={rankings} offer={(m, o, t) => setOfferFor({ mine: m, opp: o, titles: t })} />}
       {showTab === "search" && <SearchTab rankings={rankings} offer={(m, o, t) => setOfferFor({ mine: m, opp: o, titles: t })} />}
       {showTab === "orders" && <OrdersTab offer={(m, o, t) => setOfferFor({ mine: m, opp: o, titles: t })} />}
-      {showTab === "schedule" && <ScheduleTab goLive={setLive} />}
+      {showTab === "schedule" && <ScheduleTab goLive={setLive} quick={quick} />}
       {showTab === "exhibition" && <Exhibition />}
       {offerFor && <OfferBuilder mine={offerFor.mine} opp={offerFor.opp} presetTitles={offerFor.titles} close={() => setOfferFor(null)} />}
     </div>

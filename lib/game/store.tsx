@@ -2,6 +2,7 @@
 import { createContext, useCallback, useContext, useEffect, useRef, useState, type ReactNode } from "react";
 import { listGames, loadGame, saveGame } from "@/lib/save/db";
 import { advanceWeek, pendingPlayerFights, simToNextFight } from "@/lib/sim/game";
+import { weekReport, type WeekReport } from "@/lib/sim/news";
 import type { GameSave } from "@/lib/sim/types";
 
 interface Ctx {
@@ -15,6 +16,8 @@ interface Ctx {
   simToFight: () => void;
   refreshSaves: () => Promise<void>;
   closeGame: () => void;
+  report: WeekReport | null;
+  dismissReport: () => void;
 }
 const GameCtx = createContext<Ctx | null>(null);
 export const useGame = () => {
@@ -34,6 +37,7 @@ export function GameProvider({ children }: { children: ReactNode }) {
   const [game, setGame] = useState<GameSave | null>(null);
   const [ready, setReady] = useState(false);
   const [saves, setSaves] = useState<Ctx["saves"]>([]);
+  const [report, setReport] = useState<WeekReport | null>(null);
   const latest = useRef<GameSave | null>(null);
   const dirty = useRef(false);
 
@@ -86,9 +90,19 @@ export function GameProvider({ children }: { children: ReactNode }) {
     const g = g0 && migrate(g0);
     if (g) { try { localStorage.setItem(LAST, id); } catch {} setGame(g); }
   }, []);
-  const nextWeek = useCallback(() => setGame((g) => (g && !pendingPlayerFights(g).length ? advanceWeek(g) : g)), []);
-  const simToFight = useCallback(() => setGame((g) => (g && !pendingPlayerFights(g).length ? simToNextFight(g).game : g)), []);
+  // Time only moves from here, so the report is built from the state on screen (latest.current), not inside a state updater.
+  const advance = useCallback((step: (g: GameSave) => GameSave) => {
+    const g = latest.current;
+    if (!g || pendingPlayerFights(g).length) return;
+    const next = step(g);
+    const rep = weekReport(g, next);
+    setReport(rep.stories.length || rep.notes.length ? rep : null); // a silent week does not interrupt you
+    setGame(next);
+  }, []);
+  const nextWeek = useCallback(() => advance(advanceWeek), [advance]);
+  const simToFight = useCallback(() => advance((g) => simToNextFight(g).game), [advance]);
+  const dismissReport = useCallback(() => setReport(null), []);
   const closeGame = useCallback(() => { try { localStorage.removeItem(LAST); } catch {} setGame(null); refreshSaves(); }, [refreshSaves]);
 
-  return <GameCtx.Provider value={{ game, ready, saves, update, start, open, nextWeek, simToFight, refreshSaves, closeGame }}>{children}</GameCtx.Provider>;
+  return <GameCtx.Provider value={{ game, ready, saves, update, start, open, nextWeek, simToFight, refreshSaves, closeGame, report, dismissReport }}>{children}</GameCtx.Provider>;
 }

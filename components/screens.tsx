@@ -6,44 +6,95 @@ import { gameYear } from "@/lib/sim/calendar";
 import { ageAt, recordString } from "@/lib/sim/fighter";
 import { computeRankings } from "@/lib/sim/rankings";
 import { DIVISIONS, DIVISION_LABEL, DIVISION_LIMIT, WORLD_BODIES, type Division, type Fighter, type WorldBody } from "@/lib/sim/types";
-import { Badge, Btn, Card, FighterRow, H, money } from "./ui";
+import { Badge, Btn, Card, CountUp, Empty, FighterRow, H, Panel, Stat, money, moneyShort } from "./ui";
+import { FightPoster } from "./poster";
+import { feed } from "@/lib/sim/news";
+import { pendingPlayerFights } from "@/lib/sim/game";
 import { StableActions } from "./market";
 
-const Soon = ({ phase, what }: { phase: number; what: string }) => (
-  <Card className="text-sm text-muted">{what} arrives in build phase {phase}.</Card>
-);
 
 export function HomeScreen({ go }: { go: (t: string) => void }) {
   const { game } = useGame();
   if (!game) return null;
   const c = game.company;
+  const F = game.world.fighters;
+  const year = gameYear(game.startDate, game.week);
+  const mineIds = new Set(c.stable);
+  const myFights = game.fights.filter((f) => !f.done && (mineIds.has(f.a) || mineIds.has(f.b))).sort((x, y) => x.week - y.week);
+  const next = myFights[0];
+  const pending = pendingPlayerFights(game);
+  const myOrders = game.orders.filter((o) => [o.champion, o.challenger, o.other].some((id) => id && mineIds.has(id)));
+  const unshown = game.fights.filter((f) => !f.done && f.promoter === "player" && !f.showId).length;
+  const idle = c.stable.map((id) => F[id]).filter((f) => f && !f.retired && !myFights.some((x) => x.a === f.id || x.b === f.id));
+  const champs = c.stable.map((id) => F[id]).filter((f) => f?.titles.length);
+  const alerts: { text: string; to: string; hot?: boolean }[] = [];
+  if (pending.length) alerts.push({ text: `Fight night: ${F[pending[0].a].name} vs ${F[pending[0].b].name}`, to: "fights", hot: true });
+  for (const o of game.incoming) alerts.push({ text: `Fight offer for ${F[o.mine].name}: ${F[o.opp].name}`, to: "fights" });
+  for (const o of myOrders) alerts.push({ text: `${o.body} has ordered ${o.kind === "vacant" ? "a vacant title fight" : "a mandatory"}: agree terms within ${Math.max(0, o.deadline - game.week)} weeks`, to: "fights", hot: true });
+  if (game.purseBids.length) alerts.push({ text: `${game.purseBids.length} purse bid${game.purseBids.length > 1 ? "s" : ""} open`, to: "fights" });
+  if (game.negotiations.length) alerts.push({ text: `${game.negotiations.length} bidding war${game.negotiations.length > 1 ? "s" : ""} in progress`, to: "market" });
+  if (unshown) alerts.push({ text: `${unshown} fight${unshown > 1 ? "s" : ""} you promote ${unshown > 1 ? "have" : "has"} no show yet`, to: "shows" });
+  if (idle.length && c.stable.length) alerts.push({ text: `${idle.length} of your fighters ${idle.length > 1 ? "have" : "has"} nothing booked`, to: "fights" });
+  if (c.cash < 0) alerts.push({ text: "You are in the red. Eight weeks below zero and the board acts.", to: "more", hot: true });
+  const stories = feed(game, 5);
   return (
     <div className="space-y-4">
-      <H sub="Decisions needed come first">Inbox</H>
-      {game.inbox.length === 0 && <Card className="text-sm text-muted">Nothing needs you this week.</Card>}
-      {game.inbox.map((m) => (
-        <Card key={m.id}><div className="font-semibold">{m.title}</div><p className="mt-1 text-sm text-muted">{m.body}</p></Card>
-      ))}
-      <div className="grid grid-cols-2 gap-3">
-        <Card><div className="text-xs text-muted">Cash</div><div className="display num text-3xl font-bold">{money(c.cash)}</div></Card>
-        <Card>
-          <div className="text-xs text-muted">Board confidence</div>
-          <div className="display num text-3xl font-bold">{c.confidence}</div>
-          <div className="mt-1 h-1.5 rounded bg-surface2"><div className="h-full rounded bg-accent" style={{ width: `${c.confidence}%` }} /></div>
-        </Card>
+      <div>
+        <div className="label">{c.name}</div>
+        <h1 className="poster mt-1 text-4xl">{pending.length ? "It's fight night" : next ? `${next.week - game.week} week${next.week - game.week === 1 ? "" : "s"} to the bell` : c.stable.length ? "Make a fight" : "Build your stable"}</h1>
+        <div className="ropes mt-2 w-16" aria-hidden />
       </div>
-      <Card>
-        <div className="text-sm font-semibold">Calendar</div>
-        {(() => {
-          const F = game.world.fighters;
-          const ev = [
-            ...game.fights.filter((f) => !f.done && [f.a, f.b].some((id) => F[id].promoter === "player")).map((f) => ({ w: f.week, t: `${F[f.a].name} vs ${F[f.b].name}${f.titles.length ? ` (${f.titles.join("/")})` : ""}` })),
-            ...game.shows.filter((x) => !x.statement).map((x) => ({ w: x.week, t: `Your show: ${x.fights.length} fight${x.fights.length > 1 ? "s" : ""}` })),
-          ].sort((a, b) => a.w - b.w).slice(0, 6);
-          return ev.length ? ev.map((e, i) => <div key={i} className="flex justify-between gap-2 border-b border-line py-2 text-sm last:border-0"><span className="min-w-0 truncate">{e.t}</span><span className="num shrink-0 text-muted">{e.w - game.week <= 0 ? "this week" : `in ${e.w - game.week}w`}</span></div>) : <p className="mt-1 text-sm text-muted">No fights or shows scheduled.</p>;
-        })()}
-        {c.stable.length === 0 && <Btn className="mt-3 w-full" onClick={() => go("market")}>Sign your first fighter</Btn>}
-      </Card>
+
+      {next ? (
+        <FightPoster a={F[mineIds.has(next.a) ? next.a : next.b]} b={F[mineIds.has(next.a) ? next.b : next.a]} year={year}
+          kicker={next.titles.length ? `${next.titles.join(" · ")} world title` : `${next.rounds} rounds`}
+          footer={pending.includes(next) ? "Tonight" : `In ${next.week - game.week} week${next.week - game.week === 1 ? "" : "s"}`}>
+          <Btn variant="bell" className="mt-3 w-full" onClick={() => go("fights")}>{pending.includes(next) ? "Go to the ring" : "Camp and fight details"}</Btn>
+        </FightPoster>
+      ) : (
+        <div className="ring overflow-hidden rounded-xl border border-line">
+          <div className="ropes" aria-hidden />
+          <div className="p-5 text-center">
+            <div className="poster text-2xl">{c.stable.length ? "The ring is empty" : "No fighters. No fights. No money."}</div>
+            <p className="mx-auto mt-2 max-w-xs text-sm text-white/70">{c.stable.length ? "Every one of your fighters has a shortlist of five opponents waiting." : "Start in the market. Free agents sign quickly; big names start bidding wars."}</p>
+            <Btn variant="bell" className="mt-4" onClick={() => go(c.stable.length ? "fights" : "market")}>{c.stable.length ? "Open the shortlist" : "Sign your first fighter"}</Btn>
+          </div>
+        </div>
+      )}
+
+      {alerts.length > 0 && (
+        <div className="space-y-1.5">
+          {alerts.slice(0, 6).map((a, i) => (
+            <button key={i} onClick={() => go(a.to)} className={`flex min-h-11 w-full items-center gap-2 rounded-lg border bg-surface px-3 py-2 text-left text-sm font-semibold ${a.hot ? "tape-red border-red/50" : "tape-blue border-line"}`}>
+              <span className="min-w-0 flex-1">{a.text}</span><span className="text-muted" aria-hidden>›</span>
+            </button>
+          ))}
+        </div>
+      )}
+
+      <div className="grid grid-cols-2 gap-3">
+        <Stat label="Cash" value={<CountUp value={c.cash} format={moneyShort} />} tone={c.cash < 0 ? "bad" : undefined} sub={money(c.cash)} />
+        <Stat label="Board confidence" value={c.confidence} tone={c.confidence < 30 ? "bad" : c.confidence > 65 ? "good" : undefined} sub={<span className="mt-1 block h-1.5 rounded bg-surface2"><span className="block h-full rounded bg-red" style={{ width: `${c.confidence}%` }} /></span>} />
+        <Stat label="Reputation" value={Math.round(c.reputation)} sub="Opens doors with big names" />
+        <Stat label="Stable" value={c.stable.length} sub={champs.length ? `${champs.length} world champion${champs.length > 1 ? "s" : ""}` : "No champions yet"} />
+      </div>
+
+      <Panel title="Around the rings" right={<button className="min-h-11 text-xs font-semibold text-muted" onClick={() => go("feed")}>All news ›</button>} pad={false}>
+        {stories.length ? stories.map((st) => (
+          <div key={st.id} className="border-b border-line px-4 py-2.5 last:border-0">
+            <div className="display text-lg font-bold leading-tight">{st.headline}</div>
+            <div className="text-xs text-muted">{st.detail}</div>
+          </div>
+        )) : <p className="p-4 text-sm text-muted">No results yet. Ring the bell: fights happen every week.</p>}
+      </Panel>
+
+      {game.inbox.length > 0 && (
+        <Panel title="Inbox" pad={false}>
+          {game.inbox.slice(0, 5).map((m) => (
+            <div key={m.id} className="border-b border-line px-4 py-2.5 last:border-0"><div className="text-sm font-semibold">{m.title}</div><p className="text-xs text-muted">{m.body}</p></div>
+          ))}
+        </Panel>
+      )}
     </div>
   );
 }
@@ -69,7 +120,28 @@ export function StableScreen() {
   );
 }
 
-export const FeedScreen = () => (<div><H>Feed</H><Soon phase={11} what="The social feed, news and press conferences" /></div>);
+const KICK: Record<string, string> = { title: "World title", upset: "Upset", ko: "Knockout", result: "Result", yours: "Your stable" };
+export function FeedScreen() {
+  const { game } = useGame();
+  if (!game) return null;
+  const stories = feed(game, 40);
+  return (
+    <div>
+      <H sub="Results, title changes and reaction from around the boxing world.">Feed</H>
+      {stories.length === 0 && <Empty>Nothing to report yet. Fights are being made; give it a few weeks.</Empty>}
+      <div className="space-y-2">
+        {stories.map((st) => (
+          <div key={st.id} className={`rounded-xl border border-line bg-surface p-3 ${st.kind === "title" || st.kind === "yours" ? "tape-red" : st.kind === "upset" ? "tape-blue" : ""}`}>
+            <div className="flex items-center justify-between"><span className={`label ${st.kind === "title" || st.kind === "yours" ? "!text-red" : ""}`}>{KICK[st.kind]}</span><span className="num text-[11px] text-muted">{game.week - st.week <= 0 ? "this week" : `${game.week - st.week}w ago`}</span></div>
+            <div className="display mt-0.5 text-xl font-bold leading-tight">{st.headline}</div>
+            <div className="text-sm text-muted">{st.detail}</div>
+            {st.quote && <p className="mt-2 rounded-lg bg-surface2 px-3 py-2 text-sm"><span className="font-semibold">{st.quote.who}:</span> “{st.quote.text}”</p>}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
 
 export function WorldScreen() {
   const { game } = useGame();

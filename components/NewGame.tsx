@@ -47,8 +47,12 @@ export default function NewGame() {
   }
   return (
     <main className="mx-auto max-w-md px-4 py-8">
-      <h1 className="display text-5xl font-bold leading-none">Undisputed<br /><span className="text-accent">Manager</span></h1>
-      <p className="mt-2 text-sm text-muted">Sign fighters, make fights, build undisputed champions.</p>
+      <div className="ring -mx-4 -mt-8 overflow-hidden px-4 pb-6 pt-10">
+        <div className="label !text-white/60">Manager · Promoter · Matchmaker</div>
+        <h1 className="poster mt-2 text-6xl">Undisputed<br /><span className="text-red">Manager</span></h1>
+        <p className="mt-3 max-w-xs text-sm text-white/75">Sign fighters. Make fights. Sell out stadiums. Unify the belts before the money runs out.</p>
+      </div>
+      <div className="ropes -mx-4" aria-hidden />
 
       {saves.length > 0 && (
         <Card className="mt-6">
@@ -81,7 +85,7 @@ export default function NewGame() {
           <input type="range" min={500_000} max={10_000_000} step={250_000} value={cash} onChange={(e) => setCash(Number(e.target.value))} className="mt-2 w-full" />
         </label>
         {err && <p className="text-sm text-bad">{err}</p>}
-        <Btn onClick={create} disabled={busy} className="w-full">{busy ? "Building the boxing world…" : "Start career"}</Btn>
+        <Btn variant="bell" onClick={create} disabled={busy} className="w-full !min-h-14 !text-lg">{busy ? "Building the boxing world…" : "Start career"}</Btn>
       </Card>
 
       <input ref={fileRef} type="file" accept="application/json" hidden onChange={(e) => doImport(e.target.files?.[0])} />

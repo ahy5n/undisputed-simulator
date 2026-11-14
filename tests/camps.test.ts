@@ -9,8 +9,11 @@ import { Rng } from "@/lib/sim/rng";
 import { overall } from "@/lib/sim/fighter";
 import type { GameSave } from "@/lib/sim/types";
 
+// one world for the whole file: game state is immutable, so every test can branch from it
+const BASE: GameSave = { ...newGame({ companyName: "T", country: "GB", primary: "#000", secondary: "#fff", startingCash: 5_000_000 }), fights: [] };
+
 function setup(seed = 0): { g: GameSave; mine: string; opp: string; fightId: string } {
-  let g = newGame({ companyName: "T", country: "GB", primary: "#000", secondary: "#fff", startingCash: 5_000_000 });
+  let g: GameSave = BASE;
   const pool = Object.values(g.world.fighters).filter((f) => f.pro && f.promoter === "independent" && f.division === "welterweight" && overall(f.ratings) > 55 && overall(f.ratings) < 72);
   const a = pool[seed % 10], b = pool[(seed % 10) + 11];
   g = signFighter(g, a.id, DEFAULT_OFFER(a, 2026), 2026);

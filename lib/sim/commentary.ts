@@ -1,7 +1,7 @@
 import type { Rng } from "./rng";
 import type { FightEvent, FightState, RoundSummary } from "./fight";
 
-const last = (n: string) => n.split(" ").slice(-1)[0];
+import { surname as last } from "./fighter";
 
 const OPEN = [
   "The bell goes for round {r}.", "Round {r} gets under way.", "Seconds out. Round {r}.", "Here we go, round {r}.",

@@ -78,7 +78,7 @@ function describe(g: GameSave, r: Rankings, mine: Fighter, opp: Fighter, wc: num
   for (const body of WORLD_BODIES) {
     const my = rankIn(g, r, mine, body), op = rankIn(g, r, opp, body);
     if (op === null || mine.division !== opp.division) continue;
-    if (op === 0 && my !== null) { titles = [...titles, body]; continue; }
+    if (op === 0) { if (my !== null) titles = [...titles, body]; continue; } // a champion's place is only won in a title fight
     const myK = my ?? RANK_SIZE + 1;
     if (op < myK && (!gain || myK - op > RANK_SIZE + 1 - gain.rank)) gain = { body, rank: op };
   }

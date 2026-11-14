@@ -1,26 +1,27 @@
 @import "tailwindcss";
 
+/* Identity: a fight poster under ring lights. Blue-black canvas, red corner vs blue corner, gold only on belts. */
 :root {
-  --bg: #f6f6f4;
-  --surface: #ffffff;
-  --surface-2: #efefec;
-  --line: #e0e0db;
-  --fg: #14140f;
-  --muted: #6a6a62;
-  --accent: #c8102e;
+  color-scheme: dark;
+  --bg: #0a0c11;
+  --surface: #131720;
+  --surface-2: #1b212e;
+  --line: #29303f;
+  --fg: #f3f0e9;
+  --muted: #8a92a4;
+  --red: #e5262f;
+  --blue: #2f6bff;
+  --accent: #e5262f;
   --accent-fg: #ffffff;
-  --good: #1a7f37;
-  --bad: #c8102e;
+  --gold: #e3b341;
+  --good: #3ecf8e;
+  --bad: #ff6b6b;
 }
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --bg: #0c0c0b; --surface: #151513; --surface-2: #1d1d1a; --line: #2a2a26;
-    --fg: #f0f0ea; --muted: #9a9a90; --accent: #ff3b52; --accent-fg: #0c0c0b; --good: #4cc26b; --bad: #ff6b7d;
-  }
-}
-:root[data-theme="dark"] {
-  --bg: #0c0c0b; --surface: #151513; --surface-2: #1d1d1a; --line: #2a2a26;
-  --fg: #f0f0ea; --muted: #9a9a90; --accent: #ff3b52; --accent-fg: #0c0c0b; --good: #4cc26b; --bad: #ff6b7d;
+:root[data-theme="light"] {
+  color-scheme: light;
+  --bg: #f1eee6; --surface: #fffdf8; --surface-2: #e8e4d9; --line: #d5d0c2;
+  --fg: #14161b; --muted: #666a75; --red: #c8141d; --blue: #1d4fd8; --accent: #c8141d; --accent-fg: #ffffff;
+  --gold: #946c08; --good: #137a43; --bad: #c8141d;
 }
 
 @theme inline {
@@ -32,16 +33,65 @@
   --color-muted: var(--muted);
   --color-accent: var(--accent);
   --color-accentfg: var(--accent-fg);
+  --color-red: var(--red);
+  --color-blue: var(--blue);
+  --color-gold: var(--gold);
   --color-good: var(--good);
   --color-bad: var(--bad);
-  --font-sans: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  --font-display: "Barlow Condensed", "Oswald", "Arial Narrow", "Roboto Condensed", sans-serif;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-display: var(--font-barlow), "Arial Narrow", sans-serif;
+  --font-poster: var(--font-anton), Impact, "Arial Narrow", sans-serif;
+  --animate-rise: rise 0.3s ease-out both;
+  --animate-stamp: stamp 0.45s cubic-bezier(0.2, 1.4, 0.4, 1) both;
+  --animate-flash: flash 0.7s ease-out;
+  --animate-swing: swing 0.5s ease-in-out;
+  @keyframes rise { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+  @keyframes stamp { from { opacity: 0; transform: scale(2.4) rotate(-10deg); } to { opacity: 1; transform: scale(1) rotate(-5deg); } }
+  @keyframes flash { 0% { box-shadow: inset 0 0 0 999px rgba(229, 38, 47, 0.5); } 100% { box-shadow: inset 0 0 0 999px rgba(229, 38, 47, 0); } }
+  @keyframes swing { 0%, 100% { transform: rotate(0); } 25% { transform: rotate(-14deg); } 75% { transform: rotate(14deg); } }
 }
 
 html, body { background: var(--bg); color: var(--fg); }
-body { font-family: var(--font-sans); -webkit-tap-highlight-color: transparent; }
+body { font-family: var(--font-sans); -webkit-font-smoothing: antialiased; -webkit-tap-highlight-color: transparent; }
+::selection { background: var(--red); color: #fff; }
+* { scrollbar-width: thin; scrollbar-color: var(--line) transparent; }
 .num { font-variant-numeric: tabular-nums; }
-.display { font-family: var(--font-display); letter-spacing: 0.01em; text-transform: none; }
+.display { font-family: var(--font-display); letter-spacing: 0.01em; }
+.poster { font-family: var(--font-poster); text-transform: uppercase; letter-spacing: 0.02em; line-height: 1; }
+.label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.14em; color: var(--muted); }
 button, input, select { font: inherit; }
-button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible, [role="button"]:focus-visible { outline: 2px solid var(--fg); outline-offset: 2px; }
 .pb-safe { padding-bottom: env(safe-area-inset-bottom); }
+
+/* Belt plate: the only place gold appears */
+.belt {
+  display: inline-flex; align-items: center; padding: 2px 7px; font-size: 10px; font-weight: 800; line-height: 1.15; letter-spacing: 0.08em;
+  color: #1c1503; background: linear-gradient(160deg, #f5d77a, #c9952a 55%, #f0cf6b);
+  clip-path: polygon(6px 0, calc(100% - 6px) 0, 100% 50%, calc(100% - 6px) 100%, 6px 100%, 0 50%);
+}
+/* The bell: the one button that moves time */
+.bell { background: var(--red); color: #fff; box-shadow: 0 3px 0 #7d0d13; }
+.bell:hover { filter: brightness(1.08); }
+.bell:active { transform: translateY(2px); box-shadow: 0 1px 0 #7d0d13; }
+
+/* Ring canvas lit from above, red corner left, blue corner right */
+.ring {
+  background:
+    radial-gradient(ellipse 60% 50% at 50% -5%, rgba(255, 250, 235, 0.2), transparent 70%),
+    linear-gradient(100deg, rgba(229, 38, 47, 0.28), transparent 38%, transparent 62%, rgba(47, 107, 255, 0.28)),
+    #10131a;
+  color: #f3f0e9;
+}
+/* Three ropes: a divider that only this game has */
+.ropes { height: 11px; background: linear-gradient(180deg, var(--red) 0 2px, transparent 2px 4.5px, var(--fg) 4.5px 6.5px, transparent 6.5px 9px, var(--blue) 9px 11px); opacity: 0.85; }
+/* Corner tape on cards: red on the left edge, blue on the right */
+.tape-red { box-shadow: inset 4px 0 0 var(--red); }
+.tape-blue { box-shadow: inset -4px 0 0 var(--blue); }
+/* Newsprint for the fight report */
+.newsprint { background: #ece7da; color: #17181c; }
+.newsprint .rule { border-color: #17181c; }
+.halftone { background-image: radial-gradient(rgba(23, 24, 28, 0.16) 1px, transparent 1.4px); background-size: 6px 6px; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}

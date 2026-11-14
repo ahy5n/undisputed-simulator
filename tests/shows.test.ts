@@ -6,7 +6,8 @@ import { quickSimFight } from "@/lib/sim/weekly";
 import { overall } from "@/lib/sim/fighter";
 import type { Fighter, GameSave, ScheduledFight } from "@/lib/sim/types";
 
-const fresh = () => newGame({ companyName: "T", country: "GB", primary: "#000", secondary: "#fff", startingCash: 3_000_000 });
+// these tests build their own cards, so start from an empty calendar
+const fresh = () => ({ ...newGame({ companyName: "T", country: "GB", primary: "#000", secondary: "#fff", startingCash: 3_000_000 }), fights: [] });
 const fights = (g: GameSave, pairs: [Fighter, Fighter][], week = 10, titles: ("WBC" | "WBA" | "IBF" | "WBO")[] = []) => {
   let cur = g;
   pairs.forEach(([a, b], i) => { cur = scheduleFight(cur, a.id, b.id, week, defaultTerms(cur, a, b, i === 0 ? titles : []), "player", "player"); });

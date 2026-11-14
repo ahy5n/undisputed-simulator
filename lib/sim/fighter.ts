@@ -20,3 +20,9 @@ export function flag(code: string): string {
 export function stars(f: Fighter, year: number): number | null {
   return ageAt(f, year) < 25 ? f.potential : null;
 }
+
+/** Surname for headlines and commentary; "Vergil Ortiz Jr." reads as "Ortiz". */
+export function surname(name: string): string {
+  const parts = name.split(/\s+/).filter((x) => !/^(jr|sr|ii|iii)\.?$/i.test(x));
+  return parts[parts.length - 1] ?? name;
+}
