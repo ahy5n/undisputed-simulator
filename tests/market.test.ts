@@ -92,8 +92,10 @@ describe("bidding wars", () => {
     let cur = game;
     for (let i = 0; i < 4 && cur.negotiations.length; i++) cur = advanceWeek(cur);
     expect(cur.negotiations.length).toBe(0);
-    expect(cur.inbox[0].title).toMatch(/bidding war/i);
-    expect(cur.inbox[0].body).toMatch(/Chose/);
+    // other messages (e.g. a fight offer for the man you just signed) can land in the same week
+    const msg = cur.inbox.find((m) => /bidding war/i.test(m.title));
+    expect(msg).toBeDefined();
+    expect(msg!.body).toMatch(/Chose/);
   });
   it("raising and giving a final answer resolve immediately", () => {
     const g = fresh();
